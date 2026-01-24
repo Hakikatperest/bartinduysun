@@ -23,7 +23,7 @@
             --gray-color: #6c757d;
             --border-color: #dee2e6;
             --transition: all 0.3s ease;
-            --topbar-color: #1a237e; /* Koyu mavi */
+            --topbar-color: #01889f; /* GÜNCELLENDİ: Koyu maviden turkuaz mavisine */
             --valilik-color: #28a745; /* Yeşil */
             --belediye-color: #007bff; /* Mavi */
             --siyaset-color: #ffc107; /* Sarı */
@@ -69,6 +69,7 @@
             display: flex;
             align-items: center;
             position: relative;
+            border-bottom: 2px solid var(--topbar-color);
         }
         
         /* Blinking Breaking News Dot */
@@ -98,7 +99,7 @@
         .top-bar {
             background-color: var(--topbar-color);
             color: white;
-            padding: 8px 0;
+            padding: 10px 0;
         }
         
         .social-icons {
@@ -114,20 +115,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 30px;
-            height: 30px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
         }
         
         .social-icons a:hover {
             transform: translateY(-3px);
+            background-color: rgba(255, 255, 255, 0.3);
         }
-        
-        .social-icons a:nth-child(1) { background-color: #1877F2; } /* Facebook */
-        .social-icons a:nth-child(2) { background-color: #E4405F; } /* Instagram */
-        .social-icons a:nth-child(3) { background-color: #000000; } /* X/Twitter */
-        .social-icons a:nth-child(4) { background-color: #FF0000; } /* YouTube */
-        .social-icons a:nth-child(5) { background-color: #0088cc; } /* Telegram */
         
         .main-header {
             display: flex;
@@ -137,16 +134,18 @@
         }
         
         .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-color);
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--topbar-color);
             display: flex;
             align-items: center;
             cursor: pointer;
+            letter-spacing: -0.5px;
         }
         
         .logo span {
             color: var(--dark-color);
+            font-weight: 700;
         }
         
         /* Hamburger Menü */
@@ -154,16 +153,31 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
-            padding: 10px;
+            padding: 12px;
+            background: none;
+            border: none;
+            z-index: 1002;
         }
         
         .hamburger-menu span {
-            width: 25px;
+            width: 28px;
             height: 3px;
-            background-color: var(--dark-color);
-            margin: 3px 0;
+            background-color: var(--topbar-color);
+            margin: 4px 0;
             transition: var(--transition);
             border-radius: 3px;
+        }
+        
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
         }
         
         .nav-menu {
@@ -174,7 +188,7 @@
         
         .nav-links-container {
             display: flex;
-            gap: 20px;
+            gap: 5px;
         }
         
         .nav-social-container {
@@ -193,31 +207,45 @@
         
         .nav-link {
             font-weight: 600;
-            font-size: 1rem;
-            padding: 10px 15px;
+            font-size: 1.05rem;
+            padding: 14px 20px;
             transition: var(--transition);
-            border-radius: 5px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .nav-link:hover {
-            color: var(--primary-color);
-            background-color: var(--light-color);
+            color: var(--topbar-color);
+            background-color: rgba(1, 136, 159, 0.08);
         }
         
+        .nav-link i {
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .dropdown.active .nav-link i {
+            transform: rotate(180deg);
+        }
+        
+        /* GÜNCELLENDİ: Modern dropdown menü */
         .dropdown-menu {
             position: absolute;
             top: 100%;
             left: 0;
             background-color: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            min-width: 220px;
-            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            min-width: 240px;
+            padding: 12px 0;
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
             transition: var(--transition);
             z-index: 100;
-            border-radius: 8px;
+            border-radius: 12px;
+            border-top: 3px solid var(--topbar-color);
         }
         
         .dropdown:hover .dropdown-menu {
@@ -227,18 +255,31 @@
         }
         
         .dropdown-menu li {
-            padding: 10px 20px;
+            padding: 0 5px;
+            margin: 5px 0;
         }
         
         .dropdown-menu a {
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             transition: var(--transition);
-            padding: 5px 0;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 500;
         }
         
         .dropdown-menu a:hover {
-            color: var(--primary-color);
-            padding-left: 10px;
+            color: var(--topbar-color);
+            background-color: rgba(1, 136, 159, 0.08);
+            padding-left: 25px;
+        }
+        
+        .dropdown-menu a i {
+            width: 20px;
+            text-align: center;
+            font-size: 1rem;
+            color: var(--topbar-color);
         }
         
         /* Mobil menü overlay */
@@ -366,7 +407,7 @@
         
         .intro-title {
             font-size: 2.5rem;
-            color: var(--primary-color);
+            color: var(--topbar-color);
             margin-bottom: 15px;
         }
         
@@ -443,7 +484,7 @@
             position: absolute;
             bottom: 15px;
             right: 20px;
-            color: var(--primary-color);
+            color: var(--topbar-color);
             font-weight: 600;
             font-size: 0.9rem;
             transition: var(--transition);
@@ -504,7 +545,7 @@
         
         .most-read-rank {
             display: inline-block;
-            background-color: var(--primary-color);
+            background-color: var(--topbar-color);
             color: white;
             width: 30px;
             height: 30px;
@@ -527,7 +568,7 @@
         }
         
         .most-read-btn {
-            background-color: var(--dark-color);
+            background-color: var(--topbar-color);
             color: white;
             border: none;
             width: 40px;
@@ -538,7 +579,7 @@
         }
         
         .most-read-btn:hover {
-            background-color: var(--primary-color);
+            background-color: #017085;
         }
         
         /* Mobil için en çok okunanlar */
@@ -582,7 +623,7 @@
         
         .mobile-most-read-rank {
             display: inline-block;
-            background-color: var(--primary-color);
+            background-color: var(--topbar-color);
             color: white;
             width: 25px;
             height: 25px;
@@ -609,7 +650,7 @@
         }
         
         .mobile-most-read-btn {
-            background-color: rgba(0,0,0,0.7);
+            background-color: var(--topbar-color);
             color: white;
             border: none;
             width: 35px;
@@ -623,7 +664,7 @@
         }
         
         .mobile-most-read-btn:hover {
-            background-color: var(--primary-color);
+            background-color: #017085;
         }
         
         /* Kategoriler Bölümü */
@@ -650,13 +691,13 @@
         }
         
         .category-card:hover {
-            border-color: var(--primary-color);
+            border-color: var(--topbar-color);
             transform: translateY(-5px);
         }
         
         .category-icon {
             font-size: 2.5rem;
-            color: var(--primary-color);
+            color: var(--topbar-color);
             margin-bottom: 15px;
         }
         
@@ -682,27 +723,28 @@
         
         .footer-logo {
             font-size: 2.2rem;
-            font-weight: 700;
+            font-weight: 800;
             color: white;
             margin-bottom: 20px;
             cursor: pointer;
+            letter-spacing: -0.5px;
         }
         
         .footer-logo span {
-            color: var(--primary-color);
+            color: #ffc107;
         }
         
         .footer-about {
             font-size: 0.95rem;
             line-height: 1.7;
-            color: #b0b8ff;
+            color: rgba(255, 255, 255, 0.85);
         }
         
         .footer-title {
             font-size: 1.2rem;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary-color);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
         }
         
         .footer-links li {
@@ -711,7 +753,10 @@
         
         .footer-links a {
             transition: var(--transition);
-            color: #b0b8ff;
+            color: rgba(255, 255, 255, 0.85);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .footer-links a:hover {
@@ -719,9 +764,14 @@
             padding-left: 5px;
         }
         
+        .footer-links a i {
+            font-size: 0.9rem;
+            width: 20px;
+        }
+        
         .footer-social {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             margin-top: 20px;
         }
         
@@ -731,41 +781,40 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: #2a3492;
+            background-color: rgba(255, 255, 255, 0.15);
             border-radius: 50%;
             transition: var(--transition);
         }
         
-        .footer-social a.facebook {
+        .footer-social a.facebook:hover {
             background-color: #1877F2;
         }
         
-        .footer-social a.instagram {
+        .footer-social a.instagram:hover {
             background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
         }
         
-        .footer-social a.twitter {
+        .footer-social a.twitter:hover {
             background-color: #000000;
         }
         
-        .footer-social a.youtube {
+        .footer-social a.youtube:hover {
             background-color: #FF0000;
         }
         
-        .footer-social a.telegram {
+        .footer-social a.telegram:hover {
             background-color: #0088cc;
         }
         
         .footer-social a:hover {
             transform: translateY(-3px);
-            opacity: 0.9;
         }
         
         .copyright {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid #2a3492;
-            color: #b0b8ff;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
         }
         
@@ -785,14 +834,15 @@
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 300px;
+                width: 320px;
                 height: 100vh;
                 background-color: white;
                 flex-direction: column;
-                padding: 80px 20px 20px;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                padding: 100px 25px 25px;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.15);
                 transition: var(--transition);
                 z-index: 1001;
+                overflow-y: auto;
             }
             
             .nav-links-container {
@@ -808,22 +858,39 @@
                 right: 0;
             }
             
+            .nav-link {
+                padding: 16px 20px;
+                font-size: 1.1rem;
+                margin-bottom: 5px;
+            }
+            
             .dropdown-menu {
                 position: static;
                 opacity: 1;
                 visibility: visible;
                 transform: none;
                 box-shadow: none;
-                padding-left: 20px;
+                padding: 5px 0;
                 display: none;
-                background-color: var(--light-color);
-                border-radius: 5px;
-                margin-top: 5px;
-                margin-bottom: 10px;
+                background-color: rgba(1, 136, 159, 0.05);
+                border-radius: 8px;
+                margin: 10px 0 15px;
+                border-top: none;
+                border-left: 3px solid var(--topbar-color);
+                min-width: auto;
             }
             
             .dropdown.active .dropdown-menu {
                 display: block;
+            }
+            
+            .dropdown-menu a {
+                padding: 14px 25px;
+                font-size: 1rem;
+            }
+            
+            .dropdown-menu a i {
+                font-size: 1rem;
             }
             
             .slider-container {
@@ -881,7 +948,7 @@
         
         @media (max-width: 576px) {
             .logo {
-                font-size: 1.7rem;
+                font-size: 1.8rem;
             }
             
             .intro-title {
@@ -920,6 +987,15 @@
             .categories-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .footer-logo {
+                font-size: 1.9rem;
+            }
+            
+            .nav-menu {
+                width: 85%;
+                max-width: 320px;
+            }
         }
     </style>
 </head>
@@ -944,27 +1020,29 @@
                 
                 <!-- Ana Navigasyon Menüsü -->
                 <nav>
-                    <div class="hamburger-menu" id="hamburgerMenu">
+                    <button class="hamburger-menu" id="hamburgerMenu" aria-label="Menü">
                         <span></span>
                         <span></span>
                         <span></span>
-                    </div>
+                    </button>
                     
                     <div class="menu-overlay" id="menuOverlay"></div>
                     
                     <ul class="nav-menu" id="navMenu">
                         <div class="nav-links-container">
-                            <li class="nav-item"><a href="valilik-haberleri.html" class="nav-link">Valilik Haberleri</a></li>
-                            <li class="nav-item"><a href="belediye-haberleri.html" class="nav-link">Belediye Haberleri</a></li>
-                            <li class="nav-item"><a href="siyaset-haberleri.html" class="nav-link">Siyaset Haberleri</a></li>
-                            <li class="nav-item"><a href="asayis-haberleri.html" class="nav-link">Asayiş Haberleri</a></li>
-                            <li class="nav-item"><a href="ilan-ver.html" class="nav-link">Bartın İlan Ver</a></li>
+                            <li class="nav-item"><a href="valilik-haberleri.html" class="nav-link"><i class="fas fa-landmark"></i> Valilik Haberleri</a></li>
+                            <li class="nav-item"><a href="belediye-haberleri.html" class="nav-link"><i class="fas fa-city"></i> Belediye Haberleri</a></li>
+                            <li class="nav-item"><a href="siyaset-haberleri.html" class="nav-link"><i class="fas fa-users"></i> Siyaset Haberleri</a></li>
+                            <li class="nav-item"><a href="asayis-haberleri.html" class="nav-link"><i class="fas fa-shield-alt"></i> Asayiş Haberleri</a></li>
+                            <li class="nav-item"><a href="ilan-ver.html" class="nav-link"><i class="fas fa-bullhorn"></i> Bartın İlan Ver</a></li>
                             <li class="nav-item dropdown" id="dropdownMenu">
-                                <a href="#" class="nav-link">Kurumsal <i class="fas fa-chevron-down"></i></a>
+                                <a href="#" class="nav-link"><i class="fas fa-building"></i> Kurumsal <i class="fas fa-chevron-down"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
-                                    <li><a href="ekibimiz-kunye.html">Ekibimiz & Künye</a></li>
-                                    <li><a href="iletisim.html">İletişim</a></li>
+                                    <li><a href="hakkimizda.html"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
+                                    <li><a href="ekibimiz-kunye.html"><i class="fas fa-users"></i> Ekibimiz & Künye</a></li>
+                                    <li><a href="iletisim.html"><i class="fas fa-envelope"></i> İletişim</a></li>
+                                    <li><a href="gizlilik-politikasi.html"><i class="fas fa-lock"></i> Gizlilik Politikası</a></li>
+                                    <li><a href="kullanim-sartlari.html"><i class="fas fa-file-contract"></i> Kullanım Şartları</a></li>
                                 </ul>
                             </li>
                         </div>
@@ -993,8 +1071,8 @@
         </div>
         
         <div class="slider-controls">
-            <button class="slider-btn" id="prevSliderBtn"><i class="fas fa-chevron-left"></i></button>
-            <button class="slider-btn" id="nextSliderBtn"><i class="fas fa-chevron-right"></i></button>
+            <button class="slider-btn" id="prevSliderBtn" aria-label="Önceki haber"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-btn" id="nextSliderBtn" aria-label="Sonraki haber"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
@@ -1087,8 +1165,8 @@
                 </div>
                 
                 <div class="most-read-controls">
-                    <button class="most-read-btn" id="prevMostReadBtn"><i class="fas fa-chevron-left"></i></button>
-                    <button class="most-read-btn" id="nextMostReadBtn"><i class="fas fa-chevron-right"></i></button>
+                    <button class="most-read-btn" id="prevMostReadBtn" aria-label="Önceki"><i class="fas fa-chevron-left"></i></button>
+                    <button class="most-read-btn" id="nextMostReadBtn" aria-label="Sonraki"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
             
@@ -1097,8 +1175,8 @@
                 <!-- Mobil en çok okunanlar JavaScript ile eklenecek -->
             </div>
             <div class="mobile-controls-container">
-                <button class="mobile-most-read-btn" id="prevMobileMostReadBtn"><i class="fas fa-chevron-left"></i></button>
-                <button class="mobile-most-read-btn" id="nextMobileMostReadBtn"><i class="fas fa-chevron-right"></i></button>
+                <button class="mobile-most-read-btn" id="prevMobileMostReadBtn" aria-label="Önceki"><i class="fas fa-chevron-left"></i></button>
+                <button class="mobile-most-read-btn" id="nextMobileMostReadBtn" aria-label="Sonraki"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
 
@@ -1153,22 +1231,22 @@
                 <div class="footer-links">
                     <h3 class="footer-title">Hızlı Erişim</h3>
                     <ul>
-                        <li><a href="valilik-haberleri.html">Valilik Haberleri</a></li>
-                        <li><a href="belediye-haberleri.html">Belediye Haberleri</a></li>
-                        <li><a href="siyaset-haberleri.html">Siyaset Haberleri</a></li>
-                        <li><a href="asayis-haberleri.html">Asayiş Haberleri</a></li>
-                        <li><a href="ilan-ver.html">Bartın İlan Ver</a></li>
+                        <li><a href="valilik-haberleri.html"><i class="fas fa-chevron-right"></i> Valilik Haberleri</a></li>
+                        <li><a href="belediye-haberleri.html"><i class="fas fa-chevron-right"></i> Belediye Haberleri</a></li>
+                        <li><a href="siyaset-haberleri.html"><i class="fas fa-chevron-right"></i> Siyaset Haberleri</a></li>
+                        <li><a href="asayis-haberleri.html"><i class="fas fa-chevron-right"></i> Asayiş Haberleri</a></li>
+                        <li><a href="ilan-ver.html"><i class="fas fa-chevron-right"></i> Bartın İlan Ver</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h3 class="footer-title">Kurumsal</h3>
                     <ul>
-                        <li><a href="hakkimizda.html">Hakkımızda</a></li>
-                        <li><a href="ekibimiz-kunye.html">Ekibimiz & Künye</a></li>
-                        <li><a href="iletisim.html">İletişim</a></li>
-                        <li><a href="gizlilik-politikasi.html">Gizlilik Politikası</a></li>
-                        <li><a href="kullanim-sartlari.html">Kullanım Şartları</a></li>
+                        <li><a href="hakkimizda.html"><i class="fas fa-chevron-right"></i> Hakkımızda</a></li>
+                        <li><a href="ekibimiz-kunye.html"><i class="fas fa-chevron-right"></i> Ekibimiz & Künye</a></li>
+                        <li><a href="iletisim.html"><i class="fas fa-chevron-right"></i> İletişim</a></li>
+                        <li><a href="gizlilik-politikasi.html"><i class="fas fa-chevron-right"></i> Gizlilik Politikası</a></li>
+                        <li><a href="kullanim-sartlari.html"><i class="fas fa-chevron-right"></i> Kullanım Şartları</a></li>
                     </ul>
                 </div>
                 
