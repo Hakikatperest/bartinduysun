@@ -133,19 +133,24 @@
             padding: 15px 0;
         }
         
+        /* GÜNCELLENDİ: Logo konteyner ve logo stili */
+        .logo-container {
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+        
         .logo {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--topbar-color);
+            height: 100%;
             display: flex;
             align-items: center;
             cursor: pointer;
-            letter-spacing: -0.5px;
         }
         
-        .logo span {
-            color: var(--dark-color);
-            font-weight: 700;
+        .logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
         }
         
         /* Hamburger Menü */
@@ -830,6 +835,10 @@
                 display: flex;
             }
             
+            .logo-container {
+                height: 60px;
+            }
+            
             .nav-menu {
                 position: fixed;
                 top: 0;
@@ -947,8 +956,8 @@
         }
         
         @media (max-width: 576px) {
-            .logo {
-                font-size: 1.8rem;
+            .logo-container {
+                height: 50px;
             }
             
             .intro-title {
@@ -1016,7 +1025,12 @@
         
         <div class="container">
             <div class="main-header">
-                <div class="logo" id="mainLogo">Bartın <span>Duysun</span></div>
+                <!-- GÜNCELLENDİ: Logo Container -->
+                <div class="logo-container">
+                    <div class="logo" id="mainLogo">
+                        <img src="bartinduysun-logo.png" alt="Bartın Duysun Logo">
+                    </div>
+                </div>
                 
                 <!-- Ana Navigasyon Menüsü -->
                 <nav>
@@ -1267,22 +1281,22 @@
     </footer>
 
     <script>
-        // Haber verisi
+        // GÜNCELLENDİ: Haber verisi
         const haberData = {
             slider: [
                 {
                     id: 1,
-                    title: "Bartın'da Yeni Kültür Merkezi Açıldı",
-                    category: "Belediye Haberleri",
-                    image: "https://images.unsplash.com/photo-1561484936-3f9a2e46b2c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    detail: "Bartın Belediyesi tarafından yapımı tamamlanan yeni kültür merkezi törenle hizmete açıldı. Merkezde sinema salonu, kütüphane ve sergi alanları bulunuyor."
+                    title: "Kadına Yönelik Şiddetle Mücadele İl Koordinasyon Komisyon Toplantısı Yapıldı",
+                    category: "Valilik Haberleri",
+                    image: "kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.webp",
+                    detail: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı."
                 },
                 {
                     id: 2,
-                    title: "Valilik'ten Okullara Yeni Güvenlik Talimatı",
+                    title: "Vali Arslan Başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Toplantısı",
                     category: "Valilik Haberleri",
-                    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    detail: "Bartın Valiliği, il genelindeki tüm okullarda güvenlik önlemlerinin artırılması için yeni talimatlar yayınladı. Okul giriş çıkışlarında ek güvenlik personeli görevlendirilecek."
+                    image: "vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi.webp",
+                    detail: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı."
                 },
                 {
                     id: 3,
@@ -1303,51 +1317,51 @@
             valilik: [
                 {
                     id: 5,
-                    title: "Vali'den Eğitim Kurumlarına Ziyaret",
+                    title: "Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı Yapıldı",
                     category: "Valilik Haberleri",
-                    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    excerpt: "Bartın Valisi, il genelindeki çeşitli eğitim kurumlarını ziyaret ederek incelemelerde bulundu.",
-                    detail: "Bartın Valisi, il genelindeki çeşitli eğitim kurumlarını ziyaret ederek incelemelerde bulundu. Ziyaretlerde okulların fiziki durumu, eğitim kalitesi ve öğrencilerin ihtiyaçları değerlendirildi. Vali, eğitimde kalitenin artırılması için gerekli çalışmaların yapılacağını belirtti."
+                    image: "kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.webp",
+                    excerpt: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı.",
+                    detail: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı. Toplantıda, kadına yönelik şiddetle mücadele kapsamında yapılan çalışmalar değerlendirildi ve yeni stratejiler belirlendi."
                 },
                 {
                     id: 6,
-                    title: "Tarımsal Desteklerde Son Başvuru Tarihi Uzatıldı",
+                    title: "Vali Arslan Başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı",
                     category: "Valilik Haberleri",
-                    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    excerpt: "Bartın Valiliği, tarımsal destek başvuruları için son tarihin 15 gün uzatıldığını duyurdu.",
-                    detail: "Bartın Valiliği, tarımsal destek başvuruları için son tarihin 15 gün uzatıldığını duyurdu. Karar, çiftçilerden gelen talepler doğrultusunda alındı. Valilik, tüm çiftçilerin başvurularını tamamlamaları çağrısında bulundu."
+                    image: "vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi.webp",
+                    excerpt: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı.",
+                    detail: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı. Toplantıda, yılbaşı döneminde alınacak güvenlik tedbirleri ve asayiş önlemleri görüşüldü."
                 },
                 {
                     id: 7,
-                    title: "Yaz Tatili İçin Güvenlik Toplantısı Yapıldı",
+                    title: "Vali Arslan Vatandaşlarımızla Buluştu",
                     category: "Valilik Haberleri",
-                    image: "https://images.unsplash.com/photo-1551135049-8a33b2fb2f7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    excerpt: "Bartın Valiliği'nde yaz tatili dönemi için güvenlik değerlendirme toplantısı gerçekleştirildi.",
-                    detail: "Bartın Valiliği'nde yaz tatili dönemi için güvenlik değerlendirme toplantısı gerçekleştirildi. Toplantıda, tatil döneminde alınacak güvenlik önlemleri, trafik denetimleri ve sahil güvenliği konuları ele alındı."
+                    image: "vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    excerpt: "Vali Arslan, vatandaşlarımızla bir araya gelerek sorunlarını dinledi ve çözüm yolları aradı.",
+                    detail: "Vali Arslan, vatandaşlarımızla bir araya gelerek sorunlarını dinledi ve çözüm yolları aradı. Ziyarette vatandaşların günlük yaşamda karşılaştığı sorunlar ele alındı ve çözüm için gerekli adımlar belirlendi."
                 },
                 {
                     id: 8,
-                    title: "İl Genelinde Altyapı Çalışmaları Hızlandı",
+                    title: "Vali Arslan, Öğrencilerimizin Karne Heyecanını Paylaştı",
                     category: "Valilik Haberleri",
-                    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    excerpt: "Bartın Valiliği, il genelindeki altyapı çalışmalarının hızlandırıldığını açıkladı.",
-                    detail: "Bartın Valiliği, il genelindeki altyapı çalışmalarının hızlandırıldığını açıkladı. Yol, su ve kanalizasyon projelerinde son aşamaya gelindi. Valilik, çalışmaların en kısa sürede tamamlanacağını bildirdi."
+                    image: "vali-arslan-ogrencilerin-karne-heyecanini-paylasti.webp",
+                    excerpt: "Vali Arslan, yarıyıl tatili öncesi öğrencilerin karne heyecanını paylaşmak için okulları ziyaret etti.",
+                    detail: "Vali Arslan, yarıyıl tatili öncesi öğrencilerin karne heyecanını paylaşmak için okulları ziyaret etti. Ziyaretlerde öğrencilerle sohbet eden Vali Arslan, başarılı öğrencileri tebrik etti ve tatillerini iyi değerlendirmelerini tavsiye etti."
                 },
                 {
                     id: 16,
-                    title: "Bartın'da Turizm Sezonu Hazırlıkları Tamamlandı",
+                    title: "Arslan Başkanlığında İl İdare Şube Başkanları Toplantısı Yapıldı",
                     category: "Valilik Haberleri",
-                    image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    excerpt: "Valilik, yaz turizm sezonu öncesi tüm hazırlıkların tamamlandığını açıkladı.",
-                    detail: "Valilik, yaz turizm sezonu öncesi tüm hazırlıkların tamamlandığını açıkladı. Sahil temizliği, güvenlik önlemleri ve altyapı çalışmalarının tamamlandığı bildirildi."
+                    image: "vali-arslan-baskanliginda-il-idare-subebaskanlari-toplantisi.webp",
+                    excerpt: "Vali Arslan başkanlığında İl İdare Şube Başkanları Toplantısı gerçekleştirildi.",
+                    detail: "Vali Arslan başkanlığında İl İdare Şube Başkanları Toplantısı gerçekleştirildi. Toplantıda il idaresinin çalışmaları değerlendirildi ve önümüzdeki dönemde yapılacak faaliyetler planlandı."
                 },
                 {
                     id: 17,
-                    title: "Vali'den Esnaf Ziyareti",
+                    title: "Vali Arslan Başkanlığında 2026 Yılının 1. İl Koordinasyon Kurulu Toplantısı Yapıldı",
                     category: "Valilik Haberleri",
-                    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    excerpt: "Bartın Valisi, şehir merkezindeki esnafları ziyaret ederek sorunlarını dinledi.",
-                    detail: "Bartın Valisi, şehir merkezindeki esnafları ziyaret ederek sorunlarını dinledi. Ziyarette esnafın talepleri not alındı ve çözüm için çalışma başlatılacağı belirtildi."
+                    image: "vali-arslan-vatandaslarla-bulustu.webp",
+                    excerpt: "Vali Arslan başkanlığında 2026 yılının ilk İl Koordinasyon Kurulu Toplantısı gerçekleştirildi.",
+                    detail: "Vali Arslan başkanlığında 2026 yılının ilk İl Koordinasyon Kurulu Toplantısı gerçekleştirildi. Toplantıda, 2026 yılına yönelik hedefler ve stratejiler belirlendi, ilin kalkınma projeleri ele alındı."
                 }
             ],
             
@@ -1507,17 +1521,17 @@
             mostRead: [
                 {
                     id: 1,
-                    title: "Bartın'da Yeni Kültür Merkezi Açıldı",
-                    category: "Belediye Haberleri",
-                    image: "https://images.unsplash.com/photo-1561484936-3f9a2e46b2c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    detail: "Bartın Belediyesi tarafından yapımı tamamlanan yeni kültür merkezi törenle hizmete açıldı. Merkezde sinema salonu, kütüphane ve sergi alanları bulunuyor."
+                    title: "Kadına Yönelik Şiddetle Mücadele İl Koordinasyon Komisyon Toplantısı Yapıldı",
+                    category: "Valilik Haberleri",
+                    image: "kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.webp",
+                    detail: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı."
                 },
                 {
                     id: 2,
-                    title: "Vali'den Eğitim Kurumlarına Ziyaret",
+                    title: "Vali Arslan Başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Toplantısı",
                     category: "Valilik Haberleri",
-                    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    detail: "Bartın Valisi, il genelindeki çeşitli eğitim kurumlarını ziyaret ederek incelemelerde bulundu. Ziyaretlerde okulların fiziki durumu, eğitim kalitesi ve öğrencilerin ihtiyaçları değerlendirildi."
+                    image: "vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi.webp",
+                    detail: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı."
                 },
                 {
                     id: 3,
