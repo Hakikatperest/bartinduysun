@@ -23,6 +23,11 @@
             --gray-color: #6c757d;
             --border-color: #dee2e6;
             --transition: all 0.3s ease;
+            --topbar-color: #1a237e; /* Koyu mavi */
+            --valilik-color: #28a745; /* Yeşil */
+            --belediye-color: #007bff; /* Mavi */
+            --siyaset-color: #ffc107; /* Sarı */
+            --asayis-color: #dc3545; /* Kırmızı */
         }
         
         html {
@@ -61,7 +66,6 @@
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--primary-color);
             display: flex;
             align-items: center;
             position: relative;
@@ -72,7 +76,6 @@
             display: inline-block;
             width: 12px;
             height: 12px;
-            background-color: var(--primary-color);
             border-radius: 50%;
             margin-right: 10px;
             animation: blink 1s infinite;
@@ -93,7 +96,7 @@
         }
         
         .top-bar {
-            background-color: var(--dark-color);
+            background-color: var(--topbar-color);
             color: white;
             padding: 8px 0;
         }
@@ -108,11 +111,23 @@
             color: white;
             font-size: 1.1rem;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
         }
         
         .social-icons a:hover {
-            color: var(--secondary-color);
+            transform: translateY(-3px);
         }
+        
+        .social-icons a:nth-child(1) { background-color: #1877F2; } /* Facebook */
+        .social-icons a:nth-child(2) { background-color: #E4405F; } /* Instagram */
+        .social-icons a:nth-child(3) { background-color: #000000; } /* X/Twitter */
+        .social-icons a:nth-child(4) { background-color: #FF0000; } /* YouTube */
+        .social-icons a:nth-child(5) { background-color: #0088cc; } /* Telegram */
         
         .main-header {
             display: flex;
@@ -127,6 +142,7 @@
             color: var(--primary-color);
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
         
         .logo span {
@@ -138,6 +154,7 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
+            padding: 10px;
         }
         
         .hamburger-menu span {
@@ -146,6 +163,7 @@
             background-color: var(--dark-color);
             margin: 3px 0;
             transition: var(--transition);
+            border-radius: 3px;
         }
         
         .nav-menu {
@@ -156,7 +174,7 @@
         
         .nav-links-container {
             display: flex;
-            gap: 25px;
+            gap: 20px;
         }
         
         .nav-social-container {
@@ -176,12 +194,14 @@
         .nav-link {
             font-weight: 600;
             font-size: 1rem;
-            padding: 5px 0;
+            padding: 10px 15px;
             transition: var(--transition);
+            border-radius: 5px;
         }
         
         .nav-link:hover {
             color: var(--primary-color);
+            background-color: var(--light-color);
         }
         
         .dropdown-menu {
@@ -190,13 +210,14 @@
             left: 0;
             background-color: white;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            min-width: 200px;
+            min-width: 220px;
             padding: 10px 0;
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
             transition: var(--transition);
             z-index: 100;
+            border-radius: 8px;
         }
         
         .dropdown:hover .dropdown-menu {
@@ -206,17 +227,18 @@
         }
         
         .dropdown-menu li {
-            padding: 8px 20px;
+            padding: 10px 20px;
         }
         
         .dropdown-menu a {
             display: block;
             transition: var(--transition);
+            padding: 5px 0;
         }
         
         .dropdown-menu a:hover {
             color: var(--primary-color);
-            background-color: var(--light-color);
+            padding-left: 10px;
         }
         
         /* Mobil menü overlay */
@@ -244,7 +266,7 @@
         
         .slider-container {
             position: relative;
-            height: 400px;
+            height: 450px;
             overflow: hidden;
         }
         
@@ -276,12 +298,12 @@
             left: 0;
             width: 100%;
             background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            padding: 20px;
+            padding: 30px;
             color: white;
         }
         
         .slider-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 10px;
         }
         
@@ -317,23 +339,21 @@
         
         .breaking-news-sidebar {
             position: absolute;
-            right: 0;
-            top: 0;
-            height: 100%;
-            width: 250px;
-            background-color: var(--secondary-color);
+            right: 20px;
+            top: 20px;
+            background-color: rgba(255, 193, 7, 0.9);
             color: var(--dark-color);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 5;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
         
         .breaking-title {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1rem;
             text-align: center;
+            white-space: nowrap;
         }
         
         /* Tanıtım Alanı */
@@ -377,6 +397,7 @@
             transition: var(--transition);
             cursor: pointer;
             display: block;
+            position: relative;
         }
         
         .news-card:hover {
@@ -402,6 +423,7 @@
         
         .news-content {
             padding: 20px;
+            position: relative;
         }
         
         .news-title {
@@ -414,7 +436,21 @@
         .news-excerpt {
             color: var(--gray-color);
             font-size: 0.95rem;
-            margin-bottom: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .read-more {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .news-card:hover .read-more {
+            transform: translateX(5px);
         }
         
         /* Reklam Alanı */
@@ -631,7 +667,7 @@
         
         /* Footer */
         footer {
-            background-color: var(--dark-color);
+            background-color: var(--topbar-color);
             color: white;
             padding: 50px 0 20px;
             margin-top: 50px;
@@ -649,6 +685,7 @@
             font-weight: 700;
             color: white;
             margin-bottom: 20px;
+            cursor: pointer;
         }
         
         .footer-logo span {
@@ -658,7 +695,7 @@
         .footer-about {
             font-size: 0.95rem;
             line-height: 1.7;
-            color: #aaa;
+            color: #b0b8ff;
         }
         
         .footer-title {
@@ -674,7 +711,7 @@
         
         .footer-links a {
             transition: var(--transition);
-            color: #aaa;
+            color: #b0b8ff;
         }
         
         .footer-links a:hover {
@@ -694,7 +731,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: #333;
+            background-color: #2a3492;
             border-radius: 50%;
             transition: var(--transition);
         }
@@ -727,19 +764,15 @@
         .copyright {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid #444;
-            color: #aaa;
+            border-top: 1px solid #2a3492;
+            color: #b0b8ff;
             font-size: 0.9rem;
         }
         
         /* Responsive Tasarım */
         @media (max-width: 992px) {
-            .breaking-news-sidebar {
-                width: 200px;
-            }
-            
             .slider-container {
-                height: 350px;
+                height: 400px;
             }
         }
         
@@ -752,7 +785,7 @@
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 280px;
+                width: 300px;
                 height: 100vh;
                 background-color: white;
                 flex-direction: column;
@@ -794,11 +827,17 @@
             }
             
             .slider-container {
-                height: 300px;
+                height: 350px;
             }
             
             .slider-title {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
+            }
+            
+            .breaking-news-sidebar {
+                right: 10px;
+                top: 10px;
+                padding: 8px 15px;
             }
             
             .most-read-item {
@@ -827,14 +866,6 @@
             
             .mobile-most-read-container {
                 display: flex;
-            }
-            
-            .breaking-news-sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                padding: 15px;
-                margin-bottom: 15px;
             }
             
             .slider-controls {
@@ -866,7 +897,20 @@
             }
             
             .slider-container {
-                height: 250px;
+                height: 300px;
+            }
+            
+            .slider-overlay {
+                padding: 20px;
+            }
+            
+            .slider-title {
+                font-size: 1.2rem;
+            }
+            
+            .breaking-news-sidebar {
+                padding: 5px 10px;
+                font-size: 0.9rem;
             }
             
             .news-grid {
@@ -885,8 +929,8 @@
         <div class="top-bar">
             <div class="container">
                 <div class="social-icons">
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
                     <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
                     <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
@@ -896,7 +940,7 @@
         
         <div class="container">
             <div class="main-header">
-                <div class="logo">Bartın <span>Duysun</span></div>
+                <div class="logo" id="mainLogo">Bartın <span>Duysun</span></div>
                 
                 <!-- Ana Navigasyon Menüsü -->
                 <nav>
@@ -926,11 +970,11 @@
                         </div>
                         
                         <div class="nav-social-container">
-                            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
-                            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-                            <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                            <a href="#" title="Facebook" style="background-color: #1877F2;"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" title="Instagram" style="background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);"><i class="fab fa-instagram"></i></a>
+                            <a href="#" title="X (Twitter)" style="background-color: #000000;"><i class="fab fa-twitter"></i></a>
+                            <a href="#" title="YouTube" style="background-color: #FF0000;"><i class="fab fa-youtube"></i></a>
+                            <a href="#" title="Telegram" style="background-color: #0088cc;"><i class="fab fa-telegram"></i></a>
                         </div>
                     </ul>
                 </nav>
@@ -966,7 +1010,7 @@
         <!-- Valilik Haberleri Bölümü -->
         <section class="news-category" id="valilik">
             <h2 class="section-title">
-                <span class="blinking-dot"></span>
+                <span class="blinking-dot" style="background-color: var(--valilik-color);"></span>
                 Valilik Haberleri
             </h2>
             
@@ -985,7 +1029,7 @@
         <!-- Belediye Haberleri Bölümü -->
         <section class="news-category" id="belediye">
             <h2 class="section-title">
-                <span class="blinking-dot"></span>
+                <span class="blinking-dot" style="background-color: var(--belediye-color);"></span>
                 Belediye Haberleri
             </h2>
             
@@ -1004,7 +1048,7 @@
         <!-- Siyaset Haberleri Bölümü -->
         <section class="news-category" id="siyaset">
             <h2 class="section-title">
-                <span class="blinking-dot"></span>
+                <span class="blinking-dot" style="background-color: var(--siyaset-color);"></span>
                 Siyaset Haberleri
             </h2>
             
@@ -1023,7 +1067,7 @@
         <!-- Asayiş Haberleri Bölümü -->
         <section class="news-category" id="asayis">
             <h2 class="section-title">
-                <span class="blinking-dot"></span>
+                <span class="blinking-dot" style="background-color: var(--asayis-color);"></span>
                 Asayiş Haberleri
             </h2>
             
@@ -1095,7 +1139,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="footer-logo">Bartın <span>Duysun</span></div>
+                    <div class="footer-logo" id="footerLogo">Bartın <span>Duysun</span></div>
                     <p class="footer-about">Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir.</p>
                     <div class="footer-social">
                         <a href="#" title="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
@@ -1435,6 +1479,8 @@
         const nextMostReadBtn = document.getElementById('nextMostReadBtn');
         const prevMobileMostReadBtn = document.getElementById('prevMobileMostReadBtn');
         const nextMobileMostReadBtn = document.getElementById('nextMobileMostReadBtn');
+        const mainLogo = document.getElementById('mainLogo');
+        const footerLogo = document.getElementById('footerLogo');
 
         // Slider için değişkenler
         let currentSlide = 0;
@@ -1449,7 +1495,27 @@
             initNewsCategories();
             initMostReadSlider();
             setupEventListeners();
+            applyCategoryColors();
         });
+
+        // Kategori renklerini uygula
+        function applyCategoryColors() {
+            // Valilik Haberleri - Yeşil
+            const valilikTitle = document.querySelector('#valilik .section-title');
+            valilikTitle.style.borderBottomColor = 'var(--valilik-color)';
+            
+            // Belediye Haberleri - Mavi
+            const belediyeTitle = document.querySelector('#belediye .section-title');
+            belediyeTitle.style.borderBottomColor = 'var(--belediye-color)';
+            
+            // Siyaset Haberleri - Sarı
+            const siyasetTitle = document.querySelector('#siyaset .section-title');
+            siyasetTitle.style.borderBottomColor = 'var(--siyaset-color)';
+            
+            // Asayiş Haberleri - Kırmızı
+            const asayisTitle = document.querySelector('#asayis .section-title');
+            asayisTitle.style.borderBottomColor = 'var(--asayis-color)';
+        }
 
         // Slider'ı başlat
         function initSlider() {
@@ -1535,6 +1601,7 @@
                 <div class="news-content">
                     <h3 class="news-title">${haber.title}</h3>
                     <p class="news-excerpt">${haber.excerpt}</p>
+                    <span class="read-more">Detayları Oku >></span>
                 </div>
             `;
             
@@ -1605,6 +1672,22 @@
             }
         }
 
+        // Logo tıklama fonksiyonu
+        function handleLogoClick(e) {
+            e.preventDefault();
+            
+            // Eğer anasayfadaysak sayfanın başına git
+            if (window.location.pathname === '/' || window.location.pathname.includes('index')) {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                // Değilse anasayfaya git
+                window.location.href = 'index.html';
+            }
+        }
+
         // Mobil menüyü aç/kapa
         function toggleMobileMenu() {
             navMenu.classList.toggle('active');
@@ -1620,6 +1703,10 @@
 
         // Event listener'ları kur
         function setupEventListeners() {
+            // Logolara tıklama
+            mainLogo.addEventListener('click', handleLogoClick);
+            footerLogo.addEventListener('click', handleLogoClick);
+            
             // Hamburger menü
             hamburgerMenu.addEventListener('click', toggleMobileMenu);
             
@@ -1646,7 +1733,7 @@
                 startSlideInterval();
             });
             
-            // En çok okunan slider kontrolleri
+            // En çok okunan slider kontrolleri (şimdi sadece 2 buton)
             prevMostReadBtn.addEventListener('click', () => {
                 if (currentMostReadSlide > 0) {
                     currentMostReadSlide--;
