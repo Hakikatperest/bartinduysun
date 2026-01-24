@@ -150,7 +150,23 @@
         
         .nav-menu {
             display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        .nav-links-container {
+            display: flex;
             gap: 25px;
+        }
+        
+        .nav-social-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 0 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: 15px;
+            display: none;
         }
         
         .nav-item {
@@ -201,6 +217,22 @@
         .dropdown-menu a:hover {
             color: var(--primary-color);
             background-color: var(--light-color);
+        }
+        
+        /* Mobil menü overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        
+        .menu-overlay.active {
+            display: block;
         }
         
         /* Slider Bölümü */
@@ -294,37 +326,14 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
         .breaking-title {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 20px;
             text-align: center;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--dark-color);
-        }
-        
-        .marquee-container {
-            flex-grow: 1;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .marquee-content {
-            position: absolute;
-            width: 100%;
-            animation: marquee 15s linear infinite;
-        }
-        
-        @keyframes marquee {
-            0% { top: 100%; }
-            100% { top: -100%; }
-        }
-        
-        .marquee-item {
-            padding: 10px 0;
-            border-bottom: 1px dashed rgba(0,0,0,0.2);
         }
         
         /* Tanıtım Alanı */
@@ -367,6 +376,7 @@
             box-shadow: 0 3px 10px rgba(0,0,0,0.08);
             transition: var(--transition);
             cursor: pointer;
+            display: block;
         }
         
         .news-card:hover {
@@ -442,12 +452,14 @@
             border-radius: 8px;
             display: flex;
             gap: 20px;
+            cursor: pointer;
         }
         
         .most-read-image {
             width: 200px;
             border-radius: 6px;
             overflow: hidden;
+            flex-shrink: 0;
         }
         
         .most-read-content {
@@ -465,6 +477,10 @@
             line-height: 30px;
             margin-right: 10px;
             font-weight: bold;
+        }
+        
+        .most-read-excerpt {
+            display: block;
         }
         
         .most-read-controls {
@@ -489,6 +505,91 @@
             background-color: var(--primary-color);
         }
         
+        /* Mobil için en çok okunanlar */
+        .mobile-most-read-container {
+            display: none;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 15px;
+            padding: 10px 0 40px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .mobile-most-read-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .mobile-most-read-item {
+            min-width: 250px;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .mobile-most-read-image {
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .mobile-most-read-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .mobile-most-read-content {
+            padding: 15px;
+        }
+        
+        .mobile-most-read-rank {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            margin-right: 8px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .mobile-most-read-title {
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .mobile-controls-container {
+            position: relative;
+            margin-top: -30px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+        
+        .mobile-most-read-btn {
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mobile-most-read-btn:hover {
+            background-color: var(--primary-color);
+        }
+        
         /* Kategoriler Bölümü */
         .categories-section {
             margin: 40px 0;
@@ -509,6 +610,7 @@
             transition: var(--transition);
             cursor: pointer;
             border: 2px solid transparent;
+            display: block;
         }
         
         .category-card:hover {
@@ -525,79 +627,6 @@
         .category-name {
             font-size: 1.3rem;
             font-weight: 600;
-        }
-        
-        /* Haber Detayları */
-        .news-detail-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .news-detail-container {
-            background-color: white;
-            max-width: 800px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border-radius: 10px;
-            position: relative;
-        }
-        
-        .close-detail {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--dark-color);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            z-index: 10;
-        }
-        
-        .detail-image {
-            height: 350px;
-            overflow: hidden;
-        }
-        
-        .detail-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .detail-content {
-            padding: 30px;
-        }
-        
-        .detail-title {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-        
-        .detail-meta {
-            color: var(--gray-color);
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.9rem;
-        }
-        
-        .detail-text {
-            line-height: 1.8;
         }
         
         /* Footer */
@@ -670,9 +699,29 @@
             transition: var(--transition);
         }
         
+        .footer-social a.facebook {
+            background-color: #1877F2;
+        }
+        
+        .footer-social a.instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+        
+        .footer-social a.twitter {
+            background-color: #000000;
+        }
+        
+        .footer-social a.youtube {
+            background-color: #FF0000;
+        }
+        
+        .footer-social a.telegram {
+            background-color: #0088cc;
+        }
+        
         .footer-social a:hover {
-            background-color: var(--primary-color);
             transform: translateY(-3px);
+            opacity: 0.9;
         }
         
         .copyright {
@@ -686,7 +735,7 @@
         /* Responsive Tasarım */
         @media (max-width: 992px) {
             .breaking-news-sidebar {
-                display: none;
+                width: 200px;
             }
             
             .slider-container {
@@ -707,10 +756,19 @@
                 height: 100vh;
                 background-color: white;
                 flex-direction: column;
-                padding: 80px 30px 30px;
+                padding: 80px 20px 20px;
                 box-shadow: -5px 0 15px rgba(0,0,0,0.1);
                 transition: var(--transition);
                 z-index: 1001;
+            }
+            
+            .nav-links-container {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .nav-social-container {
+                display: flex;
             }
             
             .nav-menu.active {
@@ -728,6 +786,7 @@
                 background-color: var(--light-color);
                 border-radius: 5px;
                 margin-top: 5px;
+                margin-bottom: 10px;
             }
             
             .dropdown.active .dropdown-menu {
@@ -750,8 +809,42 @@
                 width: 100%;
             }
             
+            .most-read-excerpt {
+                display: none;
+            }
+            
             .news-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .most-read-container {
+                display: none;
+            }
+            
+            .most-read-controls {
+                display: none;
+            }
+            
+            .mobile-most-read-container {
+                display: flex;
+            }
+            
+            .breaking-news-sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .slider-controls {
+                padding: 0 10px;
+            }
+            
+            .slider-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
             }
         }
         
@@ -783,14 +876,6 @@
             .categories-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .detail-content {
-                padding: 20px;
-            }
-            
-            .detail-title {
-                font-size: 1.5rem;
-            }
         }
     </style>
 </head>
@@ -821,20 +906,32 @@
                         <span></span>
                     </div>
                     
+                    <div class="menu-overlay" id="menuOverlay"></div>
+                    
                     <ul class="nav-menu" id="navMenu">
-                        <li class="nav-item"><a href="#valilik" class="nav-link">Valilik Haberleri</a></li>
-                        <li class="nav-item"><a href="#belediye" class="nav-link">Belediye Haberleri</a></li>
-                        <li class="nav-item"><a href="#siyaset" class="nav-link">Siyaset Haberleri</a></li>
-                        <li class="nav-item"><a href="#asayis" class="nav-link">Asayiş Haberleri</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Bartın İlan Ver</a></li>
-                        <li class="nav-item dropdown" id="dropdownMenu">
-                            <a href="#" class="nav-link">Kurumsal <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Hakkımızda</a></li>
-                                <li><a href="#">Ekibimiz & Künye</a></li>
-                                <li><a href="#">İletişim</a></li>
-                            </ul>
-                        </li>
+                        <div class="nav-links-container">
+                            <li class="nav-item"><a href="valilik-haberleri.html" class="nav-link">Valilik Haberleri</a></li>
+                            <li class="nav-item"><a href="belediye-haberleri.html" class="nav-link">Belediye Haberleri</a></li>
+                            <li class="nav-item"><a href="siyaset-haberleri.html" class="nav-link">Siyaset Haberleri</a></li>
+                            <li class="nav-item"><a href="asayis-haberleri.html" class="nav-link">Asayiş Haberleri</a></li>
+                            <li class="nav-item"><a href="ilan-ver.html" class="nav-link">Bartın İlan Ver</a></li>
+                            <li class="nav-item dropdown" id="dropdownMenu">
+                                <a href="#" class="nav-link">Kurumsal <i class="fas fa-chevron-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                                    <li><a href="ekibimiz-kunye.html">Ekibimiz & Künye</a></li>
+                                    <li><a href="iletisim.html">İletişim</a></li>
+                                </ul>
+                            </li>
+                        </div>
+                        
+                        <div class="nav-social-container">
+                            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
+                            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                        </div>
                     </ul>
                 </nav>
             </div>
@@ -843,6 +940,10 @@
 
     <!-- Manşet Slider Bölümü -->
     <section class="slider-section">
+        <div class="breaking-news-sidebar">
+            <div class="breaking-title">SON DAKİKA HABERLER</div>
+        </div>
+        
         <div class="slider-container" id="sliderContainer">
             <!-- Slider öğeleri JavaScript ile eklenecek -->
         </div>
@@ -850,15 +951,6 @@
         <div class="slider-controls">
             <button class="slider-btn" id="prevSliderBtn"><i class="fas fa-chevron-left"></i></button>
             <button class="slider-btn" id="nextSliderBtn"><i class="fas fa-chevron-right"></i></button>
-        </div>
-        
-        <div class="breaking-news-sidebar">
-            <div class="breaking-title">SON DAKİKA HABERLER</div>
-            <div class="marquee-container">
-                <div class="marquee-content" id="marqueeContent">
-                    <!-- Son dakika haberleri JavaScript ile eklenecek -->
-                </div>
-            </div>
         </div>
     </section>
 
@@ -944,6 +1036,7 @@
         <section class="most-read-section">
             <h2 class="section-title">En Çok Okunan Haberler</h2>
             
+            <!-- Masaüstü görünüm -->
             <div class="most-read-slider">
                 <div class="most-read-container" id="mostReadContainer">
                     <!-- En çok okunan haberler JavaScript ile eklenecek -->
@@ -954,6 +1047,15 @@
                     <button class="most-read-btn" id="nextMostReadBtn"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
+            
+            <!-- Mobil görünüm -->
+            <div class="mobile-most-read-container" id="mobileMostReadContainer">
+                <!-- Mobil en çok okunanlar JavaScript ile eklenecek -->
+            </div>
+            <div class="mobile-controls-container">
+                <button class="mobile-most-read-btn" id="prevMobileMostReadBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="mobile-most-read-btn" id="nextMobileMostReadBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
         </section>
 
         <!-- Kategoriler Bölümü -->
@@ -961,49 +1063,32 @@
             <h2 class="section-title">Haber Kategorileri</h2>
             
             <div class="categories-grid">
-                <div class="category-card" onclick="scrollToCategory('valilik')">
+                <a href="valilik-haberleri.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-landmark"></i></div>
                     <h3 class="category-name">Valilik Haberleri</h3>
                     <p>Bartın Valiliği'nden güncel duyuru ve haberler</p>
-                </div>
+                </a>
                 
-                <div class="category-card" onclick="scrollToCategory('belediye')">
+                <a href="belediye-haberleri.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-city"></i></div>
                     <h3 class="category-name">Belediye Haberleri</h3>
                     <p>Bartın Belediyesi faaliyet ve projeleri</p>
-                </div>
+                </a>
                 
-                <div class="category-card" onclick="scrollToCategory('siyaset')">
+                <a href="siyaset-haberleri.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-users"></i></div>
                     <h3 class="category-name">Siyaset Haberleri</h3>
                     <p>Yerel ve genel siyasetten gelişmeler</p>
-                </div>
+                </a>
                 
-                <div class="category-card" onclick="scrollToCategory('asayis')">
+                <a href="asayis-haberleri.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3 class="category-name">Asayiş Haberleri</h3>
                     <p>Bartın'daki güvenlik olayları ve gelişmeler</p>
-                </div>
+                </a>
             </div>
         </section>
     </main>
-
-    <!-- Haber Detayları Overlay -->
-    <div class="news-detail-overlay" id="newsDetailOverlay">
-        <div class="news-detail-container">
-            <button class="close-detail" id="closeDetailBtn"><i class="fas fa-times"></i></button>
-            <div class="detail-image">
-                <img id="detailImage" src="" alt="">
-            </div>
-            <div class="detail-content">
-                <h1 id="detailTitle"></h1>
-                <div class="detail-meta">
-                    <span id="detailCategory"></span> • <span id="detailDate"></span>
-                </div>
-                <div class="detail-text" id="detailText"></div>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer Bölümü -->
     <footer>
@@ -1013,33 +1098,33 @@
                     <div class="footer-logo">Bartın <span>Duysun</span></div>
                     <p class="footer-about">Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir.</p>
                     <div class="footer-social">
-                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
-                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" title="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="X (Twitter)" class="twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="YouTube" class="youtube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" title="Telegram" class="telegram"><i class="fab fa-telegram"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-links">
                     <h3 class="footer-title">Hızlı Erişim</h3>
                     <ul>
-                        <li><a href="#valilik">Valilik Haberleri</a></li>
-                        <li><a href="#belediye">Belediye Haberleri</a></li>
-                        <li><a href="#siyaset">Siyaset Haberleri</a></li>
-                        <li><a href="#asayis">Asayiş Haberleri</a></li>
-                        <li><a href="#">Bartın İlan Ver</a></li>
+                        <li><a href="valilik-haberleri.html">Valilik Haberleri</a></li>
+                        <li><a href="belediye-haberleri.html">Belediye Haberleri</a></li>
+                        <li><a href="siyaset-haberleri.html">Siyaset Haberleri</a></li>
+                        <li><a href="asayis-haberleri.html">Asayiş Haberleri</a></li>
+                        <li><a href="ilan-ver.html">Bartın İlan Ver</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h3 class="footer-title">Kurumsal</h3>
                     <ul>
-                        <li><a href="#">Hakkımızda</a></li>
-                        <li><a href="#">Ekibimiz & Künye</a></li>
-                        <li><a href="#">İletişim</a></li>
-                        <li><a href="#">Gizlilik Politikası</a></li>
-                        <li><a href="#">Kullanım Şartları</a></li>
+                        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                        <li><a href="ekibimiz-kunye.html">Ekibimiz & Künye</a></li>
+                        <li><a href="iletisim.html">İletişim</a></li>
+                        <li><a href="gizlilik-politikasi.html">Gizlilik Politikası</a></li>
+                        <li><a href="kullanim-sartlari.html">Kullanım Şartları</a></li>
                     </ul>
                 </div>
                 
@@ -1081,7 +1166,7 @@
                     id: 3,
                     title: "Bartın'da Trafik Kazası: 2 Yaralı",
                     category: "Asayiş Haberleri",
-                    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w-1350&q=80",
+                    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
                     detail: "Bartın merkezde meydana gelen trafik kazasında 2 kişi yaralandı. Kazaya karışan araçlar hasar gördü. Yaralılar hastaneye kaldırıldı."
                 },
                 {
@@ -1125,6 +1210,22 @@
                     image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
                     excerpt: "Bartın Valiliği, il genelindeki altyapı çalışmalarının hızlandırıldığını açıkladı.",
                     detail: "Bartın Valiliği, il genelindeki altyapı çalışmalarının hızlandırıldığını açıkladı. Yol, su ve kanalizasyon projelerinde son aşamaya gelindi. Valilik, çalışmaların en kısa sürede tamamlanacağını bildirdi."
+                },
+                {
+                    id: 16,
+                    title: "Bartın'da Turizm Sezonu Hazırlıkları Tamamlandı",
+                    category: "Valilik Haberleri",
+                    image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    excerpt: "Valilik, yaz turizm sezonu öncesi tüm hazırlıkların tamamlandığını açıkladı.",
+                    detail: "Valilik, yaz turizm sezonu öncesi tüm hazırlıkların tamamlandığını açıkladı. Sahil temizliği, güvenlik önlemleri ve altyapı çalışmalarının tamamlandığı bildirildi."
+                },
+                {
+                    id: 17,
+                    title: "Vali'den Esnaf Ziyareti",
+                    category: "Valilik Haberleri",
+                    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    excerpt: "Bartın Valisi, şehir merkezindeki esnafları ziyaret ederek sorunlarını dinledi.",
+                    detail: "Bartın Valisi, şehir merkezindeki esnafları ziyaret ederek sorunlarını dinledi. Ziyarette esnafın talepleri not alındı ve çözüm için çalışma başlatılacağı belirtildi."
                 }
             ],
             
@@ -1152,6 +1253,30 @@
                     image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
                     excerpt: "Bartın Belediyesi, geleneksel kültür sanat festivali için hazırlıklara başladı.",
                     detail: "Bartın Belediyesi, geleneksel kültür sanat festivali için hazırlıklara başladı. Festivalde konserler, tiyatro gösterileri, sergiler ve atölye çalışmaları yer alacak. Etkinliklerin Eylül ayında gerçekleştirilmesi planlanıyor."
+                },
+                {
+                    id: 18,
+                    title: "Bartın'da Yeni Otobüs Seferleri Başlıyor",
+                    category: "Belediye Haberleri",
+                    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    excerpt: "Belediye, şehir içi ulaşımı iyileştirmek için yeni otobüs seferleri başlatıyor.",
+                    detail: "Belediye, şehir içi ulaşımı iyileştirmek için yeni otobüs seferleri başlatıyor. Yeni hatlarla birlikte toplam sefer sayısı %30 artırılacak."
+                },
+                {
+                    id: 19,
+                    title: "Çöp Toplama Saatleri Değişiyor",
+                    category: "Belediye Haberleri",
+                    image: "https://images.unsplash.com/photo-1578558288137-7207cb8c0e85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    excerpt: "Yaz dönemi nedeniyle çöp toplama saatleri değiştirildi.",
+                    detail: "Yaz dönemi nedeniyle çöp toplama saatleri değiştirildi. Yeni saatlere göre çöp toplama işlemi sabah 06:00'da başlayacak."
+                },
+                {
+                    id: 20,
+                    title: "Belediye'den Gençlere Yaz Spor Okulları",
+                    category: "Belediye Haberleri",
+                    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    excerpt: "Bartın Belediyesi, gençler için ücretsiz yaz spor okulları açıyor.",
+                    detail: "Bartın Belediyesi, gençler için ücretsiz yaz spor okulları açıyor. Futbol, basketbol, voleybol ve yüzme branşlarında eğitimler verilecek."
                 }
             ],
             
@@ -1171,6 +1296,38 @@
                     image: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
                     excerpt: "Muhalefet partileri, Bartın'daki yatırımların yavaş ilerlemesi konusunda ortak açıklama yaptı.",
                     detail: "Muhalefet partileri, Bartın'daki yatırımların yavaş ilerlemesi konusunda ortak açıklama yaptı. Açıklamada, Bartın'ın potansiyelinin tam olarak kullanılamadığı ve yatırımların hızlandırılması gerektiği vurgulandı. Partiler, konuyla ilgili meclis gündemi oluşturmayı planladıklarını belirtti."
+                },
+                {
+                    id: 21,
+                    title: "Bartın Milletvekili Meclis'te Konuştu",
+                    category: "Siyaset Haberleri",
+                    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    excerpt: "Bartın Milletvekili, TBMM'de Bartın'ın sorunlarını gündeme getirdi.",
+                    detail: "Bartın Milletvekili, TBMM'de Bartın'ın sorunlarını gündeme getirdi. Konuşmasında Bartın'ın altyapı ve turizm yatırımlarına ihtiyacı olduğunu belirtti."
+                },
+                {
+                    id: 22,
+                    title: "Siyasi Partilerden Seçim Beyannameleri",
+                    category: "Siyaset Haberleri",
+                    image: "https://images.unsplash.com/photo-1551135049-8a33b2fb2f7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    excerpt: "Yerel seçimler öncesi siyasi partiler seçim beyannamelerini açıkladı.",
+                    detail: "Yerel seçimler öncesi siyasi partiler seçim beyannamelerini açıkladı. Partiler Bartın'ın kalkınması için projelerini sundu."
+                },
+                {
+                    id: 23,
+                    title: "İl Genel Meclisi Toplantısı Yapıldı",
+                    category: "Siyaset Haberleri",
+                    image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    excerpt: "Bartın İl Genel Meclisi, haziran ayı olağan toplantısını gerçekleştirdi.",
+                    detail: "Bartın İl Genel Meclisi, haziran ayı olağan toplantısını gerçekleştirdi. Toplantıda ilin güncel sorunları ve bütçe görüşmeleri ele alındı."
+                },
+                {
+                    id: 24,
+                    title: "CHP'li Yöneticiler Bartın'da",
+                    category: "Siyaset Haberleri",
+                    image: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    excerpt: "CHP'li yöneticiler Bartın'da incelemelerde bulundu.",
+                    detail: "CHP'li yöneticiler Bartın'da incelemelerde bulundu. İl başkanlığını ziyaret eden heyet, parti teşkilatıyla bir araya geldi."
                 }
             ],
             
@@ -1190,18 +1347,39 @@
                     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
                     excerpt: "Narkotik ekiplerinin düzenlediği operasyonda 5 kişi uyuşturucu madde bulundurma suçundan gözaltına alındı.",
                     detail: "Narkotik ekiplerinin düzenlediği operasyonda 5 kişi uyuşturucu madde bulundurma suçundan gözaltına alındı. Operasyonda çeşitli miktarlarda uyuşturucu madde ve para ele geçirildi. Zanlılar adliyeye sevk edildi."
+                },
+                {
+                    id: 25,
+                    title: "Bartın'da Dolandırıcılık Çetesine Operasyon",
+                    category: "Asayiş Haberleri",
+                    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    excerpt: "Polis, dolandırıcılık yapan çeteye yönelik operasyon düzenledi.",
+                    detail: "Polis, dolandırıcılık yapan çeteye yönelik operasyon düzenledi. 7 şüpheli gözaltına alındı, milyonlarca lira dolandırılan para ele geçirildi."
+                },
+                {
+                    id: 26,
+                    title: "Trafik Denetimleri Artırıldı",
+                    category: "Asayiş Haberleri",
+                    image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    excerpt: "Yaz dönemi nedeniyle Bartın'da trafik denetimleri artırıldı.",
+                    detail: "Yaz dönemi nedeniyle Bartın'da trafik denetimleri artırıldı. Emniyet ekipleri özellikle hız ve emniyet kemeri kontrollerine ağırlık verdi."
+                },
+                {
+                    id: 27,
+                    title: "Sahil Güvenlik Ekipleri Tatilcileri Uyardı",
+                    category: "Asayiş Haberleri",
+                    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    excerpt: "Sahil Güvenlik ekipleri, denize giren tatilcileri uyardı.",
+                    detail: "Sahil Güvenlik ekipleri, denize giren tatilcileri uyardı. Can yeleği ve can simidi kullanımının önemine dikkat çekildi."
+                },
+                {
+                    id: 28,
+                    title: "Kaçak Elektrik Kullanımına Operasyon",
+                    category: "Asayiş Haberleri",
+                    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    excerpt: "Kaçak elektrik kullanan 15 işyerine operasyon düzenlendi.",
+                    detail: "Kaçak elektrik kullanan 15 işyerine operasyon düzenlendi. İşyeri sahipleri hakkında yasal işlem başlatıldı."
                 }
-            ],
-            
-            breakingNews: [
-                "Valilik'ten okullara yeni güvenlik talimatı",
-                "Belediye'den üniversite öğrencilerine ulaşım desteği",
-                "Bartın'da trafik kazası: 2 yaralı",
-                "Tarımsal desteklerde son başvuru tarihi uzatıldı",
-                "Hırsızlık zanlıları yakalandı",
-                "Parti il başkanı basın toplantısı düzenledi",
-                "Park ve bahçeler yenileniyor",
-                "Kültür sanat festivali hazırlıkları başladı"
             ],
             
             mostRead: [
@@ -1246,16 +1424,17 @@
         // DOM Elementleri
         const hamburgerMenu = document.getElementById('hamburgerMenu');
         const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
         const dropdownMenu = document.getElementById('dropdownMenu');
         const sliderContainer = document.getElementById('sliderContainer');
         const prevSliderBtn = document.getElementById('prevSliderBtn');
         const nextSliderBtn = document.getElementById('nextSliderBtn');
-        const marqueeContent = document.getElementById('marqueeContent');
-        const newsDetailOverlay = document.getElementById('newsDetailOverlay');
-        const closeDetailBtn = document.getElementById('closeDetailBtn');
         const mostReadContainer = document.getElementById('mostReadContainer');
+        const mobileMostReadContainer = document.getElementById('mobileMostReadContainer');
         const prevMostReadBtn = document.getElementById('prevMostReadBtn');
         const nextMostReadBtn = document.getElementById('nextMostReadBtn');
+        const prevMobileMostReadBtn = document.getElementById('prevMobileMostReadBtn');
+        const nextMobileMostReadBtn = document.getElementById('nextMobileMostReadBtn');
 
         // Slider için değişkenler
         let currentSlide = 0;
@@ -1267,7 +1446,6 @@
         // Sayfa yüklendiğinde çalışacak fonksiyonlar
         document.addEventListener('DOMContentLoaded', function() {
             initSlider();
-            initBreakingNews();
             initNewsCategories();
             initMostReadSlider();
             setupEventListeners();
@@ -1277,8 +1455,9 @@
         function initSlider() {
             // Slider öğelerini oluştur
             haberData.slider.forEach((haber, index) => {
-                const slide = document.createElement('div');
+                const slide = document.createElement('a');
                 slide.className = `slider-item ${index === 0 ? 'active' : ''}`;
+                slide.href = `${haber.category.toLowerCase().replace(' ', '-').replace(' ', '-')}.html`;
                 slide.innerHTML = `
                     <img src="${haber.image}" alt="${haber.title}">
                     <div class="slider-overlay">
@@ -1288,8 +1467,6 @@
                         </div>
                     </div>
                 `;
-                // Haber detayına tıklama
-                slide.addEventListener('click', () => openNewsDetail(haber));
                 sliderContainer.appendChild(slide);
             });
 
@@ -1319,52 +1496,38 @@
             slides[currentSlide].classList.add('active');
         }
 
-        // Son dakika haberlerini başlat
-        function initBreakingNews() {
-            haberData.breakingNews.forEach(news => {
-                const newsItem = document.createElement('div');
-                newsItem.className = 'marquee-item';
-                newsItem.textContent = `• ${news}`;
-                marqueeContent.appendChild(newsItem);
-            });
-
-            // Kayan yazı animasyonu için klon oluştur
-            const marqueeClone = marqueeContent.cloneNode(true);
-            marqueeContent.parentNode.appendChild(marqueeClone);
-            marqueeClone.classList.add('marquee-content-clone');
-        }
-
         // Haber kategorilerini başlat
         function initNewsCategories() {
-            // Valilik haberleri
+            // Valilik haberleri (6 haber)
             const valilikNewsContainer = document.getElementById('valilikNews');
-            haberData.valilik.forEach(haber => {
+            haberData.valilik.slice(0, 6).forEach(haber => {
                 valilikNewsContainer.appendChild(createNewsCard(haber));
             });
 
-            // Belediye haberleri
+            // Belediye haberleri (6 haber)
             const belediyeNewsContainer = document.getElementById('belediyeNews');
-            haberData.belediye.forEach(haber => {
+            haberData.belediye.slice(0, 6).forEach(haber => {
                 belediyeNewsContainer.appendChild(createNewsCard(haber));
             });
 
-            // Siyaset haberleri
+            // Siyaset haberleri (6 haber)
             const siyasetNewsContainer = document.getElementById('siyasetNews');
-            haberData.siyaset.forEach(haber => {
+            haberData.siyaset.slice(0, 6).forEach(haber => {
                 siyasetNewsContainer.appendChild(createNewsCard(haber));
             });
 
-            // Asayiş haberleri
+            // Asayiş haberleri (6 haber)
             const asayisNewsContainer = document.getElementById('asayisNews');
-            haberData.asayis.forEach(haber => {
+            haberData.asayis.slice(0, 6).forEach(haber => {
                 asayisNewsContainer.appendChild(createNewsCard(haber));
             });
         }
 
         // Haber kartı oluştur
         function createNewsCard(haber) {
-            const card = document.createElement('div');
+            const card = document.createElement('a');
             card.className = 'news-card';
+            card.href = `${haber.category.toLowerCase().replace(' ', '-').replace(' ', '-')}.html`;
             card.innerHTML = `
                 <div class="news-image">
                     <img src="${haber.image}" alt="${haber.title}">
@@ -1375,17 +1538,16 @@
                 </div>
             `;
             
-            // Haber detayına tıklama
-            card.addEventListener('click', () => openNewsDetail(haber));
-            
             return card;
         }
 
         // En çok okunan haberler slider'ını başlat
         function initMostReadSlider() {
+            // Masaüstü slider
             haberData.mostRead.forEach((haber, index) => {
-                const slide = document.createElement('div');
+                const slide = document.createElement('a');
                 slide.className = 'most-read-item';
+                slide.href = `${haber.category.toLowerCase().replace(' ', '-').replace(' ', '-')}.html`;
                 slide.innerHTML = `
                     <div class="most-read-image">
                         <img src="${haber.image}" alt="${haber.title}">
@@ -1393,13 +1555,26 @@
                     <div class="most-read-content">
                         <h3><span class="most-read-rank">${index + 1}</span>${haber.title}</h3>
                         <p>${haber.category}</p>
-                        <p class="news-excerpt">${haber.detail.substring(0, 150)}...</p>
+                        <p class="most-read-excerpt">${haber.detail.substring(0, 150)}...</p>
                     </div>
                 `;
-                
-                // Haber detayına tıklama
-                slide.addEventListener('click', () => openNewsDetail(haber));
                 mostReadContainer.appendChild(slide);
+            });
+            
+            // Mobil slider
+            haberData.mostRead.forEach((haber, index) => {
+                const slide = document.createElement('a');
+                slide.className = 'mobile-most-read-item';
+                slide.href = `${haber.category.toLowerCase().replace(' ', '-').replace(' ', '-')}.html`;
+                slide.innerHTML = `
+                    <div class="mobile-most-read-image">
+                        <img src="${haber.image}" alt="${haber.title}">
+                    </div>
+                    <div class="mobile-most-read-content">
+                        <h3 class="mobile-most-read-title"><span class="mobile-most-read-rank">${index + 1}</span>${haber.title}</h3>
+                    </div>
+                `;
+                mobileMostReadContainer.appendChild(slide);
             });
             
             updateMostReadSlider();
@@ -1411,75 +1586,66 @@
             mostReadContainer.style.transform = `translateX(-${currentMostReadSlide * slideWidth}%)`;
         }
 
-        // Haber detayını aç
-        function openNewsDetail(haber) {
-            // Haber detayını doldur
-            document.getElementById('detailImage').src = haber.image;
-            document.getElementById('detailImage').alt = haber.title;
-            document.getElementById('detailTitle').textContent = haber.title;
-            document.getElementById('detailCategory').textContent = haber.category;
-            document.getElementById('detailDate').textContent = new Date().toLocaleDateString('tr-TR');
-            document.getElementById('detailText').textContent = haber.detail || haber.excerpt;
+        // Mobil en çok okunan slider kaydırma
+        function scrollMobileMostRead(direction) {
+            const container = mobileMostReadContainer;
+            const scrollAmount = 250; // Kaydırma miktarı
+            const currentScroll = container.scrollLeft;
             
-            // Overlay'i göster
-            newsDetailOverlay.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Haber detayını kapat
-        function closeNewsDetail() {
-            newsDetailOverlay.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Kategoriye kaydır
-        function scrollToCategory(categoryId) {
-            const categorySection = document.getElementById(categoryId);
-            if (categorySection) {
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const sectionPosition = categorySection.getBoundingClientRect().top + window.pageYOffset;
-                window.scrollTo({
-                    top: sectionPosition - headerHeight - 20,
+            if (direction === 'next') {
+                container.scrollTo({
+                    left: currentScroll + scrollAmount,
                     behavior: 'smooth'
                 });
+            } else {
+                container.scrollTo({
+                    left: currentScroll - scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Mobil menüyü aç/kapa
+        function toggleMobileMenu() {
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            hamburgerMenu.classList.toggle('active');
+            
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
             }
         }
 
         // Event listener'ları kur
         function setupEventListeners() {
             // Hamburger menü
-            hamburgerMenu.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-                hamburgerMenu.classList.toggle('active');
-            });
-
+            hamburgerMenu.addEventListener('click', toggleMobileMenu);
+            
+            // Menü overlay
+            menuOverlay.addEventListener('click', toggleMobileMenu);
+            
             // Dropdown menü (mobil için)
             dropdownMenu.addEventListener('click', (e) => {
                 if (window.innerWidth <= 768) {
                     e.preventDefault();
+                    e.stopPropagation();
                     dropdownMenu.classList.toggle('active');
                 }
             });
-
+            
             // Slider kontrolleri
             prevSliderBtn.addEventListener('click', () => {
                 prevSlide();
-                startSlideInterval(); // Interval'ı sıfırla
+                startSlideInterval();
             });
-
+            
             nextSliderBtn.addEventListener('click', () => {
                 nextSlide();
-                startSlideInterval(); // Interval'ı sıfırla
+                startSlideInterval();
             });
-
-            // Haber detay kapatma
-            closeDetailBtn.addEventListener('click', closeNewsDetail);
-            newsDetailOverlay.addEventListener('click', (e) => {
-                if (e.target === newsDetailOverlay) {
-                    closeNewsDetail();
-                }
-            });
-
+            
             // En çok okunan slider kontrolleri
             prevMostReadBtn.addEventListener('click', () => {
                 if (currentMostReadSlide > 0) {
@@ -1489,7 +1655,7 @@
                 }
                 updateMostReadSlider();
             });
-
+            
             nextMostReadBtn.addEventListener('click', () => {
                 if (currentMostReadSlide < haberData.mostRead.length - 1) {
                     currentMostReadSlide++;
@@ -1498,13 +1664,19 @@
                 }
                 updateMostReadSlider();
             });
-
+            
+            // Mobil en çok okunan slider kontrolleri
+            prevMobileMostReadBtn.addEventListener('click', () => scrollMobileMostRead('prev'));
+            nextMobileMostReadBtn.addEventListener('click', () => scrollMobileMostRead('next'));
+            
             // Pencere boyutu değiştiğinde dropdown'ı kapat
             window.addEventListener('resize', () => {
                 if (window.innerWidth > 768) {
                     navMenu.classList.remove('active');
+                    menuOverlay.classList.remove('active');
                     hamburgerMenu.classList.remove('active');
                     dropdownMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
                 }
             });
         }
