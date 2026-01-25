@@ -27,7 +27,7 @@
             --valilik-color: #28a745;
             --belediye-color: #007bff;
             --siyaset-color: #ffc107;
-            --bartin-color: #8b0000;
+            --bartin-color: #c00;
         }
         
         html {
@@ -610,10 +610,10 @@
             padding: 10px 0;
         }
         
-        /* Kare boyutlu kartlar - BÜYÜTÜLDÜ */
+        /* Kare boyutlu kartlar - BÜYÜTÜLDÜ: %30 daha büyük */
         .most-read-item {
-            flex: 0 0 380px; /* GÜNCELLENDİ: 320px'ten 380px'e büyütüldü */
-            height: 380px; /* GÜNCELLENDİ: 320px'ten 380px'e büyütüldü */
+            flex: 0 0 380px; /* GÜNCELLENDİ: %30 büyütüldü (293px'ten 380px'e) */
+            height: 380px; /* GÜNCELLENDİ: %30 büyütüldü */
             background-color: white;
             border-radius: 16px;
             overflow: hidden;
@@ -1323,9 +1323,9 @@
     <main class="container">
         <!-- Bartın Haberleri Bölümü -->
         <section class="news-category" id="bartin">
-            <h2 class="section-title">
+            <h2 class="section-title" style="border-bottom-color: var(--bartin-color);">
                 <span class="blinking-dot" style="background-color: var(--bartin-color);"></span>
-                Bartın Haberleri
+                <span style="color: var(--bartin-color);">Bartın Haberleri</span>
             </h2>
             
             <div class="news-grid" id="bartinNews">
@@ -1342,9 +1342,9 @@
 
         <!-- Valilik Haberleri Bölümü -->
         <section class="news-category" id="valilik">
-            <h2 class="section-title">
+            <h2 class="section-title" style="border-bottom-color: var(--valilik-color);">
                 <span class="blinking-dot" style="background-color: var(--valilik-color);"></span>
-                Valilik Haberleri
+                <span style="color: var(--valilik-color);">Valilik Haberleri</span>
             </h2>
             
             <div class="news-grid" id="valilikNews">
@@ -1361,9 +1361,9 @@
 
         <!-- Belediye Haberleri Bölümü -->
         <section class="news-category" id="belediye">
-            <h2 class="section-title">
+            <h2 class="section-title" style="border-bottom-color: var(--belediye-color);">
                 <span class="blinking-dot" style="background-color: var(--belediye-color);"></span>
-                Belediye Haberleri
+                <span style="color: var(--belediye-color);">Belediye Haberleri</span>
             </h2>
             
             <div class="news-grid" id="belediyeNews">
@@ -1380,9 +1380,9 @@
 
         <!-- Siyaset Haberleri Bölümü -->
         <section class="news-category" id="siyaset">
-            <h2 class="section-title">
+            <h2 class="section-title" style="border-bottom-color: var(--siyaset-color);">
                 <span class="blinking-dot" style="background-color: var(--siyaset-color);"></span>
-                Siyaset Haberleri
+                <span style="color: var(--siyaset-color);">Siyaset Haberleri</span>
             </h2>
             
             <div class="news-grid" id="siyasetNews">
@@ -1910,7 +1910,7 @@
             window.addEventListener('resize', updateMostReadAnimation);
         }
 
-        // Sürükleme olaylarını kurma - YENİ EKLENDİ
+        // Sürükleme olaylarını kurma - GÜNCELLENDİ
         function setupDragEvents() {
             if (!mostReadTrack) return;
             
@@ -1958,6 +1958,24 @@
                         }, 50);
                     }, 10);
                 }
+            });
+            
+            // Tıklama olayını engellemek için
+            mostReadTrack.addEventListener('click', (e) => {
+                if (isDragging) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }, true);
+            
+            // Kartlara tıklama olayını yönet
+            mostReadTrack.querySelectorAll('.most-read-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    if (isDragging) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                });
             });
             
             function dragStart(event) {
@@ -2024,6 +2042,11 @@
                 }
                 
                 mostReadTrack.style.cursor = 'grab';
+                
+                // Kısa bir süre sonra sürükleme bayrağını sıfırla (tıklama için)
+                setTimeout(() => {
+                    isDragging = false;
+                }, 100);
             }
             
             function animation() {
@@ -2082,8 +2105,6 @@
             initNewsCategories();
             initMostReadSlider();
             setupEventListeners();
-            applyCategoryColors();
-            setupMainSliderDragEvents();
             
             // Masaüstü için nav-link ikonlarını kaldır
             if (window.innerWidth >= 769) {
@@ -2097,90 +2118,84 @@
         function setupMainSliderDragEvents() {
             if (!sliderContainer) return;
             
-            sliderContainer.addEventListener('mousedown', dragStartMainSlider);
-            sliderContainer.addEventListener('touchstart', dragStartMainSlider);
+            let isDraggingMain = false;
+            let startPosMain = 0;
+            let dragThreshold = 50;
             
-            sliderContainer.addEventListener('mousemove', dragMainSlider);
-            sliderContainer.addEventListener('touchmove', dragMainSlider);
+            sliderContainer.addEventListener('mousedown', (e) => {
+                if (e.target.closest('.slider-btn')) return; // Butonlara tıklamayı engelleme
+                
+                isDraggingMain = true;
+                startPosMain = e.clientX;
+                clearInterval(slideInterval);
+                sliderContainer.style.cursor = 'grabbing';
+            });
             
-            sliderContainer.addEventListener('mouseup', dragEndMainSlider);
-            sliderContainer.addEventListener('mouseleave', dragEndMainSlider);
-            sliderContainer.addEventListener('touchend', dragEndMainSlider);
-        }
-
-        // Ana slider sürükleme değişkenleri
-        let mainSliderIsDragging = false;
-        let mainSliderStartPos = 0;
-        let mainSliderCurrentTranslate = 0;
-        let mainSliderPrevTranslate = 0;
-        let mainSliderAnimationID;
-
-        // Ana slider sürükleme başlangıcı
-        function dragStartMainSlider(event) {
-            event.preventDefault();
-            
-            if (event.type === 'touchstart') {
-                mainSliderStartPos = event.touches[0].clientX;
-            } else {
-                mainSliderStartPos = event.clientX;
-                event.preventDefault(); // Metin seçimini önle
-            }
-            
-            mainSliderIsDragging = true;
-            clearInterval(slideInterval); // Otomatik geçişi durdur
-            
-            mainSliderAnimationID = requestAnimationFrame(animationMainSlider);
-            
-            sliderContainer.style.cursor = 'grabbing';
-            sliderContainer.style.transition = 'none';
-        }
-
-        // Ana slider sürükleme
-        function dragMainSlider(event) {
-            if (!mainSliderIsDragging) return;
-            
-            const currentPosition = event.type === 'touchmove' ? 
-                event.touches[0].clientX : event.clientX;
-            
-            const diff = currentPosition - mainSliderStartPos;
-            mainSliderCurrentTranslate = mainSliderPrevTranslate + diff;
-        }
-
-        // Ana slider sürükleme sonu
-        function dragEndMainSlider() {
-            if (!mainSliderIsDragging) return;
-            
-            mainSliderIsDragging = false;
-            cancelAnimationFrame(mainSliderAnimationID);
-            
-            const diff = mainSliderCurrentTranslate - mainSliderPrevTranslate;
-            const threshold = 50; // Geçiş için eşik değeri
-            
-            // Eğer yeterince sürüklendiyse slayt değiştir
-            if (Math.abs(diff) > threshold) {
-                if (diff > 0) {
-                    prevSlide(); // Sağa sürüklendi - önceki slayt
-                } else {
-                    nextSlide(); // Sola sürüklendi - sonraki slayt
+            sliderContainer.addEventListener('mousemove', (e) => {
+                if (!isDraggingMain) return;
+                
+                const diff = e.clientX - startPosMain;
+                
+                // Eğer yeterince sürüklendiyse slayt değiştir
+                if (Math.abs(diff) > dragThreshold) {
+                    if (diff > 0) {
+                        prevSlide(); // Sağa sürüklendi - önceki slayt
+                    } else {
+                        nextSlide(); // Sola sürüklendi - sonraki slayt
+                    }
+                    isDraggingMain = false;
+                    sliderContainer.style.cursor = 'grab';
+                    startSlideInterval();
                 }
-            }
+            });
             
-            mainSliderPrevTranslate = 0;
-            mainSliderCurrentTranslate = 0;
+            sliderContainer.addEventListener('mouseup', () => {
+                if (isDraggingMain) {
+                    isDraggingMain = false;
+                    sliderContainer.style.cursor = 'grab';
+                    startSlideInterval();
+                }
+            });
             
-            sliderContainer.style.cursor = 'grab';
-            sliderContainer.style.transition = 'transform 0.3s ease-out';
+            sliderContainer.addEventListener('mouseleave', () => {
+                if (isDraggingMain) {
+                    isDraggingMain = false;
+                    sliderContainer.style.cursor = 'grab';
+                    startSlideInterval();
+                }
+            });
             
-            // Otomatik kaydırmayı yeniden başlat
-            startSlideInterval();
-        }
-
-        // Ana slider animasyon
-        function animationMainSlider() {
-            // Ana slider'da sürükleme sırasında görsel efekt uygulanabilir
-            if (mainSliderIsDragging) {
-                requestAnimationFrame(animationMainSlider);
-            }
+            // Touch events for mobile
+            sliderContainer.addEventListener('touchstart', (e) => {
+                if (e.target.closest('.slider-btn')) return;
+                
+                isDraggingMain = true;
+                startPosMain = e.touches[0].clientX;
+                clearInterval(slideInterval);
+            });
+            
+            sliderContainer.addEventListener('touchmove', (e) => {
+                if (!isDraggingMain) return;
+                
+                const diff = e.touches[0].clientX - startPosMain;
+                
+                if (Math.abs(diff) > dragThreshold) {
+                    if (diff > 0) {
+                        prevSlide();
+                    } else {
+                        nextSlide();
+                    }
+                    isDraggingMain = false;
+                    startSlideInterval();
+                }
+            });
+            
+            sliderContainer.addEventListener('touchend', () => {
+                if (isDraggingMain) {
+                    isDraggingMain = false;
+                    startSlideInterval();
+                }
+            });
         }
 
         // Kategori renklerini uygula
@@ -2233,6 +2248,9 @@
                 }
             }
 
+            // Slider sürükleme olaylarını kur
+            setupMainSliderDragEvents();
+            
             // Slider otomatik geçişini başlat
             startSlideInterval();
         }
