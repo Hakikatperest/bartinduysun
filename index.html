@@ -584,53 +584,52 @@
             color: var(--gray-color);
         }
         
-        /* EN ÇOK OKUNANLAR - TAMAMEN YENİ TASARIM */
+        /* YENİ EN ÇOK OKUNANLAR - TAMAMEN YENİ TASARIM */
         .most-read-section {
             margin: 60px 0;
         }
         
-        .most-read-slider-container {
+        .most-read-wrapper {
             position: relative;
             width: 100%;
             overflow: hidden;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 30px 0;
         }
         
-        /* GÜNCELLENDİ: Kare kartlar için sürekli kayan slider */
+        /* Sonsuz kaydırma efekti için track */
         .most-read-track {
             display: flex;
-            gap: 20px;
-            transition: transform 0.5s ease;
+            gap: 30px;
             width: max-content;
+            animation: scrollMostRead 60s linear infinite;
             padding: 10px 0;
         }
         
-        /* GÜNCELLENDİ: Kare boyutlu kartlar */
+        /* Kare boyutlu kartlar - GÜNCELLENDİ */
         .most-read-item {
-            flex: 0 0 250px; /* Kare boyut için genişlik */
-            height: 250px; /* Kare boyut için yükseklik */
+            flex: 0 0 320px; /* Kare boyut */
+            height: 320px; /* Kare boyut */
             background-color: white;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             transition: var(--transition);
             cursor: pointer;
             position: relative;
+            display: block;
         }
         
         .most-read-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
         
-        /* GÜNCELLENDİ: Kare boyutlu resim */
+        /* Resim alanı - GÜNCELLENDİ: Kare boyut */
         .most-read-image {
             width: 100%;
             height: 100%;
             overflow: hidden;
+            position: relative;
         }
         
         .most-read-image img {
@@ -641,54 +640,89 @@
         }
         
         .most-read-item:hover .most-read-image img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
         
-        /* GÜNCELLENDİ: İçerik overlay */
-        .most-read-content {
+        /* Gradient overlay - GÜNCELLENDİ: Daha şeffaf */
+        .most-read-overlay {
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
             width: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, transparent 100%);
-            color: white;
-            padding: 20px;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.1) 100%);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            min-height: 60%;
+            padding: 30px;
+            transition: var(--transition);
         }
         
-        .most-read-rank {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--topbar-color), #00a8cc);
+        .most-read-item:hover .most-read-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.2) 100%);
+        }
+        
+        /* İçerik alanı - GÜNCELLENDİ: Daha minimalist */
+        .most-read-content {
             color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            margin-right: 12px;
-            font-weight: bold;
-            font-size: 1rem;
+            position: relative;
+            z-index: 2;
         }
         
         .most-read-content h3 {
-            font-size: 1.1rem;
+            font-size: 1.4rem;
+            font-weight: 700;
             line-height: 1.3;
-            margin-top: 10px;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.7);
+            margin-bottom: 15px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
         
         .most-read-content p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.85rem;
-            margin-top: 5px;
+            font-size: 1rem;
+            line-height: 1.5;
+            opacity: 0.9;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
         }
         
-        /* Manuel kaydırma butonları kaldırıldı */
-        .most-read-controls {
-            display: none;
+        /* Animasyon */
+        @keyframes scrollMostRead {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-320px * 8 - 30px * 8)); /* Kart genişliği * sayı + gap * sayı */
+            }
+        }
+        
+        /* Hover'da animasyonu durdur */
+        .most-read-wrapper:hover .most-read-track {
+            animation-play-state: paused;
+        }
+        
+        /* Gradient overlay eklenmesi */
+        .most-read-wrapper::before,
+        .most-read-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .most-read-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+        }
+        
+        .most-read-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
         }
         
         /* Kategoriler Bölümü */
@@ -896,8 +930,14 @@
         
         @media (max-width: 1200px) {
             .most-read-item {
-                flex: 0 0 220px;
-                height: 220px;
+                flex: 0 0 280px;
+                height: 280px;
+            }
+            
+            @keyframes scrollMostRead {
+                100% {
+                    transform: translateX(calc(-280px * 8 - 30px * 8));
+                }
             }
         }
         
@@ -912,8 +952,14 @@
             }
             
             .most-read-item {
-                flex: 0 0 200px;
-                height: 200px;
+                flex: 0 0 240px;
+                height: 240px;
+            }
+            
+            @keyframes scrollMostRead {
+                100% {
+                    transform: translateX(calc(-240px * 8 - 30px * 8));
+                }
             }
             
             /* Mobilde logo margin-left'i kaldır */
@@ -1019,17 +1065,29 @@
                 padding: 8px 15px;
             }
             
-            .most-read-slider-container {
-                padding: 15px;
+            .most-read-item {
+                flex: 0 0 200px;
+                height: 200px;
             }
             
-            .most-read-item {
-                flex: 0 0 180px;
-                height: 180px;
+            .most-read-overlay {
+                padding: 20px;
             }
             
             .most-read-content h3 {
-                font-size: 1rem;
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+            
+            .most-read-content p {
+                font-size: 0.9rem;
+                -webkit-line-clamp: 2;
+            }
+            
+            @keyframes scrollMostRead {
+                100% {
+                    transform: translateX(calc(-200px * 8 - 30px * 8));
+                }
             }
             
             .slider-controls {
@@ -1040,6 +1098,12 @@
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
+            }
+            
+            /* Mobilde gradient overlay'ı kaldır */
+            .most-read-wrapper::before,
+            .most-read-wrapper::after {
+                width: 50px;
             }
         }
         
@@ -1088,6 +1152,31 @@
                 grid-template-columns: 1fr;
             }
             
+            .most-read-item {
+                flex: 0 0 180px;
+                height: 180px;
+            }
+            
+            .most-read-overlay {
+                padding: 15px;
+            }
+            
+            .most-read-content h3 {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+            
+            .most-read-content p {
+                font-size: 0.85rem;
+                -webkit-line-clamp: 2;
+            }
+            
+            @keyframes scrollMostRead {
+                100% {
+                    transform: translateX(calc(-180px * 8 - 30px * 8));
+                }
+            }
+            
             .footer-logo-img {
                 max-width: 150px;
             }
@@ -1098,13 +1187,37 @@
                 padding-top: 70px;
             }
             
+            /* Küçük ekranlarda gradient overlay'ı tamamen kaldır */
+            .most-read-wrapper::before,
+            .most-read-wrapper::after {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 400px) {
             .most-read-item {
-                flex: 0 0 160px;
-                height: 160px;
+                flex: 0 0 150px;
+                height: 150px;
             }
             
-            .most-read-content {
-                padding: 15px;
+            .most-read-overlay {
+                padding: 12px;
+            }
+            
+            .most-read-content h3 {
+                font-size: 0.9rem;
+                margin-bottom: 5px;
+            }
+            
+            .most-read-content p {
+                font-size: 0.75rem;
+                -webkit-line-clamp: 2;
+            }
+            
+            @keyframes scrollMostRead {
+                100% {
+                    transform: translateX(calc(-150px * 8 - 30px * 8));
+                }
             }
         }
     </style>
@@ -1263,12 +1376,12 @@
             </div>
         </section>
 
-        <!-- En Çok Okunanlar Bölümü - TAMAMEN YENİ TASARIM -->
+        <!-- YENİ EN ÇOK OKUNANLAR BÖLÜMÜ - TAMAMEN GÜNCELLENDİ -->
         <section class="most-read-section">
             <h2 class="section-title">En Çok Okunan Haberler</h2>
             
-            <!-- Yeni kare kartlı sürekli kayan slider -->
-            <div class="most-read-slider-container">
+            <!-- Yeni sonsuz kayan kare kartlar -->
+            <div class="most-read-wrapper">
                 <div class="most-read-track" id="mostReadTrack">
                     <!-- En çok okunan haberler JavaScript ile eklenecek -->
                 </div>
@@ -1628,7 +1741,7 @@
                 },
                 {
                     id: 23,
-                    title: "AK Parti Bartın'da Genişletilmiş İl Danışma Meclisi ve Vefa Buluşması Düzenlendi",
+                    title: "AK Parti Bartın'da Genişletilmiş İl Danışa Meclisi ve Vefa Buluşması Düzenlendi",
                     category: "Siyaset Haberleri",
                     image: "https://www.bartinduysun.com/images/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.webp",
                     excerpt: "AK Parti Bartın Teşkilatı Vefa ve İstişare Toplantısında Bir Araya Geldi",
@@ -1650,20 +1763,20 @@
                     title: "Kadına Yönelik Şiddetle Mücadele İl Koordinasyon Komisyon Toplantısı Yapıldı",
                     category: "Valilik Haberleri",
                     image: "https://www.bartinduysun.com/images/valilik/kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.webp",
-                    detail: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı."
+                    detail: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı. Toplantıda, kadına yönelik şiddetle mücadele kapsamında yapılan çalışmalar değerlendirildi."
                 },
                 {
                     id: 2,
                     title: "Vali Arslan Başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Toplantısı",
                     category: "Valilik Haberleri",
                     image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi.webp",
-                    detail: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı."
+                    detail: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı. Toplantıda, yılbaşı döneminde alınacak güvenlik tedbirleri ve asayiş önlemleri görüşüldü."
                 },
                 {
                     id: 3,
                     title: "Belediye'den Üniversite Öğrencilerine Ulaşım Desteği",
                     category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    image: "https://www.bartinduysun.com/images/belediye/bir-projede-gurgenpinari-mahallesine-kazandiriliyor.webp",
                     detail: "Bartın Belediyesi, üniversite öğrencilerine yönelik ulaşım kartlarında indirim uygulaması başlattı. Öğrenciler, toplu taşıma araçlarını %50 indirimli kullanabilecek."
                 },
                 {
@@ -1677,7 +1790,7 @@
                     id: 5,
                     title: "Parti İl Başkanı Basın Toplantısı Düzenledi",
                     category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    image: "https://www.bartinduysun.com/images/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.webp",
                     detail: "AK Parti Bartın İl Başkanı, basın toplantısı düzenleyerek parti çalışmaları hakkında bilgi verdi. Toplantıda, yerel seçim hazırlıkları ve parti teşkilatının güçlendirilmesi konuları ele alındı."
                 },
                 {
@@ -1692,14 +1805,14 @@
                     title: "Yeni Park Alanları Açılıyor",
                     category: "Belediye Haberleri",
                     image: "https://www.bartinduysun.com/images/belediye/bir-projede-gurgenpinari-mahallesine-kazandiriliyor.webp",
-                    detail: "Bartın Belediyesi, şehrin farklı noktalarında yeni park ve yeşil alanlar oluşturuyor."
+                    detail: "Bartın Belediyesi, şehrin farklı noktalarında yeni park ve yeşil alanlar oluşturuyor. Proje kapsamında 5 farklı mahallede toplam 10.000 m² yeşil alan oluşturulacak."
                 },
                 {
                     id: 8,
                     title: "Sağlık Çalışanları İçin Ek Ödeme",
                     category: "Siyaset Haberleri",
                     image: "https://www.bartinduysun.com/images/siyaset/bartina-1-4-milyon-dolarlik-yoresel-urunler-pazari-kazandiriliyor.webp",
-                    detail: "Bartın'daki sağlık çalışanları için ek ödeme yapılacak."
+                    detail: "Bartın'daki sağlık çalışanları için ek ödeme yapılacak. Ödeme, pandemi döneminde gösterdikleri üstün çaba ve fedakarlıkları karşılığında yapılacak."
                 }
             ]
         };
@@ -1715,13 +1828,6 @@
         const nextSliderBtn = document.getElementById('nextSliderBtn');
         const mostReadTrack = document.getElementById('mostReadTrack');
         const mainLogo = document.getElementById('mainLogo');
-
-        // Ana slider için sürükleme değişkenleri
-        let mainSliderIsDragging = false;
-        let mainSliderStartPos = 0;
-        let mainSliderCurrentTranslate = 0;
-        let mainSliderPrevTranslate = 0;
-        let mainSliderAnimationID;
 
         // Haber kartı oluşturma fonksiyonu
         function createNewsCard(haber) {
@@ -1742,207 +1848,85 @@
             return card;
         }
 
-        // Kare en çok okunan haber kartı oluşturma fonksiyonu
-        function createMostReadSquareCard(haber, index) {
+        // Yeni kare en çok okunan haber kartı oluşturma fonksiyonu
+        function createMostReadSquareCard(haber) {
             const card = document.createElement('a');
             card.className = 'most-read-item';
             const imageUrl = haber.image || 'https://via.placeholder.com/400x400?text=Bartın+Duysun';
             card.href = `haber-detay.html?id=${haber.id}`;
+            
+            // Kısa açıklama oluştur (maksimum 100 karakter)
+            const shortDetail = haber.detail.length > 100 ? haber.detail.substring(0, 100) + '...' : haber.detail;
+            
             card.innerHTML = `
                 <div class="most-read-image">
                     <img src="${imageUrl}" alt="${haber.title}">
-                </div>
-                <div class="most-read-content">
-                    <span class="most-read-rank">${index + 1}</span>
-                    <h3>${haber.title}</h3>
-                    <p>${haber.category}</p>
+                    <div class="most-read-overlay">
+                        <div class="most-read-content">
+                            <h3>${haber.title}</h3>
+                            <p>${shortDetail}</p>
+                        </div>
+                    </div>
                 </div>
             `;
             return card;
         }
 
-        // En çok okunan slider için değişkenler
-        let mostReadSlideIndex = 0;
-        let mostReadAutoSlideInterval;
-        let mostReadIsDragging = false;
-        let mostReadStartPos = 0;
-        let mostReadCurrentTranslate = 0;
-        let mostReadPrevTranslate = 0;
-        let mostReadAnimationID;
-
-        // En çok okunan slider başlatma
+        // Yeni en çok okunan slider başlatma
         function initMostReadSlider() {
             if (!mostReadTrack || !haberData.mostRead) return;
             
-            // Kartları oluştur (daha fazla kart için 2 kez ekle)
-            const itemsToShow = 8;
+            // Kartları oluştur (sonsuz kaydırma için 2 set ekleyelim)
             for (let i = 0; i < 2; i++) {
-                haberData.mostRead.forEach((haber, index) => {
-                    mostReadTrack.appendChild(createMostReadSquareCard(haber, index));
+                haberData.mostRead.forEach(haber => {
+                    mostReadTrack.appendChild(createMostReadSquareCard(haber));
                 });
             }
             
-            // Slider boyutunu ayarla
-            updateMostReadSlider();
+            // Responsive için animasyonu güncelle
+            updateMostReadAnimation();
             
-            // Olay dinleyicilerini ekle
-            setupMostReadSliderEvents();
-            
-            // Otomatik kaydırmayı başlat
-            startMostReadAutoSlide();
+            // Pencere boyutu değiştiğinde animasyonu güncelle
+            window.addEventListener('resize', updateMostReadAnimation);
         }
 
-        // En çok okunan slider boyutunu güncelle
-        function updateMostReadSlider() {
+        // Responsive animasyon güncelleme
+        function updateMostReadAnimation() {
             if (!mostReadTrack) return;
             
             const items = mostReadTrack.querySelectorAll('.most-read-item');
             if (items.length === 0) return;
             
-            // Track genişliğini ayarla
-            const itemWidth = items[0].offsetWidth + 20; // 20px gap
-            const totalWidth = itemWidth * items.length;
-            mostReadTrack.style.width = `${totalWidth}px`;
+            const itemWidth = items[0].offsetWidth + 30; // 30px gap
+            const itemsCount = haberData.mostRead.length;
+            const totalWidth = itemWidth * itemsCount;
+            
+            // CSS animasyonunu güncelle
+            const styleSheet = document.styleSheets[0];
+            const rule = findKeyframeRule('scrollMostRead');
+            
+            if (rule) {
+                rule.deleteRule('100%');
+                rule.appendRule(`100% { transform: translateX(calc(-${itemWidth}px * ${itemsCount} - 30px * ${itemsCount})); }`);
+            }
         }
 
-        // En çok okunan slider olay dinleyicileri
-        function setupMostReadSliderEvents() {
-            if (!mostReadTrack) return;
-            
-            // Dokunma olayları
-            mostReadTrack.addEventListener('mousedown', dragStartMostRead);
-            mostReadTrack.addEventListener('touchstart', dragStartMostRead);
-            
-            mostReadTrack.addEventListener('mousemove', dragMostRead);
-            mostReadTrack.addEventListener('touchmove', dragMostRead);
-            
-            mostReadTrack.addEventListener('mouseup', dragEndMostRead);
-            mostReadTrack.addEventListener('mouseleave', dragEndMostRead);
-            mostReadTrack.addEventListener('touchend', dragEndMostRead);
-            
-            // Fare ile üzerine gelince otomatik kaydırmayı durdur
-            mostReadTrack.addEventListener('mouseenter', () => {
-                clearInterval(mostReadAutoSlideInterval);
-            });
-            
-            mostReadTrack.addEventListener('mouseleave', () => {
-                if (!mostReadIsDragging) {
-                    startMostReadAutoSlide();
+        // CSS keyframe kuralını bulma
+        function findKeyframeRule(ruleName) {
+            const styleSheets = Array.from(document.styleSheets);
+            for (const sheet of styleSheets) {
+                try {
+                    const rules = Array.from(sheet.cssRules || sheet.rules);
+                    for (const rule of rules) {
+                        if (rule.type === CSSRule.KEYFRAMES_RULE && rule.name === ruleName) {
+                            return rule;
+                        }
+                    }
+                } catch (e) {
+                    // CORS hatası olabilir, atla
                 }
-            });
-            
-            // Pencere boyutu değiştiğinde slider'ı güncelle
-            window.addEventListener('resize', updateMostReadSlider);
-        }
-
-        // En çok okunan slider sürükleme başlangıcı
-        function dragStartMostRead(event) {
-            event.preventDefault();
-            
-            if (event.type === 'touchstart') {
-                mostReadStartPos = event.touches[0].clientX;
-            } else {
-                mostReadStartPos = event.clientX;
-                event.preventDefault(); // Metin seçimini önle
             }
-            
-            mostReadIsDragging = true;
-            clearInterval(mostReadAutoSlideInterval);
-            
-            mostReadAnimationID = requestAnimationFrame(animationMostRead);
-            
-            mostReadTrack.style.cursor = 'grabbing';
-            mostReadTrack.style.transition = 'none';
-        }
-
-        // En çok okunan slider sürükleme
-        function dragMostRead(event) {
-            if (!mostReadIsDragging) return;
-            
-            const currentPosition = event.type === 'touchmove' ? 
-                event.touches[0].clientX : event.clientX;
-            
-            const diff = currentPosition - mostReadStartPos;
-            mostReadCurrentTranslate = mostReadPrevTranslate + diff;
-            
-            // Sınır kontrolü
-            const maxTranslate = 0;
-            const minTranslate = -(mostReadTrack.offsetWidth - mostReadTrack.parentElement.offsetWidth);
-            
-            if (mostReadCurrentTranslate > maxTranslate) {
-                mostReadCurrentTranslate = maxTranslate;
-            }
-            
-            if (mostReadCurrentTranslate < minTranslate) {
-                mostReadCurrentTranslate = minTranslate;
-            }
-        }
-
-        // En çok okunan slider sürükleme sonu
-        function dragEndMostRead() {
-            if (!mostReadIsDragging) return;
-            
-            mostReadIsDragging = false;
-            cancelAnimationFrame(mostReadAnimationID);
-            
-            mostReadPrevTranslate = mostReadCurrentTranslate;
-            
-            // Eğer track sonuna geldiyse başa döndür
-            const minTranslate = -(mostReadTrack.offsetWidth - mostReadTrack.parentElement.offsetWidth);
-            if (mostReadCurrentTranslate <= minTranslate) {
-                mostReadCurrentTranslate = 0;
-                mostReadPrevTranslate = 0;
-                setMostReadSliderPosition();
-            }
-            
-            mostReadTrack.style.cursor = 'grab';
-            mostReadTrack.style.transition = 'transform 0.3s ease-out';
-            
-            // Otomatik kaydırmayı yeniden başlat
-            startMostReadAutoSlide();
-        }
-
-        // En çok okunan slider animasyon
-        function animationMostRead() {
-            setMostReadSliderPosition();
-            if (mostReadIsDragging) {
-                requestAnimationFrame(animationMostRead);
-            }
-        }
-
-        // En çok okunan slider pozisyonunu ayarla
-        function setMostReadSliderPosition() {
-            mostReadTrack.style.transform = `translateX(${mostReadCurrentTranslate}px)`;
-        }
-
-        // En çok okunan slider otomatik kaydırmayı başlat
-        function startMostReadAutoSlide() {
-            clearInterval(mostReadAutoSlideInterval);
-            
-            mostReadAutoSlideInterval = setInterval(() => {
-                const itemWidth = mostReadTrack.querySelector('.most-read-item').offsetWidth + 20;
-                const maxTranslate = -(mostReadTrack.offsetWidth - mostReadTrack.parentElement.offsetWidth);
-                
-                mostReadCurrentTranslate -= itemWidth / 10; // Yavaş kaydırma
-                mostReadPrevTranslate = mostReadCurrentTranslate;
-                
-                // Eğer sona gelindiyse başa dön
-                if (mostReadCurrentTranslate <= maxTranslate - 100) {
-                    mostReadCurrentTranslate = 0;
-                    mostReadPrevTranslate = 0;
-                    mostReadTrack.style.transition = 'none';
-                    setMostReadSliderPosition();
-                    
-                    // Geçiş efekti için kısa bir bekleme
-                    setTimeout(() => {
-                        mostReadTrack.style.transition = 'transform 0.3s ease-out';
-                    }, 50);
-                } else {
-                    mostReadTrack.style.transition = 'transform 0.3s ease-out';
-                }
-                
-                setMostReadSliderPosition();
-            }, 100);
+            return null;
         }
 
         // Sayfa yüklendiğinde çalışacak fonksiyonlar
@@ -1952,7 +1936,7 @@
             initMostReadSlider();
             setupEventListeners();
             applyCategoryColors();
-            setupMainSliderDragEvents(); // Ana slider sürükleme olayları
+            setupMainSliderDragEvents();
             
             // Masaüstü için nav-link ikonlarını kaldır
             if (window.innerWidth >= 769) {
@@ -1976,6 +1960,13 @@
             sliderContainer.addEventListener('mouseleave', dragEndMainSlider);
             sliderContainer.addEventListener('touchend', dragEndMainSlider);
         }
+
+        // Ana slider sürükleme değişkenleri
+        let mainSliderIsDragging = false;
+        let mainSliderStartPos = 0;
+        let mainSliderCurrentTranslate = 0;
+        let mainSliderPrevTranslate = 0;
+        let mainSliderAnimationID;
 
         // Ana slider sürükleme başlangıcı
         function dragStartMainSlider(event) {
