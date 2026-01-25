@@ -102,7 +102,7 @@
             padding: 10px 0;
         }
         
-        /* GÜNCELLENDİ: Sosyal medya ikonları renkli */
+        /* Sosyal medya ikonları renkli */
         .social-icons {
             display: flex;
             justify-content: flex-end;
@@ -147,7 +147,7 @@
             opacity: 0.9;
         }
         
-        /* GÜNCELLENDİ: Logo sağa kaydırma için padding-left eklendi */
+        /* Logo sağa kaydırma için padding-left eklendi */
         .main-header {
             display: flex;
             justify-content: space-between;
@@ -159,7 +159,6 @@
             height: 70px;
             display: flex;
             align-items: center;
-            /* Logo sağa kaydırmak için margin-left eklendi */
             margin-left: 30px;
         }
         
@@ -254,7 +253,7 @@
             transform: rotate(180deg);
         }
         
-        /* Modern dropdown menü - GÜNCELLENDİ: boşluklar azaltıldı */
+        /* Modern dropdown menü */
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -262,7 +261,7 @@
             background-color: white;
             box-shadow: 0 10px 30px rgba(0,0,0,0.12);
             min-width: 240px;
-            padding: 8px 0; /* GÜNCELLENDİ: 12px'ten 8px'e indirildi */
+            padding: 8px 0;
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
@@ -280,7 +279,7 @@
         
         .dropdown-menu li {
             padding: 0 5px;
-            margin: 2px 0; /* GÜNCELLENDİ: 5px'ten 2px'e indirildi */
+            margin: 2px 0;
         }
         
         .dropdown-menu a {
@@ -288,7 +287,7 @@
             align-items: center;
             gap: 12px;
             transition: var(--transition);
-            padding: 10px 20px; /* GÜNCELLENDİ: 12px'ten 10px'e indirildi */
+            padding: 10px 20px;
             border-radius: 8px;
             font-weight: 500;
         }
@@ -322,7 +321,7 @@
             display: block;
         }
         
-        /* Slider Bölümü - GÜNCELLENDİ: Başlıklar %50 yukarı kaydırıldı */
+        /* Slider Bölümü */
         .slider-section {
             position: relative;
             margin-bottom: 30px;
@@ -333,12 +332,12 @@
             position: relative;
             height: 500px;
             overflow: hidden;
-            cursor: grab; /* GÜNCELLENDİ: sürükleme için cursor eklendi */
-            user-select: none; /* GÜNCELLENDİ: metin seçimini önle */
+            cursor: grab;
+            user-select: none;
         }
         
         .slider-container:active {
-            cursor: grabbing; /* GÜNCELLENDİ: sürüklerken cursor değişimi */
+            cursor: grabbing;
         }
         
         .slider-item {
@@ -363,7 +362,7 @@
             object-fit: cover;
         }
         
-        /* GÜNCELLENDİ: Slider overlay yazılar daha üstte - başlık %50 yukarıda */
+        /* Slider overlay */
         .slider-overlay {
             position: absolute;
             bottom: 0;
@@ -372,7 +371,7 @@
             background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.3) 90%, transparent 100%);
             padding: 30px 40px 40px;
             color: white;
-            min-height: 45%; /* GÜNCELLENDİ: Daha fazla alan */
+            min-height: 45%;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -384,10 +383,9 @@
             font-weight: 700;
             line-height: 1.2;
             text-shadow: 0 2px 10px rgba(0,0,0,0.7);
-            /* GÜNCELLENDİ: Başlık %50 daha yukarıda */
             margin-bottom: 30px;
             margin-top: auto;
-            transform: translateY(-50%); /* Başlığı %50 yukarı kaydır */
+            transform: translateY(-50%);
         }
         
         .slider-controls {
@@ -414,7 +412,7 @@
             justify-content: center;
             font-size: 1.5rem;
             transition: var(--transition);
-            z-index: 20; /* GÜNCELLENDİ: sürükleme işlemi üzerinde kalması için */
+            z-index: 20;
         }
         
         .slider-btn:hover {
@@ -454,12 +452,12 @@
             transform: scale(1.1);
         }
         
-        /* GÜNCELLENDİ: Son dakika haberler kırmızı arka plan */
+        /* Son dakika haberler kırmızı arka plan */
         .breaking-news-sidebar {
             position: absolute;
             right: 20px;
             top: 20px;
-            background-color: #8b0000; /* Koyu kırmızı */
+            background-color: #8b0000;
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
@@ -482,7 +480,6 @@
             border-bottom: 1px solid var(--border-color);
         }
         
-        /* GÜNCELLENDİ: Bartın Duysun başlığı kaldırıldı */
         .intro-title {
             display: none;
         }
@@ -584,9 +581,11 @@
             color: var(--gray-color);
         }
         
-        /* YENİ EN ÇOK OKUNANLAR - TAMAMEN YENİ TASARIM */
+        /* EN ÇOK OKUNANLAR - TAMAMEN YENİ VE DÜZGÜN ÇALIŞAN TASARIM */
         .most-read-section {
             margin: 60px 0;
+            position: relative;
+            overflow: hidden;
         }
         
         .most-read-wrapper {
@@ -594,26 +593,25 @@
             width: 100%;
             overflow: hidden;
             padding: 30px 0;
-            cursor: grab;
         }
         
-        .most-read-wrapper:active {
-            cursor: grabbing;
-        }
-        
-        /* Sonsuz kaydırma efekti için track */
         .most-read-track {
             display: flex;
             gap: 30px;
-            width: max-content;
-            animation: scrollMostRead 80s linear infinite;
+            animation: scrollMostRead 60s linear infinite;
+            will-change: transform;
             padding: 10px 0;
+            transition: animation-play-state 0.3s ease;
         }
         
-        /* Kare boyutlu kartlar - BÜYÜTÜLDÜ: %30 daha büyük */
+        .most-read-wrapper:hover .most-read-track {
+            animation-play-state: paused;
+        }
+        
+        /* Kare boyutlu kartlar */
         .most-read-item {
-            flex: 0 0 380px; /* GÜNCELLENDİ: %30 büyütüldü (293px'ten 380px'e) */
-            height: 380px; /* GÜNCELLENDİ: %30 büyütüldü */
+            flex: 0 0 320px;
+            height: 320px;
             background-color: white;
             border-radius: 16px;
             overflow: hidden;
@@ -625,11 +623,11 @@
         }
         
         .most-read-item:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-10px) scale(1.03);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
         
-        /* Resim alanı - BÜYÜTÜLDÜ */
+        /* Resim alanı */
         .most-read-image {
             width: 100%;
             height: 100%;
@@ -648,7 +646,7 @@
             transform: scale(1.1);
         }
         
-        /* Gradient overlay - GÜNCELLENDİ */
+        /* Gradient overlay */
         .most-read-overlay {
             position: absolute;
             top: 0;
@@ -659,7 +657,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 35px; /* GÜNCELLENDİ: 30px'ten 35px'e */
+            padding: 25px;
             transition: var(--transition);
         }
         
@@ -667,7 +665,7 @@
             background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.25) 100%);
         }
         
-        /* İçerik alanı - GÜNCELLENDİ: Daha büyük fontlar */
+        /* İçerik alanı */
         .most-read-content {
             color: white;
             position: relative;
@@ -675,37 +673,32 @@
         }
         
         .most-read-content h3 {
-            font-size: 1.5rem; /* GÜNCELLENDİ: 1.4rem'den 1.5rem'e */
+            font-size: 1.4rem;
             font-weight: 700;
             line-height: 1.3;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
         
         .most-read-content p {
-            font-size: 1.05rem; /* GÜNCELLENDİ: 1rem'den 1.05rem'e */
+            font-size: 1rem;
             line-height: 1.5;
             opacity: 0.9;
             display: -webkit-box;
-            -webkit-line-clamp: 3; /* GÜNCELLENDİ: Daha fazla satır göster */
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-shadow: 0 1px 4px rgba(0,0,0,0.5);
         }
         
-        /* Animasyon hızı ayarlandı */
+        /* Sonsuz kaydırma animasyonu */
         @keyframes scrollMostRead {
             0% {
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(calc(-380px * 8 - 30px * 8)); /* GÜNCELLENDİ: Yeni boyuta göre */
+                transform: translateX(calc(-320px * 8 - 30px * 8));
             }
-        }
-        
-        /* Hover'da animasyonu durdur */
-        .most-read-wrapper:hover .most-read-track {
-            animation-play-state: paused;
         }
         
         /* Gradient overlay eklenmesi */
@@ -775,46 +768,44 @@
         footer {
             background-color: var(--topbar-color);
             color: white;
-            padding: 30px 0 15px; /* GÜNCELLENDİ: Yukarı taşımak için padding azaltıldı */
+            padding: 30px 0 15px;
             margin-top: 50px;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px; /* GÜNCELLENDİ: Gap azaltıldı */
-            margin-bottom: 20px; /* GÜNCELLENDİ: Margin azaltıldı */
+            gap: 30px;
+            margin-bottom: 20px;
         }
         
-        /* GÜNCELLENDİ: Footer logo küçültüldü ve yukarı taşındı */
         .footer-logo-container {
-            margin-bottom: 10px; /* Azaltıldı */
+            margin-bottom: 10px;
         }
         
         .footer-logo-img {
-            max-width: 180px; /* 220px'ten 180px'e küçültüldü */
+            max-width: 180px;
             height: auto;
             cursor: default !important;
             pointer-events: none;
         }
         
         .footer-about {
-            font-size: 0.9rem; /* Küçültüldü */
+            font-size: 0.9rem;
             line-height: 1.6;
             color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 10px; /* Azaltıldı */
+            margin-bottom: 10px;
         }
         
-        /* GÜNCELLENDİ: Footer başlıkları yukarı taşındı */
         .footer-title {
-            font-size: 1.1rem; /* Küçültüldü */
-            margin-bottom: 15px; /* Azaltıldı */
-            padding-bottom: 8px; /* Azaltıldı */
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
             border-bottom: 2px solid rgba(255, 255, 255, 0.3);
         }
         
         .footer-links li {
-            margin-bottom: 8px; /* Azaltıldı */
+            margin-bottom: 8px;
         }
         
         .footer-links a {
@@ -823,7 +814,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.9rem; /* Küçültüldü */
+            font-size: 0.9rem;
         }
         
         .footer-links a:hover {
@@ -832,23 +823,22 @@
         }
         
         .footer-links a i {
-            font-size: 0.8rem; /* Küçültüldü */
+            font-size: 0.8rem;
             width: 20px;
         }
         
-        /* GÜNCELLENDİ: Footer sosyal medya renkli */
         .footer-social {
             display: flex;
             gap: 10px;
-            margin-top: 10px; /* Azaltıldı */
+            margin-top: 10px;
         }
         
         .footer-social a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 32px; /* Küçültüldü */
-            height: 32px; /* Küçültüldü */
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             transition: var(--transition);
             color: white;
@@ -879,71 +869,73 @@
             opacity: 0.9;
         }
         
-        /* GÜNCELLENDİ: İletişim bilgileri yukarı taşındı */
         .footer-contact {
-            font-size: 0.9rem; /* Küçültüldü */
+            font-size: 0.9rem;
         }
         
         .footer-contact li {
-            margin-bottom: 8px; /* Azaltıldı */
+            margin-bottom: 8px;
             line-height: 1.5;
         }
         
-        /* GÜNCELLENDİ: Copyright yukarı taşındı */
         .copyright {
             text-align: center;
-            padding-top: 15px; /* Azaltıldı */
+            padding-top: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem; /* Küçültüldü */
+            font-size: 0.85rem;
         }
         
         /* Responsive boyut güncellemeleri */
         @media (max-width: 1200px) {
             .most-read-item {
-                flex: 0 0 340px;
-                height: 340px;
-            }
-            
-            .most-read-content h3 {
-                font-size: 1.4rem;
-            }
-            
-            @keyframes scrollMostRead {
-                100% {
-                    transform: translateX(calc(-340px * 8 - 30px * 8));
-                }
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .most-read-item {
-                flex: 0 0 300px;
-                height: 300px;
-            }
-            
-            .most-read-overlay {
-                padding: 25px;
+                flex: 0 0 280px;
+                height: 280px;
             }
             
             .most-read-content h3 {
                 font-size: 1.3rem;
             }
             
+            @keyframes scrollMostRead {
+                100% {
+                    transform: translateX(calc(-280px * 8 - 30px * 8));
+                }
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .most-read-item {
+                flex: 0 0 260px;
+                height: 260px;
+            }
+            
+            .most-read-overlay {
+                padding: 20px;
+            }
+            
+            .most-read-content h3 {
+                font-size: 1.2rem;
+            }
+            
             .most-read-content p {
-                font-size: 1rem;
+                font-size: 0.95rem;
                 -webkit-line-clamp: 2;
             }
             
             @keyframes scrollMostRead {
                 100% {
-                    transform: translateX(calc(-300px * 8 - 30px * 8));
+                    transform: translateX(calc(-260px * 8 - 30px * 8));
                 }
             }
             
-            /* Mobilde logo margin-left'i kaldır */
             .logo-container {
                 margin-left: 0;
+            }
+            
+            .most-read-wrapper::before,
+            .most-read-wrapper::after {
+                width: 60px;
             }
         }
         
@@ -954,7 +946,7 @@
             
             .logo-container {
                 height: 50px;
-                margin-left: 0; /* Mobilde margin sıfırla */
+                margin-left: 0;
             }
             
             .hamburger-menu {
@@ -1030,7 +1022,7 @@
             
             .slider-title {
                 font-size: 1.4rem;
-                transform: translateY(-30%); /* Mobil için daha az kaydırma */
+                transform: translateY(-30%);
             }
             
             .slider-overlay {
@@ -1045,27 +1037,27 @@
             }
             
             .most-read-item {
-                flex: 0 0 260px;
-                height: 260px;
+                flex: 0 0 240px;
+                height: 240px;
             }
             
             .most-read-overlay {
-                padding: 20px;
+                padding: 15px;
             }
             
             .most-read-content h3 {
-                font-size: 1.2rem;
-                margin-bottom: 10px;
+                font-size: 1.1rem;
+                margin-bottom: 8px;
             }
             
             .most-read-content p {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
                 -webkit-line-clamp: 2;
             }
             
             @keyframes scrollMostRead {
                 100% {
-                    transform: translateX(calc(-260px * 8 - 30px * 8));
+                    transform: translateX(calc(-240px * 8 - 30px * 8));
                 }
             }
             
@@ -1079,17 +1071,16 @@
                 font-size: 1rem;
             }
             
-            /* Mobilde gradient overlay'ı kaldır */
             .most-read-wrapper::before,
             .most-read-wrapper::after {
-                width: 50px;
+                width: 40px;
             }
         }
         
         @media (max-width: 576px) {
             .logo-container {
                 height: 45px;
-                margin-left: 0; /* Mobilde margin sıfırla */
+                margin-left: 0;
             }
             
             .main-header {
@@ -1115,7 +1106,7 @@
             
             .slider-title {
                 font-size: 1.2rem;
-                transform: translateY(-20%); /* Küçük mobil için en az */
+                transform: translateY(-20%);
             }
             
             .breaking-news-sidebar {
@@ -1141,12 +1132,12 @@
             }
             
             .most-read-content h3 {
-                font-size: 1.1rem;
-                margin-bottom: 8px;
+                font-size: 1rem;
+                margin-bottom: 6px;
             }
             
             .most-read-content p {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
                 -webkit-line-clamp: 2;
             }
             
@@ -1166,10 +1157,9 @@
                 padding-top: 70px;
             }
             
-            /* Küçük ekranlarda gradient overlay'ı tamamen kaldır */
             .most-read-wrapper::before,
             .most-read-wrapper::after {
-                display: none;
+                width: 20px;
             }
         }
         
@@ -1184,12 +1174,12 @@
             }
             
             .most-read-content h3 {
-                font-size: 1rem;
+                font-size: 0.95rem;
                 margin-bottom: 5px;
             }
             
             .most-read-content p {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
                 -webkit-line-clamp: 2;
             }
             
@@ -1197,6 +1187,11 @@
                 100% {
                     transform: translateX(calc(-200px * 8 - 30px * 8));
                 }
+            }
+            
+            .most-read-wrapper::before,
+            .most-read-wrapper::after {
+                display: none;
             }
         }
         
@@ -1315,7 +1310,6 @@
     <!-- Tanıtım Alanı -->
     <section class="intro-section">
         <div class="container">
-            <!-- Bartın Duysun başlığı kaldırıldı, sadece açıklama kaldı -->
             <p class="intro-text">Bartın ve çevresindeki en güncel, doğru ve tarafsız haberlerin adresi. Valilik, belediye, siyaset ve asayiş haberlerini ilk elden sizlere ulaştırıyoruz.</p>
         </div>
     </section>
@@ -1390,11 +1384,11 @@
             </div>
         </section>
 
-        <!-- YENİ EN ÇOK OKUNANLAR BÖLÜMÜ - TAMAMEN GÜNCELLENDİ -->
+        <!-- DÜZELTİLMİŞ EN ÇOK OKUNANLAR BÖLÜMÜ -->
         <section class="most-read-section">
             <h2 class="section-title">En Çok Okunan Haberler</h2>
             
-            <!-- Yeni sonsuz kayan kare kartlar -->
+            <!-- Düzeltilmiş sonsuz kayan kare kartlar -->
             <div class="most-read-wrapper">
                 <div class="most-read-track" id="mostReadTrack">
                     <!-- En çok okunan haberler JavaScript ile eklenecek -->
@@ -1439,7 +1433,6 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <!-- GÜNCELLENDİ: Footer logo - tıklanamaz -->
                     <div class="footer-logo-container">
                         <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Bartın Duysun Logo" class="footer-logo-img">
                     </div>
@@ -1492,7 +1485,7 @@
     </footer>
 
     <script>
-        // GÜNCELLENDİ: 10 haberlik slider verisi
+        // Haber verisi
         const haberData = {
             slider: [
                 {
@@ -1529,41 +1522,6 @@
                     category: "Belediye Haberleri",
                     image: "https://www.bartinduysun.com/images/belediye/arac-filosuna-buyuk-yatirim.webp",
                     detail: "Bartın Belediyesi, hizmet kapasitesini artırmak amacıyla araç filosunu önemli ölçüde güçlendirdi."
-                },
-                {
-                    id: 6,
-                    title: "Hırsızlık Zanlıları Yakalandı",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    detail: "Bartın'da bir işyerine yönelik hırsızlık yapan 3 zanlı polis tarafından yakalandı."
-                },
-                {
-                    id: 7,
-                    title: "Bartın'da Dolandırıcılık Çetesine Operasyon",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    detail: "Polis, dolandırıcılık yapan çeteye yönelik operasyon düzenledi. 7 şüpheli gözaltına alındı."
-                },
-                {
-                    id: 8,
-                    title: "Uyuşturucu Operasyonunda 5 Gözaltı",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    detail: "Narkotik ekiplerinin düzenlediği operasyonda 5 kişi uyuşturucu madde bulundurma suçundan gözaltına alındı."
-                },
-                {
-                    id: 9,
-                    title: "Trafik Denetimleri Artırıldı",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    detail: "Yaz dönemi nedeniyle Bartın'da trafik denetimleri artırıldı."
-                },
-                {
-                    id: 10,
-                    title: "Kaçak Elektrik Kullanımına Operasyon",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    detail: "Kaçak elektrik kullanan 15 işyerine operasyon düzenlendi. İşyeri sahipleri hakkında yasal işlem başlatıldı."
                 }
             ],
             
@@ -1812,7 +1770,7 @@
                     title: "Bartın'da Trafik Kazası: 2 Yaralı",
                     category: "Bartın Haberleri",
                     image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    detail: "Bartın merkezde meydana gelen trafik kazasında 2 kişi yaralandı. Kazaya karışan araçlar hasar gördü. Yaralılar hastaneye kaldırıldı."
+                    detail: "Bartın merkezde meydana gelen trafik kazasında 2 kişi yaralandı. Kazaya karışan araçlar hasar gördü. Yaraliar hastaneye kaldırıldı."
                 },
                 {
                     id: 7,
@@ -1869,8 +1827,8 @@
             const imageUrl = haber.image || 'https://via.placeholder.com/400x400?text=Bartın+Duysun';
             card.href = `haber-detay.html?id=${haber.id}`;
             
-            // Kısa açıklama oluştur (maksimum 150 karakter)
-            const shortDetail = haber.detail.length > 150 ? haber.detail.substring(0, 150) + '...' : haber.detail;
+            // Kısa açıklama oluştur (maksimum 120 karakter)
+            const shortDetail = haber.detail.length > 120 ? haber.detail.substring(0, 120) + '...' : haber.detail;
             
             card.innerHTML = `
                 <div class="most-read-image">
@@ -1886,331 +1844,95 @@
             return card;
         }
 
-        // Yeni en çok okunan slider başlatma - GÜNCELLENDİ
+        // DÜZELTİLMİŞ: En çok okunan slider başlatma
         function initMostReadSlider() {
             if (!mostReadTrack || !haberData.mostRead) return;
             
             // Önce mevcut içeriği temizle
             mostReadTrack.innerHTML = '';
             
-            // Kartları oluştur (sonsuz kaydırma için 2 set ekleyelim)
-            for (let i = 0; i < 2; i++) {
+            // Sonsuz kaydırma efekti için 2 set kart oluştur
+            const itemsPerSet = haberData.mostRead.length;
+            
+            // 2 set oluştur (sonsuz döngü için)
+            for (let set = 0; set < 2; set++) {
                 haberData.mostRead.forEach(haber => {
                     mostReadTrack.appendChild(createMostReadSquareCard(haber));
                 });
             }
             
-            // Sürükleme olaylarını kur
-            setupDragEvents();
+            // Animasyon süresini responsive olarak ayarla
+            updateAnimationSpeed();
             
-            // Responsive için animasyonu güncelle
-            updateMostReadAnimation();
-            
-            // Pencere boyutu değiştiğinde animasyonu güncelle
-            window.addEventListener('resize', updateMostReadAnimation);
+            // Pencere boyutu değiştiğinde animasyon hızını güncelle
+            window.addEventListener('resize', updateAnimationSpeed);
         }
 
-        // Sürükleme olaylarını kurma - GÜNCELLENDİ
-        function setupDragEvents() {
-            if (!mostReadTrack) return;
-            
-            let isDragging = false;
-            let startPos = 0;
-            let currentTranslate = 0;
-            let prevTranslate = 0;
-            let animationID;
-            let isPlaying = true;
-            
-            // Animasyonu durdur/başlat fonksiyonu
-            function toggleAnimation(play) {
-                if (play) {
-                    mostReadTrack.style.animationPlayState = 'running';
-                    isPlaying = true;
-                } else {
-                    mostReadTrack.style.animationPlayState = 'paused';
-                    isPlaying = false;
-                }
-            }
-            
-            // Başlangıç pozisyonu
-            mostReadTrack.addEventListener('mousedown', dragStart);
-            mostReadTrack.addEventListener('touchstart', dragStart);
-            
-            // Sürükleme
-            mostReadTrack.addEventListener('mousemove', drag);
-            mostReadTrack.addEventListener('touchmove', drag);
-            
-            // Bitiş
-            mostReadTrack.addEventListener('mouseup', dragEnd);
-            mostReadTrack.addEventListener('mouseleave', dragEnd);
-            mostReadTrack.addEventListener('touchend', dragEnd);
-            
-            // Animasyon
-            mostReadTrack.addEventListener('animationiteration', () => {
-                // Animasyon tekrarında başa döndüğünde sorunsuz geçiş için
-                if (!isDragging && isPlaying) {
-                    // Animasyon resetlenince track'i resetle
-                    setTimeout(() => {
-                        mostReadTrack.style.transition = 'none';
-                        mostReadTrack.style.transform = 'translateX(0)';
-                        setTimeout(() => {
-                            mostReadTrack.style.transition = '';
-                        }, 50);
-                    }, 10);
-                }
-            });
-            
-            // Tıklama olayını engellemek için
-            mostReadTrack.addEventListener('click', (e) => {
-                if (isDragging) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-            }, true);
-            
-            // Kartlara tıklama olayını yönet
-            mostReadTrack.querySelectorAll('.most-read-item').forEach(item => {
-                item.addEventListener('click', (e) => {
-                    if (isDragging) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-                });
-            });
-            
-            function dragStart(event) {
-                if (event.type === 'touchstart') {
-                    startPos = event.touches[0].clientX;
-                } else {
-                    startPos = event.clientX;
-                    event.preventDefault();
-                }
-                
-                isDragging = true;
-                toggleAnimation(false);
-                
-                animationID = requestAnimationFrame(animation);
-                
-                mostReadTrack.style.cursor = 'grabbing';
-                mostReadTrack.style.transition = 'none';
-            }
-            
-            function drag(event) {
-                if (!isDragging) return;
-                
-                const currentPosition = event.type === 'touchmove' ? 
-                    event.touches[0].clientX : event.clientX;
-                
-                const diff = currentPosition - startPos;
-                currentTranslate = prevTranslate + diff;
-                
-                // Sınır kontrolü - çok fazla kaydırmayı önle
-                const maxDrag = 500;
-                if (Math.abs(currentTranslate) > maxDrag) {
-                    currentTranslate = currentTranslate > 0 ? maxDrag : -maxDrag;
-                }
-            }
-            
-            function dragEnd() {
-                if (!isDragging) return;
-                
-                isDragging = false;
-                cancelAnimationFrame(animationID);
-                
-                // Eğer yeterince sürüklendiyse animasyonu sıfırla
-                const threshold = 100;
-                if (Math.abs(currentTranslate) > threshold) {
-                    // Animasyon pozisyonunu sıfırla
-                    mostReadTrack.style.transition = 'transform 0.5s ease-out';
-                    mostReadTrack.style.transform = 'translateX(0)';
-                    
-                    // Sürüklemeyi resetle
-                    setTimeout(() => {
-                        prevTranslate = 0;
-                        currentTranslate = 0;
-                        toggleAnimation(true);
-                    }, 500);
-                } else {
-                    // Eğer yeterince sürüklenmediyse eski haline dön
-                    mostReadTrack.style.transition = 'transform 0.3s ease-out';
-                    mostReadTrack.style.transform = `translateX(${prevTranslate}px)`;
-                    
-                    // Animasyonu yeniden başlat
-                    setTimeout(() => {
-                        toggleAnimation(true);
-                    }, 300);
-                }
-                
-                mostReadTrack.style.cursor = 'grab';
-                
-                // Kısa bir süre sonra sürükleme bayrağını sıfırla (tıklama için)
-                setTimeout(() => {
-                    isDragging = false;
-                }, 100);
-            }
-            
-            function animation() {
-                if (isDragging) {
-                    mostReadTrack.style.transform = `translateX(${currentTranslate}px)`;
-                    requestAnimationFrame(animation);
-                }
-            }
-            
-            // İlk yüklemede animasyonu başlat
-            toggleAnimation(true);
-        }
-
-        // Responsive animasyon güncelleme
-        function updateMostReadAnimation() {
+        // Animasyon hızını güncelleme fonksiyonu
+        function updateAnimationSpeed() {
             if (!mostReadTrack) return;
             
             const items = mostReadTrack.querySelectorAll('.most-read-item');
             if (items.length === 0) return;
             
-            const itemWidth = items[0].offsetWidth + 30; // 30px gap
-            const itemsCount = haberData.mostRead.length;
-            const totalWidth = itemWidth * itemsCount;
+            // Ekran genişliğine göre animasyon süresini ayarla
+            const screenWidth = window.innerWidth;
+            let animationDuration = 60; // Varsayılan süre
+            
+            if (screenWidth < 768) {
+                animationDuration = 40; // Mobilde daha hızlı
+            } else if (screenWidth < 992) {
+                animationDuration = 50; // Tablette orta hız
+            }
             
             // CSS animasyonunu güncelle
-            const styleSheet = document.styleSheets[0];
-            const rule = findKeyframeRule('scrollMostRead');
+            updateKeyframeAnimation(animationDuration);
             
-            if (rule) {
-                rule.deleteRule('100%');
-                rule.appendRule(`100% { transform: translateX(calc(-${itemWidth}px * ${itemsCount} - 30px * ${itemsCount})); }`);
-            }
+            // Mevcut animasyonu durdur ve yeni hızla yeniden başlat
+            mostReadTrack.style.animation = 'none';
+            setTimeout(() => {
+                mostReadTrack.style.animation = `scrollMostRead ${animationDuration}s linear infinite`;
+            }, 10);
         }
 
-        // CSS keyframe kuralını bulma
-        function findKeyframeRule(ruleName) {
-            const styleSheets = Array.from(document.styleSheets);
-            for (const sheet of styleSheets) {
+        // CSS keyframe animasyonunu güncelleme
+        function updateKeyframeAnimation(duration) {
+            // Mevcut keyframe kuralını bul
+            const styleSheets = document.styleSheets;
+            let targetRule = null;
+            
+            for (let i = 0; i < styleSheets.length; i++) {
                 try {
-                    const rules = Array.from(sheet.cssRules || sheet.rules);
-                    for (const rule of rules) {
-                        if (rule.type === CSSRule.KEYFRAMES_RULE && rule.name === ruleName) {
-                            return rule;
+                    const rules = styleSheets[i].cssRules || styleSheets[i].rules;
+                    for (let j = 0; j < rules.length; j++) {
+                        if (rules[j].type === CSSRule.KEYFRAMES_RULE && rules[j].name === 'scrollMostRead') {
+                            targetRule = rules[j];
+                            break;
                         }
                     }
                 } catch (e) {
                     // CORS hatası olabilir, atla
                 }
+                if (targetRule) break;
             }
-            return null;
-        }
-
-        // Sayfa yüklendiğinde çalışacak fonksiyonlar
-        document.addEventListener('DOMContentLoaded', function() {
-            initSlider();
-            initNewsCategories();
-            initMostReadSlider();
-            setupEventListeners();
             
-            // Masaüstü için nav-link ikonlarını kaldır
-            if (window.innerWidth >= 769) {
-                document.querySelectorAll('.nav-link i').forEach(icon => {
-                    icon.style.display = 'none';
-                });
+            if (targetRule) {
+                // Yeni keyframe oluştur
+                const newKeyframes = `
+                @keyframes scrollMostRead {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(calc(-320px * ${haberData.mostRead.length} - 30px * ${haberData.mostRead.length}));
+                    }
+                }`;
+                
+                // Eski kuralı kaldır
+                const styleElement = document.createElement('style');
+                styleElement.innerHTML = newKeyframes;
+                document.head.appendChild(styleElement);
             }
-        });
-
-        // Ana slider sürükleme olaylarını kur
-        function setupMainSliderDragEvents() {
-            if (!sliderContainer) return;
-            
-            let isDraggingMain = false;
-            let startPosMain = 0;
-            let dragThreshold = 50;
-            
-            sliderContainer.addEventListener('mousedown', (e) => {
-                if (e.target.closest('.slider-btn')) return; // Butonlara tıklamayı engelleme
-                
-                isDraggingMain = true;
-                startPosMain = e.clientX;
-                clearInterval(slideInterval);
-                sliderContainer.style.cursor = 'grabbing';
-            });
-            
-            sliderContainer.addEventListener('mousemove', (e) => {
-                if (!isDraggingMain) return;
-                
-                const diff = e.clientX - startPosMain;
-                
-                // Eğer yeterince sürüklendiyse slayt değiştir
-                if (Math.abs(diff) > dragThreshold) {
-                    if (diff > 0) {
-                        prevSlide(); // Sağa sürüklendi - önceki slayt
-                    } else {
-                        nextSlide(); // Sola sürüklendi - sonraki slayt
-                    }
-                    isDraggingMain = false;
-                    sliderContainer.style.cursor = 'grab';
-                    startSlideInterval();
-                }
-            });
-            
-            sliderContainer.addEventListener('mouseup', () => {
-                if (isDraggingMain) {
-                    isDraggingMain = false;
-                    sliderContainer.style.cursor = 'grab';
-                    startSlideInterval();
-                }
-            });
-            
-            sliderContainer.addEventListener('mouseleave', () => {
-                if (isDraggingMain) {
-                    isDraggingMain = false;
-                    sliderContainer.style.cursor = 'grab';
-                    startSlideInterval();
-                }
-            });
-            
-            // Touch events for mobile
-            sliderContainer.addEventListener('touchstart', (e) => {
-                if (e.target.closest('.slider-btn')) return;
-                
-                isDraggingMain = true;
-                startPosMain = e.touches[0].clientX;
-                clearInterval(slideInterval);
-            });
-            
-            sliderContainer.addEventListener('touchmove', (e) => {
-                if (!isDraggingMain) return;
-                
-                const diff = e.touches[0].clientX - startPosMain;
-                
-                if (Math.abs(diff) > dragThreshold) {
-                    if (diff > 0) {
-                        prevSlide();
-                    } else {
-                        nextSlide();
-                    }
-                    isDraggingMain = false;
-                    startSlideInterval();
-                }
-            });
-            
-            sliderContainer.addEventListener('touchend', () => {
-                if (isDraggingMain) {
-                    isDraggingMain = false;
-                    startSlideInterval();
-                }
-            });
-        }
-
-        // Kategori renklerini uygula
-        function applyCategoryColors() {
-            const bartinTitle = document.querySelector('#bartin .section-title');
-            if (bartinTitle) bartinTitle.style.borderBottomColor = 'var(--bartin-color)';
-            
-            const valilikTitle = document.querySelector('#valilik .section-title');
-            if (valilikTitle) valilikTitle.style.borderBottomColor = 'var(--valilik-color)';
-            
-            const belediyeTitle = document.querySelector('#belediye .section-title');
-            if (belediyeTitle) belediyeTitle.style.borderBottomColor = 'var(--belediye-color)';
-            
-            const siyasetTitle = document.querySelector('#siyaset .section-title');
-            if (siyasetTitle) siyasetTitle.style.borderBottomColor = 'var(--siyaset-color)';
         }
 
         // Slider'ı başlat
@@ -2247,9 +1969,6 @@
                     });
                 }
             }
-
-            // Slider sürükleme olaylarını kur
-            setupMainSliderDragEvents();
             
             // Slider otomatik geçişini başlat
             startSlideInterval();
@@ -2439,8 +2158,26 @@
                         icon.style.display = 'inline-block';
                     });
                 }
+                
+                // En çok okunanlar animasyon hızını güncelle
+                updateAnimationSpeed();
             });
         }
+
+        // Sayfa yüklendiğinde çalışacak fonksiyonlar
+        document.addEventListener('DOMContentLoaded', function() {
+            initSlider();
+            initNewsCategories();
+            initMostReadSlider();
+            setupEventListeners();
+            
+            // Masaüstü için nav-link ikonlarını kaldır
+            if (window.innerWidth >= 769) {
+                document.querySelectorAll('.nav-link i').forEach(icon => {
+                    icon.style.display = 'none';
+                });
+            }
+        });
     </script>
 </body>
 </html>
