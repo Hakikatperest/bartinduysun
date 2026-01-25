@@ -102,6 +102,7 @@
             padding: 10px 0;
         }
         
+        /* Sosyal medya ikonları renkli */
         .social-icons {
             display: flex;
             justify-content: flex-end;
@@ -118,6 +119,7 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.9);
         }
         
         .social-icons a.facebook {
@@ -145,6 +147,7 @@
             opacity: 0.9;
         }
         
+        /* Logo sağa kaydırma için padding-left eklendi */
         .main-header {
             display: flex;
             justify-content: space-between;
@@ -173,6 +176,7 @@
             transform: scale(1.2);
         }
         
+        /* Hamburger Menü */
         .hamburger-menu {
             display: none;
             flex-direction: column;
@@ -215,6 +219,10 @@
             gap: 5px;
         }
         
+        .nav-social-container {
+            display: none;
+        }
+        
         .nav-item {
             position: relative;
         }
@@ -245,6 +253,7 @@
             transform: rotate(180deg);
         }
         
+        /* Modern dropdown menü */
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -296,6 +305,7 @@
             color: var(--topbar-color);
         }
         
+        /* Mobil menü overlay */
         .menu-overlay {
             display: none;
             position: fixed;
@@ -352,6 +362,7 @@
             object-fit: cover;
         }
         
+        /* Slider overlay */
         .slider-overlay {
             position: absolute;
             bottom: 0;
@@ -469,6 +480,10 @@
             border-bottom: 1px solid var(--border-color);
         }
         
+        .intro-title {
+            display: none;
+        }
+        
         .intro-text {
             font-size: 1.2rem;
             color: var(--gray-color);
@@ -566,174 +581,235 @@
             color: var(--gray-color);
         }
         
-        /* EN ÇOK OKUNANLAR - YENİ TASARIM */
-        .most-read-section {
+        /* YENİ TASARIM: EN ÇOK OKUNAN HABERLER GALERİSİ */
+        .most-read-gallery {
             margin: 60px 0;
             position: relative;
         }
         
-        .most-read-wrapper {
+        .gallery-container {
             position: relative;
-            width: 100%;
             overflow: hidden;
-            padding: 30px 0;
-        }
-        
-        .most-read-track {
-            display: flex;
-            gap: 30px;
-            transition: transform 0.5s ease;
-            cursor: grab;
-            width: max-content;
-        }
-        
-        .most-read-track.grabbing {
-            cursor: grabbing;
-        }
-        
-        /* Kare boyutlu kartlar - masaüstü */
-        .most-read-item {
-            flex: 0 0 320px;
-            height: 320px;
-            background-color: white;
             border-radius: 16px;
+            padding: 30px 70px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Galeri içeriği - yatay kaydırılabilir alan */
+        .gallery-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            gap: 20px;
+            padding: 5px 0;
+        }
+        
+        /* Galeri kartları */
+        .gallery-item {
+            flex: 0 0 calc((100% - 40px) / 3); /* 3'lü görünüm, gap dahil */
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: var(--transition);
             cursor: pointer;
             position: relative;
             display: block;
+            min-height: 320px;
         }
         
-        .most-read-item:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
-        /* Resim alanı */
-        .most-read-image {
+        .gallery-image {
             width: 100%;
-            height: 100%;
+            height: 200px;
             overflow: hidden;
-            position: relative;
         }
         
-        .most-read-image img {
+        .gallery-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
+            transition: transform 0.5s ease;
         }
         
-        .most-read-item:hover .most-read-image img {
-            transform: scale(1.1);
+        .gallery-item:hover .gallery-image img {
+            transform: scale(1.08);
         }
         
-        /* Gradient overlay */
-        .most-read-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.1) 100%);
+        .gallery-content {
+            padding: 20px;
+            background: white;
+            height: calc(100% - 200px);
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 25px;
-            transition: var(--transition);
+            align-items: center;
         }
         
-        .most-read-item:hover .most-read-overlay {
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.25) 100%);
-        }
-        
-        /* İçerik alanı */
-        .most-read-content {
-            color: white;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .most-read-content h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            line-height: 1.3;
-            margin-bottom: 12px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-        }
-        
-        .most-read-content p {
-            font-size: 1rem;
-            line-height: 1.5;
-            opacity: 0.9;
+        .gallery-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--dark-color);
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+            text-overflow: ellipsis;
         }
         
-        /* Masaüstü butonları */
-        .desktop-most-read-buttons {
+        /* Modern gezinme butonları */
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+            font-size: 1.3rem;
+            color: var(--topbar-color);
+            z-index: 10;
+            transition: var(--transition);
         }
         
-        .desktop-most-read-buttons button {
+        .gallery-nav:hover:not(:disabled) {
             background: var(--topbar-color);
             color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            transform: translateY(-50%) scale(1.1);
         }
         
-        .desktop-most-read-buttons button:disabled {
-            background: #6c757d;
+        .gallery-nav:disabled {
+            opacity: 0.4;
             cursor: not-allowed;
-            opacity: 0.6;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         
-        .desktop-most-read-buttons button:not(:disabled):hover {
-            background: #017389;
-            transform: translateY(-2px);
+        .gallery-nav.prev {
+            left: 10px;
         }
         
-        /* Mobil butonları */
-        .mobile-most-read-buttons {
-            display: none;
+        .gallery-nav.next {
+            right: 10px;
+        }
+        
+        /* Galeri indicator (gösterge) */
+        .gallery-indicator {
+            display: flex;
             justify-content: center;
-            gap: 15px;
+            align-items: center;
+            gap: 10px;
             margin-top: 25px;
         }
         
-        .mobile-most-read-buttons button {
-            background: var(--topbar-color);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
+        .indicator-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(1, 136, 159, 0.2);
+            transition: var(--transition);
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            min-width: 120px;
         }
         
-        .mobile-most-read-buttons button:disabled {
-            background: #6c757d;
-            cursor: not-allowed;
-            opacity: 0.6;
+        .indicator-dot.active {
+            background: var(--topbar-color);
+            transform: scale(1.2);
         }
         
-        .mobile-most-read-buttons button:not(:disabled):hover {
-            background: #017389;
-            transform: translateY(-2px);
+        .indicator-dot:hover:not(.active) {
+            background: rgba(1, 136, 159, 0.5);
+        }
+        
+        /* Responsive tasarım */
+        @media (max-width: 1200px) {
+            .gallery-item {
+                flex: 0 0 calc((100% - 20px) / 2.5); /* 2.5'lu görünüm */
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .gallery-container {
+                padding: 25px 60px;
+            }
+            
+            .gallery-item {
+                flex: 0 0 calc((100% - 20px) / 2); /* 2'li görünüm */
+            }
+            
+            .gallery-nav {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-container {
+                padding: 20px 55px;
+            }
+            
+            .gallery-item {
+                flex: 0 0 calc((100% - 20px) / 1.5); /* 1.5'lu görünüm */
+                min-height: 300px;
+            }
+            
+            .gallery-image {
+                height: 180px;
+            }
+            
+            .gallery-content {
+                padding: 16px;
+                height: calc(100% - 180px);
+            }
+            
+            .gallery-title {
+                font-size: 1rem;
+            }
+            
+            .gallery-nav {
+                width: 42px;
+                height: 42px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .gallery-container {
+                padding: 15px 50px;
+            }
+            
+            .gallery-item {
+                flex: 0 0 calc(100% - 10px); /* Tekli görünüm */
+                min-height: 280px;
+            }
+            
+            .gallery-image {
+                height: 160px;
+            }
+            
+            .gallery-content {
+                height: calc(100% - 160px);
+            }
+            
+            .gallery-nav {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .gallery-nav.prev {
+                left: 5px;
+            }
+            
+            .gallery-nav.next {
+                right: 5px;
+            }
         }
         
         /* Kategoriler Bölümü */
@@ -799,6 +875,8 @@
         .footer-logo-img {
             max-width: 180px;
             height: auto;
+            cursor: default !important;
+            pointer-events: none;
         }
         
         .footer-about {
@@ -897,108 +975,7 @@
             font-size: 0.85rem;
         }
         
-        /* MOBİL ÖZEL: EN ÇOK OKUNANLAR DÜZGÜN TASARIM */
-        @media (max-width: 768px) {
-            .most-read-wrapper {
-                width: 100%;
-                padding: 20px 0;
-                position: relative;
-                overflow: hidden;
-            }
-            
-            .most-read-track {
-                gap: 10px;
-                padding: 0 15px;
-                width: 100%;
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                transition: transform 0.4s ease;
-            }
-            
-            /* Mobil için kart boyutları - DÜZGÜN */
-            .most-read-item {
-                flex: 0 0 calc(85% - 10px);
-                height: 280px;
-                border-radius: 12px;
-                transition: all 0.3s ease;
-                position: relative;
-                margin: 0;
-            }
-            
-            /* Aktif kart (ortada) - TAM GÖRÜNÜM */
-            .most-read-item.active-center {
-                flex: 0 0 85%;
-                transform: scale(1);
-                z-index: 3;
-                opacity: 1;
-            }
-            
-            /* Yan kartlar (yarı görünüm) - DOĞRU KONUMDA */
-            .most-read-item.active-side {
-                flex: 0 0 calc(50% - 20px);
-                transform: scale(0.85);
-                opacity: 0.7;
-                z-index: 2;
-                filter: brightness(0.8);
-            }
-            
-            /* Görünmeyen kartlar */
-            .most-read-item.hidden {
-                flex: 0 0 0;
-                opacity: 0;
-                transform: scale(0.8);
-                pointer-events: none;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-            }
-            
-            /* Masaüstü butonları gizle */
-            .desktop-most-read-buttons {
-                display: none;
-            }
-            
-            /* Mobil butonları göster */
-            .mobile-most-read-buttons {
-                display: flex;
-            }
-            
-            .most-read-content h3 {
-                font-size: 1.2rem;
-            }
-            
-            .most-read-content p {
-                font-size: 0.95rem;
-                -webkit-line-clamp: 2;
-            }
-        }
-        
-        /* Responsive Tasarım */
-        @media (max-width: 992px) {
-            .most-read-item {
-                flex: 0 0 260px;
-                height: 260px;
-            }
-            
-            .most-read-overlay {
-                padding: 20px;
-            }
-            
-            .most-read-content h3 {
-                font-size: 1.2rem;
-            }
-            
-            .most-read-content p {
-                font-size: 0.95rem;
-                -webkit-line-clamp: 2;
-            }
-            
-            .logo-container {
-                margin-left: 0;
-            }
-        }
-        
+        /* Responsive boyut güncellemeleri */
         @media (max-width: 768px) {
             .main-header {
                 padding: 8px 0;
@@ -1031,6 +1008,10 @@
             .nav-links-container {
                 flex-direction: column;
                 gap: 0;
+            }
+            
+            .nav-social-container {
+                display: none;
             }
             
             .nav-menu.active {
@@ -1103,13 +1084,6 @@
             }
         }
         
-        @media (min-width: 769px) {
-            /* Masaüstü için mobil butonları gizle */
-            .mobile-most-read-buttons {
-                display: none !important;
-            }
-        }
-        
         @media (max-width: 576px) {
             .logo-container {
                 height: 45px;
@@ -1155,24 +1129,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .most-read-item {
-                height: 260px;
-            }
-            
-            .most-read-overlay {
-                padding: 15px;
-            }
-            
-            .most-read-content h3 {
-                font-size: 1rem;
-                margin-bottom: 6px;
-            }
-            
-            .most-read-content p {
-                font-size: 0.85rem;
-                -webkit-line-clamp: 2;
-            }
-            
             .footer-logo-img {
                 max-width: 150px;
             }
@@ -1183,22 +1139,53 @@
                 padding-top: 70px;
             }
             
-            /* Mobil için daha küçük kartlar */
-            .most-read-item {
-                height: 240px;
+            .gallery-container {
+                padding: 10px 45px;
             }
             
-            .most-read-item.active-center {
-                flex: 0 0 90%;
+            .gallery-item {
+                min-height: 260px;
             }
             
-            .most-read-item.active-side {
-                flex: 0 0 calc(55% - 20px);
+            .gallery-image {
+                height: 150px;
+            }
+            
+            .gallery-content {
+                height: calc(100% - 150px);
+                padding: 12px;
+            }
+            
+            .gallery-nav {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .gallery-container {
+                padding: 10px 40px;
+            }
+            
+            .gallery-nav {
+                width: 34px;
+                height: 34px;
+                font-size: 0.9rem;
+            }
+            
+            .gallery-nav.prev {
+                left: 3px;
+            }
+            
+            .gallery-nav.next {
+                right: 3px;
             }
         }
         
         /* Responsive Tasarım - Masaüstü için özel ayarlar */
         @media (min-width: 769px) {
+            /* Masaüstü üst menü düzenlemeleri */
             .nav-link {
                 font-size: 0.95rem;
                 padding: 14px 12px;
@@ -1217,6 +1204,7 @@
                 display: inline-block;
             }
             
+            /* Slider düzenlemeleri */
             .slider-container {
                 height: 500px;
             }
@@ -1384,30 +1372,30 @@
             </div>
         </section>
 
-        <!-- YENİ MOBİL EN ÇOK OKUNANLAR BÖLÜMÜ -->
-        <section class="most-read-section">
-            <h2 class="section-title">
-                <span class="blinking-dot" style="background-color: var(--topbar-color);"></span>
-                En Çok Okunan Haberler (Top 10)
-            </h2>
+        <!-- YENİ TASARIM: EN ÇOK OKUNAN HABERLER GALERİSİ -->
+        <section class="most-read-gallery">
+            <h2 class="section-title">En Çok Okunan Haberler</h2>
             
-            <!-- Kayan kare kartlar -->
-            <div class="most-read-wrapper">
-                <div class="most-read-track" id="mostReadTrack">
-                    <!-- En çok okunan haberler JavaScript ile eklenecek -->
+            <div class="gallery-container">
+                <!-- Geri butonu -->
+                <button class="gallery-nav prev" id="prevBtn" aria-label="Önceki haberler" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <!-- İleri butonu -->
+                <button class="gallery-nav next" id="nextBtn" aria-label="Sonraki haberler">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Haber kartları -->
+                <div class="gallery-track" id="galleryTrack">
+                    <!-- Haber kartları JavaScript ile eklenecek -->
                 </div>
-            </div>
-            
-            <!-- Masaüstü butonları -->
-            <div class="desktop-most-read-buttons">
-                <button id="prevMostRead">❮ Önceki (2 Kart)</button>
-                <button id="nextMostRead">Sonraki (2 Kart) ❯</button>
-            </div>
-            
-            <!-- Mobil butonları -->
-            <div class="mobile-most-read-buttons">
-                <button id="mobilePrevMostRead" disabled>❮ Geri</button>
-                <button id="mobileNextMostRead">İleri ❯</button>
+                
+                <!-- Gösterge noktaları -->
+                <div class="gallery-indicator" id="galleryIndicator">
+                    <!-- Gösterge noktaları JavaScript ile eklenecek -->
+                </div>
             </div>
         </section>
 
@@ -1500,7 +1488,7 @@
     </footer>
 
     <script>
-        // TÜM HABER VERİSİ
+        // Haber verisi
         const haberData = {
             slider: [
                 {
@@ -1516,6 +1504,27 @@
                     category: "Valilik Haberleri",
                     image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi.webp",
                     detail: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı."
+                },
+                {
+                    id: 3,
+                    title: "Bartın'da Trafik Kazası: 2 Yaralı",
+                    category: "Bartın Haberleri",
+                    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    detail: "Bartın merkezde meydana gelen trafik kazasında 2 kişi yaralandı. Kazaya karışan araçlar hasar gördü. Yaralılar hastaneye kaldırıldı."
+                },
+                {
+                    id: 4,
+                    title: "Ak Parti Bartın'da Genişletilmiş İl Danışma Meclisi ve Vefa Buluşması Düzenlendi",
+                    category: "Siyaset Haberleri",
+                    image: "https://www.bartinduysun.com/images/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.webp",
+                    detail: "Ak Parti Bartın İl Başkanlığı tarafından düzenlenen Genişletilmiş İl Danışma Meclisi toplantısı ve geleneksel Vefa Buluşması, partililerin ve vatandaşların yoğun katılımıyla gerçekleşti."
+                },
+                {
+                    id: 5,
+                    title: "Bartın Belediyesi'nden araç filosuna büyük yatırım",
+                    category: "Belediye Haberleri",
+                    image: "https://www.bartinduysun.com/images/belediye/arac-filosuna-buyuk-yatirim.webp",
+                    detail: "Bartın Belediyesi, hizmet kapasitesini artırmak amacıyla araç filosunu önemli ölçüde güçlendirdi."
                 }
             ],
             
@@ -1527,6 +1536,46 @@
                     image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
                     excerpt: "Bartın'da bir işyerine yönelik hırsızlık yapan 3 zanlı polis tarafından yakalandı.",
                     detail: "Bartın'da bir işyerine yönelik hırsızlık yapan 3 zanlı polis tarafından yakalandı. Zanlıların, gece vakti işyerine girerek nakit para ve değerli eşyaları çaldığı belirlendi. Polis, yaptığı teknik takip sonucu zanlıları 24 saat içinde yakaladı."
+                },
+                {
+                    id: 15,
+                    title: "Uyuşturucu Operasyonunda 5 Gözaltı",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    excerpt: "Narkotik ekiplerinin düzenlediği operasyonda 5 kişi uyuşturucu madde bulundurma suçundan gözaltına alındı.",
+                    detail: "Narkotik ekiplerinin düzenlediği operasyonda 5 kişi uyuşturucu madde bulundurma suçundan gözaltına alındı. Operasyonda çeşitli miktarlarda uyuşturucu madde ve para ele geçirildi. Zanlılar adliyeye sevk edildi."
+                },
+                {
+                    id: 25,
+                    title: "Bartın'da Dolandırıcılık Çetesine Operasyon",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    excerpt: "Polis, dolandırıcılık yapan çeteye yönelik operasyon düzenledi.",
+                    detail: "Polis, dolandırıcılık yapan çeteye yönelik operasyon düzenledi. 7 şüpheli gözaltına alındı, milyonlarca lira dolandırılan para ele geçirildi."
+                },
+                {
+                    id: 26,
+                    title: "Trafik Denetimleri Artırıldı",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    excerpt: "Yaz dönemi nedeniyle Bartın'da trafik denetimleri artırıldı.",
+                    detail: "Yaz dönemi nedeniyle Bartın'da trafik denetimleri artırıldı. Emniyet ekipleri özellikle hız ve emniyet kemeri kontrollerine ağırlık verdi."
+                },
+                {
+                    id: 27,
+                    title: "Sahil Güvenlik Ekipleri Tatilcileri Uyardı",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    excerpt: "Sahil Güvenlik ekipleri, denize giren tatilcileri uyardı.",
+                    detail: "Sahil Güvenlik ekipleri, denize giren tatilcileri uyardı. Can yeleği ve can simidi kullanımının önemine dikkat çekildi."
+                },
+                {
+                    id: 28,
+                    title: "Kaçak Elektrik Kullanımına Operasyon",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    excerpt: "Kaçak elektrik kullanan 15 işyerine operasyon düzenlendi.",
+                    detail: "Kaçak elektrik kullanan 15 işyerine operasyon düzenlendi. İşyeri sahipleri hakkında yasal işlem başlatıldı."
                 }
             ],
             
@@ -1538,6 +1587,46 @@
                     image: "https://www.bartinduysun.com/images/valilik/kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.webp",
                     excerpt: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı.",
                     detail: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı. Toplantıda, kadına yönelik şiddetle mücadele kapsamında yapılan çalışmalar değerlendirildi ve yeni stratejiler belirlendi."
+                },
+                {
+                    id: 6,
+                    title: "Vali Arslan Başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı",
+                    category: "Valilik Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi.webp",
+                    excerpt: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı.",
+                    detail: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı. Toplantıda, yılbaşı döneminde alınacak güvenlik tedbirleri ve asayiş önlemleri görüşüldü."
+                },
+                {
+                    id: 7,
+                    title: "Vali Arslan Vatandaşlarımızla Buluştu",
+                    category: "Valilik Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    excerpt: "Vali Arslan, vatandaşlarımızla bir araya gelerek sorunlarını dinledi ve çözüm yolları aradı.",
+                    detail: "Vali Arslan, vatandaşlarımızla bir araya gelerek sorunlarını dinledi ve çözüm yolları aradı. Ziyarette vatandaşların günlük yaşamda karşılaştığı sorunlar ele alındı ve çözüm için gerekli adımlar belirlendi."
+                },
+                {
+                    id: 8,
+                    title: "Vali Arslan, Öğrencilerimizin Karne Heyecanını Paylaştı",
+                    category: "Valilik Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-ogrencilerin-karne-heyecanini-paylasti.webp",
+                    excerpt: "Vali Arslan, yarıyıl tatili öncesi öğrencilerin karne heyecanını paylaşmak için okulları ziyaret etti.",
+                    detail: "Vali Arslan, yarıyıl tatili öncesi öğrencilerin karne heyecanını paylaşmak için okulları ziyaret etti. Ziyaretlerde öğrencilerle sohbet eden Vali Arslan, başarılı öğrencileri tebrik etti ve tatillerini iyi değerlendirmelerini tavsiye etti."
+                },
+                {
+                    id: 16,
+                    title: "Arslan Başkanlığında İl İdare Şube Başkanları Toplantısı Yapıldı",
+                    category: "Valilik Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-il-idare-subebaskanlari-toplantisi.webp",
+                    excerpt: "Vali Arslan başkanlığında İl İdare Şube Başkanları Toplantısı gerçekleştirildi.",
+                    detail: "Vali Arslan başkanlığında İl İdare Şube Başkanları Toplantısı gerçekleştirildi. Toplantıda il idaresinin çalışmaları değerlendirildi ve önümüzdeki dönemde yapılacak faaliyetler planlandı."
+                },
+                {
+                    id: 17,
+                    title: "Vali Arslan Başkanlığında 2026 Yılının 1. İl Koordinasyon Kurulu Toplantısı Yapıldı",
+                    category: "Valilik Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-vatandaslarla-bulustu.webp",
+                    excerpt: "Vali Arslan başkanlığında 2026 yılının ilk İl Koordinasyon Kurulu Toplantısı gerçekleştirildi.",
+                    detail: "Vali Arslan başkanlığında 2026 yılının ilk İl Koordinasyon Kurulu Toplantısı gerçekleştirildi. Toplantıda, 2026 yılına yönelik hedefler ve stratejiler belirlendi, ilin kalkınma projeleri ele alındı."
                 }
             ],
             
@@ -1549,6 +1638,46 @@
                     image: "https://www.bartinduysun.com/images/belediye/bir-projede-gurgenpinari-mahallesine-kazandiriliyor.webp",
                     excerpt: "Bir projede Gürpınarı Mahallesi'ne kazandırılıyor.",
                     detail: "Bartın Belediyesi, kent genelinde yaşam kalitesini artırmaya yönelik projelerine hız kesmeden devam ediyor. Bu kapsamda Gürgenpınarı Mahallesi'nde hayata geçirilecek olan Gürgenpınarı Park Alanları Projesi'nin yapım çalışmalarına başlandı."
+                },
+                {
+                    id: 10,
+                    title: "Türk Sanat Müziği Konserine Davet",
+                    category: "Belediye Haberleri",
+                    image: "https://www.bartinduysun.com/images/belediye/turk-sanat-muzigi-konserine-davet.webp",
+                    excerpt: "Türk Sanat Müziği Konserine vatandaşlar davet edildi",
+                    detail: "Bartın Belediyesi tarafından kültür ve sanat etkinlikleri kapsamında düzenlenen Türk Sanat Müziği Konseri, sanatseverlerle buluşmaya hazırlanıyor."
+                },
+                {
+                    id: 11,
+                    title: "Ekipler don riskine karşı önlem aldı",
+                    category: "Belediye Haberleri",
+                    image: "https://www.bartinduysun.com/images/belediye/ekip-don-riski-karsi-724-gorev-basinda.webp",
+                    excerpt: "Bartın Belediyesi, don riskine karşı 7/24 nöbette",
+                    detail: "Bartın Belediyesi karla mücadele ekipleri, hava sıcaklıklarının eksi derecelere düşmesi ve don riskinin artması nedeniyle şehir genelinde tuzlama çalışmalarını aralıksız sürdürüyor."
+                },
+                {
+                    id: 18,
+                    title: "Bartın Belediyesi'nden araç filosuna büyük yatırım",
+                    category: "Belediye Haberleri",
+                    image: "https://www.bartinduysun.com/images/belediye/arac-filosuna-buyuk-yatirim.webp",
+                    excerpt: "Araç filosuna yapılan yatırımın detayları paylaşıldı",
+                    detail: "Bartın Belediyesi, hizmet kapasitesini artırmak amacıyla araç filosunu önemli ölçüde güçlendirdi."
+                },
+                {
+                    id: 19,
+                    title: "Belediye Belediyesinden yeni hizmet",
+                    category: "Belediye Haberleri",
+                    image: "https://www.bartinduysun.com/images/belediye/yeni-bir-egitim-yuvasi-daha-hizmete-giriyor.webp",
+                    excerpt: "Yeni bir eğitim yuvası daha hizmete giriyor.",
+                    detail: "Bartın Belediyesi, sosyal belediyecilik anlayışı doğrultusunda çocukların erken yaşta nitelikli eğitimle buluşmasını sağlamak amacıyla önemli bir projeyi daha hayata geçiriyor."
+                },
+                {
+                    id: 20,
+                    title: "Bartın Belediyesi, çocuklar için hazırlandı.",
+                    category: "Belediye Haberleri",
+                    image: "https://www.bartinduysun.com/images/belediye/karne-senligi-etkinlikleri-basladi.webp",
+                    excerpt: "Bartın Belediyesi, karne şenliği etkinlikleri başladı.",
+                    detail: "Bartın Belediyesi tarafından çocukların karne sevincini doyasıya yaşamaları amacıyla düzenlenen Karne Şenliği etkinlikleri başladı."
                 }
             ],
             
@@ -1560,6 +1689,46 @@
                     image: "https://www.bartinduysun.com/images/siyaset/bartina-1-4-milyon-dolarlik-yoresel-urunler-pazari-kazandiriliyor.webp",
                     excerpt: "Yöresel Ürünler İçin Modern Pazar Geliyor",
                     detail: "Bartın'da yerel üreticilerin ürünlerini değer fiyatla satabileceği, yaklaşık 1,4 milyon dolar değerinde modern bir yöresel ürünler pazarı inşa ediliyor."
+                },
+                {
+                    id: 13,
+                    title: "Milletvekili Bankoğlu: Çocuk İstismarı Davasının İlk Duruşması Tamamlandı",
+                    category: "Siyaset Haberleri",
+                    image: "https://www.bartinduysun.com/images/siyaset/cocuk-istismari-davasinın-ilk-durusmasi-sona-erdi.webp",
+                    excerpt: "Aysu Bankoğlu: Adli Süreç ve Çocuk İstismarı Davasını Yakından Takip Ediyoruz",
+                    detail: "CHP Bartın Milletvekili Aysu Bankoğlu, Meclis'te yaşandığı iddia edilen çocuk istismarı ve taciz olaylarına ilişkin davanın ilk duruşmasının sona erdiğini açıkladı."
+                },
+                {
+                    id: 21,
+                    title: "Başkan Yalçınkaya'dan CHP 39. Olağan Kurultayı Sonrası Açıklama",
+                    category: "Siyaset Haberleri",
+                    image: "https://www.bartinduysun.com/images/siyaset/baskan-yalcinkaya-dan-chp-kurultayi-sonrasi-aciklama.webp",
+                    excerpt: "Başkan Yalçınkaya'dan Özgür Özel'e Tebrik ve Kurultay Değerlendirmesi",
+                    detail: "Bartın Belediye Başkanı Rıza Yalçınkaya, CHP 39. Olağan Kurultayı'nın ikinci gününün tamamlanmasının ardından Genel Başkanlığa seçilen Özgür Özel'i tebrik edti."
+                },
+                {
+                    id: 22,
+                    title: "Milletvekili Bankoğlu'ndan TBMM'deki Emekli Maaşı Oylamasına Ret Tepkisi",
+                    category: "Siyaset Haberleri",
+                    image: "https://www.bartinduysun.com/images/siyaset/milletvekili-bankoglu-ndan-tbmm-deki-emekli-maasi-oylamasina-tepki.webp",
+                    excerpt: "Aysu Bankoğlu: Emeklilerin Haklarını Savunmak İçin Ret Verdik",
+                    detail: "CHP Bartın Milletvekili Aysu Bankoğlu, TBMM'de en düşük emekli maaşıyla ilgili yapılan oylamada ret oyu verdiğini açıkladı."
+                },
+                {
+                    id: 23,
+                    title: "AK Parti Bartın'da Genişletilmiş İl Danışa Meclisi ve Vefa Buluşması Düzenlendi",
+                    category: "Siyaset Haberleri",
+                    image: "https://www.bartinduysun.com/images/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.webp",
+                    excerpt: "AK Parti Bartın Teşkilatı Vefa ve İstişare Toplantısında Bir Araya Geldi",
+                    detail: "AK Parti Bartın İl Başkanlığı tarafından düzenlenen Genişletilmiş İl Danışma Meclisi ve Vefa Buluşması, teşkilatın tüm kademelerinden yoğun katılımla gerçekleştirildi."
+                },
+                {
+                    id: 24,
+                    title: "Başkan Çakır: Türk Bayrağı Sahipsiz Değildir",
+                    category: "Siyaset Haberleri",
+                    image: "https://www.bartinduysun.com/images/siyaset/baskan-cakir-turk-bayragi-sahipsiz-degildir.webp",
+                    excerpt: "Başkan Çakır: Bayrağımıza Uzanan Ellere Geçit Yok",
+                    detail: "Amasra Belediye Başkanı Recai Çakır, Türk bayrağına yönelik son saldırıyı kınayarak, 14 Ağustos 1996'da Kıbrıs'ta bayrağa sahip çıkan kahraman askerleri andı."
                 }
             ],
             
@@ -1567,72 +1736,62 @@
                 {
                     id: 1,
                     title: "Kadına Yönelik Şiddetle Mücadele İl Koordinasyon Komisyon Toplantısı Yapıldı",
-                    category: "Valilik Haberleri",
                     image: "https://www.bartinduysun.com/images/valilik/kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.webp",
-                    detail: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı. Toplantıda, kadına yönelik şiddetle mücadele kapsamında yapılan çalışmalar değerlendirildi."
+                    url: "haber-detay.html?id=1"
                 },
                 {
                     id: 2,
                     title: "Vali Arslan Başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Toplantısı",
-                    category: "Valilik Haberleri",
                     image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi.webp",
-                    detail: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı. Toplantıda, yılbaşı döneminde alınacak güvenlik tedbirleri ve asayiş önlemleri görüşüldü."
+                    url: "haber-detay.html?id=2"
                 },
                 {
                     id: 3,
                     title: "Belediye'den Üniversite Öğrencilerine Ulaşım Desteği",
-                    category: "Belediye Haberleri",
                     image: "https://www.bartinduysun.com/images/belediye/bir-projede-gurgenpinari-mahallesine-kazandiriliyor.webp",
-                    detail: "Bartın Belediyesi, üniversite öğrencilerine yönelik ulaşım kartlarında indirim uygulaması başlattı. Öğrenciler, toplu taşıma araçlarını %50 indirimli kullanabilecek."
+                    url: "haber-detay.html?id=3"
                 },
                 {
                     id: 4,
                     title: "Hırsızlık Zanlıları Yakalandı",
-                    category: "Bartın Haberleri",
                     image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    detail: "Bartın'da bir işyerine yönelik hırsızlık yapan 3 zanlı polis tarafından yakalandı. Zanlıların, gece vakti işyerine girerek nakit para ve değerli eşyaları çaldığı belirlendi."
+                    url: "haber-detay.html?id=4"
                 },
                 {
                     id: 5,
                     title: "Parti İl Başkanı Basın Toplantısı Düzenledi",
-                    category: "Siyaset Haberleri",
                     image: "https://www.bartinduysun.com/images/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.webp",
-                    detail: "AK Parti Bartın İl Başkanı, basın toplantısı düzenleyerek parti çalışmaları hakkında bilgi verdi. Toplantıda, yerel seçim hazırlıkları ve parti teşkilatının güçlendirilmesi konuları ele alındı."
+                    url: "haber-detay.html?id=5"
                 },
                 {
                     id: 6,
                     title: "Bartın'da Trafik Kazası: 2 Yaralı",
-                    category: "Bartın Haberleri",
                     image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    detail: "Bartın merkezde meydana gelen trafik kazasında 2 kişi yaralandı. Kazaya karışan araçlar hasar gördü. Yaraliar hastaneye kaldırıldı."
+                    url: "haber-detay.html?id=6"
                 },
                 {
                     id: 7,
                     title: "Yeni Park Alanları Açılıyor",
-                    category: "Belediye Haberleri",
                     image: "https://www.bartinduysun.com/images/belediye/bir-projede-gurgenpinari-mahallesine-kazandiriliyor.webp",
-                    detail: "Bartın Belediyesi, şehrin farklı noktalarında yeni park ve yeşil alanlar oluşturuyor. Proje kapsamında 5 farklı mahallede toplam 10.000 m² yeşil alan oluşturulacak."
+                    url: "haber-detay.html?id=7"
                 },
                 {
                     id: 8,
                     title: "Sağlık Çalışanları İçin Ek Ödeme",
-                    category: "Siyaset Haberleri",
                     image: "https://www.bartinduysun.com/images/siyaset/bartina-1-4-milyon-dolarlik-yoresel-urunler-pazari-kazandiriliyor.webp",
-                    detail: "Bartın'daki sağlık çalışanları için ek ödeme yapılacak. Ödeme, pandemi döneminde gösterdikleri üstün çaba ve fedakarlıkları karşılığında yapılacak."
+                    url: "haber-detay.html?id=8"
                 },
                 {
                     id: 9,
                     title: "Bartın'da Yeni Kültür Merkezi Açıldı",
-                    category: "Bartın Haberleri",
                     image: "https://images.unsplash.com/photo-1567593810070-7a5c0925344e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    detail: "Bartın'da yeni kültür merkezi törenle açıldı. Merkezde sergi salonları, kütüphane ve konferans salonu bulunuyor. Haftanın 7 günü hizmet verecek."
+                    url: "haber-detay.html?id=9"
                 },
                 {
                     id: 10,
                     title: "Valilik'ten Yeni Sosyal Proje",
-                    category: "Valilik Haberleri",
                     image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    detail: "Bartın Valiliği, dezavantajlı gruplara yönelik yeni bir sosyal proje başlattı. Proje kapsamında ihtiyaç sahibi ailelere gıda ve giysi yardımı yapılacak."
+                    url: "haber-detay.html?id=10"
                 }
             ]
         };
@@ -1646,16 +1805,11 @@
         const sliderPagination = document.getElementById('sliderPagination');
         const prevSliderBtn = document.getElementById('prevSliderBtn');
         const nextSliderBtn = document.getElementById('nextSliderBtn');
-        const mostReadTrack = document.getElementById('mostReadTrack');
+        const galleryTrack = document.getElementById('galleryTrack');
+        const galleryIndicator = document.getElementById('galleryIndicator');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
         const mainLogo = document.getElementById('mainLogo');
-        const prevMostReadBtn = document.getElementById('prevMostRead');
-        const nextMostReadBtn = document.getElementById('nextMostRead');
-        const mobilePrevMostReadBtn = document.getElementById('mobilePrevMostRead');
-        const mobileNextMostReadBtn = document.getElementById('mobileNextMostRead');
-        const bartinNews = document.getElementById('bartinNews');
-        const valilikNews = document.getElementById('valilikNews');
-        const belediyeNews = document.getElementById('belediyeNews');
-        const siyasetNews = document.getElementById('siyasetNews');
 
         // Haber kartı oluşturma fonksiyonu
         function createNewsCard(haber) {
@@ -1676,27 +1830,161 @@
             return card;
         }
 
-        // En çok okunan haber kartı oluşturma
-        function createMostReadSquareCard(haber) {
+        // YENİ: Galeri kartı oluşturma fonksiyonu
+        function createGalleryCard(news) {
             const card = document.createElement('a');
-            card.className = 'most-read-item';
-            const imageUrl = haber.image || 'https://via.placeholder.com/400x400?text=Bartın+Duysun';
-            card.href = `haber-detay.html?id=${haber.id}`;
-            
-            const shortDetail = haber.detail.length > 120 ? haber.detail.substring(0, 120) + '...' : haber.detail;
+            card.className = 'gallery-item';
+            card.href = news.url;
+            card.setAttribute('aria-label', news.title);
             
             card.innerHTML = `
-                <div class="most-read-image">
-                    <img src="${imageUrl}" alt="${haber.title}">
-                    <div class="most-read-overlay">
-                        <div class="most-read-content">
-                            <h3>${haber.title}</h3>
-                            <p>${shortDetail}</p>
-                        </div>
-                    </div>
+                <div class="gallery-image">
+                    <img src="${news.image}" alt="${news.title}" loading="lazy">
+                </div>
+                <div class="gallery-content">
+                    <h3 class="gallery-title">${news.title}</h3>
                 </div>
             `;
+            
             return card;
+        }
+
+        // YENİ: Gösterge noktası oluşturma fonksiyonu
+        function createIndicatorDot(index) {
+            const dot = document.createElement('div');
+            dot.className = 'indicator-dot';
+            if (index === 0) dot.classList.add('active');
+            dot.dataset.page = index;
+            dot.addEventListener('click', () => goToPage(index));
+            return dot;
+        }
+
+        // YENİ: Galeri değişkenleri
+        let currentSlideIndex = 0;
+        let slidesPerView = 3; // Varsayılan olarak 3 haber görünümü
+        let totalSlides = haberData.mostRead.length; // 10 haber
+        let totalPages = 0;
+
+        // YENİ: Galeriyi başlat
+        function initGallery() {
+            if (!galleryTrack || !haberData.mostRead.length) return;
+            
+            // Galeri kartlarını oluştur
+            haberData.mostRead.forEach(news => {
+                galleryTrack.appendChild(createGalleryCard(news));
+            });
+            
+            // Ekran boyutuna göre görüntülenecek haber sayısını belirle
+            updateSlidesPerView();
+            
+            // Gösterge noktalarını oluştur
+            if (galleryIndicator) {
+                // Sayfa sayısı hesaplanana kadar bekleyelim
+                setTimeout(() => {
+                    for (let i = 0; i < totalPages; i++) {
+                        galleryIndicator.appendChild(createIndicatorDot(i));
+                    }
+                }, 100);
+            }
+            
+            // Ekran boyutunu dinle
+            window.addEventListener('resize', () => {
+                updateSlidesPerView();
+            });
+        }
+
+        // YENİ: Ekran boyutuna göre görüntülenecek haber sayısını belirle
+        function updateSlidesPerView() {
+            const screenWidth = window.innerWidth;
+            
+            if (screenWidth >= 1200) {
+                slidesPerView = 3; // Bilgisayar: 3 haber
+            } else if (screenWidth >= 992) {
+                slidesPerView = 2.5; // Büyük tablet: 2.5 haber
+            } else if (screenWidth >= 768) {
+                slidesPerView = 2; // Tablet: 2 haber
+            } else if (screenWidth >= 576) {
+                slidesPerView = 1.5; // Küçük tablet: 1.5 haber
+            } else {
+                slidesPerView = 1; // Telefon: 1 haber
+            }
+            
+            // Toplam sayfa sayısını hesapla
+            totalPages = Math.ceil(totalSlides / slidesPerView);
+            
+            // İlk sayfaya dön
+            goToPage(0);
+        }
+
+        // YENİ: Belirli bir sayfaya git
+        function goToPage(pageIndex) {
+            // Sayfa indeksini sınırla
+            pageIndex = Math.max(0, Math.min(pageIndex, totalPages - 1));
+            
+            // Kaydırma pozisyonunu hesapla
+            const trackWidth = galleryTrack.offsetWidth;
+            const itemWidth = galleryTrack.children[0] ? galleryTrack.children[0].offsetWidth + 20 : 320; // item width + gap
+            const slideWidth = itemWidth * slidesPerView;
+            const translateX = -(slideWidth * pageIndex);
+            
+            // Kaydırma animasyonu uygula
+            galleryTrack.style.transform = `translateX(${translateX}px)`;
+            
+            // Aktif sayfayı güncelle
+            currentSlideIndex = pageIndex;
+            
+            // Buton durumlarını güncelle
+            updateButtonStates();
+            
+            // Gösterge noktalarını güncelle
+            updateIndicatorDots();
+        }
+
+        // YENİ: Sonraki sayfaya git
+        function nextPage() {
+            if (currentSlideIndex < totalPages - 1) {
+                goToPage(currentSlideIndex + 1);
+            }
+        }
+
+        // YENİ: Önceki sayfaya git
+        function prevPage() {
+            if (currentSlideIndex > 0) {
+                goToPage(currentSlideIndex - 1);
+            }
+        }
+
+        // YENİ: Buton durumlarını güncelle
+        function updateButtonStates() {
+            // İlk sayfada geri butonunu devre dışı bırak
+            if (currentSlideIndex === 0) {
+                prevBtn.disabled = true;
+                prevBtn.setAttribute('aria-disabled', 'true');
+            } else {
+                prevBtn.disabled = false;
+                prevBtn.setAttribute('aria-disabled', 'false');
+            }
+            
+            // Son sayfada ileri butonunu devre dışı bırak
+            if (currentSlideIndex === totalPages - 1) {
+                nextBtn.disabled = true;
+                nextBtn.setAttribute('aria-disabled', 'true');
+            } else {
+                nextBtn.disabled = false;
+                nextBtn.setAttribute('aria-disabled', 'false');
+            }
+        }
+
+        // YENİ: Gösterge noktalarını güncelle
+        function updateIndicatorDots() {
+            const dots = galleryIndicator.querySelectorAll('.indicator-dot');
+            dots.forEach((dot, index) => {
+                if (index === currentSlideIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
         }
 
         // Slider'ı başlat
@@ -1799,227 +2087,36 @@
         // Haber kategorilerini başlat
         function initNewsCategories() {
             // Bartın Haberleri
-            if (bartinNews && haberData.bartin) {
+            const bartinNewsContainer = document.getElementById('bartinNews');
+            if (bartinNewsContainer && haberData.bartin) {
                 haberData.bartin.slice(0, 6).forEach(haber => {
-                    bartinNews.appendChild(createNewsCard(haber));
+                    bartinNewsContainer.appendChild(createNewsCard(haber));
                 });
             }
 
             // Valilik Haberleri
-            if (valilikNews && haberData.valilik) {
+            const valilikNewsContainer = document.getElementById('valilikNews');
+            if (valilikNewsContainer && haberData.valilik) {
                 haberData.valilik.slice(0, 6).forEach(haber => {
-                    valilikNews.appendChild(createNewsCard(haber));
+                    valilikNewsContainer.appendChild(createNewsCard(haber));
                 });
             }
 
             // Belediye Haberleri
-            if (belediyeNews && haberData.belediye) {
+            const belediyeNewsContainer = document.getElementById('belediyeNews');
+            if (belediyeNewsContainer && haberData.belediye) {
                 haberData.belediye.slice(0, 6).forEach(haber => {
-                    belediyeNews.appendChild(createNewsCard(haber));
+                    belediyeNewsContainer.appendChild(createNewsCard(haber));
                 });
             }
 
             // Siyaset Haberleri
-            if (siyasetNews && haberData.siyaset) {
+            const siyasetNewsContainer = document.getElementById('siyasetNews');
+            if (siyasetNewsContainer && haberData.siyaset) {
                 haberData.siyaset.slice(0, 6).forEach(haber => {
-                    siyasetNews.appendChild(createNewsCard(haber));
+                    siyasetNewsContainer.appendChild(createNewsCard(haber));
                 });
             }
-        }
-
-        // En çok okunan slider başlatma
-        function initMostReadSlider() {
-            if (!mostReadTrack || !haberData.mostRead) return;
-            
-            // Önce mevcut içeriği temizle
-            mostReadTrack.innerHTML = '';
-            
-            // Kartları oluştur
-            haberData.mostRead.forEach(haber => {
-                mostReadTrack.appendChild(createMostReadSquareCard(haber));
-            });
-            
-            // Mobil veya masaüstü kontrolü
-            if (window.innerWidth <= 768) {
-                initMobileMostReadSlider();
-            } else {
-                initDesktopMostReadSlider();
-            }
-        }
-
-        // MOBİL Slider başlatma - DÜZGÜN ÇALIŞAN
-        function initMobileMostReadSlider() {
-            const items = mostReadTrack.querySelectorAll('.most-read-item');
-            if (items.length === 0) return;
-            
-            // Track'i sıfırla
-            mostReadTrack.style.transform = 'translateX(0)';
-            
-            let currentIndex = 0;
-            const totalItems = items.length;
-            
-            // İlk kartları ayarla - DÜZGÜN
-            updateMobileCards();
-            
-            // Buton durumlarını güncelle
-            function updateMobileButtonStates() {
-                if (mobilePrevMostReadBtn) {
-                    mobilePrevMostReadBtn.disabled = currentIndex === 0;
-                }
-                
-                if (mobileNextMostReadBtn) {
-                    mobileNextMostReadBtn.disabled = currentIndex === totalItems - 1;
-                }
-            }
-            
-            // Kartları güncelle - DÜZGÜN
-            function updateMobileCards() {
-                items.forEach((item, index) => {
-                    // Tüm sınıfları temizle
-                    item.classList.remove('active-center', 'active-side', 'hidden');
-                    
-                    if (index === currentIndex) {
-                        // Mevcut kart: Ortada tam görünüm
-                        item.classList.add('active-center');
-                    } else if (index === currentIndex + 1 && currentIndex < totalItems - 1) {
-                        // Sonraki kart: Sağda yarı görünüm (varsa)
-                        item.classList.add('active-side');
-                    } else if (index === currentIndex - 1 && currentIndex > 0) {
-                        // Önceki kart: Solda yarı görünüm (varsa)
-                        item.classList.add('active-side');
-                    } else {
-                        // Diğer kartlar: Gizli
-                        item.classList.add('hidden');
-                    }
-                });
-                
-                updateMobileButtonStates();
-            }
-            
-            // İleri git
-            function slideNext() {
-                if (currentIndex < totalItems - 1) {
-                    currentIndex++;
-                    updateMobileCards();
-                }
-            }
-            
-            // Geri git
-            function slidePrev() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateMobileCards();
-                }
-            }
-            
-            // Mobil buton event listener'ları - DÜZGÜN
-            if (mobileNextMostReadBtn) {
-                // Önceki event listener'ı kaldır, yenisini ekle
-                mobileNextMostReadBtn.replaceWith(mobileNextMostReadBtn.cloneNode(true));
-                const newNextBtn = document.getElementById('mobileNextMostRead');
-                newNextBtn.addEventListener('click', slideNext);
-            }
-            
-            if (mobilePrevMostReadBtn) {
-                // Önceki event listener'ı kaldır, yenisini ekle
-                mobilePrevMostReadBtn.replaceWith(mobilePrevMostReadBtn.cloneNode(true));
-                const newPrevBtn = document.getElementById('mobilePrevMostRead');
-                newPrevBtn.addEventListener('click', slidePrev);
-            }
-            
-            // Touch events (mobil sürükleme) - DÜZGÜN
-            let startX = 0;
-            let isDragging = false;
-            
-            mostReadTrack.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-                isDragging = true;
-            });
-            
-            mostReadTrack.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-            });
-            
-            mostReadTrack.addEventListener('touchend', (e) => {
-                if (!isDragging) return;
-                
-                const endX = e.changedTouches[0].clientX;
-                const diff = startX - endX;
-                const swipeThreshold = 30;
-                
-                if (Math.abs(diff) > swipeThreshold) {
-                    if (diff > 0) {
-                        // Sağa kaydırma (ileri)
-                        slideNext();
-                    } else {
-                        // Sola kaydırma (geri)
-                        slidePrev();
-                    }
-                }
-                
-                isDragging = false;
-            });
-            
-            // İlk yüklemede buton durumlarını güncelle
-            updateMobileButtonStates();
-        }
-
-        // MASAÜSTÜ Slider başlatma
-        function initDesktopMostReadSlider() {
-            let currentPosition = 0;
-            let currentIndex = 0;
-            const itemWidth = 320 + 30;
-            const totalItems = haberData.mostRead.length;
-            const itemsPerClick = 2;
-            
-            // Kaydırma fonksiyonu
-            function slideToPosition(newPosition) {
-                mostReadTrack.style.transform = `translateX(${newPosition}px)`;
-                currentPosition = newPosition;
-                updateDesktopButtonStates();
-            }
-            
-            // Öncekiye git
-            function slidePrev() {
-                if (currentIndex >= itemsPerClick) {
-                    currentIndex -= itemsPerClick;
-                    const newPosition = -currentIndex * itemWidth;
-                    slideToPosition(newPosition);
-                }
-            }
-            
-            // İleri git
-            function slideNext() {
-                if (currentIndex < totalItems - itemsPerClick) {
-                    currentIndex += itemsPerClick;
-                    const newPosition = -currentIndex * itemWidth;
-                    slideToPosition(newPosition);
-                }
-            }
-            
-            // Buton durumlarını güncelle
-            function updateDesktopButtonStates() {
-                if (prevMostReadBtn) {
-                    prevMostReadBtn.disabled = currentIndex < itemsPerClick;
-                }
-                
-                if (nextMostReadBtn) {
-                    nextMostReadBtn.disabled = currentIndex >= totalItems - itemsPerClick;
-                }
-            }
-            
-            // Buton event listener'ları
-            if (prevMostReadBtn) {
-                prevMostReadBtn.addEventListener('click', slidePrev);
-            }
-            
-            if (nextMostReadBtn) {
-                nextMostReadBtn.addEventListener('click', slideNext);
-            }
-            
-            // İlk yüklemede buton durumlarını güncelle
-            updateDesktopButtonStates();
         }
 
         // Logo tıklama fonksiyonu
@@ -2094,9 +2191,26 @@
                 });
             }
             
-            // Pencere boyutu değiştiğinde responsive ayarları güncelle
+            // YENİ: Galeri butonları
+            if (prevBtn) {
+                prevBtn.addEventListener('click', prevPage);
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', nextPage);
+            }
+            
+            // YENİ: Klavye kontrolleri
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevPage();
+                } else if (e.key === 'ArrowRight') {
+                    nextPage();
+                }
+            });
+            
+            // Pencere boyutu değiştiğinde dropdown'ı kapat
             window.addEventListener('resize', () => {
-                // Mobil menüyü kapat
                 if (window.innerWidth > 768) {
                     if (navMenu) navMenu.classList.remove('active');
                     if (menuOverlay) menuOverlay.classList.remove('active');
@@ -2108,18 +2222,15 @@
                     document.querySelectorAll('.nav-link i').forEach(icon => {
                         icon.style.display = 'none';
                     });
-                    
-                    // Masaüstü en çok okunanlar slider'ını yenile
-                    initMostReadSlider();
                 } else {
                     // Mobil için nav-link ikonlarını göster
                     document.querySelectorAll('.nav-link i').forEach(icon => {
                         icon.style.display = 'inline-block';
                     });
-                    
-                    // Mobil en çok okunanlar slider'ını yenile
-                    initMostReadSlider();
                 }
+                
+                // Galeri ayarlarını güncelle
+                updateSlidesPerView();
             });
         }
 
@@ -2127,7 +2238,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             initSlider();
             initNewsCategories();
-            initMostReadSlider();
+            initGallery();
             setupEventListeners();
             
             // Masaüstü için nav-link ikonlarını kaldır
