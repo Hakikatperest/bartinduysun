@@ -27,7 +27,7 @@
             --valilik-color: #28a745; /* Yeşil */
             --belediye-color: #007bff; /* Mavi */
             --siyaset-color: #ffc107; /* Sarı */
-            --asayis-color: #dc3545; /* Kırmızı */
+            --bartin-color: #8b0000; /* Bartın Haberleri için koyu kırmızı */
         }
         
         html {
@@ -130,12 +130,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 12px 0; /* GÜNCELLENDİ: Mobilde daha az padding */
         }
         
         /* GÜNCELLENDİ: Logo konteyner ve logo stili */
         .logo-container {
-            height: 70px;
+            height: 60px; /* GÜNCELLENDİ: Mobilde daha küçük logo */
             display: flex;
             align-items: center;
         }
@@ -158,7 +158,7 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
-            padding: 12px;
+            padding: 10px; /* GÜNCELLENDİ: Daha az padding */
             background: none;
             border: none;
             z-index: 1002;
@@ -196,13 +196,8 @@
             gap: 5px;
         }
         
+        /* GÜNCELLENDİ: Sosyal medya ikonları mobil menüden kaldırıldı */
         .nav-social-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 15px 0 0;
-            border-top: 1px solid var(--border-color);
-            margin-top: 15px;
             display: none;
         }
         
@@ -726,17 +721,15 @@
             margin-bottom: 40px;
         }
         
-        .footer-logo {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: white;
+        /* GÜNCELLENDİ: Footer logo görseli */
+        .footer-logo-container {
             margin-bottom: 20px;
-            cursor: pointer;
-            letter-spacing: -0.5px;
         }
         
-        .footer-logo span {
-            color: #ffc107;
+        .footer-logo-img {
+            max-width: 250px;
+            height: auto;
+            cursor: pointer;
         }
         
         .footer-about {
@@ -831,14 +824,20 @@
         }
         
         @media (max-width: 768px) {
+            /* GÜNCELLENDİ: Mobilde logo alanını daralt */
+            .main-header {
+                padding: 8px 0;
+            }
+            
+            .logo-container {
+                height: 50px;
+            }
+            
             .hamburger-menu {
                 display: flex;
             }
             
-            .logo-container {
-                height: 60px;
-            }
-            
+            /* GÜNCELLENDİ: Mobil menü padding-top azaltıldı */
             .nav-menu {
                 position: fixed;
                 top: 0;
@@ -847,7 +846,7 @@
                 height: 100vh;
                 background-color: white;
                 flex-direction: column;
-                padding: 100px 25px 25px;
+                padding: 80px 25px 25px; /* GÜNCELLENDİ: 100px'den 80px'e düşürüldü */
                 box-shadow: -5px 0 20px rgba(0,0,0,0.15);
                 transition: var(--transition);
                 z-index: 1001;
@@ -859,8 +858,9 @@
                 gap: 0;
             }
             
+            /* GÜNCELLENDİ: Sosyal medya ikonları kaldırıldı */
             .nav-social-container {
-                display: flex;
+                display: none;
             }
             
             .nav-menu.active {
@@ -956,8 +956,13 @@
         }
         
         @media (max-width: 576px) {
+            /* GÜNCELLENDİ: Mobilde logo alanını daha da daralt */
             .logo-container {
-                height: 50px;
+                height: 45px;
+            }
+            
+            .main-header {
+                padding: 6px 0;
             }
             
             .intro-title {
@@ -997,13 +1002,14 @@
                 grid-template-columns: 1fr;
             }
             
-            .footer-logo {
-                font-size: 1.9rem;
+            .footer-logo-img {
+                max-width: 200px;
             }
             
             .nav-menu {
                 width: 85%;
                 max-width: 320px;
+                padding-top: 70px; /* GÜNCELLENDİ: Daha az padding */
             }
         }
     </style>
@@ -1044,11 +1050,13 @@
                     
                     <ul class="nav-menu" id="navMenu">
                         <div class="nav-links-container">
+                            <!-- GÜNCELLENDİ: Bartın Haberleri eklendi -->
+                            <li class="nav-item"><a href="bartin-haberleri.html" class="nav-link"><i class="fas fa-newspaper"></i> Bartın Haberleri</a></li>
                             <li class="nav-item"><a href="valilik-haberleri.html" class="nav-link"><i class="fas fa-landmark"></i> Valilik Haberleri</a></li>
                             <li class="nav-item"><a href="belediye-haberleri.html" class="nav-link"><i class="fas fa-city"></i> Belediye Haberleri</a></li>
                             <li class="nav-item"><a href="siyaset-haberleri.html" class="nav-link"><i class="fas fa-users"></i> Siyaset Haberleri</a></li>
-                            <li class="nav-item"><a href="asayis-haberleri.html" class="nav-link"><i class="fas fa-shield-alt"></i> Asayiş Haberleri</a></li>
-                            <li class="nav-item"><a href="ilan-ver.html" class="nav-link"><i class="fas fa-bullhorn"></i> Bartın İlan Ver</a></li>
+                            <!-- GÜNCELLENDİ: Bartın İlan Ver, Bartın Firma Rehberi olarak değiştirildi -->
+                            <li class="nav-item"><a href="firma-rehberi.html" class="nav-link"><i class="fas fa-building"></i> Bartın Firma Rehberi</a></li>
                             <li class="nav-item dropdown" id="dropdownMenu">
                                 <a href="#" class="nav-link"><i class="fas fa-building"></i> Kurumsal <i class="fas fa-chevron-down"></i></a>
                                 <ul class="dropdown-menu">
@@ -1061,13 +1069,7 @@
                             </li>
                         </div>
                         
-                        <div class="nav-social-container">
-                            <a href="#" title="Facebook" style="background-color: #1877F2;"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" title="Instagram" style="background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);"><i class="fab fa-instagram"></i></a>
-                            <a href="#" title="X (Twitter)" style="background-color: #000000;"><i class="fab fa-twitter"></i></a>
-                            <a href="#" title="YouTube" style="background-color: #FF0000;"><i class="fab fa-youtube"></i></a>
-                            <a href="#" title="Telegram" style="background-color: #0088cc;"><i class="fab fa-telegram"></i></a>
-                        </div>
+                        <!-- GÜNCELLENDİ: Sosyal medya ikonları kaldırıldı -->
                     </ul>
                 </nav>
             </div>
@@ -1099,6 +1101,25 @@
     </section>
 
     <main class="container">
+        <!-- GÜNCELLENDİ: Bartın Haberleri Bölümü (Üste taşındı) -->
+        <section class="news-category" id="bartin">
+            <h2 class="section-title">
+                <span class="blinking-dot" style="background-color: var(--bartin-color);"></span>
+                Bartın Haberleri
+            </h2>
+            
+            <div class="news-grid" id="bartinNews">
+                <!-- Bartın haber kartları JavaScript ile eklenecek -->
+            </div>
+        </section>
+        
+        <!-- Reklam Alanı 1 -->
+        <div class="ad-section">
+            <div class="container">
+                <p>Reklam Alanı - 728x90</p>
+            </div>
+        </div>
+
         <!-- Valilik Haberleri Bölümü -->
         <section class="news-category" id="valilik">
             <h2 class="section-title">
@@ -1111,7 +1132,7 @@
             </div>
         </section>
         
-        <!-- Reklam Alanı 1 -->
+        <!-- Reklam Alanı 2 -->
         <div class="ad-section">
             <div class="container">
                 <p>Reklam Alanı - 728x90</p>
@@ -1130,7 +1151,7 @@
             </div>
         </section>
         
-        <!-- Reklam Alanı 2 -->
+        <!-- Reklam Alanı 3 -->
         <div class="ad-section">
             <div class="container">
                 <p>Reklam Alanı - 728x90</p>
@@ -1146,25 +1167,6 @@
             
             <div class="news-grid" id="siyasetNews">
                 <!-- Siyaset haber kartları JavaScript ile eklenecek -->
-            </div>
-        </section>
-        
-        <!-- Reklam Alanı 3 -->
-        <div class="ad-section">
-            <div class="container">
-                <p>Reklam Alanı - 728x90</p>
-            </div>
-        </div>
-
-        <!-- Asayiş Haberleri Bölümü -->
-        <section class="news-category" id="asayis">
-            <h2 class="section-title">
-                <span class="blinking-dot" style="background-color: var(--asayis-color);"></span>
-                Asayiş Haberleri
-            </h2>
-            
-            <div class="news-grid" id="asayisNews">
-                <!-- Asayiş haber kartları JavaScript ile eklenecek -->
             </div>
         </section>
 
@@ -1199,6 +1201,13 @@
             <h2 class="section-title">Haber Kategorileri</h2>
             
             <div class="categories-grid">
+                <!-- GÜNCELLENDİ: Bartın Haberleri kategorisi eklendi -->
+                <a href="bartin-haberleri.html" class="category-card">
+                    <div class="category-icon"><i class="fas fa-newspaper"></i></div>
+                    <h3 class="category-name">Bartın Haberleri</h3>
+                    <p>Bartın'dan güncel ve genel haberler</p>
+                </a>
+                
                 <a href="valilik-haberleri.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-landmark"></i></div>
                     <h3 class="category-name">Valilik Haberleri</h3>
@@ -1216,12 +1225,6 @@
                     <h3 class="category-name">Siyaset Haberleri</h3>
                     <p>Yerel ve genel siyasetten gelişmeler</p>
                 </a>
-                
-                <a href="asayis-haberleri.html" class="category-card">
-                    <div class="category-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3 class="category-name">Asayiş Haberleri</h3>
-                    <p>Bartın'daki güvenlik olayları ve gelişmeler</p>
-                </a>
             </div>
         </section>
     </main>
@@ -1231,7 +1234,12 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="footer-logo" id="footerLogo">Bartın <span>Duysun</span></div>
+                    <!-- GÜNCELLENDİ: Görsel logo eklendi -->
+                    <div class="footer-logo-container">
+                        <div class="logo" id="footerLogo">
+                            <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Bartın Duysun Logo" class="footer-logo-img">
+                        </div>
+                    </div>
                     <p class="footer-about">Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir.</p>
                     <div class="footer-social">
                         <a href="#" title="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
@@ -1245,11 +1253,13 @@
                 <div class="footer-links">
                     <h3 class="footer-title">Hızlı Erişim</h3>
                     <ul>
+                        <!-- GÜNCELLENDİ: Bartın Haberleri eklendi -->
+                        <li><a href="bartin-haberleri.html"><i class="fas fa-chevron-right"></i> Bartın Haberleri</a></li>
                         <li><a href="valilik-haberleri.html"><i class="fas fa-chevron-right"></i> Valilik Haberleri</a></li>
                         <li><a href="belediye-haberleri.html"><i class="fas fa-chevron-right"></i> Belediye Haberleri</a></li>
                         <li><a href="siyaset-haberleri.html"><i class="fas fa-chevron-right"></i> Siyaset Haberleri</a></li>
-                        <li><a href="asayis-haberleri.html"><i class="fas fa-chevron-right"></i> Asayiş Haberleri</a></li>
-                        <li><a href="ilan-ver.html"><i class="fas fa-chevron-right"></i> Bartın İlan Ver</a></li>
+                        <!-- GÜNCELLENDİ: Bartın Firma Rehberi olarak değiştirildi -->
+                        <li><a href="firma-rehberi.html"><i class="fas fa-chevron-right"></i> Bartın Firma Rehberi</a></li>
                     </ul>
                 </div>
                 
@@ -1281,7 +1291,7 @@
     </footer>
 
     <script>
-        // GÜNCELLENDİ: Haber verisi
+        // GÜNCELLENDİ: Haber verisi - Asayiş Haberleri Bartın Haberleri olarak değiştirildi
         const haberData = {
             slider: [
                 {
@@ -1301,16 +1311,68 @@
                 {
                     id: 3,
                     title: "Bartın'da Trafik Kazası: 2 Yaralı",
-                    category: "Asayiş Haberleri",
+                    category: "Bartın Haberleri",
                     image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
                     detail: "Bartın merkezde meydana gelen trafik kazasında 2 kişi yaralandı. Kazaya karışan araçlar hasar gördü. Yaralılar hastaneye kaldırıldı."
                 },
                 {
                     id: 4,
-                    title: "Ak Parti Bartın’da Genişletilmiş İl Danışma Meclisi ve Vefa Buluşması Düzenlendi",
+                    title: "Ak Parti Bartın'da Genişletilmiş İl Danışma Meclisi ve Vefa Buluşması Düzenlendi",
                     category: "Siyaset Haberleri",
                     image: "https://www.bartinduysun.com/images/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.webp",
                     detail: "Ak Parti Bartın İl Başkanlığı tarafından düzenlenen Genişletilmiş İl Danışma Meclisi toplantısı ve geleneksel Vefa Buluşması, partililerin ve vatandaşların yoğun katılımıyla gerçekleşti."
+                }
+            ],
+            
+            // GÜNCELLENDİ: Bartın Haberleri bölümü eklendi (eski Asayiş Haberleri)
+            bartin: [
+                {
+                    id: 14,
+                    title: "Hırsızlık Zanlıları Yakalandı",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    excerpt: "Bartın'da bir işyerine yönelik hırsızlık yapan 3 zanlı polis tarafından yakalandı.",
+                    detail: "Bartın'da bir işyerine yönelik hırsızlık yapan 3 zanlı polis tarafından yakalandı. Zanlıların, gece vakti işyerine girerek nakit para ve değerli eşyaları çaldığı belirlendi. Polis, yaptığı teknik takip sonucu zanlıları 24 saat içinde yakaladı."
+                },
+                {
+                    id: 15,
+                    title: "Uyuşturucu Operasyonunda 5 Gözaltı",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    excerpt: "Narkotik ekiplerinin düzenlediği operasyonda 5 kişi uyuşturucu madde bulundurma suçundan gözaltına alındı.",
+                    detail: "Narkotik ekiplerinin düzenlediği operasyonda 5 kişi uyuşturucu madde bulundurma suçundan gözaltına alındı. Operasyonda çeşitli miktarlarda uyuşturucu madde ve para ele geçirildi. Zanlılar adliyeye sevk edildi."
+                },
+                {
+                    id: 25,
+                    title: "Bartın'da Dolandırıcılık Çetesine Operasyon",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    excerpt: "Polis, dolandırıcılık yapan çeteye yönelik operasyon düzenledi.",
+                    detail: "Polis, dolandırıcılık yapan çeteye yönelik operasyon düzenledi. 7 şüpheli gözaltına alındı, milyonlarca lira dolandırılan para ele geçirildi."
+                },
+                {
+                    id: 26,
+                    title: "Trafik Denetimleri Artırıldı",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    excerpt: "Yaz dönemi nedeniyle Bartın'da trafik denetimleri artırıldı.",
+                    detail: "Yaz dönemi nedeniyle Bartın'da trafik denetimleri artırıldı. Emniyet ekipleri özellikle hız ve emniyet kemeri kontrollerine ağırlık verdi."
+                },
+                {
+                    id: 27,
+                    title: "Sahil Güvenlik Ekipleri Tatilcileri Uyardı",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    excerpt: "Sahil Güvenlik ekipleri, denize giren tatilcileri uyardı.",
+                    detail: "Sahil Güvenlik ekipleri, denize giren tatilcileri uyardı. Can yeleği ve can simidi kullanımının önemine dikkat çekildi."
+                },
+                {
+                    id: 28,
+                    title: "Kaçak Elektrik Kullanımına Operasyon",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    excerpt: "Kaçak elektrik kullanan 15 işyerine operasyon düzenlendi.",
+                    detail: "Kaçak elektrik kullanan 15 işyerine operasyon düzenlendi. İşyeri sahipleri hakkında yasal işlem başlatıldı."
                 }
             ],
             
@@ -1372,7 +1434,7 @@
                     category: "Belediye Haberleri",
                     image: "https://www.bartinduysun.com/images/belediye/bir-projede-gurgenpinari-mahallesine-kazandiriliyor.webp",
                     excerpt: "Bir projede Gürpınarı Mahallesi'ne kazandırılıyor.",
-                    detail: "Bartın Belediyesi, kent genelinde yaşam kalitesini artırmaya yönelik projelerine hız kesmeden devam ediyor. Bu kapsamda Gürgenpınarı Mahallesi’nde hayata geçirilecek olan Gürgenpınarı Park Alanları Projesi’nin yapım çalışmalarına başlandı."
+                    detail: "Bartın Belediyesi, kent genelinde yaşam kalitesini artırmaya yönelik projelerine hız kesmeden devam ediyor. Bu kapsamda Gürgenpınarı Mahallesi'nde hayata geçirilecek olan Gürgenpınarı Park Alanları Projesi'nin yapım çalışmalarına başlandı."
                 },
                 {
                     id: 10,
@@ -1419,7 +1481,7 @@
             siyaset: [
                 {
                     id: 12,
-                    title: "Bartın’a 1,4 Milyon Dolarlık Yöresel Ürünler Pazarı Kazandırılıyor",
+                    title: "Bartın'a 1,4 Milyon Dolarlık Yöresel Ürünler Pazarı Kazandırılıyor",
                     category: "Siyaset Haberleri",
                     image: "https://www.bartinduysun.com/images/siyaset/bartina-1-4-milyon-dolarlik-yoresel-urunler-pazari-kazandiriliyor.webp",
                     excerpt: "Yöresel Ürünler İçin Modern Pazar Geliyor",
@@ -1431,27 +1493,27 @@
                     category: "Siyaset Haberleri",
                     image: "https://www.bartinduysun.com/images/siyaset/cocuk-istismari-davasinın-ilk-durusmasi-sona-erdi.webp",
                     excerpt: "Aysu Bankoğlu: Adli Süreç ve Çocuk İstismarı Davasını Yakından Takip Ediyoruz",
-                    detail: "CHP Bartın Milletvekili Aysu Bankoğlu, Meclis’te yaşandığı iddia edilen çocuk istismarı ve taciz olaylarına ilişkin davanın ilk duruşmasının sona erdiğini açıkladı."
+                    detail: "CHP Bartın Milletvekili Aysu Bankoğlu, Meclis'te yaşandığı iddia edilen çocuk istismarı ve taciz olaylarına ilişkin davanın ilk duruşmasının sona erdiğini açıkladı."
                 },
                 {
                     id: 21,
-                    title: "Başkan Yalçınkaya’dan CHP 39. Olağan Kurultayı Sonrası Açıklama",
+                    title: "Başkan Yalçınkaya'dan CHP 39. Olağan Kurultayı Sonrası Açıklama",
                     category: "Siyaset Haberleri",
                     image: "https://www.bartinduysun.com/images/siyaset/baskan-yalcinkaya-dan-chp-kurultayi-sonrasi-aciklama.webp",
-                    excerpt: "Başkan Yalçınkaya’dan Özgür Özel’e Tebrik ve Kurultay Değerlendirmesi",
-                    detail: "Bartın Belediye Başkanı Rıza Yalçınkaya, CHP 39. Olağan Kurultayı’nın ikinci gününün tamamlanmasının ardından Genel Başkanlığa seçilen Özgür Özel’i tebrik etti."
+                    excerpt: "Başkan Yalçınkaya'dan Özgür Özel'e Tebrik ve Kurultay Değerlendirmesi",
+                    detail: "Bartın Belediye Başkanı Rıza Yalçınkaya, CHP 39. Olağan Kurultayı'nın ikinci gününün tamamlanmasının ardından Genel Başkanlığa seçilen Özgür Özel'i tebrik etti."
                 },
                 {
                     id: 22,
-                    title: "Milletvekili Bankoğlu’ndan TBMM’deki Emekli Maaşı Oylamasına Ret Tepkisi",
+                    title: "Milletvekili Bankoğlu'ndan TBMM'deki Emekli Maaşı Oylamasına Ret Tepkisi",
                     category: "Siyaset Haberleri",
                     image: "https://www.bartinduysun.com/images/siyaset/milletvekili-bankoglu-ndan-tbmm-deki-emekli-maasi-oylamasina-tepki.webp",
                     excerpt: "Aysu Bankoğlu: Emeklilerin Haklarını Savunmak İçin Ret Verdik",
-                    detail: "CHP Bartın Milletvekili Aysu Bankoğlu, TBMM’de en düşük emekli maaşıyla ilgili yapılan oylamada ret oyu verdiğini açıkladı."
+                    detail: "CHP Bartın Milletvekili Aysu Bankoğlu, TBMM'de en düşük emekli maaşıyla ilgili yapılan oylamada ret oyu verdiğini açıkladı."
                 },
                 {
                     id: 23,
-                    title: "AK Parti Bartın’da Genişletilmiş İl Danışma Meclisi ve Vefa Buluşması Düzenlendi",
+                    title: "AK Parti Bartın'da Genişletilmiş İl Danışma Meclisi ve Vefa Buluşması Düzenlendi",
                     category: "Siyaset Haberleri",
                     image: "https://www.bartinduysun.com/images/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.webp",
                     excerpt: "AK Parti Bartın Teşkilatı Vefa ve İstişare Toplantısında Bir Araya Geldi",
@@ -1463,58 +1525,7 @@
                     category: "Siyaset Haberleri",
                     image: "https://www.bartinduysun.com/images/siyaset/baskan-cakir-turk-bayragi-sahipsiz-degildir.webp",
                     excerpt: "Başkan Çakır: Bayrağımıza Uzanan Ellere Geçit Yok",
-                    detail: "Amasra Belediye Başkanı Recai Çakır, Türk bayrağına yönelik son saldırıyı kınayarak, 14 Ağustos 1996’da Kıbrıs’ta bayrağa sahip çıkan kahraman askerleri andı."
-                }
-            ],
-            
-            asayis: [
-                {
-                    id: 14,
-                    title: "Hırsızlık Zanlıları Yakalandı",
-                    category: "Asayiş Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Bartın'da bir işyerine yönelik hırsızlık yapan 3 zanlı polis tarafından yakalandı.",
-                    detail: "Bartın'da bir işyerine yönelik hırsızlık yapan 3 zanlı polis tarafından yakalandı. Zanlıların, gece vakti işyerine girerek nakit para ve değerli eşyaları çaldığı belirlendi. Polis, yaptığı teknik takip sonucu zanlıları 24 saat içinde yakaladı."
-                },
-                {
-                    id: 15,
-                    title: "Uyuşturucu Operasyonunda 5 Gözaltı",
-                    category: "Asayiş Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Narkotik ekiplerinin düzenlediği operasyonda 5 kişi uyuşturucu madde bulundurma suçundan gözaltına alındı.",
-                    detail: "Narkotik ekiplerinin düzenlediği operasyonda 5 kişi uyuşturucu madde bulundurma suçundan gözaltına alındı. Operasyonda çeşitli miktarlarda uyuşturucu madde ve para ele geçirildi. Zanlılar adliyeye sevk edildi."
-                },
-                {
-                    id: 25,
-                    title: "Bartın'da Dolandırıcılık Çetesine Operasyon",
-                    category: "Asayiş Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Polis, dolandırıcılık yapan çeteye yönelik operasyon düzenledi.",
-                    detail: "Polis, dolandırıcılık yapan çeteye yönelik operasyon düzenledi. 7 şüpheli gözaltına alındı, milyonlarca lira dolandırılan para ele geçirildi."
-                },
-                {
-                    id: 26,
-                    title: "Trafik Denetimleri Artırıldı",
-                    category: "Asayiş Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Yaz dönemi nedeniyle Bartın'da trafik denetimleri artırıldı.",
-                    detail: "Yaz dönemi nedeniyle Bartın'da trafik denetimleri artırıldı. Emniyet ekipleri özellikle hız ve emniyet kemeri kontrollerine ağırlık verdi."
-                },
-                {
-                    id: 27,
-                    title: "Sahil Güvenlik Ekipleri Tatilcileri Uyardı",
-                    category: "Asayiş Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Sahil Güvenlik ekipleri, denize giren tatilcileri uyardı.",
-                    detail: "Sahil Güvenlik ekipleri, denize giren tatilcileri uyardı. Can yeleği ve can simidi kullanımının önemine dikkat çekildi."
-                },
-                {
-                    id: 28,
-                    title: "Kaçak Elektrik Kullanımına Operasyon",
-                    category: "Asayiş Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Kaçak elektrik kullanan 15 işyerine operasyon düzenlendi.",
-                    detail: "Kaçak elektrik kullanan 15 işyerine operasyon düzenlendi. İşyeri sahipleri hakkında yasal işlem başlatıldı."
+                    detail: "Amasra Belediye Başkanı Recai Çakır, Türk bayrağına yönelik son saldırıyı kınayarak, 14 Ağustos 1996'da Kıbrıs'ta bayrağa sahip çıkan kahraman askerleri andı."
                 }
             ],
             
@@ -1543,7 +1554,7 @@
                 {
                     id: 4,
                     title: "Hırsızlık Zanlıları Yakalandı",
-                    category: "Asayiş Haberleri",
+                    category: "Bartın Haberleri",
                     image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
                     detail: "Bartın'da bir işyerine yönelik hırsızlık yapan 3 zanlı polis tarafından yakalandı. Zanlıların, gece vakti işyerine girerek nakit para ve değerli eşyaları çaldığı belirlendi."
                 },
@@ -1592,6 +1603,10 @@
 
         // Kategori renklerini uygula
         function applyCategoryColors() {
+            // Bartın Haberleri - Koyu Kırmızı
+            const bartinTitle = document.querySelector('#bartin .section-title');
+            bartinTitle.style.borderBottomColor = 'var(--bartin-color)';
+            
             // Valilik Haberleri - Yeşil
             const valilikTitle = document.querySelector('#valilik .section-title');
             valilikTitle.style.borderBottomColor = 'var(--valilik-color)';
@@ -1603,10 +1618,6 @@
             // Siyaset Haberleri - Sarı
             const siyasetTitle = document.querySelector('#siyaset .section-title');
             siyasetTitle.style.borderBottomColor = 'var(--siyaset-color)';
-            
-            // Asayiş Haberleri - Kırmızı
-            const asayisTitle = document.querySelector('#asayis .section-title');
-            asayisTitle.style.borderBottomColor = 'var(--asayis-color)';
         }
 
         // Slider'ı başlat
@@ -1656,6 +1667,12 @@
 
         // Haber kategorilerini başlat
         function initNewsCategories() {
+            // GÜNCELLENDİ: Bartın haberleri (6 haber) - en üste eklendi
+            const bartinNewsContainer = document.getElementById('bartinNews');
+            haberData.bartin.slice(0, 6).forEach(haber => {
+                bartinNewsContainer.appendChild(createNewsCard(haber));
+            });
+
             // Valilik haberleri (6 haber)
             const valilikNewsContainer = document.getElementById('valilikNews');
             haberData.valilik.slice(0, 6).forEach(haber => {
@@ -1672,12 +1689,6 @@
             const siyasetNewsContainer = document.getElementById('siyasetNews');
             haberData.siyaset.slice(0, 6).forEach(haber => {
                 siyasetNewsContainer.appendChild(createNewsCard(haber));
-            });
-
-            // Asayiş haberleri (6 haber)
-            const asayisNewsContainer = document.getElementById('asayisNews');
-            haberData.asayis.slice(0, 6).forEach(haber => {
-                asayisNewsContainer.appendChild(createNewsCard(haber));
             });
         }
 
