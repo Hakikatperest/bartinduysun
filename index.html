@@ -147,6 +147,7 @@
             opacity: 0.9;
         }
         
+        /* GÜNCELLENDİ: Logo sağa kaydırma için padding-left eklendi */
         .main-header {
             display: flex;
             justify-content: space-between;
@@ -154,11 +155,12 @@
             padding: 12px 0;
         }
         
-        /* GÜNCELLENDİ: Logo büyütüldü */
         .logo-container {
-            height: 70px; /* 60px'ten 70px'e büyütüldü */
+            height: 70px;
             display: flex;
             align-items: center;
+            /* Logo sağa kaydırmak için margin-left eklendi */
+            margin-left: 30px;
         }
         
         .logo {
@@ -172,7 +174,7 @@
             height: 100%;
             width: auto;
             object-fit: contain;
-            transform: scale(1.2); /* Logo %20 büyütüldü */
+            transform: scale(1.2);
         }
         
         /* Hamburger Menü */
@@ -252,7 +254,7 @@
             transform: rotate(180deg);
         }
         
-        /* Modern dropdown menü */
+        /* Modern dropdown menü - GÜNCELLENDİ: boşluklar azaltıldı */
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -260,7 +262,7 @@
             background-color: white;
             box-shadow: 0 10px 30px rgba(0,0,0,0.12);
             min-width: 240px;
-            padding: 12px 0;
+            padding: 8px 0; /* GÜNCELLENDİ: 12px'ten 8px'e indirildi */
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
@@ -278,7 +280,7 @@
         
         .dropdown-menu li {
             padding: 0 5px;
-            margin: 5px 0;
+            margin: 2px 0; /* GÜNCELLENDİ: 5px'ten 2px'e indirildi */
         }
         
         .dropdown-menu a {
@@ -286,7 +288,7 @@
             align-items: center;
             gap: 12px;
             transition: var(--transition);
-            padding: 12px 20px;
+            padding: 10px 20px; /* GÜNCELLENDİ: 12px'ten 10px'e indirildi */
             border-radius: 8px;
             font-weight: 500;
         }
@@ -331,6 +333,12 @@
             position: relative;
             height: 500px;
             overflow: hidden;
+            cursor: grab; /* GÜNCELLENDİ: sürükleme için cursor eklendi */
+            user-select: none; /* GÜNCELLENDİ: metin seçimini önle */
+        }
+        
+        .slider-container:active {
+            cursor: grabbing; /* GÜNCELLENDİ: sürüklerken cursor değişimi */
         }
         
         .slider-item {
@@ -365,6 +373,9 @@
             padding: 20px 40px 30px;
             color: white;
             min-height: 35%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* GÜNCELLENDİ: başlık alt tarafa yaslandı */
         }
         
         .slider-title {
@@ -373,6 +384,9 @@
             font-weight: 700;
             line-height: 1.2;
             text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+            /* GÜNCELLENDİ: alt boşluk eklendi */
+            margin-top: auto;
+            margin-bottom: 10px;
         }
         
         .slider-controls {
@@ -399,6 +413,7 @@
             justify-content: center;
             font-size: 1.5rem;
             transition: var(--transition);
+            z-index: 20; /* GÜNCELLENDİ: sürükleme işlemi üzerinde kalması için */
         }
         
         .slider-btn:hover {
@@ -898,6 +913,11 @@
                 flex: 0 0 200px;
                 height: 200px;
             }
+            
+            /* Mobilde logo margin-left'i kaldır */
+            .logo-container {
+                margin-left: 0;
+            }
         }
         
         @media (max-width: 768px) {
@@ -907,6 +927,7 @@
             
             .logo-container {
                 height: 50px;
+                margin-left: 0; /* Mobilde margin sıfırla */
             }
             
             .hamburger-menu {
@@ -1022,6 +1043,7 @@
         @media (max-width: 576px) {
             .logo-container {
                 height: 45px;
+                margin-left: 0; /* Mobilde margin sıfırla */
             }
             
             .main-header {
@@ -1690,6 +1712,13 @@
         const mostReadTrack = document.getElementById('mostReadTrack');
         const mainLogo = document.getElementById('mainLogo');
 
+        // Ana slider için sürükleme değişkenleri
+        let mainSliderIsDragging = false;
+        let mainSliderStartPos = 0;
+        let mainSliderCurrentTranslate = 0;
+        let mainSliderPrevTranslate = 0;
+        let mainSliderAnimationID;
+
         // Haber kartı oluşturma fonksiyonu
         function createNewsCard(haber) {
             const card = document.createElement('a');
@@ -1777,15 +1806,15 @@
             if (!mostReadTrack) return;
             
             // Dokunma olayları
-            mostReadTrack.addEventListener('mousedown', dragStart);
-            mostReadTrack.addEventListener('touchstart', dragStart);
+            mostReadTrack.addEventListener('mousedown', dragStartMostRead);
+            mostReadTrack.addEventListener('touchstart', dragStartMostRead);
             
-            mostReadTrack.addEventListener('mousemove', drag);
-            mostReadTrack.addEventListener('touchmove', drag);
+            mostReadTrack.addEventListener('mousemove', dragMostRead);
+            mostReadTrack.addEventListener('touchmove', dragMostRead);
             
-            mostReadTrack.addEventListener('mouseup', dragEnd);
-            mostReadTrack.addEventListener('mouseleave', dragEnd);
-            mostReadTrack.addEventListener('touchend', dragEnd);
+            mostReadTrack.addEventListener('mouseup', dragEndMostRead);
+            mostReadTrack.addEventListener('mouseleave', dragEndMostRead);
+            mostReadTrack.addEventListener('touchend', dragEndMostRead);
             
             // Fare ile üzerine gelince otomatik kaydırmayı durdur
             mostReadTrack.addEventListener('mouseenter', () => {
@@ -1802,8 +1831,8 @@
             window.addEventListener('resize', updateMostReadSlider);
         }
 
-        // Slider sürükleme başlangıcı
-        function dragStart(event) {
+        // En çok okunan slider sürükleme başlangıcı
+        function dragStartMostRead(event) {
             event.preventDefault();
             
             if (event.type === 'touchstart') {
@@ -1816,14 +1845,14 @@
             mostReadIsDragging = true;
             clearInterval(mostReadAutoSlideInterval);
             
-            mostReadAnimationID = requestAnimationFrame(animation);
+            mostReadAnimationID = requestAnimationFrame(animationMostRead);
             
             mostReadTrack.style.cursor = 'grabbing';
             mostReadTrack.style.transition = 'none';
         }
 
-        // Slider sürükleme
-        function drag(event) {
+        // En çok okunan slider sürükleme
+        function dragMostRead(event) {
             if (!mostReadIsDragging) return;
             
             const currentPosition = event.type === 'touchmove' ? 
@@ -1845,8 +1874,8 @@
             }
         }
 
-        // Slider sürükleme sonu
-        function dragEnd() {
+        // En çok okunan slider sürükleme sonu
+        function dragEndMostRead() {
             if (!mostReadIsDragging) return;
             
             mostReadIsDragging = false;
@@ -1859,7 +1888,7 @@
             if (mostReadCurrentTranslate <= minTranslate) {
                 mostReadCurrentTranslate = 0;
                 mostReadPrevTranslate = 0;
-                setSliderPosition();
+                setMostReadSliderPosition();
             }
             
             mostReadTrack.style.cursor = 'grab';
@@ -1869,20 +1898,20 @@
             startMostReadAutoSlide();
         }
 
-        // Animasyon
-        function animation() {
-            setSliderPosition();
+        // En çok okunan slider animasyon
+        function animationMostRead() {
+            setMostReadSliderPosition();
             if (mostReadIsDragging) {
-                requestAnimationFrame(animation);
+                requestAnimationFrame(animationMostRead);
             }
         }
 
-        // Slider pozisyonunu ayarla
-        function setSliderPosition() {
+        // En çok okunan slider pozisyonunu ayarla
+        function setMostReadSliderPosition() {
             mostReadTrack.style.transform = `translateX(${mostReadCurrentTranslate}px)`;
         }
 
-        // Otomatik kaydırmayı başlat
+        // En çok okunan slider otomatik kaydırmayı başlat
         function startMostReadAutoSlide() {
             clearInterval(mostReadAutoSlideInterval);
             
@@ -1898,7 +1927,7 @@
                     mostReadCurrentTranslate = 0;
                     mostReadPrevTranslate = 0;
                     mostReadTrack.style.transition = 'none';
-                    setSliderPosition();
+                    setMostReadSliderPosition();
                     
                     // Geçiş efekti için kısa bir bekleme
                     setTimeout(() => {
@@ -1908,7 +1937,7 @@
                     mostReadTrack.style.transition = 'transform 0.3s ease-out';
                 }
                 
-                setSliderPosition();
+                setMostReadSliderPosition();
             }, 100);
         }
 
@@ -1919,6 +1948,7 @@
             initMostReadSlider();
             setupEventListeners();
             applyCategoryColors();
+            setupMainSliderDragEvents(); // Ana slider sürükleme olayları
             
             // Masaüstü için nav-link ikonlarını kaldır
             if (window.innerWidth >= 769) {
@@ -1927,6 +1957,89 @@
                 });
             }
         });
+
+        // Ana slider sürükleme olaylarını kur
+        function setupMainSliderDragEvents() {
+            if (!sliderContainer) return;
+            
+            sliderContainer.addEventListener('mousedown', dragStartMainSlider);
+            sliderContainer.addEventListener('touchstart', dragStartMainSlider);
+            
+            sliderContainer.addEventListener('mousemove', dragMainSlider);
+            sliderContainer.addEventListener('touchmove', dragMainSlider);
+            
+            sliderContainer.addEventListener('mouseup', dragEndMainSlider);
+            sliderContainer.addEventListener('mouseleave', dragEndMainSlider);
+            sliderContainer.addEventListener('touchend', dragEndMainSlider);
+        }
+
+        // Ana slider sürükleme başlangıcı
+        function dragStartMainSlider(event) {
+            event.preventDefault();
+            
+            if (event.type === 'touchstart') {
+                mainSliderStartPos = event.touches[0].clientX;
+            } else {
+                mainSliderStartPos = event.clientX;
+                event.preventDefault(); // Metin seçimini önle
+            }
+            
+            mainSliderIsDragging = true;
+            clearInterval(slideInterval); // Otomatik geçişi durdur
+            
+            mainSliderAnimationID = requestAnimationFrame(animationMainSlider);
+            
+            sliderContainer.style.cursor = 'grabbing';
+            sliderContainer.style.transition = 'none';
+        }
+
+        // Ana slider sürükleme
+        function dragMainSlider(event) {
+            if (!mainSliderIsDragging) return;
+            
+            const currentPosition = event.type === 'touchmove' ? 
+                event.touches[0].clientX : event.clientX;
+            
+            const diff = currentPosition - mainSliderStartPos;
+            mainSliderCurrentTranslate = mainSliderPrevTranslate + diff;
+        }
+
+        // Ana slider sürükleme sonu
+        function dragEndMainSlider() {
+            if (!mainSliderIsDragging) return;
+            
+            mainSliderIsDragging = false;
+            cancelAnimationFrame(mainSliderAnimationID);
+            
+            const diff = mainSliderCurrentTranslate - mainSliderPrevTranslate;
+            const threshold = 50; // Geçiş için eşik değeri
+            
+            // Eğer yeterince sürüklendiyse slayt değiştir
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    prevSlide(); // Sağa sürüklendi - önceki slayt
+                } else {
+                    nextSlide(); // Sola sürüklendi - sonraki slayt
+                }
+            }
+            
+            mainSliderPrevTranslate = 0;
+            mainSliderCurrentTranslate = 0;
+            
+            sliderContainer.style.cursor = 'grab';
+            sliderContainer.style.transition = 'transform 0.3s ease-out';
+            
+            // Otomatik kaydırmayı yeniden başlat
+            startSlideInterval();
+        }
+
+        // Ana slider animasyon
+        function animationMainSlider() {
+            // Ana slider'da sürükleme sırasında görsel efekt uygulanabilir
+            if (mainSliderIsDragging) {
+                requestAnimationFrame(animationMainSlider);
+            }
+        }
 
         // Kategori renklerini uygula
         function applyCategoryColors() {
