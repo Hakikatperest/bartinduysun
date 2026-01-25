@@ -1809,15 +1809,14 @@
                     slide.className = `slider-item ${index === 0 ? 'active' : ''}`;
                     slide.href = `haber-detay.html?id=${haber.id}`;
                     const imageUrl = haber.image || 'https://via.placeholder.com/1200x500?text=Bartın+Duysun';
-                    slide.innerHTML = `
-                        <img src="${imageUrl}" alt="${haber.title}">
-                        <div class="slider-overlay">
-                            <div class="container">
-                                <h3 class="slider-title">${haber.title}</h3>
-                                <p>${haber.category}</p>
-                            </div>
-                        </div>
-                    `;
+                   slide.innerHTML = `
+    <img src="${imageUrl}" alt="${haber.title}">
+    <div class="slider-overlay">
+        <div class="container">
+            <h3 class="slider-title">${haber.title}</h3>
+        </div>
+    </div>
+`;
                     sliderContainer.appendChild(slide);
                 });
 
