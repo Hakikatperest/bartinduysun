@@ -581,7 +581,7 @@
             color: var(--gray-color);
         }
         
-        /* EN ÇOK OKUNANLAR - TAMAMEN YENİ VE DÜZGÜN ÇALIŞAN TASARIM */
+        /* EN ÇOK OKUNANLAR - GÜNCELLENMİŞ TASARIM */
         .most-read-section {
             margin: 60px 0;
             position: relative;
@@ -598,13 +598,20 @@
         .most-read-track {
             display: flex;
             gap: 30px;
-            animation: scrollMostRead 60s linear infinite;
+            animation: scrollMostRead 80s linear infinite;
             will-change: transform;
             padding: 10px 0;
             transition: animation-play-state 0.3s ease;
+            cursor: grab;
         }
         
-        .most-read-wrapper:hover .most-read-track {
+        .most-read-track.grabbing {
+            cursor: grabbing;
+            animation-play-state: paused;
+            user-select: none;
+        }
+        
+        .most-read-wrapper:hover .most-read-track:not(.grabbing) {
             animation-play-state: paused;
         }
         
@@ -691,7 +698,7 @@
             text-shadow: 0 1px 4px rgba(0,0,0,0.5);
         }
         
-        /* Sonsuz kaydırma animasyonu */
+        /* Sonsuz kaydırma animasyonu - Yavaşlatıldı (80s) */
         @keyframes scrollMostRead {
             0% {
                 transform: translateX(0);
@@ -1861,28 +1868,31 @@
                 });
             }
             
-            // Animasyon süresini responsive olarak ayarla
+            // Animasyon süresini responsive olarak ayarla (yavaşlatıldı)
             updateAnimationSpeed();
             
             // Pencere boyutu değiştiğinde animasyon hızını güncelle
             window.addEventListener('resize', updateAnimationSpeed);
+            
+            // Sürükleme özelliklerini başlat
+            setupDragScrolling();
         }
 
-        // Animasyon hızını güncelleme fonksiyonu
+        // Animasyon hızını güncelleme fonksiyonu (yavaşlatıldı)
         function updateAnimationSpeed() {
             if (!mostReadTrack) return;
             
             const items = mostReadTrack.querySelectorAll('.most-read-item');
             if (items.length === 0) return;
             
-            // Ekran genişliğine göre animasyon süresini ayarla
+            // Ekran genişliğine göre animasyon süresini ayarla (yavaşlatıldı)
             const screenWidth = window.innerWidth;
-            let animationDuration = 60; // Varsayılan süre
+            let animationDuration = 80; // Yavaşlatıldı (80 saniye)
             
             if (screenWidth < 768) {
-                animationDuration = 40; // Mobilde daha hızlı
+                animationDuration = 60; // Mobilde biraz daha hızlı ama yine yavaş
             } else if (screenWidth < 992) {
-                animationDuration = 50; // Tablette orta hız
+                animationDuration = 70; // Tablette orta hız
             }
             
             // CSS animasyonunu güncelle
@@ -1932,6 +1942,112 @@
                 const styleElement = document.createElement('style');
                 styleElement.innerHTML = newKeyframes;
                 document.head.appendChild(styleElement);
+            }
+        }
+
+        // SÜRÜKLEME ÖZELLİKLERİ
+        function setupDragScrolling() {
+            if (!mostReadTrack) return;
+            
+            let isDragging = false;
+            let startX = 0;
+            let scrollLeft = 0;
+            let currentTranslate = 0;
+            let animationId = null;
+            let animationPaused = false;
+            let animationStartTime = 0;
+            let animationProgress = 0;
+            let lastScrollTime = 0;
+            
+            // Fare ile sürükleme
+            mostReadTrack.addEventListener('mousedown', startDrag);
+            mostReadTrack.addEventListener('touchstart', startDrag);
+            
+            // Fareyi bırakma
+            document.addEventListener('mouseup', endDrag);
+            document.addEventListener('touchend', endDrag);
+            
+            // Fare hareketi
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('touchmove', drag);
+            
+            // Animasyon döngüsü
+            function animate() {
+                if (!animationPaused && !isDragging) {
+                    const now = Date.now();
+                    const elapsed = now - animationStartTime;
+                    const totalDuration = 80000; // 80 saniye
+                    
+                    // Animasyon ilerlemesini hesapla
+                    animationProgress = (elapsed % totalDuration) / totalDuration;
+                    
+                    // Mevcut translate değerini hesapla
+                    const totalWidth = mostReadTrack.scrollWidth / 2; // İki set olduğu için
+                    currentTranslate = -animationProgress * totalWidth;
+                    
+                    // Translate uygula
+                    mostReadTrack.style.transform = `translateX(${currentTranslate}px)`;
+                }
+                
+                animationId = requestAnimationFrame(animate);
+            }
+            
+            // Animasyonu başlat
+            animationStartTime = Date.now();
+            animate();
+            
+            // Sürüklemeyi başlat
+            function startDrag(e) {
+                isDragging = true;
+                animationPaused = true;
+                mostReadTrack.classList.add('grabbing');
+                
+                // Başlangıç pozisyonunu kaydet
+                startX = getPositionX(e);
+                scrollLeft = currentTranslate;
+                
+                // Animasyonu duraklat
+                mostReadTrack.style.animationPlayState = 'paused';
+                
+                // Fare imlecini değiştir
+                document.body.style.cursor = 'grabbing';
+            }
+            
+            // Sürükleme işlemi
+            function drag(e) {
+                if (!isDragging) return;
+                
+                e.preventDefault();
+                
+                const x = getPositionX(e);
+                const walk = x - startX;
+                
+                // Yeni pozisyonu hesapla
+                currentTranslate = scrollLeft + walk;
+                
+                // Translate uygula
+                mostReadTrack.style.transform = `translateX(${currentTranslate}px)`;
+            }
+            
+            // Sürüklemeyi bitir
+            function endDrag() {
+                if (!isDragging) return;
+                
+                isDragging = false;
+                mostReadTrack.classList.remove('grabbing');
+                document.body.style.cursor = '';
+                
+                // Animasyonu sıfırla ve yeniden başlat
+                animationPaused = false;
+                animationStartTime = Date.now() - (animationProgress * 80000);
+                
+                // Animasyonu devam ettir
+                mostReadTrack.style.animationPlayState = 'running';
+            }
+            
+            // Pozisyonu al (fare ve dokunmatik için)
+            function getPositionX(e) {
+                return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
             }
         }
 
