@@ -334,6 +334,7 @@
             overflow: hidden;
             cursor: grab;
             user-select: none;
+            touch-action: pan-y;
         }
         
         .slider-container:active {
@@ -350,6 +351,7 @@
             transition: opacity 0.8s ease;
             display: flex;
             align-items: flex-end;
+            touch-action: pan-y;
         }
         
         .slider-item.active {
@@ -360,6 +362,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            pointer-events: none;
         }
         
         /* Slider overlay */
@@ -602,6 +605,13 @@
             transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             gap: 20px;
             padding: 5px 0;
+            touch-action: pan-y;
+            cursor: grab;
+            user-select: none;
+        }
+        
+        .gallery-track:active {
+            cursor: grabbing;
         }
         
         /* Galeri kartları */
@@ -633,6 +643,7 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            pointer-events: none;
         }
         
         .gallery-item:hover .gallery-image img {
@@ -1883,6 +1894,13 @@
         let totalSlides = haberData.mostRead.length; // 10 haber
         let totalPages = 0;
 
+        // YENİ: Slider ve galeri için dokunma/swipe değişkenleri
+        let isDragging = false;
+        let startPos = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationID = null;
+
         // YENİ: Galeriyi başlat
         function initGallery() {
             if (!galleryTrack || !haberData.mostRead.length) return;
@@ -1909,6 +1927,9 @@
             window.addEventListener('resize', () => {
                 updateSlidesPerView();
             });
+            
+            // Dokunma/swipe olaylarını ekle
+            setupSwipeForGallery();
         }
 
         // YENİ: Ekran boyutuna göre görüntülenecek haber sayısını belirle
@@ -2042,6 +2063,9 @@
             
             // Slider otomatik geçişini başlat
             startSlideInterval();
+            
+            // Slider için swipe olaylarını ekle
+            setupSwipeForSlider();
         }
 
         // Slider değişkenleri
@@ -2100,6 +2124,144 @@
                 slides[currentSlide].classList.add('active');
                 dots[currentSlide].classList.add('active');
             }
+        }
+
+        // YENİ: Slider için swipe/dokunma desteği
+        function setupSwipeForSlider() {
+            if (!sliderContainer) return;
+            
+            let sliderStartX = 0;
+            let sliderEndX = 0;
+            const swipeThreshold = 50; // Minimum kaydırma mesafesi
+            
+            // Dokunma başladığında
+            sliderContainer.addEventListener('touchstart', (e) => {
+                sliderStartX = e.touches[0].clientX;
+                // Otomatik geçişi durdur
+                clearInterval(slideInterval);
+            }, { passive: true });
+            
+            // Dokunma hareket ettiğinde
+            sliderContainer.addEventListener('touchmove', (e) => {
+                e.preventDefault(); // Varsayılan scroll'u engelle
+            }, { passive: false });
+            
+            // Dokunma bittiğinde
+            sliderContainer.addEventListener('touchend', (e) => {
+                if (e.changedTouches.length > 0) {
+                    sliderEndX = e.changedTouches[0].clientX;
+                    
+                    const diffX = sliderStartX - sliderEndX;
+                    
+                    // Sola kaydırma (sonraki slide)
+                    if (diffX > swipeThreshold) {
+                        nextSlide();
+                    }
+                    // Sağa kaydırma (önceki slide)
+                    else if (diffX < -swipeThreshold) {
+                        prevSlide();
+                    }
+                }
+                
+                // Otomatik geçişi yeniden başlat
+                startSlideInterval();
+            }, { passive: true });
+            
+            // Masaüstü için mouse olayları
+            sliderContainer.addEventListener('mousedown', (e) => {
+                sliderStartX = e.clientX;
+                clearInterval(slideInterval);
+                sliderContainer.style.cursor = 'grabbing';
+            });
+            
+            sliderContainer.addEventListener('mouseup', (e) => {
+                sliderEndX = e.clientX;
+                
+                const diffX = sliderStartX - sliderEndX;
+                
+                // Sola kaydırma (sonraki slide)
+                if (diffX > swipeThreshold) {
+                    nextSlide();
+                }
+                // Sağa kaydırma (önceki slide)
+                else if (diffX < -swipeThreshold) {
+                    prevSlide();
+                }
+                
+                startSlideInterval();
+                sliderContainer.style.cursor = 'grab';
+            });
+            
+            sliderContainer.addEventListener('mouseleave', () => {
+                sliderContainer.style.cursor = 'grab';
+                startSlideInterval();
+            });
+        }
+
+        // YENİ: Galeri için swipe/dokunma desteği
+        function setupSwipeForGallery() {
+            if (!galleryTrack) return;
+            
+            let galleryStartX = 0;
+            let galleryEndX = 0;
+            const swipeThreshold = 50; // Minimum kaydırma mesafesi
+            
+            // Dokunma başladığında
+            galleryTrack.addEventListener('touchstart', (e) => {
+                galleryStartX = e.touches[0].clientX;
+                galleryTrack.style.cursor = 'grabbing';
+            }, { passive: true });
+            
+            // Dokunma hareket ettiğinde
+            galleryTrack.addEventListener('touchmove', (e) => {
+                e.preventDefault(); // Varsayılan scroll'u engelle
+            }, { passive: false });
+            
+            // Dokunma bittiğinde
+            galleryTrack.addEventListener('touchend', (e) => {
+                if (e.changedTouches.length > 0) {
+                    galleryEndX = e.changedTouches[0].clientX;
+                    
+                    const diffX = galleryStartX - galleryEndX;
+                    
+                    // Sola kaydırma (sonraki sayfa)
+                    if (diffX > swipeThreshold && currentSlideIndex < totalPages - 1) {
+                        nextPage();
+                    }
+                    // Sağa kaydırma (önceki sayfa)
+                    else if (diffX < -swipeThreshold && currentSlideIndex > 0) {
+                        prevPage();
+                    }
+                }
+                galleryTrack.style.cursor = 'grab';
+            }, { passive: true });
+            
+            // Masaüstü için mouse olayları
+            galleryTrack.addEventListener('mousedown', (e) => {
+                galleryStartX = e.clientX;
+                galleryTrack.style.cursor = 'grabbing';
+            });
+            
+            galleryTrack.addEventListener('mouseup', (e) => {
+                galleryEndX = e.clientX;
+                
+                const diffX = galleryStartX - galleryEndX;
+                
+                // Sola kaydırma (sonraki sayfa)
+                if (diffX > swipeThreshold && currentSlideIndex < totalPages - 1) {
+                    nextPage();
+                }
+                // Sağa kaydırma (önceki sayfa)
+                else if (diffX < -swipeThreshold && currentSlideIndex > 0) {
+                    prevPage();
+                }
+                
+                galleryTrack.style.cursor = 'grab';
+            });
+            
+            galleryTrack.addEventListener('mouseleave', () => {
+                galleryTrack.style.cursor = 'grab';
+            });
         }
 
         // Haber kategorilerini başlat
