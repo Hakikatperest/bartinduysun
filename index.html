@@ -336,7 +336,6 @@
             overflow: hidden;
             cursor: grab;
             user-select: none;
-            /* touch-action: pan-y; BU SATIR KALDIRILDI */
             -webkit-user-drag: none;
         }
         
@@ -354,7 +353,6 @@
             transition: opacity 0.8s ease;
             display: flex;
             align-items: flex-end;
-            /* touch-action: pan-y; BU SATIR KALDIRILDI */
             pointer-events: auto;
         }
         
@@ -382,7 +380,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            pointer-events: none; /* Mobil kaydırma için önemli */
+            pointer-events: none;
         }
         
         .slider-title {
@@ -406,7 +404,7 @@
             transform: translateY(-50%);
             padding: 0 20px;
             z-index: 10;
-            pointer-events: none; /* Butonların üzerinden geçerken kaydırmayı engellememek için */
+            pointer-events: none;
         }
         
         .slider-btn {
@@ -423,7 +421,7 @@
             font-size: 1.5rem;
             transition: var(--transition);
             z-index: 20;
-            pointer-events: auto; /* Butonlar tıklanabilir olmalı */
+            pointer-events: auto;
         }
         
         .slider-btn:hover {
@@ -440,7 +438,7 @@
             justify-content: center;
             gap: 10px;
             z-index: 10;
-            pointer-events: none; /* Pagination üzerinden geçerken kaydırmayı engellememek için */
+            pointer-events: none;
         }
         
         .pagination-dot {
@@ -451,7 +449,7 @@
             border: 2px solid transparent;
             cursor: pointer;
             transition: var(--transition);
-            pointer-events: auto; /* Noktalar tıklanabilir olmalı */
+            pointer-events: auto;
         }
         
         .pagination-dot.active {
@@ -616,10 +614,9 @@
             transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             gap: 20px;
             padding: 5px 0;
-            /* touch-action: pan-y; BU SATIR KALDIRILDI */
             cursor: grab;
             user-select: none;
-            -webkit-overflow-scrolling: touch; /* Mobilde smooth kaydırma için */
+            -webkit-overflow-scrolling: touch;
         }
         
         .gallery-track:active {
@@ -628,7 +625,7 @@
         
         /* Galeri kartları */
         .gallery-item {
-            flex: 0 0 calc((100% - 40px) / 3); /* 3'lü görünüm, gap dahil */
+            flex: 0 0 calc((100% - 40px) / 3);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
@@ -756,7 +753,7 @@
         /* Responsive tasarım */
         @media (max-width: 1200px) {
             .gallery-item {
-                flex: 0 0 calc((100% - 20px) / 2.5); /* 2.5'lu görünüm */
+                flex: 0 0 calc((100% - 20px) / 2.5);
             }
         }
         
@@ -766,7 +763,7 @@
             }
             
             .gallery-item {
-                flex: 0 0 calc((100% - 20px) / 2); /* 2'li görünüm */
+                flex: 0 0 calc((100% - 20px) / 2);
             }
             
             .gallery-nav {
@@ -782,7 +779,7 @@
             }
             
             .gallery-item {
-                flex: 0 0 calc((100% - 20px) / 1.5); /* 1.5'lu görünüm */
+                flex: 0 0 calc((100% - 20px) / 1.5);
                 min-height: 300px;
             }
             
@@ -812,7 +809,7 @@
             }
             
             .gallery-item {
-                flex: 0 0 calc(100% - 10px); /* Tekli görünüm */
+                flex: 0 0 calc(100% - 10px);
                 min-height: 280px;
             }
             
@@ -1061,11 +1058,11 @@
                 visibility: visible;
                 transform: none;
                 box-shadow: none;
-                padding: 4px 0; /* 8px'ten 4px'e azaltıldı (%50) */
+                padding: 4px 0;
                 display: none;
                 background-color: rgba(1, 136, 159, 0.05);
                 border-radius: 8px;
-                margin: 5px 0 10px; /* 10px 0 15px'ten azaltıldı */
+                margin: 5px 0 10px;
                 border-top: none;
                 border-left: 3px solid var(--topbar-color);
                 min-width: auto;
@@ -1077,11 +1074,11 @@
             
             .dropdown-menu li {
                 padding: 0 5px;
-                margin: 1px 0; /* 2px'ten 1px'e azaltıldı (%50) */
+                margin: 1px 0;
             }
             
             .dropdown-menu a {
-                padding: 8px 20px; /* 14px 25px'ten azaltıldı */
+                padding: 8px 20px;
                 font-size: 1rem;
                 gap: 10px;
                 margin: 0;
@@ -1179,7 +1176,7 @@
             
             /* Mobilde daha da kompakt hale getirildi */
             .dropdown-menu a {
-                padding: 7px 18px; /* Daha da azaltıldı */
+                padding: 7px 18px;
                 font-size: 0.95rem;
             }
             
@@ -1298,9 +1295,9 @@
                     <ul class="nav-menu" id="navMenu">
                         <div class="nav-links-container">
                             <li class="nav-item"><a href="bartin-haberleri.html" class="nav-link"><i class="fas fa-newspaper"></i> Bartın Haberleri</a></li>
-                            <li class="nav-item"><a href="valilik-haberleri.html" class="nav-link"><i class="fas fa-landmark"></i> Valilik Haberleri</a></li>
-                            <li class="nav-item"><a href="belediye-haberleri.html" class="nav-link"><i class="fas fa-city"></i> Belediye Haberleri</a></li>
-                            <li class="nav-item"><a href="siyaset-haberleri.html" class="nav-link"><i class="fas fa-users"></i> Siyaset Haberleri</a></li>
+                            <li class="nav-item"><a href="bartin-valiligi-haberleri.html" class="nav-link"><i class="fas fa-landmark"></i> Bartın Valiliği Haberleri</a></li>
+                            <li class="nav-item"><a href="bartin-belediyesi-haberleri.html" class="nav-link"><i class="fas fa-city"></i> Bartın Belediyesi Haberleri</a></li>
+                            <li class="nav-item"><a href="bartin-siyaset-haberleri.html" class="nav-link"><i class="fas fa-users"></i> Bartın Siyaset Haberleri</a></li>
                             <li class="nav-item"><a href="firma-rehberi.html" class="nav-link"><i class="fas fa-building"></i> Bartın Firma Rehberi</a></li>
                             <li class="nav-item dropdown" id="dropdownMenu">
                                 <a href="#" class="nav-link"><i class="fas fa-building"></i> Kurumsal <i class="fas fa-chevron-down"></i></a>
@@ -1370,7 +1367,7 @@
         <section class="news-category" id="valilik">
             <h2 class="section-title" style="border-bottom-color: var(--valilik-color);">
                 <span class="blinking-dot" style="background-color: var(--valilik-color);"></span>
-                <span style="color: var(--valilik-color);">Valilik Haberleri</span>
+                <span style="color: var(--valilik-color);">Bartın Valiliği Haberleri</span>
             </h2>
             
             <div class="news-grid" id="valilikNews">
@@ -1389,7 +1386,7 @@
         <section class="news-category" id="belediye">
             <h2 class="section-title" style="border-bottom-color: var(--belediye-color);">
                 <span class="blinking-dot" style="background-color: var(--belediye-color);"></span>
-                <span style="color: var(--belediye-color);">Belediye Haberleri</span>
+                <span style="color: var(--belediye-color);">Bartın Belediyesi Haberleri</span>
             </h2>
             
             <div class="news-grid" id="belediyeNews">
@@ -1408,7 +1405,7 @@
         <section class="news-category" id="siyaset">
             <h2 class="section-title" style="border-bottom-color: var(--siyaset-color);">
                 <span class="blinking-dot" style="background-color: var(--siyaset-color);"></span>
-                <span style="color: var(--siyaset-color);">Siyaset Haberleri</span>
+                <span style="color: var(--siyaset-color);">Bartın Siyaset Haberleri</span>
             </h2>
             
             <div class="news-grid" id="siyasetNews">
@@ -1418,7 +1415,10 @@
 
         <!-- YENİ TASARIM: EN ÇOK OKUNAN HABERLER GALERİSİ -->
         <section class="most-read-gallery">
-            <h2 class="section-title">En Çok Okunan Haberler</h2>
+            <h2 class="section-title">
+                <i class="fas fa-newspaper" style="margin-right: 10px; color: var(--topbar-color);"></i>
+                En Çok Okunan Haberler
+            </h2>
             
             <div class="gallery-container">
                 <!-- Geri butonu -->
@@ -1445,7 +1445,7 @@
 
         <!-- Kategoriler Bölümü -->
         <section class="categories-section">
-            <h2 class="section-title">Haber Kategorileri</h2>
+            <h2 class="section-title">Tüm Haberler / Hızlı Erişim</h2>
             
             <div class="categories-grid">
                 <a href="bartin-haberleri.html" class="category-card">
@@ -1454,22 +1454,29 @@
                     <p>Bartın'dan güncel ve genel haberler</p>
                 </a>
                 
-                <a href="valilik-haberleri.html" class="category-card">
+                <a href="bartin-valiligi-haberleri.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-landmark"></i></div>
-                    <h3 class="category-name">Valilik Haberleri</h3>
+                    <h3 class="category-name">Bartın Valiliği Haberleri</h3>
                     <p>Bartın Valiliği'nden güncel duyuru ve haberler</p>
                 </a>
                 
-                <a href="belediye-haberleri.html" class="category-card">
+                <a href="bartin-belediyesi-haberleri.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-city"></i></div>
-                    <h3 class="category-name">Belediye Haberleri</h3>
+                    <h3 class="category-name">Bartın Belediyesi Haberleri</h3>
                     <p>Bartın Belediyesi faaliyet ve projeleri</p>
                 </a>
                 
-                <a href="siyaset-haberleri.html" class="category-card">
+                <a href="bartin-siyaset-haberleri.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-users"></i></div>
-                    <h3 class="category-name">Siyaset Haberleri</h3>
+                    <h3 class="category-name">Bartın Siyaset Haberleri</h3>
                     <p>Yerel ve genel siyasetten gelişmeler</p>
+                </a>
+                
+                <!-- YENİ EKLENEN: Bartın Firma Rehberi -->
+                <a href="firma-rehberi.html" class="category-card">
+                    <div class="category-icon"><i class="fas fa-building"></i></div>
+                    <h3 class="category-name">Bartın Firma Rehberi</h3>
+                    <p>Bartın'daki firmalar ve işletmeler</p>
                 </a>
             </div>
         </section>
@@ -1497,9 +1504,9 @@
                     <h3 class="footer-title">Hızlı Erişim</h3>
                     <ul>
                         <li><a href="bartin-haberleri.html"><i class="fas fa-chevron-right"></i> Bartın Haberleri</a></li>
-                        <li><a href="valilik-haberleri.html"><i class="fas fa-chevron-right"></i> Valilik Haberleri</a></li>
-                        <li><a href="belediye-haberleri.html"><i class="fas fa-chevron-right"></i> Belediye Haberleri</a></li>
-                        <li><a href="siyaset-haberleri.html"><i class="fas fa-chevron-right"></i> Siyaset Haberleri</a></li>
+                        <li><a href="bartin-valiligi-haberleri.html"><i class="fas fa-chevron-right"></i> Bartın Valiliği Haberleri</a></li>
+                        <li><a href="bartin-belediyesi-haberleri.html"><i class="fas fa-chevron-right"></i> Bartın Belediyesi Haberleri</a></li>
+                        <li><a href="bartin-siyaset-haberleri.html"><i class="fas fa-chevron-right"></i> Bartın Siyaset Haberleri</a></li>
                         <li><a href="firma-rehberi.html"><i class="fas fa-chevron-right"></i> Bartın Firma Rehberi</a></li>
                     </ul>
                 </div>
@@ -1569,6 +1576,42 @@
                     category: "Belediye Haberleri",
                     image: "https://www.bartinduysun.com/images/belediye/arac-filosuna-buyuk-yatirim.webp",
                     detail: "Bartın Belediyesi, hizmet kapasitesini artırmak amacıyla araç filosunu önemli ölçüde güçlendirdi."
+                },
+                // YENİ EKLENEN 5 HABER
+                {
+                    id: 6,
+                    title: "Bartın'da Yeni Kültür Merkezi Açılıyor",
+                    category: "Bartın Haberleri",
+                    image: "https://images.unsplash.com/photo-1567593810070-7a5c0925344e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    detail: "Bartın'da yeni kültür merkezi için son hazırlıklar tamamlandı. Merkezde tiyatro, sergi salonu ve kütüphane bulunacak."
+                },
+                {
+                    id: 7,
+                    title: "Belediye'den Üniversite Öğrencilerine Ulaşım Desteği",
+                    category: "Belediye Haberleri",
+                    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    detail: "Bartın Belediyesi, üniversite öğrencileri için özel ulaşım kartı projesini başlattı. Öğrenciler %50 indirimle toplu taşıma kullanabilecek."
+                },
+                {
+                    id: 8,
+                    title: "Valilik'ten Yeni Sosyal Proje: Gençlik Merkezi",
+                    category: "Valilik Haberleri",
+                    image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    detail: "Bartın Valiliği, gençler için modern bir gençlik merkezi projesini hayata geçiriyor. Merkezde spor salonu, bilgisayar odası ve etüt salonu yer alacak."
+                },
+                {
+                    id: 9,
+                    title: "Parti İl Başkanı Basın Toplantısı Düzenledi",
+                    category: "Siyaset Haberleri",
+                    image: "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    detail: "CHP Bartın İl Başkanı, basın toplantısı düzenleyerek yerel yönetimler hakkındaki görüşlerini ve projelerini paylaştı."
+                },
+                {
+                    id: 10,
+                    title: "Hırsızlık Zanlıları Yakalandı",
+                    category: "Bartın Haberleri",
+                    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    detail: "Bartın'da bir işyerine yönelik hırsızlık yapan 3 zanlı polis tarafından yakalandı. Zanlıların, gece vakti işyerine girerek nakit para ve değerli eşyaları çaldığı belirlendi."
                 }
             ],
             
