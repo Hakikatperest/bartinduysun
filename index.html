@@ -581,11 +581,10 @@
             color: var(--gray-color);
         }
         
-        /* EN ÇOK OKUNANLAR - GÜNCELLENMİŞ TASARIM */
+        /* EN ÇOK OKUNANLAR - TAMAMEN YENİ TASARIM */
         .most-read-section {
             margin: 60px 0;
             position: relative;
-            overflow: hidden;
         }
         
         .most-read-wrapper {
@@ -598,21 +597,13 @@
         .most-read-track {
             display: flex;
             gap: 30px;
-            animation: scrollMostRead 80s linear infinite;
-            will-change: transform;
-            padding: 10px 0;
-            transition: animation-play-state 0.3s ease;
+            transition: transform 0.5s ease;
             cursor: grab;
+            width: max-content;
         }
         
         .most-read-track.grabbing {
             cursor: grabbing;
-            animation-play-state: paused;
-            user-select: none;
-        }
-        
-        .most-read-wrapper:hover .most-read-track:not(.grabbing) {
-            animation-play-state: paused;
         }
         
         /* Kare boyutlu kartlar */
@@ -698,36 +689,59 @@
             text-shadow: 0 1px 4px rgba(0,0,0,0.5);
         }
         
-        /* Sonsuz kaydırma animasyonu - Yavaşlatıldı (80s) */
-        @keyframes scrollMostRead {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(calc(-320px * 8 - 30px * 8));
-            }
+        /* Buton Stilleri */
+        #prevMostRead {
+            background: var(--topbar-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
         
-        /* Gradient overlay eklenmesi */
-        .most-read-wrapper::before,
-        .most-read-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            height: 100%;
-            width: 100px;
-            z-index: 2;
-            pointer-events: none;
+        #prevMostRead:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            opacity: 0.6;
         }
         
-        .most-read-wrapper::before {
-            left: 0;
-            background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+        #prevMostRead:disabled:hover {
+            background: #6c757d;
+            transform: none;
         }
         
-        .most-read-wrapper::after {
-            right: 0;
-            background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+        #nextMostRead:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        #nextMostRead:disabled:hover {
+            background: #6c757d;
+            transform: none;
+        }
+        
+        #prevMostRead:not(:disabled):hover, 
+        #nextMostRead:not(:disabled):hover {
+            background: #017389;
+            transform: translateY(-2px);
+        }
+        
+        #nextMostRead {
+            background: var(--topbar-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        #pauseMostRead {
+            display: none;
         }
         
         /* Kategoriler Bölümü */
@@ -903,12 +917,6 @@
             .most-read-content h3 {
                 font-size: 1.3rem;
             }
-            
-            @keyframes scrollMostRead {
-                100% {
-                    transform: translateX(calc(-280px * 8 - 30px * 8));
-                }
-            }
         }
         
         @media (max-width: 992px) {
@@ -930,19 +938,8 @@
                 -webkit-line-clamp: 2;
             }
             
-            @keyframes scrollMostRead {
-                100% {
-                    transform: translateX(calc(-260px * 8 - 30px * 8));
-                }
-            }
-            
             .logo-container {
                 margin-left: 0;
-            }
-            
-            .most-read-wrapper::before,
-            .most-read-wrapper::after {
-                width: 60px;
             }
         }
         
@@ -1062,12 +1059,6 @@
                 -webkit-line-clamp: 2;
             }
             
-            @keyframes scrollMostRead {
-                100% {
-                    transform: translateX(calc(-240px * 8 - 30px * 8));
-                }
-            }
-            
             .slider-controls {
                 padding: 0 10px;
             }
@@ -1076,11 +1067,6 @@
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
-            }
-            
-            .most-read-wrapper::before,
-            .most-read-wrapper::after {
-                width: 40px;
             }
         }
         
@@ -1148,12 +1134,6 @@
                 -webkit-line-clamp: 2;
             }
             
-            @keyframes scrollMostRead {
-                100% {
-                    transform: translateX(calc(-220px * 8 - 30px * 8));
-                }
-            }
-            
             .footer-logo-img {
                 max-width: 150px;
             }
@@ -1162,11 +1142,6 @@
                 width: 85%;
                 max-width: 320px;
                 padding-top: 70px;
-            }
-            
-            .most-read-wrapper::before,
-            .most-read-wrapper::after {
-                width: 20px;
             }
         }
         
@@ -1188,17 +1163,6 @@
             .most-read-content p {
                 font-size: 0.8rem;
                 -webkit-line-clamp: 2;
-            }
-            
-            @keyframes scrollMostRead {
-                100% {
-                    transform: translateX(calc(-200px * 8 - 30px * 8));
-                }
-            }
-            
-            .most-read-wrapper::before,
-            .most-read-wrapper::after {
-                display: none;
             }
         }
         
@@ -1393,13 +1357,20 @@
 
         <!-- DÜZELTİLMİŞ EN ÇOK OKUNANLAR BÖLÜMÜ -->
         <section class="most-read-section">
-            <h2 class="section-title">En Çok Okunan Haberler</h2>
+            <h2 class="section-title">En Çok Okunan Haberler (Top 10)</h2>
             
             <!-- Düzeltilmiş sonsuz kayan kare kartlar -->
             <div class="most-read-wrapper">
                 <div class="most-read-track" id="mostReadTrack">
                     <!-- En çok okunan haberler JavaScript ile eklenecek -->
                 </div>
+            </div>
+            
+            <!-- Kontrol butonları -->
+            <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+                <button id="prevMostRead">❮ Önceki (2 Kart)</button>
+                <button id="pauseMostRead" style="display: none;">⏸️ Duraklat</button>
+                <button id="nextMostRead">Sonraki (2 Kart) ❯</button>
             </div>
         </section>
 
@@ -1708,7 +1679,7 @@
                     category: "Siyaset Haberleri",
                     image: "https://www.bartinduysun.com/images/siyaset/baskan-yalcinkaya-dan-chp-kurultayi-sonrasi-aciklama.webp",
                     excerpt: "Başkan Yalçınkaya'dan Özgür Özel'e Tebrik ve Kurultay Değerlendirmesi",
-                    detail: "Bartın Belediye Başkanı Rıza Yalçınkaya, CHP 39. Olağan Kurultayı'nın ikinci gününün tamamlanmasının ardından Genel Başkanlığa seçilen Özgür Özel'i tebrik etti."
+                    detail: "Bartın Belediye Başkanı Rıza Yalçınkaya, CHP 39. Olağan Kurultayı'nın ikinci gününün tamamlanmasının ardından Genel Başkanlığa seçilen Özgür Özel'i tebrik edti."
                 },
                 {
                     id: 22,
@@ -1792,6 +1763,20 @@
                     category: "Siyaset Haberleri",
                     image: "https://www.bartinduysun.com/images/siyaset/bartina-1-4-milyon-dolarlik-yoresel-urunler-pazari-kazandiriliyor.webp",
                     detail: "Bartın'daki sağlık çalışanları için ek ödeme yapılacak. Ödeme, pandemi döneminde gösterdikleri üstün çaba ve fedakarlıkları karşılığında yapılacak."
+                },
+                {
+                    id: 9,
+                    title: "Bartın'da Yeni Kültür Merkezi Açıldı",
+                    category: "Bartın Haberleri",
+                    image: "https://images.unsplash.com/photo-1567593810070-7a5c0925344e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    detail: "Bartın'da yeni kültür merkezi törenle açıldı. Merkezde sergi salonları, kütüphane ve konferans salonu bulunuyor. Haftanın 7 günü hizmet verecek."
+                },
+                {
+                    id: 10,
+                    title: "Valilik'ten Yeni Sosyal Proje",
+                    category: "Valilik Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    detail: "Bartın Valiliği, dezavantajlı gruplara yönelik yeni bir sosyal proje başlattı. Proje kapsamında ihtiyaç sahibi ailelere gıda ve giysi yardımı yapılacak."
                 }
             ]
         };
@@ -1807,6 +1792,9 @@
         const nextSliderBtn = document.getElementById('nextSliderBtn');
         const mostReadTrack = document.getElementById('mostReadTrack');
         const mainLogo = document.getElementById('mainLogo');
+        const prevMostReadBtn = document.getElementById('prevMostRead');
+        const nextMostReadBtn = document.getElementById('nextMostRead');
+        const pauseMostReadBtn = document.getElementById('pauseMostRead');
 
         // Haber kartı oluşturma fonksiyonu
         function createNewsCard(haber) {
@@ -1851,204 +1839,199 @@
             return card;
         }
 
-        // DÜZELTİLMİŞ: En çok okunan slider başlatma
+        // DÜZELTİLMİŞ: En çok okunan slider başlatma - SONSÜZ DÖNGÜ YOK
         function initMostReadSlider() {
             if (!mostReadTrack || !haberData.mostRead) return;
             
             // Önce mevcut içeriği temizle
             mostReadTrack.innerHTML = '';
             
-            // Sonsuz kaydırma efekti için 2 set kart oluştur
-            const itemsPerSet = haberData.mostRead.length;
+            // Kartları oluştur
+            haberData.mostRead.forEach(haber => {
+                mostReadTrack.appendChild(createMostReadSquareCard(haber));
+            });
             
-            // 2 set oluştur (sonsuz döngü için)
-            for (let set = 0; set < 2; set++) {
-                haberData.mostRead.forEach(haber => {
-                    mostReadTrack.appendChild(createMostReadSquareCard(haber));
-                });
-            }
+            // Değişkenleri tanımla
+            let currentPosition = 0;
+            let currentIndex = 0; // Hangi karta geldiğimizi takip et
+            const itemWidth = 320 + 30; // Kart genişliği (320px) + gap (30px)
+            const totalItems = haberData.mostRead.length; // 10
+            const itemsPerClick = 2; // Her tıklamada 2 kart atla
             
-            // Animasyon süresini responsive olarak ayarla (yavaşlatıldı)
-            updateAnimationSpeed();
-            
-            // Pencere boyutu değiştiğinde animasyon hızını güncelle
-            window.addEventListener('resize', updateAnimationSpeed);
-            
-            // Sürükleme özelliklerini başlat
-            setupDragScrolling();
-        }
-
-        // Animasyon hızını güncelleme fonksiyonu (yavaşlatıldı)
-        function updateAnimationSpeed() {
-            if (!mostReadTrack) return;
-            
-            const items = mostReadTrack.querySelectorAll('.most-read-item');
-            if (items.length === 0) return;
-            
-            // Ekran genişliğine göre animasyon süresini ayarla (yavaşlatıldı)
-            const screenWidth = window.innerWidth;
-            let animationDuration = 80; // Yavaşlatıldı (80 saniye)
-            
-            if (screenWidth < 768) {
-                animationDuration = 60; // Mobilde biraz daha hızlı ama yine yavaş
-            } else if (screenWidth < 992) {
-                animationDuration = 70; // Tablette orta hız
-            }
-            
-            // CSS animasyonunu güncelle
-            updateKeyframeAnimation(animationDuration);
-            
-            // Mevcut animasyonu durdur ve yeni hızla yeniden başlat
-            mostReadTrack.style.animation = 'none';
-            setTimeout(() => {
-                mostReadTrack.style.animation = `scrollMostRead ${animationDuration}s linear infinite`;
-            }, 10);
-        }
-
-        // CSS keyframe animasyonunu güncelleme
-        function updateKeyframeAnimation(duration) {
-            // Mevcut keyframe kuralını bul
-            const styleSheets = document.styleSheets;
-            let targetRule = null;
-            
-            for (let i = 0; i < styleSheets.length; i++) {
-                try {
-                    const rules = styleSheets[i].cssRules || styleSheets[i].rules;
-                    for (let j = 0; j < rules.length; j++) {
-                        if (rules[j].type === CSSRule.KEYFRAMES_RULE && rules[j].name === 'scrollMostRead') {
-                            targetRule = rules[j];
-                            break;
-                        }
-                    }
-                } catch (e) {
-                    // CORS hatası olabilir, atla
-                }
-                if (targetRule) break;
-            }
-            
-            if (targetRule) {
-                // Yeni keyframe oluştur
-                const newKeyframes = `
-                @keyframes scrollMostRead {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    100% {
-                        transform: translateX(calc(-320px * ${haberData.mostRead.length} - 30px * ${haberData.mostRead.length}));
-                    }
-                }`;
+            // Kaydırma fonksiyonu
+            function slideToPosition(newPosition) {
+                mostReadTrack.style.transform = `translateX(${newPosition}px)`;
+                currentPosition = newPosition;
                 
-                // Eski kuralı kaldır
-                const styleElement = document.createElement('style');
-                styleElement.innerHTML = newKeyframes;
-                document.head.appendChild(styleElement);
+                // Buton durumunu güncelle
+                updateButtonStates();
             }
+            
+            // Öncekiye git (2 kart geri)
+            function slidePrev() {
+                // İndeksi güncelle (2 kart geri)
+                currentIndex -= itemsPerClick;
+                
+                // Yeni pozisyonu hesapla
+                const newPosition = -currentIndex * itemWidth;
+                slideToPosition(newPosition);
+            }
+            
+            // İleri git (2 kart)
+            function slideNext() {
+                // İndeksi güncelle
+                currentIndex += itemsPerClick;
+                
+                // Yeni pozisyonu hesapla
+                const newPosition = -currentIndex * itemWidth;
+                slideToPosition(newPosition);
+            }
+            
+            // Buton durumlarını güncelle
+            function updateButtonStates() {
+                if (prevMostReadBtn) {
+                    // 1. veya 2. karttaysak geri butonu devre dışı
+                    prevMostReadBtn.disabled = currentIndex < itemsPerClick;
+                }
+                
+                if (nextMostReadBtn) {
+                    // 9. veya 10. karttaysak ileri butonu devre dışı
+                    // currentIndex 8 veya 9 ise (9. veya 10. kart)
+                    nextMostReadBtn.disabled = currentIndex >= totalItems - itemsPerClick;
+                }
+            }
+            
+            // Buton event listener'ları
+            if (prevMostReadBtn) {
+                prevMostReadBtn.addEventListener('click', slidePrev);
+            }
+            
+            if (nextMostReadBtn) {
+                nextMostReadBtn.addEventListener('click', slideNext);
+            }
+            
+            // Duraklat butonunu gizle
+            if (pauseMostReadBtn) {
+                pauseMostReadBtn.style.display = 'none';
+            }
+            
+            // İlk yüklemede buton durumlarını güncelle
+            updateButtonStates();
+            
+            // Sürükleme özelliğini başlat
+            setupManualDrag();
         }
 
-        // SÜRÜKLEME ÖZELLİKLERİ
-        function setupDragScrolling() {
+        // Manuel sürükleme özelliği (Sonsuz döngü yok)
+        function setupManualDrag() {
             if (!mostReadTrack) return;
             
             let isDragging = false;
             let startX = 0;
             let scrollLeft = 0;
-            let currentTranslate = 0;
-            let animationId = null;
-            let animationPaused = false;
-            let animationStartTime = 0;
-            let animationProgress = 0;
-            let lastScrollTime = 0;
+            const itemWidth = 320 + 30;
+            const totalItems = haberData.mostRead.length; // 10
+            let currentIndex = 0;
             
-            // Fare ile sürükleme
-            mostReadTrack.addEventListener('mousedown', startDrag);
-            mostReadTrack.addEventListener('touchstart', startDrag);
+            // Sürükleme başlangıcı
+            mostReadTrack.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                mostReadTrack.classList.add('grabbing');
+                startX = e.pageX;
+                scrollLeft = parseInt(mostReadTrack.style.transform.replace('translateX(', '').replace('px)', '')) || 0;
+            });
             
-            // Fareyi bırakma
-            document.addEventListener('mouseup', endDrag);
-            document.addEventListener('touchend', endDrag);
+            // Sürükleme bırakma
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    mostReadTrack.classList.remove('grabbing');
+                    
+                    // Mevcut pozisyonu al
+                    const currentScroll = parseInt(mostReadTrack.style.transform.replace('translateX(', '').replace('px)', '')) || 0;
+                    
+                    // En yakın kart pozisyonuna hizala
+                    const absScroll = Math.abs(currentScroll);
+                    const nearestIndex = Math.round(absScroll / itemWidth);
+                    
+                    // Sınırları kontrol et - 0 ile totalItems-1 arasında
+                    const newIndex = Math.max(0, Math.min(nearestIndex, totalItems - 1));
+                    
+                    // Yeni pozisyona kaydır
+                    mostReadTrack.style.transform = `translateX(${-newIndex * itemWidth}px)`;
+                    
+                    // Global currentIndex'i güncelle
+                    currentIndex = newIndex;
+                    
+                    // Buton durumunu güncelle
+                    if (prevMostReadBtn) {
+                        prevMostReadBtn.disabled = currentIndex < 2;
+                    }
+                    
+                    if (nextMostReadBtn) {
+                        nextMostReadBtn.disabled = currentIndex >= totalItems - 2;
+                    }
+                }
+            });
             
             // Fare hareketi
-            document.addEventListener('mousemove', drag);
-            document.addEventListener('touchmove', drag);
-            
-            // Animasyon döngüsü
-            function animate() {
-                if (!animationPaused && !isDragging) {
-                    const now = Date.now();
-                    const elapsed = now - animationStartTime;
-                    const totalDuration = 80000; // 80 saniye
-                    
-                    // Animasyon ilerlemesini hesapla
-                    animationProgress = (elapsed % totalDuration) / totalDuration;
-                    
-                    // Mevcut translate değerini hesapla
-                    const totalWidth = mostReadTrack.scrollWidth / 2; // İki set olduğu için
-                    currentTranslate = -animationProgress * totalWidth;
-                    
-                    // Translate uygula
-                    mostReadTrack.style.transform = `translateX(${currentTranslate}px)`;
-                }
-                
-                animationId = requestAnimationFrame(animate);
-            }
-            
-            // Animasyonu başlat
-            animationStartTime = Date.now();
-            animate();
-            
-            // Sürüklemeyi başlat
-            function startDrag(e) {
-                isDragging = true;
-                animationPaused = true;
-                mostReadTrack.classList.add('grabbing');
-                
-                // Başlangıç pozisyonunu kaydet
-                startX = getPositionX(e);
-                scrollLeft = currentTranslate;
-                
-                // Animasyonu duraklat
-                mostReadTrack.style.animationPlayState = 'paused';
-                
-                // Fare imlecini değiştir
-                document.body.style.cursor = 'grabbing';
-            }
-            
-            // Sürükleme işlemi
-            function drag(e) {
+            document.addEventListener('mousemove', (e) => {
                 if (!isDragging) return;
                 
                 e.preventDefault();
+                const x = e.pageX;
+                const walk = (x - startX);
                 
-                const x = getPositionX(e);
-                const walk = x - startX;
+                // Maksimum ve minimum kaydırma sınırlarını belirle
+                const maxScroll = 0; // Başlangıç noktası
+                const minScroll = -(totalItems - 1) * itemWidth; // Son kart
+                const newScroll = Math.max(minScroll, Math.min(maxScroll, scrollLeft + walk));
                 
-                // Yeni pozisyonu hesapla
-                currentTranslate = scrollLeft + walk;
-                
-                // Translate uygula
-                mostReadTrack.style.transform = `translateX(${currentTranslate}px)`;
-            }
+                mostReadTrack.style.transform = `translateX(${newScroll}px)`;
+            });
             
-            // Sürüklemeyi bitir
-            function endDrag() {
+            // Touch events (mobile için)
+            mostReadTrack.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                mostReadTrack.classList.add('grabbing');
+                startX = e.touches[0].pageX;
+                scrollLeft = parseInt(mostReadTrack.style.transform.replace('translateX(', '').replace('px)', '')) || 0;
+            });
+            
+            document.addEventListener('touchend', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    mostReadTrack.classList.remove('grabbing');
+                    
+                    const currentScroll = parseInt(mostReadTrack.style.transform.replace('translateX(', '').replace('px)', '')) || 0;
+                    const absScroll = Math.abs(currentScroll);
+                    const nearestIndex = Math.round(absScroll / itemWidth);
+                    const newIndex = Math.max(0, Math.min(nearestIndex, totalItems - 1));
+                    
+                    mostReadTrack.style.transform = `translateX(${-newIndex * itemWidth}px)`;
+                    currentIndex = newIndex;
+                    
+                    if (prevMostReadBtn) {
+                        prevMostReadBtn.disabled = currentIndex < 2;
+                    }
+                    
+                    if (nextMostReadBtn) {
+                        nextMostReadBtn.disabled = currentIndex >= totalItems - 2;
+                    }
+                }
+            });
+            
+            document.addEventListener('touchmove', (e) => {
                 if (!isDragging) return;
                 
-                isDragging = false;
-                mostReadTrack.classList.remove('grabbing');
-                document.body.style.cursor = '';
+                const x = e.touches[0].pageX;
+                const walk = (x - startX);
+                const maxScroll = 0;
+                const minScroll = -(totalItems - 1) * itemWidth;
+                const newScroll = Math.max(minScroll, Math.min(maxScroll, scrollLeft + walk));
                 
-                // Animasyonu sıfırla ve yeniden başlat
-                animationPaused = false;
-                animationStartTime = Date.now() - (animationProgress * 80000);
-                
-                // Animasyonu devam ettir
-                mostReadTrack.style.animationPlayState = 'running';
-            }
-            
-            // Pozisyonu al (fare ve dokunmatik için)
-            function getPositionX(e) {
-                return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-            }
+                mostReadTrack.style.transform = `translateX(${newScroll}px)`;
+            });
         }
 
         // Slider'ı başlat
@@ -2274,9 +2257,6 @@
                         icon.style.display = 'inline-block';
                     });
                 }
-                
-                // En çok okunanlar animasyon hızını güncelle
-                updateAnimationSpeed();
             });
         }
 
