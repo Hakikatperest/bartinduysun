@@ -102,10 +102,11 @@
             padding: 10px 0;
         }
         
+        /* GÜNCELLENDİ: Sosyal medya ikonları renkli */
         .social-icons {
             display: flex;
             justify-content: flex-end;
-            gap: 15px;
+            gap: 10px;
         }
         
         .social-icons a {
@@ -118,25 +119,47 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .social-icons a.facebook {
+            background-color: #1877F2;
+        }
+        
+        .social-icons a.instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+        
+        .social-icons a.twitter {
+            background-color: #000000;
+        }
+        
+        .social-icons a.youtube {
+            background-color: #FF0000;
+        }
+        
+        .social-icons a.telegram {
+            background-color: #0088cc;
         }
         
         .social-icons a:hover {
             transform: translateY(-3px);
-            background-color: rgba(255, 255, 255, 0.3);
+            opacity: 0.9;
         }
         
+        /* GÜNCELLENDİ: Mobil görünümde logo büyütüldü ve sağa kaydırıldı */
         .main-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            padding: 8px 0;
         }
         
         .logo-container {
             height: 60px;
             display: flex;
             align-items: center;
+            width: auto;
         }
         
         .logo {
@@ -255,15 +278,16 @@
         
         .dropdown-menu li {
             padding: 0 5px;
-            margin: 5px 0;
+            margin: 0;
         }
         
+        /* GÜNCELLENDİ: Mobil dropdown boşlukları azaltıldı */
         .dropdown-menu a {
             display: flex;
             align-items: center;
             gap: 12px;
             transition: var(--transition);
-            padding: 12px 20px;
+            padding: 10px 20px;
             border-radius: 8px;
             font-weight: 500;
         }
@@ -332,20 +356,22 @@
             object-fit: cover;
         }
         
+        /* GÜNCELLENDİ: Slider başlık arka planı koyu kırmızı yapıldı, kategori kaldırıldı */
         .slider-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            padding: 40px;
-            color: white;
+            padding: 25px 40px;
+            background: rgba(140, 0, 0, 0.85);
         }
         
         .slider-title {
             font-size: 2.2rem;
-            margin-bottom: 10px;
             font-weight: 700;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            line-height: 1.3;
         }
         
         .slider-controls {
@@ -438,7 +464,6 @@
             border-bottom: 1px solid var(--border-color);
         }
         
-        /* GÜNCELLENDİ: Bartın Duysun başlığı kaldırıldı */
         .intro-title {
             display: none;
         }
@@ -554,6 +579,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         
+        /* GÜNCELLENDİ: En çok okunanlar kare kartlar */
         .most-read-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -570,7 +596,8 @@
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            height: 380px;
+            position: relative;
         }
         
         .most-read-item:hover {
@@ -604,6 +631,9 @@
         }
         
         .most-read-rank {
+            position: absolute;
+            top: 10px;
+            left: 10px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -612,9 +642,9 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            margin-right: 12px;
             font-weight: bold;
             font-size: 1rem;
+            z-index: 2;
         }
         
         .most-read-content h3 {
@@ -641,7 +671,7 @@
             display: none;
         }
         
-        /* Mobil için en çok okunanlar */
+        /* GÜNCELLENDİ: Mobil için en çok okunanlar - kare kartlar ve kaydırma */
         .mobile-most-read-container {
             display: none;
             overflow-x: auto;
@@ -650,6 +680,7 @@
             padding: 10px 0 40px;
             scrollbar-width: none;
             -ms-overflow-style: none;
+            scroll-snap-type: x mandatory;
         }
         
         .mobile-most-read-container::-webkit-scrollbar {
@@ -657,16 +688,18 @@
         }
         
         .mobile-most-read-item {
-            min-width: 250px;
-            background-color: var(--light-color);
-            border-radius: 8px;
+            min-width: calc(100% - 30px);
+            background-color: white;
+            border-radius: 12px;
             overflow: hidden;
             cursor: pointer;
             flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            scroll-snap-align: start;
         }
         
         .mobile-most-read-image {
-            height: 150px;
+            height: 200px;
             overflow: hidden;
         }
         
@@ -677,7 +710,7 @@
         }
         
         .mobile-most-read-content {
-            padding: 15px;
+            padding: 20px;
         }
         
         .mobile-most-read-rank {
@@ -771,44 +804,44 @@
         footer {
             background-color: var(--topbar-color);
             color: white;
-            padding: 50px 0 20px;
+            padding: 30px 0 15px;
             margin-top: 50px;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 30px;
+            margin-bottom: 25px;
         }
         
-        /* GÜNCELLENDİ: Footer logo görseli - tıklanmasın */
+        /* GÜNCELLENDİ: Footer logo küçültüldü ve sola yaklaştırıldı */
         .footer-logo-container {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .footer-logo-img {
-            max-width: 220px;
+            max-width: 160px;
             height: auto;
             cursor: default !important;
             pointer-events: none;
         }
         
         .footer-about {
-            font-size: 0.95rem;
-            line-height: 1.7;
+            font-size: 0.9rem;
+            line-height: 1.6;
             color: rgba(255, 255, 255, 0.85);
         }
         
         .footer-title {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
             border-bottom: 2px solid rgba(255, 255, 255, 0.3);
         }
         
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         
         .footer-links a {
@@ -817,6 +850,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.9rem;
         }
         
         .footer-links a:hover {
@@ -825,57 +859,59 @@
         }
         
         .footer-links a i {
-            font-size: 0.9rem;
-            width: 20px;
+            font-size: 0.8rem;
+            width: 18px;
         }
         
+        /* GÜNCELLENDİ: Footer sosyal medya renkli */
         .footer-social {
             display: flex;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 15px;
         }
         
         .footer-social a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.15);
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             transition: var(--transition);
+            color: white;
         }
         
-        .footer-social a.facebook:hover {
+        .footer-social a.facebook {
             background-color: #1877F2;
         }
         
-        .footer-social a.instagram:hover {
+        .footer-social a.instagram {
             background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
         }
         
-        .footer-social a.twitter:hover {
+        .footer-social a.twitter {
             background-color: #000000;
         }
         
-        .footer-social a.youtube:hover {
+        .footer-social a.youtube {
             background-color: #FF0000;
         }
         
-        .footer-social a.telegram:hover {
+        .footer-social a.telegram {
             background-color: #0088cc;
         }
         
         .footer-social a:hover {
             transform: translateY(-3px);
+            opacity: 0.9;
         }
         
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         
         /* Responsive Tasarım - Masaüstü için özel ayarlar */
@@ -905,7 +941,7 @@
             }
             
             .slider-overlay {
-                padding: 40px;
+                padding: 25px 40px;
             }
             
             .slider-title {
@@ -918,7 +954,7 @@
             }
             
             .most-read-item {
-                height: 420px;
+                height: 380px;
             }
             
             .most-read-image {
@@ -948,15 +984,21 @@
         
         @media (max-width: 768px) {
             .main-header {
-                padding: 8px 0;
+                padding: 6px 0;
+                justify-content: space-between;
             }
             
+            /* GÜNCELLENDİ: Mobil logo büyütüldü ve sağa kaydırıldı */
             .logo-container {
-                height: 50px;
+                height: 55px;
+                flex-grow: 1;
+                justify-content: flex-start;
+                margin-left: 5px;
             }
             
             .hamburger-menu {
                 display: flex;
+                flex-shrink: 0;
             }
             
             .nav-menu {
@@ -1007,10 +1049,15 @@
                 display: none;
                 background-color: rgba(1, 136, 159, 0.05);
                 border-radius: 8px;
-                margin: 10px 0 15px;
+                margin: 5px 0 10px;
                 border-top: none;
                 border-left: 3px solid var(--topbar-color);
                 min-width: auto;
+            }
+            
+            /* GÜNCELLENDİ: Mobil dropdown boşlukları azaltıldı */
+            .dropdown-menu li {
+                margin: 2px 0;
             }
             
             .dropdown.active .dropdown-menu {
@@ -1018,7 +1065,7 @@
             }
             
             .dropdown-menu a {
-                padding: 14px 25px;
+                padding: 12px 25px;
                 font-size: 1rem;
             }
             
@@ -1032,6 +1079,7 @@
             
             .slider-overlay {
                 padding: 20px;
+                background: rgba(140, 0, 0, 0.9);
             }
             
             .breaking-news-sidebar {
@@ -1068,12 +1116,14 @@
         }
         
         @media (max-width: 576px) {
+            /* GÜNCELLENDİ: Mobil logo daha da büyütüldü */
             .logo-container {
-                height: 45px;
+                height: 50px;
+                margin-left: 10px;
             }
             
             .main-header {
-                padding: 6px 0;
+                padding: 5px 0;
             }
             
             .intro-text {
@@ -1110,13 +1160,27 @@
             }
             
             .footer-logo-img {
-                max-width: 180px;
+                max-width: 140px;
             }
             
             .nav-menu {
                 width: 85%;
                 max-width: 320px;
                 padding-top: 70px;
+            }
+            
+            .footer-content {
+                gap: 25px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .logo-container {
+                height: 45px;
+            }
+            
+            .footer-logo-img {
+                max-width: 120px;
             }
         }
     </style>
@@ -1127,11 +1191,11 @@
         <div class="top-bar">
             <div class="container">
                 <div class="social-icons">
-                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
-                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="#" title="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="X (Twitter)" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="YouTube" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="Telegram" class="telegram"><i class="fab fa-telegram"></i></a>
                 </div>
             </div>
         </div>
@@ -1200,7 +1264,6 @@
     <!-- Tanıtım Alanı -->
     <section class="intro-section">
         <div class="container">
-            <!-- Bartın Duysun başlığı kaldırıldı, sadece açıklama kaldı -->
             <p class="intro-text">Bartın ve çevresindeki en güncel, doğru ve tarafsız haberlerin adresi. Valilik, belediye, siyaset ve asayiş haberlerini ilk elden sizlere ulaştırıyoruz.</p>
         </div>
     </section>
@@ -1333,11 +1396,12 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <!-- GÜNCELLENDİ: Footer logo - tıklanamaz -->
+                    <!-- Footer logo - küçültüldü ve sola yaklaştırıldı -->
                     <div class="footer-logo-container">
                         <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Bartın Duysun Logo" class="footer-logo-img">
                     </div>
                     <p class="footer-about">Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir.</p>
+                    <!-- GÜNCELLENDİ: Footer sosyal medya renkli -->
                     <div class="footer-social">
                         <a href="#" title="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" title="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
@@ -1386,7 +1450,7 @@
     </footer>
 
     <script>
-        // GÜNCELLENDİ: 10 haberlik slider verisi
+        // Haber verisi
         const haberData = {
             slider: [
                 {
@@ -1430,34 +1494,6 @@
                     category: "Bartın Haberleri",
                     image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
                     detail: "Bartın'da bir işyerine yönelik hırsızlık yapan 3 zanlı polis tarafından yakalandı."
-                },
-                {
-                    id: 7,
-                    title: "Bartın'da Dolandırıcılık Çetesine Operasyon",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    detail: "Polis, dolandırıcılık yapan çeteye yönelik operasyon düzenledi. 7 şüpheli gözaltına alındı."
-                },
-                {
-                    id: 8,
-                    title: "Uyuşturucu Operasyonunda 5 Gözaltı",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    detail: "Narkotik ekiplerinin düzenlediği operasyonda 5 kişi uyuşturucu madde bulundurma suçundan gözaltına alındı."
-                },
-                {
-                    id: 9,
-                    title: "Trafik Denetimleri Artırıldı",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    detail: "Yaz dönemi nedeniyle Bartın'da trafik denetimleri artırıldı."
-                },
-                {
-                    id: 10,
-                    title: "Kaçak Elektrik Kullanımına Operasyon",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    detail: "Kaçak elektrik kullanan 15 işyerine operasyon düzenlendi. İşyeri sahipleri hakkında yasal işlem başlatıldı."
                 }
             ],
             
@@ -1477,38 +1513,6 @@
                     image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
                     excerpt: "Narkotik ekiplerinin düzenlediği operasyonda 5 kişi uyuşturucu madde bulundurma suçundan gözaltına alındı.",
                     detail: "Narkotik ekiplerinin düzenlediği operasyonda 5 kişi uyuşturucu madde bulundurma suçundan gözaltına alındı. Operasyonda çeşitli miktarlarda uyuşturucu madde ve para ele geçirildi. Zanlılar adliyeye sevk edildi."
-                },
-                {
-                    id: 25,
-                    title: "Bartın'da Dolandırıcılık Çetesine Operasyon",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Polis, dolandırıcılık yapan çeteye yönelik operasyon düzenledi.",
-                    detail: "Polis, dolandırıcılık yapan çeteye yönelik operasyon düzenledi. 7 şüpheli gözaltına alındı, milyonlarca lira dolandırılan para ele geçirildi."
-                },
-                {
-                    id: 26,
-                    title: "Trafik Denetimleri Artırıldı",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Yaz dönemi nedeniyle Bartın'da trafik denetimleri artırıldı.",
-                    detail: "Yaz dönemi nedeniyle Bartın'da trafik denetimleri artırıldı. Emniyet ekipleri özellikle hız ve emniyet kemeri kontrollerine ağırlık verdi."
-                },
-                {
-                    id: 27,
-                    title: "Sahil Güvenlik Ekipleri Tatilcileri Uyardı",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Sahil Güvenlik ekipleri, denize giren tatilcileri uyardı.",
-                    detail: "Sahil Güvenlik ekipleri, denize giren tatilcileri uyardı. Can yeleği ve can simidi kullanımının önemine dikkat çekildi."
-                },
-                {
-                    id: 28,
-                    title: "Kaçak Elektrik Kullanımına Operasyon",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Kaçak elektrik kullanan 15 işyerine operasyon düzenlendi.",
-                    detail: "Kaçak elektrik kullanan 15 işyerine operasyon düzenlendi. İşyeri sahipleri hakkında yasal işlem başlatıldı."
                 }
             ],
             
@@ -1528,38 +1532,6 @@
                     image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi.webp",
                     excerpt: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı.",
                     detail: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı. Toplantıda, yılbaşı döneminde alınacak güvenlik tedbirleri ve asayiş önlemleri görüşüldü."
-                },
-                {
-                    id: 7,
-                    title: "Vali Arslan Vatandaşlarımızla Buluştu",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Vali Arslan, vatandaşlarımızla bir araya gelerek sorunlarını dinledi ve çözüm yolları aradı.",
-                    detail: "Vali Arslan, vatandaşlarımızla bir araya gelerek sorunlarını dinledi ve çözüm yolları aradı. Ziyarette vatandaşların günlük yaşamda karşılaştığı sorunlar ele alındı ve çözüm için gerekli adımlar belirlendi."
-                },
-                {
-                    id: 8,
-                    title: "Vali Arslan, Öğrencilerimizin Karne Heyecanını Paylaştı",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-ogrencilerin-karne-heyecanini-paylasti.webp",
-                    excerpt: "Vali Arslan, yarıyıl tatili öncesi öğrencilerin karne heyecanını paylaşmak için okulları ziyaret etti.",
-                    detail: "Vali Arslan, yarıyıl tatili öncesi öğrencilerin karne heyecanını paylaşmak için okulları ziyaret etti. Ziyaretlerde öğrencilerle sohbet eden Vali Arslan, başarılı öğrencileri tebrik etti ve tatillerini iyi değerlendirmelerini tavsiye etti."
-                },
-                {
-                    id: 16,
-                    title: "Arslan Başkanlığında İl İdare Şube Başkanları Toplantısı Yapıldı",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-il-idare-subebaskanlari-toplantisi.webp",
-                    excerpt: "Vali Arslan başkanlığında İl İdare Şube Başkanları Toplantısı gerçekleştirildi.",
-                    detail: "Vali Arslan başkanlığında İl İdare Şube Başkanları Toplantısı gerçekleştirildi. Toplantıda il idaresinin çalışmaları değerlendirildi ve önümüzdeki dönemde yapılacak faaliyetler planlandı."
-                },
-                {
-                    id: 17,
-                    title: "Vali Arslan Başkanlığında 2026 Yılının 1. İl Koordinasyon Kurulu Toplantısı Yapıldı",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-vatandaslarla-bulustu.webp",
-                    excerpt: "Vali Arslan başkanlığında 2026 yılının ilk İl Koordinasyon Kurulu Toplantısı gerçekleştirildi.",
-                    detail: "Vali Arslan başkanlığında 2026 yılının ilk İl Koordinasyon Kurulu Toplantısı gerçekleştirildi. Toplantıda, 2026 yılına yönelik hedefler ve stratejiler belirlendi, ilin kalkınma projeleri ele alındı."
                 }
             ],
             
@@ -1579,38 +1551,6 @@
                     image: "https://www.bartinduysun.com/images/belediye/turk-sanat-muzigi-konserine-davet.webp",
                     excerpt: "Türk Sanat Müziği Konserine vatandaşlar davet edildi",
                     detail: "Bartın Belediyesi tarafından kültür ve sanat etkinlikleri kapsamında düzenlenen Türk Sanat Müziği Konseri, sanatseverlerle buluşmaya hazırlanıyor."
-                },
-                {
-                    id: 11,
-                    title: "Ekipler don riskine karşı önlem aldı",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/ekip-don-riski-karsi-724-gorev-basinda.webp",
-                    excerpt: "Bartın Belediyesi, don riskine karşı 7/24 nöbette",
-                    detail: "Bartın Belediyesi karla mücadele ekipleri, hava sıcaklıklarının eksi derecelere düşmesi ve don riskinin artması nedeniyle şehir genelinde tuzlama çalışmalarını aralıksız sürdürüyor."
-                },
-                {
-                    id: 18,
-                    title: "Bartın Belediyesi'nden araç filosuna büyük yatırım",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/arac-filosuna-buyuk-yatirim.webp",
-                    excerpt: "Araç filosuna yapılan yatırımın detayları paylaşıldı",
-                    detail: "Bartın Belediyesi, hizmet kapasitesini artırmak amacıyla araç filosunu önemli ölçüde güçlendirdi."
-                },
-                {
-                    id: 19,
-                    title: "Belediye Belediyesinden yeni hizmet",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/yeni-bir-egitim-yuvasi-daha-hizmete-giriyor.webp",
-                    excerpt: "Yeni bir eğitim yuvası daha hizmete giriyor.",
-                    detail: "Bartın Belediyesi, sosyal belediyecilik anlayışı doğrultusunda çocukların erken yaşta nitelikli eğitimle buluşmasını sağlamak amacıyla önemli bir projeyi daha hayata geçiriyor."
-                },
-                {
-                    id: 20,
-                    title: "Bartın Belediyesi, çocuklar için hazırlandı.",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/karne-senligi-etkinlikleri-basladi.webp",
-                    excerpt: "Bartın Belediyesi, karne şenliği etkinlikleri başladı.",
-                    detail: "Bartın Belediyesi tarafından çocukların karne sevincini doyasıya yaşamaları amacıyla düzenlenen Karne Şenliği etkinlikleri başladı."
                 }
             ],
             
@@ -1630,38 +1570,6 @@
                     image: "https://www.bartinduysun.com/images/siyaset/cocuk-istismari-davasinın-ilk-durusmasi-sona-erdi.webp",
                     excerpt: "Aysu Bankoğlu: Adli Süreç ve Çocuk İstismarı Davasını Yakından Takip Ediyoruz",
                     detail: "CHP Bartın Milletvekili Aysu Bankoğlu, Meclis'te yaşandığı iddia edilen çocuk istismarı ve taciz olaylarına ilişkin davanın ilk duruşmasının sona erdiğini açıkladı."
-                },
-                {
-                    id: 21,
-                    title: "Başkan Yalçınkaya'dan CHP 39. Olağan Kurultayı Sonrası Açıklama",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/baskan-yalcinkaya-dan-chp-kurultayi-sonrasi-aciklama.webp",
-                    excerpt: "Başkan Yalçınkaya'dan Özgür Özel'e Tebrik ve Kurultay Değerlendirmesi",
-                    detail: "Bartın Belediye Başkanı Rıza Yalçınkaya, CHP 39. Olağan Kurultayı'nın ikinci gününün tamamlanmasının ardından Genel Başkanlığa seçilen Özgür Özel'i tebrik etti."
-                },
-                {
-                    id: 22,
-                    title: "Milletvekili Bankoğlu'ndan TBMM'deki Emekli Maaşı Oylamasına Ret Tepkisi",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/milletvekili-bankoglu-ndan-tbmm-deki-emekli-maasi-oylamasina-tepki.webp",
-                    excerpt: "Aysu Bankoğlu: Emeklilerin Haklarını Savunmak İçin Ret Verdik",
-                    detail: "CHP Bartın Milletvekili Aysu Bankoğlu, TBMM'de en düşük emekli maaşıyla ilgili yapılan oylamada ret oyu verdiğini açıkladı."
-                },
-                {
-                    id: 23,
-                    title: "AK Parti Bartın'da Genişletilmiş İl Danışma Meclisi ve Vefa Buluşması Düzenlendi",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.webp",
-                    excerpt: "AK Parti Bartın Teşkilatı Vefa ve İstişare Toplantısında Bir Araya Geldi",
-                    detail: "AK Parti Bartın İl Başkanlığı tarafından düzenlenen Genişletilmiş İl Danışma Meclisi ve Vefa Buluşması, teşkilatın tüm kademelerinden yoğun katılımla gerçekleştirildi."
-                },
-                {
-                    id: 24,
-                    title: "Başkan Çakır: Türk Bayrağı Sahipsiz Değildir",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/baskan-cakir-turk-bayragi-sahipsiz-degildir.webp",
-                    excerpt: "Başkan Çakır: Bayrağımıza Uzanan Ellere Geçit Yok",
-                    detail: "Amasra Belediye Başkanı Recai Çakır, Türk bayrağına yönelik son saldırıyı kınayarak, 14 Ağustos 1996'da Kıbrıs'ta bayrağa sahip çıkan kahraman askerleri andı."
                 }
             ],
             
@@ -1730,7 +1638,6 @@
         function createNewsCard(haber) {
             const card = document.createElement('a');
             card.className = 'news-card';
-            // GÜVENLİ: Eksik image URL'lerini kontrol et
             const imageUrl = haber.image || 'https://via.placeholder.com/400x200?text=Bartın+Duysun';
             card.href = `haber-detay.html?id=${haber.id}`;
             card.innerHTML = `
@@ -1753,13 +1660,6 @@
             initMostReadSlider();
             setupEventListeners();
             applyCategoryColors();
-            
-            // Masaüstü için nav-link ikonlarını kaldır
-            if (window.innerWidth >= 769) {
-                document.querySelectorAll('.nav-link i').forEach(icon => {
-                    icon.style.display = 'none';
-                });
-            }
         });
 
         // Kategori renklerini uygula
@@ -1779,26 +1679,24 @@
 
         // Slider'ı başlat
         function initSlider() {
-            // Slider öğelerini oluştur
             if (haberData.slider && sliderContainer) {
                 haberData.slider.forEach((haber, index) => {
                     const slide = document.createElement('a');
                     slide.className = `slider-item ${index === 0 ? 'active' : ''}`;
                     slide.href = `haber-detay.html?id=${haber.id}`;
                     const imageUrl = haber.image || 'https://via.placeholder.com/1200x500?text=Bartın+Duysun';
+                    // GÜNCELLENDİ: Slider başlık koyu kırmızı arka plan, kategori kaldırıldı
                     slide.innerHTML = `
                         <img src="${imageUrl}" alt="${haber.title}">
                         <div class="slider-overlay">
                             <div class="container">
                                 <h3 class="slider-title">${haber.title}</h3>
-                                <p>${haber.category}</p>
                             </div>
                         </div>
                     `;
                     sliderContainer.appendChild(slide);
                 });
 
-                // Pagination noktalarını oluştur
                 if (sliderPagination) {
                     haberData.slider.forEach((haber, index) => {
                         const dot = document.createElement('div');
@@ -1812,8 +1710,6 @@
                     });
                 }
             }
-
-            // Slider otomatik geçişini başlat
             startSlideInterval();
         }
 
@@ -1922,9 +1818,10 @@
                     slide.innerHTML = `
                         <div class="most-read-image">
                             <img src="${imageUrl}" alt="${haber.title}">
+                            <span class="most-read-rank">${index + 1}</span>
                         </div>
                         <div class="most-read-content">
-                            <h3><span class="most-read-rank">${index + 1}</span>${haber.title}</h3>
+                            <h3>${haber.title}</h3>
                             <p>${haber.category}</p>
                             <p class="most-read-excerpt">${haber.detail.substring(0, 120)}...</p>
                         </div>
@@ -1957,7 +1854,7 @@
         function scrollMobileMostRead(direction) {
             if (mobileMostReadContainer) {
                 const container = mobileMostReadContainer;
-                const scrollAmount = 250;
+                const scrollAmount = container.offsetWidth;
                 const currentScroll = container.scrollLeft;
                 
                 if (direction === 'next') {
