@@ -1726,9 +1726,25 @@
         const nextMobileMostReadBtn = document.getElementById('nextMobileMostReadBtn');
         const mainLogo = document.getElementById('mainLogo');
 
-        // Slider için değişkenler
-        let currentSlide = 0;
-        let slideInterval;
+        // Haber kartı oluşturma fonksiyonu
+        function createNewsCard(haber) {
+            const card = document.createElement('a');
+            card.className = 'news-card';
+            // GÜVENLİ: Eksik image URL'lerini kontrol et
+            const imageUrl = haber.image || 'https://via.placeholder.com/400x200?text=Bartın+Duysun';
+            card.href = `haber-detay.html?id=${haber.id}`;
+            card.innerHTML = `
+                <div class="news-image">
+                    <img src="${imageUrl}" alt="${haber.title}">
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">${haber.title}</h3>
+                    <p class="news-excerpt">${haber.excerpt || haber.detail.substring(0, 100)}...</p>
+                    <span class="read-more">Detayları Oku >></span>
+                </div>
+            `;
+            return card;
+        }
 
         // Sayfa yüklendiğinde çalışacak fonksiyonlar
         document.addEventListener('DOMContentLoaded', function() {
@@ -1737,57 +1753,73 @@
             initMostReadSlider();
             setupEventListeners();
             applyCategoryColors();
+            
+            // Masaüstü için nav-link ikonlarını kaldır
+            if (window.innerWidth >= 769) {
+                document.querySelectorAll('.nav-link i').forEach(icon => {
+                    icon.style.display = 'none';
+                });
+            }
         });
 
         // Kategori renklerini uygula
         function applyCategoryColors() {
             const bartinTitle = document.querySelector('#bartin .section-title');
-            bartinTitle.style.borderBottomColor = 'var(--bartin-color)';
+            if (bartinTitle) bartinTitle.style.borderBottomColor = 'var(--bartin-color)';
             
             const valilikTitle = document.querySelector('#valilik .section-title');
-            valilikTitle.style.borderBottomColor = 'var(--valilik-color)';
+            if (valilikTitle) valilikTitle.style.borderBottomColor = 'var(--valilik-color)';
             
             const belediyeTitle = document.querySelector('#belediye .section-title');
-            belediyeTitle.style.borderBottomColor = 'var(--belediye-color)';
+            if (belediyeTitle) belediyeTitle.style.borderBottomColor = 'var(--belediye-color)';
             
             const siyasetTitle = document.querySelector('#siyaset .section-title');
-            siyasetTitle.style.borderBottomColor = 'var(--siyaset-color)';
+            if (siyasetTitle) siyasetTitle.style.borderBottomColor = 'var(--siyaset-color)';
         }
 
         // Slider'ı başlat
         function initSlider() {
             // Slider öğelerini oluştur
-            haberData.slider.forEach((haber, index) => {
-                const slide = document.createElement('a');
-                slide.className = `slider-item ${index === 0 ? 'active' : ''}`;
-                slide.href = `${haber.category.toLowerCase().replace(' ', '-').replace(' ', '-')}.html`;
-                slide.innerHTML = `
-                    <img src="${haber.image}" alt="${haber.title}">
-                    <div class="slider-overlay">
-                        <div class="container">
-                            <h3 class="slider-title">${haber.title}</h3>
-                            <p>${haber.category}</p>
+            if (haberData.slider && sliderContainer) {
+                haberData.slider.forEach((haber, index) => {
+                    const slide = document.createElement('a');
+                    slide.className = `slider-item ${index === 0 ? 'active' : ''}`;
+                    slide.href = `haber-detay.html?id=${haber.id}`;
+                    const imageUrl = haber.image || 'https://via.placeholder.com/1200x500?text=Bartın+Duysun';
+                    slide.innerHTML = `
+                        <img src="${imageUrl}" alt="${haber.title}">
+                        <div class="slider-overlay">
+                            <div class="container">
+                                <h3 class="slider-title">${haber.title}</h3>
+                                <p>${haber.category}</p>
+                            </div>
                         </div>
-                    </div>
-                `;
-                sliderContainer.appendChild(slide);
-            });
-
-            // Pagination noktalarını oluştur
-            haberData.slider.forEach((haber, index) => {
-                const dot = document.createElement('div');
-                dot.className = `pagination-dot ${index === 0 ? 'active' : ''}`;
-                dot.dataset.index = index;
-                dot.addEventListener('click', () => {
-                    goToSlide(index);
-                    startSlideInterval();
+                    `;
+                    sliderContainer.appendChild(slide);
                 });
-                sliderPagination.appendChild(dot);
-            });
+
+                // Pagination noktalarını oluştur
+                if (sliderPagination) {
+                    haberData.slider.forEach((haber, index) => {
+                        const dot = document.createElement('div');
+                        dot.className = `pagination-dot ${index === 0 ? 'active' : ''}`;
+                        dot.dataset.index = index;
+                        dot.addEventListener('click', () => {
+                            goToSlide(index);
+                            startSlideInterval();
+                        });
+                        sliderPagination.appendChild(dot);
+                    });
+                }
+            }
 
             // Slider otomatik geçişini başlat
             startSlideInterval();
         }
+
+        // Slider değişkenleri
+        let currentSlide = 0;
+        let slideInterval;
 
         // Slider otomatik geçişini başlat
         function startSlideInterval() {
@@ -1800,13 +1832,15 @@
             const slides = document.querySelectorAll('.slider-item');
             const dots = document.querySelectorAll('.pagination-dot');
             
-            slides[currentSlide].classList.remove('active');
-            dots[currentSlide].classList.remove('active');
-            
-            currentSlide = index;
-            
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+            if (slides.length > 0 && dots.length > 0) {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                
+                currentSlide = index;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
         }
 
         // Sonraki slayta geç
@@ -1814,13 +1848,15 @@
             const slides = document.querySelectorAll('.slider-item');
             const dots = document.querySelectorAll('.pagination-dot');
             
-            slides[currentSlide].classList.remove('active');
-            dots[currentSlide].classList.remove('active');
-            
-            currentSlide = (currentSlide + 1) % slides.length;
-            
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+            if (slides.length > 0 && dots.length > 0) {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                
+                currentSlide = (currentSlide + 1) % slides.length;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
         }
 
         // Önceki slayta geç
@@ -1828,110 +1864,113 @@
             const slides = document.querySelectorAll('.slider-item');
             const dots = document.querySelectorAll('.pagination-dot');
             
-            slides[currentSlide].classList.remove('active');
-            dots[currentSlide].classList.remove('active');
-            
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+            if (slides.length > 0 && dots.length > 0) {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
         }
 
         // Haber kategorilerini başlat
         function initNewsCategories() {
+            // Bartın Haberleri
             const bartinNewsContainer = document.getElementById('bartinNews');
-            haberData.bartin.slice(0, 6).forEach(haber => {
-                bartinNewsContainer.appendChild(createNewsCard(haber));
-            });
+            if (bartinNewsContainer && haberData.bartin) {
+                haberData.bartin.slice(0, 6).forEach(haber => {
+                    bartinNewsContainer.appendChild(createNewsCard(haber));
+                });
+            }
 
+            // Valilik Haberleri
             const valilikNewsContainer = document.getElementById('valilikNews');
-            haberData.valilik.slice(0, 6).forEach(haber => {
-                valilikNewsContainer.appendChild(createNewsCard(haber));
-            });
+            if (valilikNewsContainer && haberData.valilik) {
+                haberData.valilik.slice(0, 6).forEach(haber => {
+                    valilikNewsContainer.appendChild(createNewsCard(haber));
+                });
+            }
 
+            // Belediye Haberleri
             const belediyeNewsContainer = document.getElementById('belediyeNews');
-            haberData.belediye.slice(0, 6).forEach(haber => {
-                belediyeNewsContainer.appendChild(createNewsCard(haber));
-            });
+            if (belediyeNewsContainer && haberData.belediye) {
+                haberData.belediye.slice(0, 6).forEach(haber => {
+                    belediyeNewsContainer.appendChild(createNewsCard(haber));
+                });
+            }
 
+            // Siyaset Haberleri
             const siyasetNewsContainer = document.getElementById('siyasetNews');
-            haberData.siyaset.slice(0, 6).forEach(haber => {
-                siyasetNewsContainer.appendChild(createNewsCard(haber));
-            });
+            if (siyasetNewsContainer && haberData.siyaset) {
+                haberData.siyaset.slice(0, 6).forEach(haber => {
+                    siyasetNewsContainer.appendChild(createNewsCard(haber));
+                });
+            }
         }
 
-        // Haber kartı oluştur
-        function createNewsCard(haber) {
-            const card = document.createElement('a');
-            card.className = 'news-card';
-            card.href = `${haber.category.toLowerCase().replace(' ', '-').replace(' ', '-')}.html`;
-            card.innerHTML = `
-                <div class="news-image">
-                    <img src="${haber.image}" alt="${haber.title}">
-                </div>
-                <div class="news-content">
-                    <h3 class="news-title">${haber.title}</h3>
-                    <p class="news-excerpt">${haber.excerpt}</p>
-                    <span class="read-more">Detayları Oku >></span>
-                </div>
-            `;
-            
-            return card;
-        }
-
-        // En çok okunan haberler slider'ını başlat - Yeni modern tasarım
+        // En çok okunan haberler slider'ını başlat
         function initMostReadSlider() {
             // Masaüstü modern grid tasarım
-            haberData.mostRead.forEach((haber, index) => {
-                const slide = document.createElement('a');
-                slide.className = 'most-read-item';
-                slide.href = `${haber.category.toLowerCase().replace(' ', '-').replace(' ', '-')}.html`;
-                slide.innerHTML = `
-                    <div class="most-read-image">
-                        <img src="${haber.image}" alt="${haber.title}">
-                    </div>
-                    <div class="most-read-content">
-                        <h3><span class="most-read-rank">${index + 1}</span>${haber.title}</h3>
-                        <p>${haber.category}</p>
-                        <p class="most-read-excerpt">${haber.detail.substring(0, 120)}...</p>
-                    </div>
-                `;
-                mostReadContainer.appendChild(slide);
-            });
+            if (mostReadContainer && haberData.mostRead) {
+                haberData.mostRead.forEach((haber, index) => {
+                    const slide = document.createElement('a');
+                    slide.className = 'most-read-item';
+                    slide.href = `haber-detay.html?id=${haber.id}`;
+                    const imageUrl = haber.image || 'https://via.placeholder.com/400x200?text=Bartın+Duysun';
+                    slide.innerHTML = `
+                        <div class="most-read-image">
+                            <img src="${imageUrl}" alt="${haber.title}">
+                        </div>
+                        <div class="most-read-content">
+                            <h3><span class="most-read-rank">${index + 1}</span>${haber.title}</h3>
+                            <p>${haber.category}</p>
+                            <p class="most-read-excerpt">${haber.detail.substring(0, 120)}...</p>
+                        </div>
+                    `;
+                    mostReadContainer.appendChild(slide);
+                });
+            }
             
             // Mobil slider
-            haberData.mostRead.forEach((haber, index) => {
-                const slide = document.createElement('a');
-                slide.className = 'mobile-most-read-item';
-                slide.href = `${haber.category.toLowerCase().replace(' ', '-').replace(' ', '-')}.html`;
-                slide.innerHTML = `
-                    <div class="mobile-most-read-image">
-                        <img src="${haber.image}" alt="${haber.title}">
-                    </div>
-                    <div class="mobile-most-read-content">
-                        <h3 class="mobile-most-read-title"><span class="mobile-most-read-rank">${index + 1}</span>${haber.title}</h3>
-                    </div>
-                `;
-                mobileMostReadContainer.appendChild(slide);
-            });
+            if (mobileMostReadContainer && haberData.mostRead) {
+                haberData.mostRead.forEach((haber, index) => {
+                    const slide = document.createElement('a');
+                    slide.className = 'mobile-most-read-item';
+                    slide.href = `haber-detay.html?id=${haber.id}`;
+                    const imageUrl = haber.image || 'https://via.placeholder.com/400x200?text=Bartın+Duysun';
+                    slide.innerHTML = `
+                        <div class="mobile-most-read-image">
+                            <img src="${imageUrl}" alt="${haber.title}">
+                        </div>
+                        <div class="mobile-most-read-content">
+                            <h3 class="mobile-most-read-title"><span class="mobile-most-read-rank">${index + 1}</span>${haber.title}</h3>
+                        </div>
+                    `;
+                    mobileMostReadContainer.appendChild(slide);
+                });
+            }
         }
 
         // Mobil en çok okunan slider kaydırma
         function scrollMobileMostRead(direction) {
-            const container = mobileMostReadContainer;
-            const scrollAmount = 250;
-            const currentScroll = container.scrollLeft;
-            
-            if (direction === 'next') {
-                container.scrollTo({
-                    left: currentScroll + scrollAmount,
-                    behavior: 'smooth'
-                });
-            } else {
-                container.scrollTo({
-                    left: currentScroll - scrollAmount,
-                    behavior: 'smooth'
-                });
+            if (mobileMostReadContainer) {
+                const container = mobileMostReadContainer;
+                const scrollAmount = 250;
+                const currentScroll = container.scrollLeft;
+                
+                if (direction === 'next') {
+                    container.scrollTo({
+                        left: currentScroll + scrollAmount,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    container.scrollTo({
+                        left: currentScroll - scrollAmount,
+                        behavior: 'smooth'
+                    });
+                }
             }
         }
 
@@ -1951,78 +1990,79 @@
 
         // Mobil menüyü aç/kapa
         function toggleMobileMenu() {
-            navMenu.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-            hamburgerMenu.classList.toggle('active');
-            
-            if (navMenu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
+            if (navMenu && menuOverlay && hamburgerMenu) {
+                navMenu.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                hamburgerMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                }
             }
         }
 
         // Event listener'ları kur
         function setupEventListeners() {
             // Logo tıklama
-            mainLogo.addEventListener('click', handleLogoClick);
-            
-            // Footer logoya tıklanmasını engelle
-            const footerLogoImg = document.querySelector('.footer-logo-img');
-            if (footerLogoImg) {
-                footerLogoImg.style.cursor = 'default';
-                footerLogoImg.style.pointerEvents = 'none';
+            if (mainLogo) {
+                mainLogo.addEventListener('click', handleLogoClick);
             }
             
             // Hamburger menü
-            hamburgerMenu.addEventListener('click', toggleMobileMenu');
+            if (hamburgerMenu) {
+                hamburgerMenu.addEventListener('click', toggleMobileMenu);
+            }
             
             // Menü overlay
-            menuOverlay.addEventListener('click', toggleMobileMenu);
+            if (menuOverlay) {
+                menuOverlay.addEventListener('click', toggleMobileMenu);
+            }
             
             // Dropdown menü (mobil için)
-            dropdownMenu.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    dropdownMenu.classList.toggle('active');
-                }
-            });
+            if (dropdownMenu) {
+                dropdownMenu.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        dropdownMenu.classList.toggle('active');
+                    }
+                });
+            }
             
             // Slider kontrolleri
-            prevSliderBtn.addEventListener('click', () => {
-                prevSlide();
-                startSlideInterval();
-            });
+            if (prevSliderBtn) {
+                prevSliderBtn.addEventListener('click', () => {
+                    prevSlide();
+                    startSlideInterval();
+                });
+            }
             
-            nextSliderBtn.addEventListener('click', () => {
-                nextSlide();
-                startSlideInterval();
-            });
+            if (nextSliderBtn) {
+                nextSliderBtn.addEventListener('click', () => {
+                    nextSlide();
+                    startSlideInterval();
+                });
+            }
             
             // Mobil en çok okunan slider kontrolleri
-            prevMobileMostReadBtn.addEventListener('click', () => scrollMobileMostRead('prev'));
-            nextMobileMostReadBtn.addEventListener('click', () => scrollMobileMostRead('next'));
+            if (prevMobileMostReadBtn) {
+                prevMobileMostReadBtn.addEventListener('click', () => scrollMobileMostRead('prev'));
+            }
+            
+            if (nextMobileMostReadBtn) {
+                nextMobileMostReadBtn.addEventListener('click', () => scrollMobileMostRead('next'));
+            }
             
             // Pencere boyutu değiştiğinde dropdown'ı kapat
             window.addEventListener('resize', () => {
                 if (window.innerWidth > 768) {
-                    navMenu.classList.remove('active');
-                    menuOverlay.classList.remove('active');
-                    hamburgerMenu.classList.remove('active');
-                    dropdownMenu.classList.remove('active');
+                    if (navMenu) navMenu.classList.remove('active');
+                    if (menuOverlay) menuOverlay.classList.remove('active');
+                    if (hamburgerMenu) hamburgerMenu.classList.remove('active');
+                    if (dropdownMenu) dropdownMenu.classList.remove('active');
                     document.body.style.overflow = 'auto';
-                }
-                
-                // Masaüstü için nav-link'lerde ikonları kaldır
-                if (window.innerWidth >= 769) {
-                    document.querySelectorAll('.nav-link i').forEach(icon => {
-                        icon.style.display = 'none';
-                    });
-                } else {
-                    document.querySelectorAll('.nav-link i').forEach(icon => {
-                        icon.style.display = 'inline-block';
-                    });
                 }
             });
         }
