@@ -38,6 +38,8 @@
             background-color: #fff;
             color: var(--dark-color);
             line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
         
         a {
@@ -334,7 +336,8 @@
             overflow: hidden;
             cursor: grab;
             user-select: none;
-            touch-action: pan-y;
+            /* touch-action: pan-y; BU SATIR KALDIRILDI */
+            -webkit-user-drag: none;
         }
         
         .slider-container:active {
@@ -351,7 +354,8 @@
             transition: opacity 0.8s ease;
             display: flex;
             align-items: flex-end;
-            touch-action: pan-y;
+            /* touch-action: pan-y; BU SATIR KALDIRILDI */
+            pointer-events: auto;
         }
         
         .slider-item.active {
@@ -378,6 +382,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            pointer-events: none; /* Mobil kaydırma için önemli */
         }
         
         .slider-title {
@@ -389,6 +394,7 @@
             margin-bottom: 30px;
             margin-top: auto;
             transform: translateY(-50%);
+            pointer-events: none;
         }
         
         .slider-controls {
@@ -400,6 +406,7 @@
             transform: translateY(-50%);
             padding: 0 20px;
             z-index: 10;
+            pointer-events: none; /* Butonların üzerinden geçerken kaydırmayı engellememek için */
         }
         
         .slider-btn {
@@ -416,6 +423,7 @@
             font-size: 1.5rem;
             transition: var(--transition);
             z-index: 20;
+            pointer-events: auto; /* Butonlar tıklanabilir olmalı */
         }
         
         .slider-btn:hover {
@@ -432,6 +440,7 @@
             justify-content: center;
             gap: 10px;
             z-index: 10;
+            pointer-events: none; /* Pagination üzerinden geçerken kaydırmayı engellememek için */
         }
         
         .pagination-dot {
@@ -442,6 +451,7 @@
             border: 2px solid transparent;
             cursor: pointer;
             transition: var(--transition);
+            pointer-events: auto; /* Noktalar tıklanabilir olmalı */
         }
         
         .pagination-dot.active {
@@ -467,6 +477,7 @@
             z-index: 5;
             font-weight: bold;
             box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            pointer-events: none;
         }
         
         .breaking-title {
@@ -605,9 +616,10 @@
             transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             gap: 20px;
             padding: 5px 0;
-            touch-action: pan-y;
+            /* touch-action: pan-y; BU SATIR KALDIRILDI */
             cursor: grab;
             user-select: none;
+            -webkit-overflow-scrolling: touch; /* Mobilde smooth kaydırma için */
         }
         
         .gallery-track:active {
@@ -625,6 +637,7 @@
             position: relative;
             display: block;
             min-height: 320px;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .gallery-item:hover {
@@ -668,6 +681,7 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
+            pointer-events: none;
         }
         
         /* Modern gezinme butonları */
@@ -689,6 +703,7 @@
             color: var(--topbar-color);
             z-index: 10;
             transition: var(--transition);
+            pointer-events: auto;
         }
         
         .gallery-nav:hover:not(:disabled) {
@@ -1895,11 +1910,11 @@
         let totalPages = 0;
 
         // YENİ: Slider ve galeri için dokunma/swipe değişkenleri
-        let isDragging = false;
-        let startPos = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-        let animationID = null;
+        let sliderStartX = 0;
+        let sliderEndX = 0;
+        let galleryStartX = 0;
+        let galleryEndX = 0;
+        const swipeThreshold = 50; // Minimum kaydırma mesafesi
 
         // YENİ: Galeriyi başlat
         function initGallery() {
@@ -2130,10 +2145,6 @@
         function setupSwipeForSlider() {
             if (!sliderContainer) return;
             
-            let sliderStartX = 0;
-            let sliderEndX = 0;
-            const swipeThreshold = 50; // Minimum kaydırma mesafesi
-            
             // Dokunma başladığında
             sliderContainer.addEventListener('touchstart', (e) => {
                 sliderStartX = e.touches[0].clientX;
@@ -2143,7 +2154,10 @@
             
             // Dokunma hareket ettiğinde
             sliderContainer.addEventListener('touchmove', (e) => {
-                e.preventDefault(); // Varsayılan scroll'u engelle
+                // Sadece yatay kaydırmaya izin ver, dikey kaydırmayı engelleme
+                if (Math.abs(e.touches[0].clientX - sliderStartX) > 10) {
+                    e.preventDefault();
+                }
             }, { passive: false });
             
             // Dokunma bittiğinde
@@ -2202,10 +2216,6 @@
         function setupSwipeForGallery() {
             if (!galleryTrack) return;
             
-            let galleryStartX = 0;
-            let galleryEndX = 0;
-            const swipeThreshold = 50; // Minimum kaydırma mesafesi
-            
             // Dokunma başladığında
             galleryTrack.addEventListener('touchstart', (e) => {
                 galleryStartX = e.touches[0].clientX;
@@ -2214,7 +2224,10 @@
             
             // Dokunma hareket ettiğinde
             galleryTrack.addEventListener('touchmove', (e) => {
-                e.preventDefault(); // Varsayılan scroll'u engelle
+                // Sadece yatay kaydırmaya izin ver, dikey kaydırmayı engelleme
+                if (Math.abs(e.touches[0].clientX - galleryStartX) > 10) {
+                    e.preventDefault();
+                }
             }, { passive: false });
             
             // Dokunma bittiğinde
