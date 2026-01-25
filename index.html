@@ -897,45 +897,47 @@
             font-size: 0.85rem;
         }
         
-        /* MOBİL ÖZEL: EN ÇOK OKUNANLAR YENİ TASARIM */
+        /* MOBİL ÖZEL: EN ÇOK OKUNANLAR DÜZGÜN TASARIM */
         @media (max-width: 768px) {
             .most-read-wrapper {
                 width: 100%;
                 padding: 20px 0;
                 position: relative;
-                overflow: visible;
+                overflow: hidden;
             }
             
             .most-read-track {
-                gap: 15px;
-                padding: 0 10px;
-                width: auto;
+                gap: 10px;
+                padding: 0 15px;
+                width: 100%;
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
                 transition: transform 0.4s ease;
             }
             
-            /* Mobil için kart boyutları */
+            /* Mobil için kart boyutları - DÜZGÜN */
             .most-read-item {
-                flex: 0 0 calc(80% - 10px);
+                flex: 0 0 calc(85% - 10px);
                 height: 280px;
                 border-radius: 12px;
                 transition: all 0.3s ease;
                 position: relative;
+                margin: 0;
             }
             
-            /* Aktif kart (ortada) */
+            /* Aktif kart (ortada) - TAM GÖRÜNÜM */
             .most-read-item.active-center {
-                flex: 0 0 80%;
+                flex: 0 0 85%;
                 transform: scale(1);
                 z-index: 3;
+                opacity: 1;
             }
             
-            /* Yan kartlar (yarı görünüm) */
+            /* Yan kartlar (yarı görünüm) - DOĞRU KONUMDA */
             .most-read-item.active-side {
-                flex: 0 0 calc(40% - 10px);
-                transform: scale(0.9);
+                flex: 0 0 calc(50% - 20px);
+                transform: scale(0.85);
                 opacity: 0.7;
                 z-index: 2;
                 filter: brightness(0.8);
@@ -947,6 +949,9 @@
                 opacity: 0;
                 transform: scale(0.8);
                 pointer-events: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
             }
             
             /* Masaüstü butonları gizle */
@@ -1184,11 +1189,11 @@
             }
             
             .most-read-item.active-center {
-                flex: 0 0 85%;
+                flex: 0 0 90%;
             }
             
             .most-read-item.active-side {
-                flex: 0 0 calc(45% - 10px);
+                flex: 0 0 calc(55% - 20px);
             }
         }
         
@@ -1511,27 +1516,6 @@
                     category: "Valilik Haberleri",
                     image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi.webp",
                     detail: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı."
-                },
-                {
-                    id: 3,
-                    title: "Bartın'da Trafik Kazası: 2 Yaralı",
-                    category: "Bartın Haberleri",
-                    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    detail: "Bartın merkezde meydana gelen trafik kazasında 2 kişi yaralandı. Kazaya karışan araçlar hasar gördü. Yaralılar hastaneye kaldırıldı."
-                },
-                {
-                    id: 4,
-                    title: "Ak Parti Bartın'da Genişletilmiş İl Danışma Meclisi ve Vefa Buluşması Düzenlendi",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.webp",
-                    detail: "Ak Parti Bartın İl Başkanlığı tarafından düzenlenen Genişletilmiş İl Danışma Meclisi toplantısı ve geleneksel Vefa Buluşması, partililerin ve vatandaşların yoğun katılımıyla gerçekleşti."
-                },
-                {
-                    id: 5,
-                    title: "Bartın Belediyesi'nden araç filosuna büyük yatırım",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/arac-filosuna-buyuk-yatirim.webp",
-                    detail: "Bartın Belediyesi, hizmet kapasitesini artırmak amacıyla araç filosunu önemli ölçüde güçlendirdi."
                 }
             ],
             
@@ -1543,46 +1527,6 @@
                     image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
                     excerpt: "Bartın'da bir işyerine yönelik hırsızlık yapan 3 zanlı polis tarafından yakalandı.",
                     detail: "Bartın'da bir işyerine yönelik hırsızlık yapan 3 zanlı polis tarafından yakalandı. Zanlıların, gece vakti işyerine girerek nakit para ve değerli eşyaları çaldığı belirlendi. Polis, yaptığı teknik takip sonucu zanlıları 24 saat içinde yakaladı."
-                },
-                {
-                    id: 15,
-                    title: "Uyuşturucu Operasyonunda 5 Gözaltı",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Narkotik ekiplerinin düzenlediği operasyonda 5 kişi uyuşturucu madde bulundurma suçundan gözaltına alındı.",
-                    detail: "Narkotik ekiplerinin düzenlediği operasyonda 5 kişi uyuşturucu madde bulundurma suçundan gözaltına alındı. Operasyonda çeşitli miktarlarda uyuşturucu madde ve para ele geçirildi. Zanlılar adliyeye sevk edildi."
-                },
-                {
-                    id: 25,
-                    title: "Bartın'da Dolandırıcılık Çetesine Operasyon",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Polis, dolandırıcılık yapan çeteye yönelik operasyon düzenledi.",
-                    detail: "Polis, dolandırıcılık yapan çeteye yönelik operasyon düzenledi. 7 şüpheli gözaltına alındı, milyonlarca lira dolandırılan para ele geçirildi."
-                },
-                {
-                    id: 26,
-                    title: "Trafik Denetimleri Artırıldı",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Yaz dönemi nedeniyle Bartın'da trafik denetimleri artırıldı.",
-                    detail: "Yaz dönemi nedeniyle Bartın'da trafik denetimleri artırıldı. Emniyet ekipleri özellikle hız ve emniyet kemeri kontrollerine ağırlık verdi."
-                },
-                {
-                    id: 27,
-                    title: "Sahil Güvenlik Ekipleri Tatilcileri Uyardı",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Sahil Güvenlik ekipleri, denize giren tatilcileri uyardı.",
-                    detail: "Sahil Güvenlik ekipleri, denize giren tatilcileri uyardı. Can yeleği ve can simidi kullanımının önemine dikkat çekildi."
-                },
-                {
-                    id: 28,
-                    title: "Kaçak Elektrik Kullanımına Operasyon",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Kaçak elektrik kullanan 15 işyerine operasyon düzenlendi.",
-                    detail: "Kaçak elektrik kullanan 15 işyerine operasyon düzenlendi. İşyeri sahipleri hakkında yasal işlem başlatıldı."
                 }
             ],
             
@@ -1594,46 +1538,6 @@
                     image: "https://www.bartinduysun.com/images/valilik/kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.webp",
                     excerpt: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı.",
                     detail: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı. Toplantıda, kadına yönelik şiddetle mücadele kapsamında yapılan çalışmalar değerlendirildi ve yeni stratejiler belirlendi."
-                },
-                {
-                    id: 6,
-                    title: "Vali Arslan Başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi.webp",
-                    excerpt: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı.",
-                    detail: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı. Toplantıda, yılbaşı döneminde alınacak güvenlik tedbirleri ve asayiş önlemleri görüşüldü."
-                },
-                {
-                    id: 7,
-                    title: "Vali Arslan Vatandaşlarımızla Buluştu",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
-                    excerpt: "Vali Arslan, vatandaşlarımızla bir araya gelerek sorunlarını dinledi ve çözüm yolları aradı.",
-                    detail: "Vali Arslan, vatandaşlarımızla bir araya gelerek sorunlarını dinledi ve çözüm yolları aradı. Ziyarette vatandaşların günlük yaşamda karşılaştığı sorunlar ele alındı ve çözüm için gerekli adımlar belirlendi."
-                },
-                {
-                    id: 8,
-                    title: "Vali Arslan, Öğrencilerimizin Karne Heyecanını Paylaştı",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-ogrencilerin-karne-heyecanini-paylasti.webp",
-                    excerpt: "Vali Arslan, yarıyıl tatili öncesi öğrencilerin karne heyecanını paylaşmak için okulları ziyaret etti.",
-                    detail: "Vali Arslan, yarıyıl tatili öncesi öğrencilerin karne heyecanını paylaşmak için okulları ziyaret etti. Ziyaretlerde öğrencilerle sohbet eden Vali Arslan, başarılı öğrencileri tebrik etti ve tatillerini iyi değerlendirmelerini tavsiye etti."
-                },
-                {
-                    id: 16,
-                    title: "Arslan Başkanlığında İl İdare Şube Başkanları Toplantısı Yapıldı",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-il-idare-subebaskanlari-toplantisi.webp",
-                    excerpt: "Vali Arslan başkanlığında İl İdare Şube Başkanları Toplantısı gerçekleştirildi.",
-                    detail: "Vali Arslan başkanlığında İl İdare Şube Başkanları Toplantısı gerçekleştirildi. Toplantıda il idaresinin çalışmaları değerlendirildi ve önümüzdeki dönemde yapılacak faaliyetler planlandı."
-                },
-                {
-                    id: 17,
-                    title: "Vali Arslan Başkanlığında 2026 Yılının 1. İl Koordinasyon Kurulu Toplantısı Yapıldı",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-vatandaslarla-bulustu.webp",
-                    excerpt: "Vali Arslan başkanlığında 2026 yılının ilk İl Koordinasyon Kurulu Toplantısı gerçekleştirildi.",
-                    detail: "Vali Arslan başkanlığında 2026 yılının ilk İl Koordinasyon Kurulu Toplantısı gerçekleştirildi. Toplantıda, 2026 yılına yönelik hedefler ve stratejiler belirlendi, ilin kalkınma projeleri ele alındı."
                 }
             ],
             
@@ -1645,46 +1549,6 @@
                     image: "https://www.bartinduysun.com/images/belediye/bir-projede-gurgenpinari-mahallesine-kazandiriliyor.webp",
                     excerpt: "Bir projede Gürpınarı Mahallesi'ne kazandırılıyor.",
                     detail: "Bartın Belediyesi, kent genelinde yaşam kalitesini artırmaya yönelik projelerine hız kesmeden devam ediyor. Bu kapsamda Gürgenpınarı Mahallesi'nde hayata geçirilecek olan Gürgenpınarı Park Alanları Projesi'nin yapım çalışmalarına başlandı."
-                },
-                {
-                    id: 10,
-                    title: "Türk Sanat Müziği Konserine Davet",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/turk-sanat-muzigi-konserine-davet.webp",
-                    excerpt: "Türk Sanat Müziği Konserine vatandaşlar davet edildi",
-                    detail: "Bartın Belediyesi tarafından kültür ve sanat etkinlikleri kapsamında düzenlenen Türk Sanat Müziği Konseri, sanatseverlerle buluşmaya hazırlanıyor."
-                },
-                {
-                    id: 11,
-                    title: "Ekipler don riskine karşı önlem aldı",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/ekip-don-riski-karsi-724-gorev-basinda.webp",
-                    excerpt: "Bartın Belediyesi, don riskine karşı 7/24 nöbette",
-                    detail: "Bartın Belediyesi karla mücadele ekipleri, hava sıcaklıklarının eksi derecelere düşmesi ve don riskinin artması nedeniyle şehir genelinde tuzlama çalışmalarını aralıksız sürdürüyor."
-                },
-                {
-                    id: 18,
-                    title: "Bartın Belediyesi'nden araç filosuna büyük yatırım",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/arac-filosuna-buyuk-yatirim.webp",
-                    excerpt: "Araç filosuna yapılan yatırımın detayları paylaşıldı",
-                    detail: "Bartın Belediyesi, hizmet kapasitesini artırmak amacıyla araç filosunu önemli ölçüde güçlendirdi."
-                },
-                {
-                    id: 19,
-                    title: "Belediye Belediyesinden yeni hizmet",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/yeni-bir-egitim-yuvasi-daha-hizmete-giriyor.webp",
-                    excerpt: "Yeni bir eğitim yuvası daha hizmete giriyor.",
-                    detail: "Bartın Belediyesi, sosyal belediyecilik anlayışı doğrultusunda çocukların erken yaşta nitelikli eğitimle buluşmasını sağlamak amacıyla önemli bir projeyi daha hayata geçiriyor."
-                },
-                {
-                    id: 20,
-                    title: "Bartın Belediyesi, çocuklar için hazırlandı.",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/karne-senligi-etkinlikleri-basladi.webp",
-                    excerpt: "Bartın Belediyesi, karne şenliği etkinlikleri başladı.",
-                    detail: "Bartın Belediyesi tarafından çocukların karne sevincini doyasıya yaşamaları amacıyla düzenlenen Karne Şenliği etkinlikleri başladı."
                 }
             ],
             
@@ -1696,46 +1560,6 @@
                     image: "https://www.bartinduysun.com/images/siyaset/bartina-1-4-milyon-dolarlik-yoresel-urunler-pazari-kazandiriliyor.webp",
                     excerpt: "Yöresel Ürünler İçin Modern Pazar Geliyor",
                     detail: "Bartın'da yerel üreticilerin ürünlerini değer fiyatla satabileceği, yaklaşık 1,4 milyon dolar değerinde modern bir yöresel ürünler pazarı inşa ediliyor."
-                },
-                {
-                    id: 13,
-                    title: "Milletvekili Bankoğlu: Çocuk İstismarı Davasının İlk Duruşması Tamamlandı",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/cocuk-istismari-davasinın-ilk-durusmasi-sona-erdi.webp",
-                    excerpt: "Aysu Bankoğlu: Adli Süreç ve Çocuk İstismarı Davasını Yakından Takip Ediyoruz",
-                    detail: "CHP Bartın Milletvekili Aysu Bankoğlu, Meclis'te yaşandığı iddia edilen çocuk istismarı ve taciz olaylarına ilişkin davanın ilk duruşmasının sona erdiğini açıkladı."
-                },
-                {
-                    id: 21,
-                    title: "Başkan Yalçınkaya'dan CHP 39. Olağan Kurultayı Sonrası Açıklama",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/baskan-yalcinkaya-dan-chp-kurultayi-sonrasi-aciklama.webp",
-                    excerpt: "Başkan Yalçınkaya'dan Özgür Özel'e Tebrik ve Kurultay Değerlendirmesi",
-                    detail: "Bartın Belediye Başkanı Rıza Yalçınkaya, CHP 39. Olağan Kurultayı'nın ikinci gününün tamamlanmasının ardından Genel Başkanlığa seçilen Özgür Özel'i tebrik edti."
-                },
-                {
-                    id: 22,
-                    title: "Milletvekili Bankoğlu'ndan TBMM'deki Emekli Maaşı Oylamasına Ret Tepkisi",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/milletvekili-bankoglu-ndan-tbmm-deki-emekli-maasi-oylamasina-tepki.webp",
-                    excerpt: "Aysu Bankoğlu: Emeklilerin Haklarını Savunmak İçin Ret Verdik",
-                    detail: "CHP Bartın Milletvekili Aysu Bankoğlu, TBMM'de en düşük emekli maaşıyla ilgili yapılan oylamada ret oyu verdiğini açıkladı."
-                },
-                {
-                    id: 23,
-                    title: "AK Parti Bartın'da Genişletilmiş İl Danışa Meclisi ve Vefa Buluşması Düzenlendi",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.webp",
-                    excerpt: "AK Parti Bartın Teşkilatı Vefa ve İstişare Toplantısında Bir Araya Geldi",
-                    detail: "AK Parti Bartın İl Başkanlığı tarafından düzenlenen Genişletilmiş İl Danışma Meclisi ve Vefa Buluşması, teşkilatın tüm kademelerinden yoğun katılımla gerçekleştirildi."
-                },
-                {
-                    id: 24,
-                    title: "Başkan Çakır: Türk Bayrağı Sahipsiz Değildir",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/baskan-cakir-turk-bayragi-sahipsiz-degildir.webp",
-                    excerpt: "Başkan Çakır: Bayrağımıza Uzanan Ellere Geçit Yok",
-                    detail: "Amasra Belediye Başkanı Recai Çakır, Türk bayrağına yönelik son saldırıyı kınayarak, 14 Ağustos 1996'da Kıbrıs'ta bayrağa sahip çıkan kahraman askerleri andı."
                 }
             ],
             
@@ -2023,15 +1847,18 @@
             }
         }
 
-        // MOBİL Slider başlatma
+        // MOBİL Slider başlatma - DÜZGÜN ÇALIŞAN
         function initMobileMostReadSlider() {
             const items = mostReadTrack.querySelectorAll('.most-read-item');
             if (items.length === 0) return;
             
+            // Track'i sıfırla
+            mostReadTrack.style.transform = 'translateX(0)';
+            
             let currentIndex = 0;
             const totalItems = items.length;
             
-            // İlk kartları ayarla
+            // İlk kartları ayarla - DÜZGÜN
             updateMobileCards();
             
             // Buton durumlarını güncelle
@@ -2045,7 +1872,7 @@
                 }
             }
             
-            // Kartları güncelle
+            // Kartları güncelle - DÜZGÜN
             function updateMobileCards() {
                 items.forEach((item, index) => {
                     // Tüm sınıfları temizle
@@ -2054,11 +1881,11 @@
                     if (index === currentIndex) {
                         // Mevcut kart: Ortada tam görünüm
                         item.classList.add('active-center');
-                    } else if (index === currentIndex + 1) {
-                        // Sonraki kart: Sağda yarı görünüm
+                    } else if (index === currentIndex + 1 && currentIndex < totalItems - 1) {
+                        // Sonraki kart: Sağda yarı görünüm (varsa)
                         item.classList.add('active-side');
                     } else if (index === currentIndex - 1 && currentIndex > 0) {
-                        // Önceki kart: Solda yarı görünüm
+                        // Önceki kart: Solda yarı görünüm (varsa)
                         item.classList.add('active-side');
                     } else {
                         // Diğer kartlar: Gizli
@@ -2085,26 +1912,41 @@
                 }
             }
             
-            // Mobil buton event listener'ları
+            // Mobil buton event listener'ları - DÜZGÜN
             if (mobileNextMostReadBtn) {
-                mobileNextMostReadBtn.addEventListener('click', slideNext);
+                // Önceki event listener'ı kaldır, yenisini ekle
+                mobileNextMostReadBtn.replaceWith(mobileNextMostReadBtn.cloneNode(true));
+                const newNextBtn = document.getElementById('mobileNextMostRead');
+                newNextBtn.addEventListener('click', slideNext);
             }
             
             if (mobilePrevMostReadBtn) {
-                mobilePrevMostReadBtn.addEventListener('click', slidePrev);
+                // Önceki event listener'ı kaldır, yenisini ekle
+                mobilePrevMostReadBtn.replaceWith(mobilePrevMostReadBtn.cloneNode(true));
+                const newPrevBtn = document.getElementById('mobilePrevMostRead');
+                newPrevBtn.addEventListener('click', slidePrev);
             }
             
-            // Touch events (mobil sürükleme)
+            // Touch events (mobil sürükleme) - DÜZGÜN
             let startX = 0;
+            let isDragging = false;
             
             mostReadTrack.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+            
+            mostReadTrack.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
             });
             
             mostReadTrack.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                
                 const endX = e.changedTouches[0].clientX;
                 const diff = startX - endX;
-                const swipeThreshold = 50;
+                const swipeThreshold = 30;
                 
                 if (Math.abs(diff) > swipeThreshold) {
                     if (diff > 0) {
@@ -2115,6 +1957,8 @@
                         slidePrev();
                     }
                 }
+                
+                isDragging = false;
             });
             
             // İlk yüklemede buton durumlarını güncelle
