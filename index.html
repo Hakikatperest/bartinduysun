@@ -903,100 +903,65 @@
             font-size: 0.9rem;
         }
         
-        /* Footer - YENİ MODERN TASARIM */
+        /* YENİ FOOTER TASARIMI */
         footer {
-    background-color: var(--topbar-color); /* Üst menüyle aynı renk */
-    color: white;
-    padding: 50px 0 25px;
-    margin-top: 50px;
-}
+            background-color: var(--topbar-color); /* Üst menüyle aynı renk */
+            color: white;
+            padding: 50px 0 25px;
+            margin-top: 50px;
+        }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
             margin-bottom: 30px;
+        }
+        
+        .footer-left {
+            display: flex;
+            flex-direction: column;
         }
         
         .footer-logo-container {
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
         }
         
         .footer-logo-img {
-            max-width: 150px; /* Daha küçük logo */
-            height: auto;
+            height: 60px;
+            width: auto;
             cursor: default !important;
             pointer-events: none;
         }
         
         .footer-about {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 20px;
-        }
-        
-        .footer-title {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--topbar-color);
-            color: white;
-            position: relative;
-        }
-        
-        .footer-title::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--topbar-color);
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            transition: var(--transition);
-            color: rgba(255, 255, 255, 0.85);
-            display: flex;
-            align-items: center;
-            gap: 10px;
             font-size: 0.95rem;
-            padding: 5px 0;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            text-align: justify;
         }
         
-        .footer-links a:hover {
-            color: white;
-            padding-left: 8px;
-        }
-        
-        .footer-links a i {
-            font-size: 0.8rem;
-            width: 20px;
-            color: var(--topbar-color);
-        }
-        
-        /* Footer Sosyal Medya İkonları - Üst menüyle aynı */
+        /* Sosyal medya ikonları - Üst menüyle %100 aynı */
         .footer-social {
             display: flex;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
         
         .footer-social a {
+            color: white;
+            font-size: 1.1rem;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            transition: var(--transition);
-            color: white;
-            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.9);
         }
         
         .footer-social a.facebook {
@@ -1024,15 +989,81 @@
             opacity: 0.9;
         }
         
+        .footer-right {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: white;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            transition: var(--transition);
+            color: rgba(255, 255, 255, 0.85);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            padding: 5px 0;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 8px;
+        }
+        
+        .footer-links a i {
+            font-size: 0.8rem;
+            width: 20px;
+            color: white;
+        }
+        
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 25px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.85rem;
         }
         
-        /* Responsive boyut güncellemeleri */
+        /* Footer Responsive Tasarım */
+        @media (max-width: 992px) {
+            .footer-content {
+                gap: 40px;
+            }
+            
+            .footer-right {
+                gap: 30px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .main-header {
                 padding: 8px 0;
@@ -1122,6 +1153,17 @@
                 padding-left: 25px;
             }
             
+            /* FOOTER RESPONSIVE */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-right {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
             .slider-container {
                 height: 350px;
             }
@@ -1198,13 +1240,22 @@
                 grid-template-columns: 1fr;
             }
             
+            /* FOOTER MOBİL */
             .footer-content {
-                grid-template-columns: 1fr;
                 gap: 30px;
             }
             
+            .footer-right {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
             .footer-logo-img {
-                max-width: 130px;
+                height: 50px;
+            }
+            
+            .footer-about {
+                font-size: 0.9rem;
             }
             
             .nav-menu {
@@ -1318,7 +1369,7 @@
             <div class="main-header">
                 <div class="logo-container">
                     <div class="logo" id="mainLogo">
-                        <img src="https://www.bartinduysun.com/images/bartinduysun-logo.png" alt="Bartın Duysun Logo">
+                        <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Web4 Medya Logo">
                     </div>
                 </div>
                 
@@ -1523,15 +1574,20 @@
         </section>
     </main>
 
-    <!-- Footer Bölümü - YENİ MODERN TASARIM -->
+    <!-- YENİ FOOTER TASARIMI -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-about">
+                <!-- Sol Bölüm: Logo, Hakkımızda, Sosyal Medya -->
+                <div class="footer-left">
                     <div class="footer-logo-container">
-                        <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Bartın Duysun Logo" class="footer-logo-img">
+                        <img src="https://www.bartinduysun.com/images/bartinduysun-logo.png" alt="Bartın Duysun Logo" class="footer-logo-img">
                     </div>
-                    <p class="footer-about">Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir.</p>
+                    
+                    <p class="footer-about">
+                        Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir. Yerel haberlerde güvenilir ve hızlı bir kaynak olmayı hedefliyoruz.
+                    </p>
+                    
                     <div class="footer-social">
                         <a href="#" title="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" title="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
@@ -1541,17 +1597,30 @@
                     </div>
                 </div>
                 
-                <div class="footer-links">
-                    <h3 class="footer-title">Kurumsal</h3>
-                    <ul>
-                        <li><a href="hakkimizda.html"><i class="fas fa-chevron-right"></i> Hakkımızda</a></li>
-                        <li><a href="ekibimiz-kunye.html"><i class="fas fa-chevron-right"></i> Künye</a></li>
-                        <li><a href="kullanim-sartlari.html"><i class="fas fa-chevron-right"></i> Kullanım Koşulları</a></li>
-                        <li><a href="gizlilik-politikasi.html"><i class="fas fa-chevron-right"></i> Gizlilik Politikası</a></li>
-                        <li><a href="cerez-politikasi.html"><i class="fas fa-chevron-right"></i> Çerez Politikası</a></li>
-                        <li><a href="kvkk-metni.html"><i class="fas fa-chevron-right"></i> KVKK Metni</a></li>
-                        <li><a href="iletisim.html"><i class="fas fa-chevron-right"></i> İletişim Bilgileri</a></li>
-                    </ul>
+                <!-- Sağ Bölüm: 2 Sütunlu Bağlantılar -->
+                <div class="footer-right">
+                    <!-- İlk Sütun: Hakkımızda -->
+                    <div class="footer-column">
+                        <h3 class="footer-title">Hakkımızda</h3>
+                        <ul class="footer-links">
+                            <li><a href="hakkimizda.html"><i class="fas fa-chevron-right"></i> Kuruluş Hakkında</a></li>
+                            <li><a href="ekibimiz-kunye.html"><i class="fas fa-chevron-right"></i> Künye</a></li>
+                            <li><a href="ekibimiz-kunye.html"><i class="fas fa-chevron-right"></i> Ekibimiz</a></li>
+                            <li><a href="iletisim.html"><i class="fas fa-chevron-right"></i> İletişim</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- İkinci Sütun: Kurumsal -->
+                    <div class="footer-column">
+                        <h3 class="footer-title">Kurumsal</h3>
+                        <ul class="footer-links">
+                            <li><a href="yayin-ilkeleleri.html"><i class="fas fa-chevron-right"></i> Yayın İlkelerimiz</a></li>
+                            <li><a href="kullanim-sartlari.html"><i class="fas fa-chevron-right"></i> Kullanım Şartları</a></li>
+                            <li><a href="gizlilik-politikasi.html"><i class="fas fa-chevron-right"></i> Gizlilik Politikası</a></li>
+                            <li><a href="cerez-politikasi.html"><i class="fas fa-chevron-right"></i> Çerez Politikası</a></li>
+                            <li><a href="kvkk-metni.html"><i class="fas fa-chevron-right"></i> Kişisel Verilerin Korunması</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
