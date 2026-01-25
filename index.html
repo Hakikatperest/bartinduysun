@@ -570,10 +570,29 @@
             position: absolute;
             bottom: 15px;
             right: 20px;
-            color: var(--topbar-color);
             font-weight: 600;
             font-size: 0.9rem;
             transition: var(--transition);
+        }
+        
+        /* Bartın Haberleri için kırmızı */
+        #bartin .read-more {
+            color: var(--bartin-color);
+        }
+        
+        /* Valilik Haberleri için yeşil */
+        #valilik .read-more {
+            color: var(--valilik-color);
+        }
+        
+        /* Belediye Haberleri için mavi */
+        #belediye .read-more {
+            color: var(--belediye-color);
+        }
+        
+        /* Siyaset Haberleri için sarı */
+        #siyaset .read-more {
+            color: var(--siyaset-color);
         }
         
         .news-card:hover .read-more {
@@ -835,7 +854,7 @@
             }
         }
         
-        /* Kategoriler Bölümü */
+        /* Kategoriler Bölümü - İKONLU HALİ */
         .categories-section {
             margin: 40px 0;
         }
@@ -856,6 +875,8 @@
             cursor: pointer;
             border: 2px solid transparent;
             display: block;
+            position: relative;
+            overflow: hidden;
         }
         
         .category-card:hover {
@@ -868,6 +889,7 @@
             font-size: 2.8rem;
             color: var(--topbar-color);
             margin-bottom: 15px;
+            transition: var(--transition);
         }
         
         .category-name {
@@ -876,9 +898,14 @@
             margin-bottom: 10px;
         }
         
-        /* Footer */
+        .category-card p {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+        
+        /* Footer - YENİ MODERN TASARIM */
         footer {
-           background-color: var(--topbar-color); /* Üst menüyle aynı renk */
+    background-color: var(--topbar-color); /* Üst menüyle aynı renk */
     color: white;
     padding: 50px 0 25px;
     margin-top: 50px;
@@ -887,16 +914,16 @@
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 20px;
+            gap: 40px;
+            margin-bottom: 30px;
         }
         
         .footer-logo-container {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         
         .footer-logo-img {
-            max-width: 180px;
+            max-width: 150px; /* Daha küçük logo */
             height: auto;
             cursor: default !important;
             pointer-events: none;
@@ -906,18 +933,30 @@
             font-size: 0.9rem;
             line-height: 1.6;
             color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         
         .footer-title {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--topbar-color);
+            color: white;
+            position: relative;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--topbar-color);
         }
         
         .footer-links li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
@@ -925,35 +964,39 @@
             color: rgba(255, 255, 255, 0.85);
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
+            gap: 10px;
+            font-size: 0.95rem;
+            padding: 5px 0;
         }
         
         .footer-links a:hover {
             color: white;
-            padding-left: 5px;
+            padding-left: 8px;
         }
         
         .footer-links a i {
             font-size: 0.8rem;
             width: 20px;
+            color: var(--topbar-color);
         }
         
+        /* Footer Sosyal Medya İkonları - Üst menüyle aynı */
         .footer-social {
             display: flex;
             gap: 10px;
-            margin-top: 10px;
+            margin-top: 20px;
         }
         
         .footer-social a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             transition: var(--transition);
             color: white;
+            font-size: 1rem;
         }
         
         .footer-social a.facebook {
@@ -981,19 +1024,10 @@
             opacity: 0.9;
         }
         
-        .footer-contact {
-            font-size: 0.9rem;
-        }
-        
-        .footer-contact li {
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-        
         .copyright {
             text-align: center;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.85rem;
         }
@@ -1164,8 +1198,13 @@
                 grid-template-columns: 1fr;
             }
             
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
             .footer-logo-img {
-                max-width: 150px;
+                max-width: 130px;
             }
             
             .nav-menu {
@@ -1443,9 +1482,12 @@
             </div>
         </section>
 
-        <!-- Kategoriler Bölümü -->
+        <!-- Kategoriler Bölümü - İKONLU HALİ -->
         <section class="categories-section">
-            <h2 class="section-title">Tüm Haberler / Hızlı Erişim</h2>
+            <h2 class="section-title">
+                <i class="fas fa-bolt" style="margin-right: 10px; color: var(--topbar-color);"></i>
+                Tüm Haberler / Hızlı Erişim
+            </h2>
             
             <div class="categories-grid">
                 <a href="bartin-haberleri.html" class="category-card">
@@ -1472,7 +1514,6 @@
                     <p>Yerel ve genel siyasetten gelişmeler</p>
                 </a>
                 
-                <!-- YENİ EKLENEN: Bartın Firma Rehberi -->
                 <a href="firma-rehberi.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-building"></i></div>
                     <h3 class="category-name">Bartın Firma Rehberi</h3>
@@ -1482,7 +1523,7 @@
         </section>
     </main>
 
-    <!-- Footer Bölümü -->
+    <!-- Footer Bölümü - YENİ MODERN TASARIM -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1501,39 +1542,21 @@
                 </div>
                 
                 <div class="footer-links">
-                    <h3 class="footer-title">Hızlı Erişim</h3>
-                    <ul>
-                        <li><a href="bartin-haberleri.html"><i class="fas fa-chevron-right"></i> Bartın Haberleri</a></li>
-                        <li><a href="bartin-valiligi-haberleri.html"><i class="fas fa-chevron-right"></i> Bartın Valiliği Haberleri</a></li>
-                        <li><a href="bartin-belediyesi-haberleri.html"><i class="fas fa-chevron-right"></i> Bartın Belediyesi Haberleri</a></li>
-                        <li><a href="bartin-siyaset-haberleri.html"><i class="fas fa-chevron-right"></i> Bartın Siyaset Haberleri</a></li>
-                        <li><a href="firma-rehberi.html"><i class="fas fa-chevron-right"></i> Bartın Firma Rehberi</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
                     <h3 class="footer-title">Kurumsal</h3>
                     <ul>
                         <li><a href="hakkimizda.html"><i class="fas fa-chevron-right"></i> Hakkımızda</a></li>
-                        <li><a href="ekibimiz-kunye.html"><i class="fas fa-chevron-right"></i> Ekibimiz & Künye</a></li>
-                        <li><a href="iletisim.html"><i class="fas fa-chevron-right"></i> İletişim</a></li>
+                        <li><a href="ekibimiz-kunye.html"><i class="fas fa-chevron-right"></i> Künye</a></li>
+                        <li><a href="kullanim-sartlari.html"><i class="fas fa-chevron-right"></i> Kullanım Koşulları</a></li>
                         <li><a href="gizlilik-politikasi.html"><i class="fas fa-chevron-right"></i> Gizlilik Politikası</a></li>
-                        <li><a href="kullanim-sartlari.html"><i class="fas fa-chevron-right"></i> Kullanım Şartları</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-contact">
-                    <h3 class="footer-title">İletişim</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> Merkez Mah. Cumhuriyet Cad. No:123, Bartın</li>
-                        <li><i class="fas fa-phone"></i> (0378) 123 45 67</li>
-                        <li><i class="fas fa-envelope"></i> info@bartinduysun.com</li>
+                        <li><a href="cerez-politikasi.html"><i class="fas fa-chevron-right"></i> Çerez Politikası</a></li>
+                        <li><a href="kvkk-metni.html"><i class="fas fa-chevron-right"></i> KVKK Metni</a></li>
+                        <li><a href="iletisim.html"><i class="fas fa-chevron-right"></i> İletişim Bilgileri</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>© 2024 Bartın Duysun – Tüm Hakları Saklıdır. Haber Merkezi</p>
+                <p>© 2024 Bartın Duysun – Tüm Hakları Saklıdır.</p>
             </div>
         </div>
     </footer>
