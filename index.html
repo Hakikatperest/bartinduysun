@@ -918,26 +918,30 @@
             margin-bottom: 30px;
         }
         
-        .footer-left {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .footer-logo-container {
-    margin-bottom: 20px;
+       .footer-left {
     display: flex;
-    align-items: center;
-    gap: 20px; /* Logolar arası boşluk */
-    flex-wrap: wrap; /* Mobilde satır atlaması için */
+    flex-direction: column;
+    align-items: flex-start; /* Tüm içeriği sola yasla */
 }
         
-        .footer-logo-img {
-        height: 50px;
+        .footer-logo-container {
+        flex-wrap: nowrap; /* Mobilde de yan yana kalsın */
+        justify-content: flex-start;
     }
         
-     .web4medya-logo {
-        height: 40px;
-    }
+        .footer-logo-img {
+    height: 60px;
+    width: auto;
+    cursor: default !important;
+    pointer-events: none;
+}
+        
+   .web4medya-logo {
+    height: 40px;
+    width: auto;
+    opacity: 0.8;
+    transition: var(--transition);
+}
 }
         
         .web4medya-logo:hover {
@@ -1072,10 +1076,10 @@
             }
         }
         
-       @media (max-width: 768px) {
+      @media (max-width: 768px) {
     .footer-logo-container {
         gap: 15px;
-        justify-content: center; /* Mobilde ortala */
+        justify-content: flex-start; /* Mobilde de sola yasla */
     }
             
             .logo-container {
@@ -1264,9 +1268,9 @@
                 gap: 25px;
             }
             
-            .footer-logo-img {
-                height: 50px;
-            }
+             .footer-logo-img {
+        height: 50px;
+    }
             
             .footer-about {
                 font-size: 0.9rem;
@@ -1309,8 +1313,8 @@
             
             /* MOBİLDE WEB4MEDYA LOGOSU */
             .web4medya-logo {
-                height: 60px;
-            }
+        height: 40px;
+    }
         }
         
         @media (max-width: 400px) {
