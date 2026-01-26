@@ -935,27 +935,6 @@
             max-width: 90%;
         }
 
-        .category-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-            z-index: 4;
-            transition: var(--transition);
-        }
-
-        .category-card:hover .category-badge {
-            background-color: var(--secondary-color);
-            color: var(--dark-color);
-            transform: translateY(-3px);
-        }
-
         /* Kategori kartları için responsive tasarım */
         @media (max-width: 1200px) {
             .categories-grid {
@@ -1030,13 +1009,6 @@
             
             .category-name {
                 font-size: 1.1rem;
-            }
-            
-            .category-badge {
-                top: 15px;
-                right: 15px;
-                padding: 5px 10px;
-                font-size: 0.75rem;
             }
         }
         
@@ -1175,8 +1147,13 @@
             width: auto;
             opacity: 0.9;
             transition: var(--transition);
-            pointer-events: none; /* Tıklanamasın */
-            user-select: none; /* Seçilemesin */
+            cursor: pointer;
+            pointer-events: auto;
+        }
+        
+        .web4medya-logo:hover {
+            opacity: 1;
+            transform: translateY(-2px);
         }
         
         .footer-about {
@@ -1617,11 +1594,11 @@
         <div class="top-bar">
             <div class="container">
                 <div class="social-icons">
-                    <a href="#" title="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" title="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="X (Twitter)" class="twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" title="YouTube" class="youtube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" title="Telegram" class="telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/bartinduysun" title="Instagram" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
                 </div>
             </div>
         </div>
@@ -1802,7 +1779,6 @@
             
             <div class="categories-grid">
                 <a href="bartin-haberleri.html" class="category-card">
-                    <div class="category-badge">20+ Haber</div>
                     <div class="category-content">
                         <div class="category-icon"><i class="fas fa-newspaper"></i></div>
                         <h3 class="category-name">Bartın Haberleri</h3>
@@ -1811,7 +1787,6 @@
                 </a>
                 
                 <a href="bartin-valiligi-haberleri.html" class="category-card">
-                    <div class="category-badge">15+ Haber</div>
                     <div class="category-content">
                         <div class="category-icon"><i class="fas fa-landmark"></i></div>
                         <h3 class="category-name">Bartın Valiliği Haberleri</h3>
@@ -1820,7 +1795,6 @@
                 </a>
                 
                 <a href="bartin-belediyesi-haberleri.html" class="category-card">
-                    <div class="category-badge">18+ Haber</div>
                     <div class="category-content">
                         <div class="category-icon"><i class="fas fa-city"></i></div>
                         <h3 class="category-name">Bartın Belediyesi Haberleri</h3>
@@ -1829,7 +1803,6 @@
                 </a>
                 
                 <a href="bartin-siyaset-haberleri.html" class="category-card">
-                    <div class="category-badge">12+ Haber</div>
                     <div class="category-content">
                         <div class="category-icon"><i class="fas fa-users"></i></div>
                         <h3 class="category-name">Bartın Siyaset Haberleri</h3>
@@ -1838,7 +1811,6 @@
                 </a>
                 
                 <a href="firma-rehberi.html" class="category-card">
-                    <div class="category-badge">50+ Firma</div>
                     <div class="category-content">
                         <div class="category-icon"><i class="fas fa-building"></i></div>
                         <h3 class="category-name">Bartın Firma Rehberi</h3>
@@ -1857,7 +1829,9 @@
                 <div class="footer-left">
                     <div class="footer-logo-container">
                         <img src="https://www.bartinduysun.com/images/bartinduysun-logo.png" alt="Bartın Duysun Logo" class="footer-logo-img" id="footerLogo">
-                        <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Web4Medya Logo" class="web4medya-logo">
+                        <a href="https://www.web4medya.com" target="_blank">
+                            <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Web4Medya Logo" class="web4medya-logo">
+                        </a>
                     </div>
                     
                     <p class="footer-about">
@@ -1865,11 +1839,11 @@
                     </p>
                     
                     <div class="footer-social">
-                        <a href="#" title="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" title="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" title="X (Twitter)" class="twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" title="YouTube" class="youtube"><i class="fab fa-youtube"></i></a>
-                        <a href="#" title="Telegram" class="telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/bartinduysun" title="Instagram" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
                     </div>
                 </div>
                 
