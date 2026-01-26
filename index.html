@@ -2077,7 +2077,8 @@
             card.className = 'news-card';
             const imageUrl = haber.image || 'https://via.placeholder.com/400x200?text=Bartın+Duysun';
             // Tüm haberler için doğru iç sayfa URL'sini kullan
-            card.href = haber.url || `https://www.bartinduysun.com/haberler/${haber.category.toLowerCase().replace(/ /g, '-').replace('haberleri', '')}/${haber.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '')}.html`;
+            const haberUrl = haber.url || `https://www.bartinduysun.com/haberler/${haber.category.toLowerCase().replace(/ /g, '-').replace('haberleri', '')}/${haber.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '')}.html`;
+            card.href = haberUrl;
             card.innerHTML = `
                 <div class="news-image">
                     <img src="${imageUrl}" alt="${haber.title}" loading="lazy">
@@ -2089,6 +2090,26 @@
                 </div>
             `;
             return card;
+        }
+
+        // YENİ: Slider kartı oluşturma fonksiyonu - DÜZELTİLDİ: Her slider için doğru URL kullanılacak
+        function createSliderCard(haber, index) {
+            const slide = document.createElement('a');
+            slide.className = `slider-item ${index === 0 ? 'active' : ''}`;
+            
+            // HATA DÜZELTME: Her haber için doğru URL kullanılıyor
+            slide.href = haber.url || `https://www.bartinduysun.com/haberler/${haber.category.toLowerCase().replace(/ /g, '-').replace('haberleri', '')}/${haber.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '')}.html`;
+            
+            const imageUrl = haber.image || 'https://via.placeholder.com/1200x500?text=Bartın+Duysun';
+            slide.innerHTML = `
+                <img src="${imageUrl}" alt="${haber.title}" loading="lazy">
+                <div class="slider-overlay">
+                    <div class="container">
+                        <h3 class="slider-title">${haber.title}</h3>
+                    </div>
+                </div>
+            `;
+            return slide;
         }
 
         // YENİ: Galeri kartı oluşturma fonksiyonu - DÜZELTİLDİ: URL kontrolü eklendi
@@ -2140,6 +2161,37 @@
         let galleryStartX = 0;
         let galleryEndX = 0;
         const swipeThreshold = 50; // Minimum kaydırma mesafesi
+
+        // YENİ: Slider'ı başlat - DÜZELTİLDİ: createSliderCard fonksiyonu kullanıldı
+        function initSlider() {
+            // Slider öğelerini oluştur
+            if (haberData.slider && sliderContainer) {
+                haberData.slider.forEach((haber, index) => {
+                    const slide = createSliderCard(haber, index);
+                    sliderContainer.appendChild(slide);
+                });
+
+                // Pagination noktalarını oluştur
+                if (sliderPagination) {
+                    haberData.slider.forEach((haber, index) => {
+                        const dot = document.createElement('div');
+                        dot.className = `pagination-dot ${index === 0 ? 'active' : ''}`;
+                        dot.dataset.index = index;
+                        dot.addEventListener('click', () => {
+                            goToSlide(index);
+                            startSlideInterval();
+                        });
+                        sliderPagination.appendChild(dot);
+                    });
+                }
+            }
+            
+            // Slider otomatik geçişini başlat
+            startSlideInterval();
+            
+            // Slider için swipe olaylarını ekle
+            setupSwipeForSlider();
+        }
 
         // YENİ: Galeriyi başlat
         function initGallery() {
@@ -2264,49 +2316,6 @@
                     dot.classList.remove('active');
                 }
             });
-        }
-
-        // Slider'ı başlat
-        function initSlider() {
-            // Slider öğelerini oluştur
-            if (haberData.slider && sliderContainer) {
-                haberData.slider.forEach((haber, index) => {
-                    const slide = document.createElement('a');
-                    slide.className = `slider-item ${index === 0 ? 'active' : ''}`;
-                    // Tüm slider haberleri için doğru URL kullan
-                    slide.href = haber.url || `https://www.bartinduysun.com/haberler/${haber.category.toLowerCase().replace(/ /g, '-').replace('haberleri', '')}/${haber.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '')}.html`;
-                    const imageUrl = haber.image || 'https://via.placeholder.com/1200x500?text=Bartın+Duysun';
-                    slide.innerHTML = `
-                        <img src="${imageUrl}" alt="${haber.title}" loading="lazy">
-                        <div class="slider-overlay">
-                            <div class="container">
-                                <h3 class="slider-title">${haber.title}</h3>
-                            </div>
-                        </div>
-                    `;
-                    sliderContainer.appendChild(slide);
-                });
-
-                // Pagination noktalarını oluştur
-                if (sliderPagination) {
-                    haberData.slider.forEach((haber, index) => {
-                        const dot = document.createElement('div');
-                        dot.className = `pagination-dot ${index === 0 ? 'active' : ''}`;
-                        dot.dataset.index = index;
-                        dot.addEventListener('click', () => {
-                            goToSlide(index);
-                            startSlideInterval();
-                        });
-                        sliderPagination.appendChild(dot);
-                    });
-                }
-            }
-            
-            // Slider otomatik geçişini başlat
-            startSlideInterval();
-            
-            // Slider için swipe olaylarını ekle
-            setupSwipeForSlider();
         }
 
         // Slider değişkenleri
