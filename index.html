@@ -34,6 +34,8 @@
         
         html {
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
         }
         
         body {
@@ -42,6 +44,8 @@
             line-height: 1.6;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         a {
@@ -231,10 +235,11 @@
             position: relative;
         }
         
+        /* GÜNCELLENMİŞ: Daraltılmış açılır menü için düzenlemeler */
         .nav-link {
             font-weight: 600;
             font-size: 1.05rem;
-            padding: 14px 20px;
+            padding: 14px 15px;
             transition: var(--transition);
             border-radius: 8px;
             display: flex;
@@ -257,22 +262,23 @@
             transform: rotate(180deg);
         }
         
-        /* Modern dropdown menü */
+        /* GÜNCELLENMİŞ: Modern dropdown menü - DARALTILMIŞ VERSİYON */
         .dropdown-menu {
             position: absolute;
             top: 100%;
             left: 0;
             background-color: white;
             box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            min-width: 240px;
-            padding: 8px 0;
+            min-width: 200px; /* Daha dar yapıldı */
+            padding: 6px 0; /* Daha az padding */
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
             transition: var(--transition);
             z-index: 100;
-            border-radius: 12px;
+            border-radius: 10px; /* Daha küçük border-radius */
             border-top: 3px solid var(--topbar-color);
+            max-width: 220px; /* Maksimum genişlik eklendi */
         }
         
         .dropdown:hover .dropdown-menu {
@@ -282,30 +288,31 @@
         }
         
         .dropdown-menu li {
-            padding: 0 5px;
-            margin: 2px 0;
+            padding: 0 3px; /* Daha az padding */
+            margin: 1px 0; /* Daha az margin */
         }
         
         .dropdown-menu a {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px; /* Daha az gap */
             transition: var(--transition);
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 8px 15px; /* Daha az padding */
+            border-radius: 6px; /* Daha küçük border-radius */
             font-weight: 500;
+            font-size: 0.95rem; /* Daha küçük font */
         }
         
         .dropdown-menu a:hover {
             color: var(--topbar-color);
             background-color: rgba(1, 136, 159, 0.08);
-            padding-left: 25px;
+            padding-left: 20px; /* Daha az padding */
         }
         
         .dropdown-menu a i {
-            width: 20px;
+            width: 18px; /* Daha küçük ikon alanı */
             text-align: center;
-            font-size: 1rem;
+            font-size: 0.9rem; /* Daha küçük ikon */
             color: var(--topbar-color);
         }
         
@@ -602,17 +609,43 @@
             transform: translateX(5px);
         }
         
-        /* Reklam Alanı */
+        /* GÜNCELLENMİŞ: Reklam Alanı - 5 ADET */
         .ad-section {
             background-color: var(--light-color);
-            border: 2px dashed var(--border-color);
-            height: 120px;
+            border: 1px solid var(--border-color);
+            height: auto;
+            min-height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 30px 0;
             border-radius: 8px;
             color: var(--gray-color);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .ad-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ad-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: none;
+        }
+        
+        .ad-desktop {
+            display: block;
+        }
+        
+        .ad-mobile {
+            display: none;
         }
         
         /* YENİ TASARIM: EN ÇOK OKUNAN HABERLER GALERİSİ */
@@ -657,6 +690,8 @@
             display: block;
             min-height: 320px;
             -webkit-tap-highlight-color: transparent;
+            -webkit-transform: translateZ(0); /* iOS performans iyileştirmesi */
+            transform: translateZ(0);
         }
         
         .gallery-item:hover {
@@ -990,6 +1025,15 @@
             
             .category-card p {
                 font-size: 0.95rem;
+            }
+            
+            /* GÜNCELLENMİŞ: Reklam görselleri mobil için */
+            .ad-desktop {
+                display: none !important;
+            }
+            
+            .ad-mobile {
+                display: block !important;
             }
         }
 
@@ -1326,10 +1370,11 @@
                 right: 0;
             }
             
+            /* GÜNCELLENMİŞ: Mobil dropdown menü - Daha kompakt */
             .nav-link {
-                padding: 16px 20px;
-                font-size: 1.1rem;
-                margin-bottom: 5px;
+                padding: 14px 15px;
+                font-size: 1rem;
+                margin-bottom: 3px;
             }
             
             .nav-link i {
@@ -1347,10 +1392,12 @@
                 display: none;
                 background-color: rgba(1, 136, 159, 0.05);
                 border-radius: 8px;
-                margin: 5px 0 10px;
+                margin: 3px 0 8px;
                 border-top: none;
                 border-left: 3px solid var(--topbar-color);
                 min-width: auto;
+                max-width: 100%;
+                width: 100%;
             }
             
             .dropdown.active .dropdown-menu {
@@ -1358,19 +1405,19 @@
             }
             
             .dropdown-menu li {
-                padding: 0 5px;
+                padding: 0 3px;
                 margin: 1px 0;
             }
             
             .dropdown-menu a {
-                padding: 8px 20px;
-                font-size: 1rem;
-                gap: 10px;
+                padding: 7px 15px;
+                font-size: 0.95rem;
+                gap: 8px;
                 margin: 0;
             }
             
             .dropdown-menu a:hover {
-                padding-left: 25px;
+                padding-left: 20px;
             }
             
             /* FOOTER RESPONSIVE */
@@ -1504,8 +1551,8 @@
             
             /* Mobilde daha da kompakt hale getirildi */
             .dropdown-menu a {
-                padding: 7px 18px;
-                font-size: 0.95rem;
+                padding: 6px 15px;
+                font-size: 0.9rem;
             }
             
             .gallery-container {
@@ -1557,7 +1604,7 @@
             /* Masaüstü üst menü düzenlemeleri */
             .nav-link {
                 font-size: 0.95rem;
-                padding: 14px 12px;
+                padding: 14px 10px;
                 white-space: nowrap;
             }
             
@@ -1566,7 +1613,7 @@
             }
             
             .nav-links-container {
-                gap: 3px;
+                gap: 2px;
             }
             
             .dropdown-menu a i {
@@ -1584,6 +1631,26 @@
             
             .slider-title {
                 font-size: 2.2rem;
+            }
+        }
+        
+        /* iOS için özel düzeltmeler */
+        @supports (-webkit-touch-callout: none) {
+            .gallery-track {
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+            }
+            
+            .gallery-item {
+                scroll-snap-align: start;
+                -webkit-transform: translate3d(0,0,0);
+                transform: translate3d(0,0,0);
+                will-change: transform;
+            }
+            
+            .slider-container {
+                -webkit-overflow-scrolling: touch;
             }
         }
     </style>
@@ -1684,9 +1751,10 @@
         </section>
         
         <!-- Reklam Alanı 1 -->
-        <div class="ad-section">
-            <div class="container">
-                <p>Reklam Alanı - 728x90</p>
+        <div class="ad-section" id="ad1">
+            <div class="ad-content">
+                <img src="https://www.bartinduysun.com/images/irmak-mobilya.webp" alt="İrmak Mobilya" class="ad-image ad-desktop">
+                <img src="https://www.bartinduysun.com/images/irmak-mobil.webp" alt="İrmak Mobilya" class="ad-image ad-mobile">
             </div>
         </div>
 
@@ -1703,9 +1771,10 @@
         </section>
         
         <!-- Reklam Alanı 2 -->
-        <div class="ad-section">
-            <div class="container">
-                <p>Reklam Alanı - 728x90</p>
+        <div class="ad-section" id="ad2">
+            <div class="ad-content">
+                <img src="https://www.bartinduysun.com/images/rgold-mucevherat.webp" alt="RGold Mücevherat" class="ad-image ad-desktop">
+                <img src="https://www.bartinduysun.com/images/rgold-mobil.webp" alt="RGold Mücevherat" class="ad-image ad-mobile">
             </div>
         </div>
 
@@ -1722,9 +1791,10 @@
         </section>
         
         <!-- Reklam Alanı 3 -->
-        <div class="ad-section">
-            <div class="container">
-                <p>Reklam Alanı - 728x90</p>
+        <div class="ad-section" id="ad3">
+            <div class="ad-content">
+                <img src="https://www.bartinduysun.com/images/sultana-kunefe.webp" alt="Sultana Künefe" class="ad-image ad-desktop">
+                <img src="https://www.bartinduysun.com/images/sultana-mobil.webp" alt="Sultana Künefe" class="ad-image ad-mobile">
             </div>
         </div>
 
@@ -1739,6 +1809,14 @@
                 <!-- Siyaset haber kartları JavaScript ile eklenecek -->
             </div>
         </section>
+        
+        <!-- Reklam Alanı 4 -->
+        <div class="ad-section" id="ad4">
+            <div class="ad-content">
+                <img src="https://www.bartinduysun.com/images/bahcen-kebap.webp" alt="Bahçen Kebap" class="ad-image ad-desktop">
+                <img src="https://www.bartinduysun.com/images/bahcen-mobil.webp" alt="Bahçen Kebap" class="ad-image ad-mobile">
+            </div>
+        </div>
 
         <!-- YENİ TASARIM: EN ÇOK OKUNAN HABERLER GALERİSİ -->
         <section class="most-read-gallery">
@@ -1769,6 +1847,14 @@
                 </div>
             </div>
         </section>
+        
+        <!-- Reklam Alanı 5 -->
+        <div class="ad-section" id="ad5">
+            <div class="ad-content">
+                <img src="https://www.bartinduysun.com/images/sercan-mobil.webp" alt="Sercan Ateş" class="ad-image ad-desktop">
+                <img src="https://www.bartinduysun.com/images/sercan-ates.webp" alt="Sercan Ateş" class="ad-image ad-mobile">
+            </div>
+        </div>
 
         <!-- MODERN KATEGORİLER BÖLÜMÜ - GÖRSEL ARKAPLANLI -->
         <section class="categories-section">
@@ -2276,6 +2362,35 @@
         const mainLogo = document.getElementById('mainLogo');
         const footerLogo = document.getElementById('footerLogo');
 
+        // YENİ: Reklam görsellerini kontrol et
+        function checkAdImages() {
+            const adSections = document.querySelectorAll('.ad-section');
+            adSections.forEach(adSection => {
+                const desktopImg = adSection.querySelector('.ad-desktop');
+                const mobileImg = adSection.querySelector('.ad-mobile');
+                
+                // Eğer masaüstü görseli yüklenemezse, mobil görseli göster
+                if (desktopImg && desktopImg.complete === false) {
+                    desktopImg.addEventListener('error', () => {
+                        if (mobileImg) {
+                            desktopImg.style.display = 'none';
+                            mobileImg.style.display = 'block';
+                        }
+                    });
+                }
+                
+                // Eğer mobil görseli yüklenemezse, masaüstü görseli göster
+                if (mobileImg && mobileImg.complete === false) {
+                    mobileImg.addEventListener('error', () => {
+                        if (desktopImg) {
+                            mobileImg.style.display = 'none';
+                            desktopImg.style.display = 'block';
+                        }
+                    });
+                }
+            });
+        }
+
         // Haber kartı oluşturma fonksiyonu
         function createNewsCard(haber) {
             const card = document.createElement('a');
@@ -2398,7 +2513,7 @@
             setupSwipeForSlider();
         }
 
-        // YENİ: Galeriyi başlat
+        // YENİ: Galeriyi başlat - iOS düzeltmeleri eklendi
         function initGallery() {
             if (!galleryTrack || !haberData.mostRead.length) return;
             
@@ -2425,7 +2540,7 @@
                 updateSlidesPerView();
             });
             
-            // Dokunma/swipe olaylarını ekle
+            // Dokunma/swipe olaylarını ekle - iOS için iyileştirilmiş
             setupSwipeForGallery();
         }
 
@@ -2652,69 +2767,153 @@
             });
         }
 
-        // YENİ: Galeri için swipe/dokunma desteği
+        // YENİ: Galeri için swipe/dokunma desteği - iOS için iyileştirilmiş
         function setupSwipeForGallery() {
             if (!galleryTrack) return;
             
+            let isDragging = false;
+            let startPos = 0;
+            let currentTranslate = 0;
+            let prevTranslate = 0;
+            let animationID = 0;
+            
+            // iOS için performans iyileştirmeleri
+            galleryTrack.style.willChange = 'transform';
+            
             // Dokunma başladığında
-            galleryTrack.addEventListener('touchstart', (e) => {
-                galleryStartX = e.touches[0].clientX;
-                galleryTrack.style.cursor = 'grabbing';
-            }, { passive: true });
+            galleryTrack.addEventListener('touchstart', touchStart, { passive: true });
             
             // Dokunma hareket ettiğinde
-            galleryTrack.addEventListener('touchmove', (e) => {
-                // Sadece yatay kaydırmaya izin ver, dikey kaydırmayı engelleme
-                if (Math.abs(e.touches[0].clientX - galleryStartX) > 10) {
-                    e.preventDefault();
-                }
-            }, { passive: false });
+            galleryTrack.addEventListener('touchmove', touchMove, { passive: false });
             
             // Dokunma bittiğinde
-            galleryTrack.addEventListener('touchend', (e) => {
-                if (e.changedTouches.length > 0) {
-                    galleryEndX = e.changedTouches[0].clientX;
-                    
-                    const diffX = galleryStartX - galleryEndX;
-                    
-                    // Sola kaydırma (sonraki sayfa)
-                    if (diffX > swipeThreshold && currentSlideIndex < totalPages - 1) {
-                        nextPage();
-                    }
-                    // Sağa kaydırma (önceki sayfa)
-                    else if (diffX < -swipeThreshold && currentSlideIndex > 0) {
-                        prevPage();
-                    }
-                }
-                galleryTrack.style.cursor = 'grab';
-            }, { passive: true });
+            galleryTrack.addEventListener('touchend', touchEnd, { passive: true });
             
             // Masaüstü için mouse olayları
-            galleryTrack.addEventListener('mousedown', (e) => {
-                galleryStartX = e.clientX;
+            galleryTrack.addEventListener('mousedown', mouseDown);
+            galleryTrack.addEventListener('mousemove', mouseMove);
+            galleryTrack.addEventListener('mouseup', mouseUp);
+            galleryTrack.addEventListener('mouseleave', mouseLeave);
+            
+            function getPositionX(event) {
+                return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+            }
+            
+            function touchStart(event) {
+                startPos = getPositionX(event);
+                isDragging = true;
+                animationID = requestAnimationFrame(animation);
                 galleryTrack.style.cursor = 'grabbing';
-            });
+            }
             
-            galleryTrack.addEventListener('mouseup', (e) => {
-                galleryEndX = e.clientX;
+            function touchMove(event) {
+                if (isDragging) {
+                    const currentPosition = getPositionX(event);
+                    currentTranslate = prevTranslate + currentPosition - startPos;
+                    
+                    // Yatay kaydırma sınırlarını kontrol et
+                    const maxTranslate = 0;
+                    const minTranslate = -galleryTrack.scrollWidth + galleryTrack.offsetWidth;
+                    
+                    if (currentTranslate > maxTranslate) {
+                        currentTranslate = maxTranslate;
+                    } else if (currentTranslate < minTranslate) {
+                        currentTranslate = minTranslate;
+                    }
+                }
+            }
+            
+            function touchEnd() {
+                cancelAnimationFrame(animationID);
+                isDragging = false;
                 
-                const diffX = galleryStartX - galleryEndX;
+                const movedBy = currentTranslate - prevTranslate;
                 
-                // Sola kaydırma (sonraki sayfa)
-                if (diffX > swipeThreshold && currentSlideIndex < totalPages - 1) {
+                // Eğer yeterince kaydırıldıysa, sayfayı değiştir
+                if (movedBy < -swipeThreshold && currentSlideIndex < totalPages - 1) {
                     nextPage();
-                }
-                // Sağa kaydırma (önceki sayfa)
-                else if (diffX < -swipeThreshold && currentSlideIndex > 0) {
+                } else if (movedBy > swipeThreshold && currentSlideIndex > 0) {
                     prevPage();
+                } else {
+                    // Yeterince kaydırılmadıysa, eski pozisyona dön
+                    goToPage(currentSlideIndex);
                 }
                 
                 galleryTrack.style.cursor = 'grab';
-            });
+            }
             
-            galleryTrack.addEventListener('mouseleave', () => {
+            function mouseDown(event) {
+                startPos = getPositionX(event);
+                isDragging = true;
+                animationID = requestAnimationFrame(animation);
+                galleryTrack.style.cursor = 'grabbing';
+            }
+            
+            function mouseMove(event) {
+                if (isDragging) {
+                    const currentPosition = getPositionX(event);
+                    currentTranslate = prevTranslate + currentPosition - startPos;
+                    
+                    // Yatay kaydırma sınırlarını kontrol et
+                    const maxTranslate = 0;
+                    const minTranslate = -galleryTrack.scrollWidth + galleryTrack.offsetWidth;
+                    
+                    if (currentTranslate > maxTranslate) {
+                        currentTranslate = maxTranslate;
+                    } else if (currentTranslate < minTranslate) {
+                        currentTranslate = minTranslate;
+                    }
+                }
+            }
+            
+            function mouseUp() {
+                cancelAnimationFrame(animationID);
+                isDragging = false;
+                
+                const movedBy = currentTranslate - prevTranslate;
+                
+                // Eğer yeterince kaydırıldıysa, sayfayı değiştir
+                if (movedBy < -swipeThreshold && currentSlideIndex < totalPages - 1) {
+                    nextPage();
+                } else if (movedBy > swipeThreshold && currentSlideIndex > 0) {
+                    prevPage();
+                } else {
+                    // Yeterince kaydırılmadıysa, eski pozisyona dön
+                    goToPage(currentSlideIndex);
+                }
+                
                 galleryTrack.style.cursor = 'grab';
-            });
+            }
+            
+            function mouseLeave() {
+                if (isDragging) {
+                    cancelAnimationFrame(animationID);
+                    isDragging = false;
+                    goToPage(currentSlideIndex);
+                }
+                galleryTrack.style.cursor = 'grab';
+            }
+            
+            function animation() {
+                setGalleryPosition();
+                if (isDragging) requestAnimationFrame(animation);
+            }
+            
+            function setGalleryPosition() {
+                galleryTrack.style.transform = `translateX(${currentTranslate}px)`;
+            }
+            
+            // Sayfa değiştiğinde prevTranslate'i güncelle
+            const originalGoToPage = goToPage;
+            goToPage = function(pageIndex) {
+                originalGoToPage(pageIndex);
+                // Mevcut translate değerini güncelle
+                const trackWidth = galleryTrack.offsetWidth;
+                const itemWidth = galleryTrack.children[0] ? galleryTrack.children[0].offsetWidth + 20 : 320;
+                const slideWidth = itemWidth * slidesPerView;
+                prevTranslate = -(slideWidth * currentSlideIndex);
+                currentTranslate = prevTranslate;
+            };
         }
 
         // Haber kategorilerini başlat
@@ -2887,6 +3086,9 @@
             initNewsCategories();
             initGallery();
             setupEventListeners();
+            
+            // Reklam görsellerini kontrol et
+            setTimeout(checkAdImages, 1000);
             
             // Masaüstü için nav-link ikonlarını kaldır
             if (window.innerWidth >= 769) {
