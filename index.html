@@ -346,25 +346,21 @@
         }
         
         .slider-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.8s ease;
-    display: flex;
-    align-items: flex-end;
-    pointer-events: none; /* 🔴 sadece aktif olan tıklanır */
-}
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            display: flex;
+            align-items: flex-end;
+            pointer-events: none; /* 🔴 sadece aktif olan tıklanır */
+        }
 
-.slider-item.active {
-    opacity: 1;
-    pointer-events: auto; /* 🟢 */
-}
-        
         .slider-item.active {
             opacity: 1;
+            pointer-events: auto; /* 🟢 */
         }
         
         .slider-item img {
@@ -776,6 +772,274 @@
             background: rgba(1, 136, 159, 0.5);
         }
         
+        /* YENİ TASARIM: MODERN KATEGORİ KARTLARI */
+        .categories-section {
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .categories-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(1, 136, 159, 0.05) 0%, rgba(255, 255, 255, 0.1) 100%);
+            z-index: -1;
+            border-radius: 16px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            border: 1px solid rgba(1, 136, 159, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            min-height: 320px;
+            backdrop-filter: blur(10px);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(1, 136, 159, 0.85), rgba(1, 136, 159, 0.95));
+            z-index: 2;
+            opacity: 0.9;
+            transition: opacity 0.4s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--topbar-color);
+        }
+
+        .category-card:hover::after {
+            opacity: 0.95;
+        }
+
+        .category-card:hover::before {
+            transform: scale(1.1);
+        }
+
+        /* Özel arkaplan görselleri her kategori için */
+        .category-card[href*="bartin-haberleri"]::before {
+            background-image: url('https://www.bartinduysun.com/images/bartin-haberleri.webp');
+        }
+
+        .category-card[href*="bartin-valiligi"]::before {
+            background-image: url('https://www.bartinduysun.com/images/bartin-valiligi.webp');
+        }
+
+        .category-card[href*="bartin-belediyesi"]::before {
+            background-image: url('https://www.bartinduysun.com/images/bartin-belediyesi.webp');
+        }
+
+        .category-card[href*="bartin-siyaset"]::before {
+            background-image: url('https://www.bartinduysun.com/images/bartin-siyaset.webp');
+        }
+
+        .category-card[href*="firma-rehberi"]::before {
+            background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-position: center 30%;
+        }
+
+        .category-content {
+            position: relative;
+            z-index: 3;
+            padding: 40px 25px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .category-icon {
+            font-size: 3.2rem;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-icon {
+            transform: scale(1.1) translateY(-5px);
+            color: var(--secondary-color);
+        }
+
+        .category-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .category-name::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .category-card:hover .category-name::after {
+            width: 70px;
+        }
+
+        .category-card p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            line-height: 1.6;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+            max-width: 90%;
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            z-index: 4;
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-badge {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            transform: translateY(-3px);
+        }
+
+        /* Kategori kartları için responsive tasarım */
+        @media (max-width: 1200px) {
+            .categories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .category-card {
+                min-height: 300px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .category-content {
+                padding: 30px 20px;
+            }
+            
+            .category-icon {
+                font-size: 2.8rem;
+                margin-bottom: 15px;
+            }
+            
+            .category-name {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .category-card {
+                min-height: 280px;
+            }
+            
+            .category-content {
+                padding: 25px 20px;
+            }
+            
+            .category-icon {
+                font-size: 2.5rem;
+            }
+            
+            .category-name {
+                font-size: 1.2rem;
+            }
+            
+            .category-card p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .category-card {
+                min-height: 250px;
+            }
+            
+            .category-content {
+                padding: 20px 15px;
+            }
+            
+            .category-icon {
+                font-size: 2.2rem;
+                margin-bottom: 12px;
+            }
+            
+            .category-name {
+                font-size: 1.1rem;
+            }
+            
+            .category-badge {
+                top: 15px;
+                right: 15px;
+                padding: 5px 10px;
+                font-size: 0.75rem;
+            }
+        }
+        
         /* Responsive tasarım */
         @media (max-width: 1200px) {
             .gallery-item {
@@ -859,55 +1123,6 @@
             .gallery-nav.next {
                 right: 5px;
             }
-        }
-        
-        /* Kategoriler Bölümü - İKONLU HALİ */
-        .categories-section {
-            margin: 40px 0;
-        }
-        
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .category-card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 35px 20px;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-            transition: var(--transition);
-            cursor: pointer;
-            border: 2px solid transparent;
-            display: block;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .category-card:hover {
-            border-color: var(--topbar-color);
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        
-        .category-icon {
-            font-size: 2.8rem;
-            color: var(--topbar-color);
-            margin-bottom: 15px;
-            transition: var(--transition);
-        }
-        
-        .category-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .category-card p {
-            color: var(--gray-color);
-            font-size: 0.9rem;
         }
         
         /* YENİ FOOTER TASARIMI */
@@ -1277,10 +1492,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .categories-grid {
-                grid-template-columns: 1fr;
-            }
-            
             /* FOOTER MOBİL */
             .footer-content {
                 gap: 30px;
@@ -1582,7 +1793,7 @@
             </div>
         </section>
 
-        <!-- Kategoriler Bölümü - İKONLU HALİ -->
+        <!-- MODERN KATEGORİLER BÖLÜMÜ - GÖRSEL ARKAPLANLI -->
         <section class="categories-section">
             <h2 class="section-title">
                 <i class="fas fa-bolt" style="margin-right: 10px; color: var(--topbar-color);"></i>
@@ -1591,33 +1802,48 @@
             
             <div class="categories-grid">
                 <a href="bartin-haberleri.html" class="category-card">
-                    <div class="category-icon"><i class="fas fa-newspaper"></i></div>
-                    <h3 class="category-name">Bartın Haberleri</h3>
-                    <p>Bartın'dan güncel ve genel haberler</p>
+                    <div class="category-badge">20+ Haber</div>
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fas fa-newspaper"></i></div>
+                        <h3 class="category-name">Bartın Haberleri</h3>
+                        <p>Bartın'dan güncel ve genel haberler</p>
+                    </div>
                 </a>
                 
                 <a href="bartin-valiligi-haberleri.html" class="category-card">
-                    <div class="category-icon"><i class="fas fa-landmark"></i></div>
-                    <h3 class="category-name">Bartın Valiliği Haberleri</h3>
-                    <p>Bartın Valiliği'nden güncel duyuru ve haberler</p>
+                    <div class="category-badge">15+ Haber</div>
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fas fa-landmark"></i></div>
+                        <h3 class="category-name">Bartın Valiliği Haberleri</h3>
+                        <p>Bartın Valiliği'nden güncel duyuru ve haberler</p>
+                    </div>
                 </a>
                 
                 <a href="bartin-belediyesi-haberleri.html" class="category-card">
-                    <div class="category-icon"><i class="fas fa-city"></i></div>
-                    <h3 class="category-name">Bartın Belediyesi Haberleri</h3>
-                    <p>Bartın Belediyesi faaliyet ve projeleri</p>
+                    <div class="category-badge">18+ Haber</div>
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fas fa-city"></i></div>
+                        <h3 class="category-name">Bartın Belediyesi Haberleri</h3>
+                        <p>Bartın Belediyesi faaliyet ve projeleri</p>
+                    </div>
                 </a>
                 
                 <a href="bartin-siyaset-haberleri.html" class="category-card">
-                    <div class="category-icon"><i class="fas fa-users"></i></div>
-                    <h3 class="category-name">Bartın Siyaset Haberleri</h3>
-                    <p>Yerel ve genel siyasetten gelişmeler</p>
+                    <div class="category-badge">12+ Haber</div>
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fas fa-users"></i></div>
+                        <h3 class="category-name">Bartın Siyaset Haberleri</h3>
+                        <p>Yerel ve genel siyasetten gelişmeler</p>
+                    </div>
                 </a>
                 
                 <a href="firma-rehberi.html" class="category-card">
-                    <div class="category-icon"><i class="fas fa-building"></i></div>
-                    <h3 class="category-name">Bartın Firma Rehberi</h3>
-                    <p>Bartın'daki firmalar ve işletmeler</p>
+                    <div class="category-badge">50+ Firma</div>
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fas fa-building"></i></div>
+                        <h3 class="category-name">Bartın Firma Rehberi</h3>
+                        <p>Bartın'daki firmalar ve işletmeler</p>
+                    </div>
                 </a>
             </div>
         </section>
@@ -1989,7 +2215,7 @@
                     title: "Başkan Çakır: Türk Bayrağı Sahipsiz Değildir",
                     category: "Siyaset Haberleri",
                     image: "https://www.bartinduysun.com/images/siyaset/baskan-cakir-turk-bayragi-sahipsiz-degildir.webp",
-                    excerpt: "Başkan Çakır: Bayrağımıza Uzanan Ellere Geçit Yok",
+                    excerpt: "Başkan Çakır: Bayrağımıza Uzanan Ellere Geit Yok",
                     detail: "Amasra Belediye Başkanı Recai Çakır, Türk bayrağına yönelik son saldırıyı kınayarak, 14 Ağustos 1996'da Kıbrıs'ta bayrağa sahip çıkan kahraman askerleri andı.",
                     url: "https://www.bartinduysun.com/haberler/siyaset/baskan-cakir-turk-bayragi-sahipsiz-degildir.html"
                 }
