@@ -924,26 +924,21 @@
         }
         
         .footer-logo-container {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Logolar arası boşluk */
+    flex-wrap: wrap; /* Mobilde satır atlaması için */
+}
         
         .footer-logo-img {
-            height: 60px;
-            width: auto;
-            cursor: default !important;
-            pointer-events: none;
-        }
+        height: 50px;
+    }
         
-        /* YENİ: Web4Medya logosu için stil */
-        .web4medya-logo {
-            height: 40px; /* Normal boyut */
-            width: auto;
-            opacity: 0.8;
-            transition: var(--transition);
-        }
+     .web4medya-logo {
+        height: 40px;
+    }
+}
         
         .web4medya-logo:hover {
             opacity: 1;
@@ -1077,10 +1072,11 @@
             }
         }
         
-        @media (max-width: 768px) {
-            .main-header {
-                padding: 8px 0;
-            }
+       @media (max-width: 768px) {
+    .footer-logo-container {
+        gap: 15px;
+        justify-content: center; /* Mobilde ortala */
+    }
             
             .logo-container {
                 height: 50px;
@@ -1602,11 +1598,11 @@
             <div class="footer-content">
                 <!-- Sol Bölüm: Logo, Hakkımızda, Sosyal Medya -->
                 <div class="footer-left">
-                    <div class="footer-logo-container">
-                        <img src="https://www.bartinduysun.com/images/bartinduysun-logo.png" alt="Bartın Duysun Logo" class="footer-logo-img">
-                        <!-- Web4Medya logosunu ekledim -->
-                        <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Web4Medya Logo" class="web4medya-logo">
-                    </div>
+    <div class="footer-logo-container">
+        <img src="https://www.bartinduysun.com/images/bartinduysun-logo.png" alt="Bartın Duysun Logo" class="footer-logo-img">
+        <!-- Web4Medya logosunu yanına ekledim -->
+        <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Web4Medya Logo" class="web4medya-logo">
+    </div>
                     
                     <p class="footer-about">
                         Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir. Yerel haberlerde güvenilir ve hızlı bir kaynak olmayı hedefliyoruz.
