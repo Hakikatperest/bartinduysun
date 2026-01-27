@@ -613,8 +613,7 @@
         .ad-section {
             background-color: var(--light-color);
             border: 1px solid var(--border-color);
-            height: auto;
-            min-height: 150px;
+            min-height: 90px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -624,6 +623,14 @@
             overflow: hidden;
             position: relative;
             padding: 10px;
+            width: 100%;
+            max-width: 100%;
+            transition: var(--transition);
+        }
+        
+        .ad-section:hover {
+            border-color: var(--topbar-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .ad-content {
@@ -632,11 +639,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 5px;
         }
         
         .ad-image {
+            width: auto;
+            height: auto;
             max-width: 100%;
-            max-height: 100%;
+            max-height: 90px;
             object-fit: contain;
             border-radius: 4px;
         }
@@ -645,12 +655,14 @@
             display: block;
             width: 100%;
             height: auto;
+            max-height: 90px;
         }
         
         .ad-mobile {
             display: none;
             width: 100%;
             height: auto;
+            max-height: 90px;
         }
         
         /* YENİ TASARIM: EN ÇOK OKUNAN HABERLER GALERİSİ */
@@ -1311,7 +1323,7 @@
             
             .ad-section {
                 min-height: 120px;
-                padding: 15px;
+                padding: 10px;
             }
             
             /* FOOTER RESPONSIVE */
@@ -1528,7 +1540,7 @@
             
             .ad-section {
                 min-height: 100px;
-                padding: 10px;
+                padding: 8px;
             }
             
             .category-card {
@@ -1728,7 +1740,7 @@
         <div class="ad-section" id="ad1">
             <div class="ad-content">
                 <img src="https://www.bartinduysun.com/images/irmak-mobilya.webp" alt="İrmak Mobilya" class="ad-image ad-desktop">
-                <img src="https://www.bartinduysun.com/images/irmak-mobil.webp" alt="İrmak Mobilya" class="ad-image ad-mobile">
+                <img src="https://www.bartinduysun.com/images/irmak-mobilya2.webp" alt="İrmak Mobilya" class="ad-image ad-mobile">
             </div>
         </div>
 
@@ -1747,8 +1759,8 @@
         <!-- Reklam Alanı 2 -->
         <div class="ad-section" id="ad2">
             <div class="ad-content">
-                <img src="https://www.bartinduysun.com/images/rgold-mucevherat.webp" alt="RGold Mücevherat" class="ad-image ad-desktop">
-                <img src="https://www.bartinduysun.com/images/rgold-mobil.webp" alt="RGold Mücevherat" class="ad-image ad-mobile">
+                <img src="https://www.bartinduysun.com/images/rgold-kuyumcu.webp" alt="RGold Mücevherat" class="ad-image ad-desktop">
+                <img src="https://www.bartinduysun.com/images/rgold-kuyumcu2.webp" alt="RGold Mücevherat" class="ad-image ad-mobile">
             </div>
         </div>
 
@@ -1768,7 +1780,7 @@
         <div class="ad-section" id="ad3">
             <div class="ad-content">
                 <img src="https://www.bartinduysun.com/images/sultana-kunefe.webp" alt="Sultana Künefe" class="ad-image ad-desktop">
-                <img src="https://www.bartinduysun.com/images/sultana-mobil.webp" alt="Sultana Künefe" class="ad-image ad-mobile">
+                <img src="https://www.bartinduysun.com/images/sultana-kunefe2.webp" alt="Sultana Künefe" class="ad-image ad-mobile">
             </div>
         </div>
 
@@ -1788,7 +1800,7 @@
         <div class="ad-section" id="ad4">
             <div class="ad-content">
                 <img src="https://www.bartinduysun.com/images/bahcen-kebap.webp" alt="Bahçen Kebap" class="ad-image ad-desktop">
-                <img src="https://www.bartinduysun.com/images/bahcen-mobil.webp" alt="Bahçen Kebap" class="ad-image ad-mobile">
+                <img src="https://www.bartinduysun.com/images/bahcen-kebap2.webp" alt="Bahçen Kebap" class="ad-image ad-mobile">
             </div>
         </div>
 
@@ -1825,8 +1837,8 @@
         <!-- Reklam Alanı 5 -->
         <div class="ad-section" id="ad5">
             <div class="ad-content">
-                <img src="https://www.bartinduysun.com/images/sercan-mobil.webp" alt="Sercan Ateş" class="ad-image ad-desktop">
-                <img src="https://www.bartinduysun.com/images/sercan-ates.webp" alt="Sercan Ateş" class="ad-image ad-mobile">
+                <img src="https://www.bartinduysun.com/images/sercan-ates.webp" alt="Sercan Ateş" class="ad-image ad-desktop">
+                <img src="https://www.bartinduysun.com/images/sercan-ates2.webp" alt="Sercan Ateş" class="ad-image ad-mobile">
             </div>
         </div>
 
