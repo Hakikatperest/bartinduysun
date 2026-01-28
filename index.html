@@ -2797,7 +2797,8 @@
             
             // Slider için scroll olayını dinle
             if (sliderContainer) {
-                sliderContainer.addEventListener('scroll', () => {
+               sliderContainer.addEventListener('scroll', () => {
+    if (isDragging) return;
                     const slideWidth = sliderContainer.offsetWidth;
                     const scrollLeft = sliderContainer.scrollLeft;
                     const newSlide = Math.round(scrollLeft / slideWidth);
@@ -2836,7 +2837,7 @@
                 });
             }
         });
-       let isDragging = false;
+      let isDragging = false;
 let startX = 0;
 let scrollStart = 0;
 
@@ -2846,32 +2847,46 @@ function enableSliderDrag() {
     slider.addEventListener("pointerdown", (e) => {
         isDragging = true;
         slider.classList.add("dragging");
+
         startX = e.pageX;
         scrollStart = slider.scrollLeft;
+
+        slider.style.scrollSnapType = "none"; // 👈 ÇOK ÖNEMLİ
         clearInterval(slideInterval);
+
+        slider.setPointerCapture(e.pointerId); // 👈 drag’i kilitler
     });
 
     slider.addEventListener("pointermove", (e) => {
         if (!isDragging) return;
         e.preventDefault();
-        const walk = (startX - e.pageX);
+
+        const walk = startX - e.pageX;
         slider.scrollLeft = scrollStart + walk;
     });
 
     slider.addEventListener("pointerup", () => {
-        isDragging = false;
-        slider.classList.remove("dragging");
-        snapToClosestSlide();
-        startSlideInterval();
+        finishDrag();
+    });
+
+    slider.addEventListener("pointercancel", () => {
+        finishDrag();
     });
 
     slider.addEventListener("pointerleave", () => {
-        if (!isDragging) return;
-        isDragging = false;
-        slider.classList.remove("dragging");
-        snapToClosestSlide();
-        startSlideInterval();
+        finishDrag();
     });
+}
+
+function finishDrag() {
+    if (!isDragging) return;
+
+    isDragging = false;
+    sliderContainer.classList.remove("dragging");
+
+    sliderContainer.style.scrollSnapType = "x mandatory"; // geri aç
+    snapToClosestSlide();
+    startSlideInterval();
 }
 
 function snapToClosestSlide() {
