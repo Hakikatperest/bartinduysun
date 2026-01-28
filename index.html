@@ -651,19 +651,21 @@
             border-radius: 4px;
         }
         
-        .ad-desktop {
-            display: block;
-            width: 100%;
-            height: auto;
-            max-height: 90px;
-        }
-        
-        .ad-mobile {
-            display: none;
-            width: 100%;
-            height: auto;
-            max-height: 90px;
-        }
+       .ad-desktop {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 150px;   /* 90 yerine 150 yaptık */
+    object-fit: contain;
+}
+
+.ad-mobile {
+    display: none;
+    width: 100%;
+    height: auto;
+    max-height: 150px;   /* 90 yerine 150 yaptık */
+    object-fit: contain;
+}
         
         /* YENİ TASARIM: EN ÇOK OKUNAN HABERLER GALERİSİ */
         .most-read-gallery {
