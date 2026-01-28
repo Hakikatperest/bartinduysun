@@ -312,7 +312,7 @@
             display: block;
         }
         
-        /* Slider */
+        /* SLİDER BÖLÜMÜ - ÖNCEKİ SAYFADAN AYNEN ALINDI */
         .slider-section {
             position: relative;
             margin-bottom: 30px;
@@ -323,26 +323,33 @@
             position: relative;
             height: 500px;
             overflow: hidden;
-            -webkit-overflow-scrolling: touch;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-             touch-action: pan-y;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-drag: none;
         }
         
-        .slider-wrapper {
-            display: flex;
-            height: 100%;
-            width: 100%;
-            scroll-snap-type: x mandatory;
+        .slider-container:active {
+            cursor: grabbing;
         }
         
         .slider-item {
-            flex: 0 0 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            scroll-snap-align: start;
-            position: relative;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            display: flex;
+            align-items: flex-end;
+            pointer-events: none;
         }
 
+        .slider-item.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
         .slider-item img {
             width: 100%;
             height: 100%;
@@ -809,7 +816,6 @@
             max-width: 100%;
             transition: var(--transition);
             box-shadow: var(--card-shadow);
-            /* Sabit yeşil çerçeve efekti */
             border: 3px solid transparent;
             border-image: linear-gradient(45deg, #28a745, #20c997, #28a745) 1;
             animation: border-glow 2s ease-in-out infinite;
@@ -1728,13 +1734,6 @@
                 margin: 0;
             }
         }
-        .slider-container.dragging {
-    cursor: grabbing;
-}
-
-.slider-container {
-    cursor: grab;
-}
     </style>
 </head>
 <body>
@@ -1792,16 +1791,14 @@
         </div>
     </header>
 
-    <!-- Manşet Slider Bölümü -->
+    <!-- Manşet Slider Bölümü - ÖNCEKİ SAYFADAN AYNEN ALINDI -->
     <section class="slider-section">
         <div class="breaking-news-sidebar">
             <div class="breaking-title">MANŞET HABERLER</div>
         </div>
         
         <div class="slider-container" id="sliderContainer">
-            <div class="slider-wrapper" id="sliderWrapper">
-                <!-- Slider öğeleri JavaScript ile eklenecek -->
-            </div>
+            <!-- Slider öğeleri JavaScript ile eklenecek -->
         </div>
         
         <div class="slider-controls">
@@ -2060,6 +2057,7 @@
             </div>
         </div>
     </footer>
+
     <script>
         // Haber verisi - Güncellenmiş versiyon
         const haberData = {
@@ -2425,7 +2423,6 @@
         const navMenu = document.getElementById('navMenu');
         const menuOverlay = document.getElementById('menuOverlay');
         const dropdownMenu = document.getElementById('dropdownMenu');
-        const sliderWrapper = document.getElementById('sliderWrapper');
         const sliderContainer = document.getElementById('sliderContainer');
         const sliderPagination = document.getElementById('sliderPagination');
         const prevSliderBtn = document.getElementById('prevSliderBtn');
@@ -2463,10 +2460,10 @@
             return card;
         }
 
-        // Slider kartı oluşturma fonksiyonu
-        function createSliderCard(haber) {
+        // Slider kartı oluşturma fonksiyonu - ÖNCEKİ SAYFADAN AYNEN ALINDI
+        function createSliderCard(haber, index) {
             const slide = document.createElement('a');
-            slide.className = 'slider-item';
+            slide.className = `slider-item ${index === 0 ? 'active' : ''}`;
             slide.href = haber.url || `https://www.bartinduysun.com/haberler/${haber.category.toLowerCase().replace(/ /g, '-').replace('haberleri', '')}/${haber.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '')}.html`;
             
             const imageUrl = haber.image || 'https://via.placeholder.com/1200x500?text=Bartın+Duysun';
@@ -2526,15 +2523,20 @@
         // Slider değişkenleri
         let currentSlide = 0;
         let slideInterval;
+        let sliderStartX = 0;
+        let sliderEndX = 0;
+        const swipeThreshold = 50;
 
-        // Slider'ı başlat
+        // Slider'ı başlat - ÖNCEKİ SAYFADAN AYNEN ALINDI
         function initSlider() {
-            if (haberData.slider && sliderWrapper) {
-                haberData.slider.forEach(haber => {
-                    const slide = createSliderCard(haber);
-                    sliderWrapper.appendChild(slide);
+            // Slider öğelerini oluştur
+            if (haberData.slider && sliderContainer) {
+                haberData.slider.forEach((haber, index) => {
+                    const slide = createSliderCard(haber, index);
+                    sliderContainer.appendChild(slide);
                 });
 
+                // Pagination noktalarını oluştur
                 if (sliderPagination) {
                     haberData.slider.forEach((haber, index) => {
                         const dot = document.createElement('div');
@@ -2549,7 +2551,71 @@
                 }
             }
             
+            // Slider otomatik geçişini başlat
             startSlideInterval();
+            
+            // Slider için swipe olaylarını ekle - ÖNCEKİ SAYFADAN AYNEN ALINDI
+            setupSwipeForSlider();
+        }
+
+        // Slider için swipe/dokunma desteği - ÖNCEKİ SAYFADAN AYNEN ALINDI
+        function setupSwipeForSlider() {
+            if (!sliderContainer) return;
+            
+            sliderContainer.addEventListener('touchstart', (e) => {
+                sliderStartX = e.touches[0].clientX;
+                clearInterval(slideInterval);
+            }, { passive: true });
+            
+            sliderContainer.addEventListener('touchmove', (e) => {
+                if (Math.abs(e.touches[0].clientX - sliderStartX) > 10) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+            
+            sliderContainer.addEventListener('touchend', (e) => {
+                if (e.changedTouches.length > 0) {
+                    sliderEndX = e.changedTouches[0].clientX;
+                    
+                    const diffX = sliderStartX - sliderEndX;
+                    
+                    if (diffX > swipeThreshold) {
+                        nextSlide();
+                    }
+                    else if (diffX < -swipeThreshold) {
+                        prevSlide();
+                    }
+                }
+                
+                startSlideInterval();
+            }, { passive: true });
+            
+            sliderContainer.addEventListener('mousedown', (e) => {
+                sliderStartX = e.clientX;
+                clearInterval(slideInterval);
+                sliderContainer.style.cursor = 'grabbing';
+            });
+            
+            sliderContainer.addEventListener('mouseup', (e) => {
+                sliderEndX = e.clientX;
+                
+                const diffX = sliderStartX - sliderEndX;
+                
+                if (diffX > swipeThreshold) {
+                    nextSlide();
+                }
+                else if (diffX < -swipeThreshold) {
+                    prevSlide();
+                }
+                
+                startSlideInterval();
+                sliderContainer.style.cursor = 'grab';
+            });
+            
+            sliderContainer.addEventListener('mouseleave', () => {
+                sliderContainer.style.cursor = 'grab';
+                startSlideInterval();
+            });
         }
 
         // Son dakika haberlerini başlat
@@ -2605,49 +2671,58 @@
             }
         }
 
-        // Belirli bir slayta git
-        function goToSlide(index) {
-            if (!sliderWrapper || !sliderContainer) return;
-            
-            const slides = sliderWrapper.querySelectorAll('.slider-item');
-            const dots = sliderPagination.querySelectorAll('.pagination-dot');
-            
-            if (slides.length > 0 && dots.length > 0) {
-                currentSlide = index;
-                
-                sliderContainer.scrollTo({
-                    left: sliderContainer.offsetWidth * index,
-                    behavior: 'smooth'
-                });
-                
-                dots.forEach((dot, i) => {
-                    if (i === index) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
-                });
-            }
-        }
-
-        // Sonraki slayta geç
-        function nextSlide() {
-            const slides = sliderWrapper.querySelectorAll('.slider-item');
-            const nextIndex = (currentSlide + 1) % slides.length;
-            goToSlide(nextIndex);
-        }
-
-        // Önceki slayta geç
-        function prevSlide() {
-            const slides = sliderWrapper.querySelectorAll('.slider-item');
-            const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
-            goToSlide(prevIndex);
-        }
-
-        // Slider otomatik geçişini başlat
+        // Slider otomatik geçişini başlat - ÖNCEKİ SAYFADAN AYNEN ALINDI
         function startSlideInterval() {
             clearInterval(slideInterval);
             slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Belirli bir slayta git - ÖNCEKİ SAYFADAN AYNEN ALINDI
+        function goToSlide(index) {
+            const slides = document.querySelectorAll('.slider-item');
+            const dots = document.querySelectorAll('.pagination-dot');
+            
+            if (slides.length > 0 && dots.length > 0) {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                
+                currentSlide = index;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+        }
+
+        // Sonraki slayta geç - ÖNCEKİ SAYFADAN AYNEN ALINDI
+        function nextSlide() {
+            const slides = document.querySelectorAll('.slider-item');
+            const dots = document.querySelectorAll('.pagination-dot');
+            
+            if (slides.length > 0 && dots.length > 0) {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                
+                currentSlide = (currentSlide + 1) % slides.length;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+        }
+
+        // Önceki slayta geç - ÖNCEKİ SAYFADAN AYNEN ALINDI
+        function prevSlide() {
+            const slides = document.querySelectorAll('.slider-item');
+            const dots = document.querySelectorAll('.pagination-dot');
+            
+            if (slides.length > 0 && dots.length > 0) {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
         }
 
         // Reklam alanı işlemleri
@@ -2794,42 +2869,16 @@
                     });
                 }
             });
-            
-            // Slider için scroll olayını dinle
-            if (sliderContainer) {
-               sliderContainer.addEventListener('scroll', () => {
-    if (isDragging) return;
-                    const slideWidth = sliderContainer.offsetWidth;
-                    const scrollLeft = sliderContainer.scrollLeft;
-                    const newSlide = Math.round(scrollLeft / slideWidth);
-                    
-                    if (newSlide !== currentSlide) {
-                        currentSlide = newSlide;
-                        
-                        const dots = sliderPagination.querySelectorAll('.pagination-dot');
-                        dots.forEach((dot, i) => {
-                            if (i === currentSlide) {
-                                dot.classList.add('active');
-                            } else {
-                                dot.classList.remove('active');
-                            }
-                        });
-                        
-                        startSlideInterval();
-                    }
-                });
-            }
         }
 
         // Sayfa yüklendiğinde çalışacak fonksiyonlar
         document.addEventListener('DOMContentLoaded', function() {
-    initSlider();
-    initBreakingNews();
-    initNewsCategories();
-    initMostReadSidebar();
-    initAdvertisements();
-    setupEventListeners();
-    enableSliderDrag(); 
+            initSlider();
+            initBreakingNews();
+            initNewsCategories();
+            initMostReadSidebar();
+            initAdvertisements();
+            setupEventListeners();
             
             if (window.innerWidth >= 769) {
                 document.querySelectorAll('.nav-link i').forEach(icon => {
@@ -2837,63 +2886,6 @@
                 });
             }
         });
-      let isDragging = false;
-let startX = 0;
-let scrollStart = 0;
-
-function enableSliderDrag() {
-    const slider = sliderContainer;
-
-    slider.addEventListener("pointerdown", (e) => {
-        isDragging = true;
-        slider.classList.add("dragging");
-
-        startX = e.pageX;
-        scrollStart = slider.scrollLeft;
-
-        slider.style.scrollSnapType = "none"; // 👈 ÇOK ÖNEMLİ
-        clearInterval(slideInterval);
-
-        slider.setPointerCapture(e.pointerId); // 👈 drag’i kilitler
-    });
-
-    slider.addEventListener("pointermove", (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-
-        const walk = startX - e.pageX;
-        slider.scrollLeft = scrollStart + walk;
-    });
-
-    slider.addEventListener("pointerup", () => {
-        finishDrag();
-    });
-
-    slider.addEventListener("pointercancel", () => {
-        finishDrag();
-    });
-
-    slider.addEventListener("pointerleave", () => {
-        finishDrag();
-    });
-}
-
-function finishDrag() {
-    if (!isDragging) return;
-
-    isDragging = false;
-    sliderContainer.classList.remove("dragging");
-
-    sliderContainer.style.scrollSnapType = "x mandatory"; // geri aç
-    snapToClosestSlide();
-    startSlideInterval();
-}
-
-function snapToClosestSlide() {
-    const slideWidth = sliderContainer.offsetWidth;
-    const index = Math.round(sliderContainer.scrollLeft / slideWidth);
-    goToSlide(index);
-}
     </script>
 </body>
 </html>
