@@ -31,6 +31,8 @@
             --siyaset-color: #ffc107;
             --bartin-color: #c00;
             --breaking-red: #d32f2f;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
         }
         
         html {
@@ -333,7 +335,7 @@
             display: block;
         }
         
-        /* Slider Bölümü - GÜNCELLENDİ: Haber sitesi manşet tasarımı */
+        /* YENİ MODERN SLIDER TASARIMI */
         .slider-section {
             position: relative;
             margin-bottom: 40px;
@@ -346,8 +348,8 @@
             position: relative;
             height: 520px;
             overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
         }
         
         .slider-wrapper {
@@ -370,16 +372,16 @@
             opacity: 0.9;
         }
         
-        /* Slider overlay - haber sitesi stili */
+        /* Modern slider overlay */
         .slider-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.4) 85%, transparent 100%);
-            padding: 40px 50px 50px;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.4) 70%, transparent 100%);
+            padding: 40px 50px 30px;
             color: white;
-            min-height: 55%;
+            min-height: 65%;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -400,7 +402,7 @@
         
         .slider-title {
             font-size: 2.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 800;
             line-height: 1.2;
             text-shadow: 0 2px 10px rgba(0,0,0,0.7);
@@ -408,29 +410,13 @@
         
         .slider-summary {
             font-size: 1.2rem;
-            margin-bottom: 25px;
             color: rgba(255,255,255,0.9);
-            max-width: 80%;
+            max-width: 90%;
             line-height: 1.5;
+            margin-bottom: 0;
         }
         
-        .slider-read-more {
-            display: inline-block;
-            background: white;
-            color: var(--dark-color);
-            padding: 12px 25px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition);
-            align-self: flex-start;
-        }
-        
-        .slider-read-more:hover {
-            background: var(--topbar-color);
-            color: white;
-            transform: translateY(-3px);
-        }
+        /* Kaldırıldı: slider-read-more butonu */
         
         .slider-controls {
             position: absolute;
@@ -444,8 +430,8 @@
         }
         
         .slider-btn {
-            background-color: rgba(0,0,0,0.6);
-            color: white;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--topbar-color);
             border: none;
             width: 50px;
             height: 50px;
@@ -457,17 +443,19 @@
             font-size: 1.5rem;
             transition: var(--transition);
             z-index: 20;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
         .slider-btn:hover {
-            background-color: rgba(0,0,0,0.9);
+            background-color: var(--topbar-color);
+            color: white;
             transform: scale(1.1);
         }
         
         /* Slider Pagination */
         .slider-pagination {
             position: absolute;
-            bottom: 25px;
+            bottom: 20px;
             left: 0;
             width: 100%;
             display: flex;
@@ -497,7 +485,7 @@
             transform: scale(1.1);
         }
         
-        /* Son dakika haberler kırmızı arka plan - GÜNCELLENDİ: Daha belirgin */
+        /* GÜNCELLENMİŞ: Manşet yazısı */
         .breaking-news-sidebar {
             position: absolute;
             right: 20px;
@@ -529,6 +517,98 @@
             margin-bottom: 50px;
         }
         
+        /* Son Dakika Haberler - Bartın Haberleri üzerine taşındı */
+        .breaking-news-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+        }
+        
+        .breaking-news-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--breaking-red);
+            color: var(--dark-color);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .breaking-news-title i {
+            color: var(--breaking-red);
+            animation: blink 1s infinite;
+        }
+        
+        .breaking-news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .breaking-news-item {
+            display: flex;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .breaking-news-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .breaking-news-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .breaking-news-img {
+            width: 100px;
+            height: 80px;
+            border-radius: 4px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .breaking-news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .breaking-news-item:hover .breaking-news-img img {
+            transform: scale(1.1);
+        }
+        
+        .breaking-news-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .breaking-news-title-text {
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .breaking-news-time {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
         /* Haber Kartları - GÜNCELLENDİ: Haber sitesi stili */
         .news-category {
             margin-bottom: 40px;
@@ -545,7 +625,7 @@
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            box-shadow: var(--card-shadow);
             transition: var(--transition);
             cursor: pointer;
             display: block;
@@ -558,7 +638,7 @@
         
         .news-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            box-shadow: var(--card-hover-shadow);
             border-color: var(--topbar-color);
         }
         
@@ -583,6 +663,7 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
         
         .news-title {
@@ -597,11 +678,12 @@
         .news-excerpt {
             color: var(--gray-color);
             font-size: 0.95rem;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             line-height: 1.6;
             flex-grow: 1;
         }
         
+        /* GÜNCELLENMİŞ: Detayları Oku butonu sağ alt köşeye taşındı */
         .read-more {
             font-weight: 600;
             font-size: 0.9rem;
@@ -610,6 +692,10 @@
             align-items: center;
             gap: 5px;
             margin-top: auto;
+            position: absolute;
+            bottom: 22px;
+            right: 22px;
+            left: auto;
         }
         
         /* Bartın Haberleri için kırmızı */
@@ -636,7 +722,7 @@
             transform: translateX(5px);
         }
         
-        /* Sağ sidebar - Son Dakika / En Son Haberler */
+        /* Sağ sidebar - En Çok Okunanlar */
         .sidebar {
             background: #f9f9f9;
             border-radius: 8px;
@@ -659,7 +745,7 @@
         }
         
         .sidebar-title i {
-            color: var(--breaking-red);
+            color: var(--topbar-color);
         }
         
         .sidebar-news-list {
@@ -711,7 +797,7 @@
             justify-content: center;
         }
         
-        .sidebar-news-title {
+        .sidebar-news-title-text {
             font-size: 1rem;
             font-weight: 600;
             line-height: 1.4;
@@ -727,28 +813,29 @@
             gap: 5px;
         }
         
-        /* GÜNCELLENMİŞ: Reklam Alanı - 5 ADET - ORANTILI VERSİYON */
+        /* GÜNCELLENMİŞ: Reklam Alanı - Modern Çerçeveli */
         .ad-section {
-            background-color: var(--light-color);
-            border: 1px solid var(--border-color);
+            background-color: white;
+            border: 2px solid #f0f0f0;
             min-height: 160px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 30px 0;
-            border-radius: 8px;
+            border-radius: 12px;
             color: var(--gray-color);
             overflow: hidden;
             position: relative;
-            padding: 10px;
+            padding: 15px;
             width: 100%;
             max-width: 100%;
             transition: var(--transition);
+            box-shadow: var(--card-shadow);
         }
         
         .ad-section:hover {
             border-color: var(--topbar-color);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--card-hover-shadow);
         }
         
         .ad-content {
@@ -757,7 +844,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 5px;
+            padding: 10px;
         }
         
         .ad-image {
@@ -766,7 +853,7 @@
             max-width: 100%;
             max-height: 150px;
             object-fit: contain;
-            border-radius: 4px;
+            border-radius: 8px;
         }
         
         .ad-desktop {
@@ -785,184 +872,7 @@
             object-fit: contain;
         }
         
-        /* YENİ TASARIM: EN ÇOK OKUNAN HABERLER GALERİSİ - GÜNCELLENDİ: Native scroll için */
-        .most-read-gallery {
-            margin: 60px 0;
-            position: relative;
-        }
-        
-        .gallery-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            padding: 25px 70px;
-            background: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border-color);
-        }
-        
-        /* Galeri için native scroll container */
-        .gallery-scroll-container {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE and Edge */
-            padding: 5px 0;
-            cursor: grab;
-            user-select: none;
-        }
-        
-        .gallery-scroll-container::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
-        }
-        
-        .gallery-scroll-container:active {
-            cursor: grabbing;
-        }
-        
-        /* Galeri içeriği - yatay kaydırılabilir alan */
-        .gallery-track {
-            display: flex;
-            gap: 20px;
-            padding: 5px 0;
-            width: max-content;
-        }
-        
-        /* Galeri kartları */
-        .gallery-item {
-            flex: 0 0 calc((100vw - 180px) / 3);
-            max-width: calc((100vw - 180px) / 3);
-            min-width: 280px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            transition: var(--transition);
-            cursor: pointer;
-            position: relative;
-            display: block;
-            min-height: 300px;
-            scroll-snap-align: start;
-            -webkit-tap-highlight-color: transparent;
-            border: 1px solid var(--border-color);
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-            border-color: var(--topbar-color);
-        }
-        
-        .gallery-image {
-            width: 100%;
-            height: 180px;
-            overflow: hidden;
-        }
-        
-        .gallery-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            pointer-events: none;
-        }
-        
-        .gallery-item:hover .gallery-image img {
-            transform: scale(1.08);
-        }
-        
-        .gallery-content {
-            padding: 20px;
-            background: white;
-            height: calc(100% - 180px);
-            display: flex;
-            align-items: center;
-        }
-        
-        .gallery-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            line-height: 1.4;
-            color: var(--dark-color);
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            pointer-events: none;
-        }
-        
-        /* Modern gezinme butonları */
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: white;
-            border: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: var(--topbar-color);
-            z-index: 10;
-            transition: var(--transition);
-            pointer-events: auto;
-        }
-        
-        .gallery-nav:hover:not(:disabled) {
-            background: var(--topbar-color);
-            color: white;
-            transform: translateY(-50%) scale(1.1);
-        }
-        
-        .gallery-nav:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .gallery-nav.prev {
-            left: 10px;
-        }
-        
-        .gallery-nav.next {
-            right: 10px;
-        }
-        
-        /* Galeri indicator (gösterge) */
-        .gallery-indicator {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-top: 25px;
-        }
-        
-        .indicator-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(1, 136, 159, 0.2);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-        
-        .indicator-dot.active {
-            background: var(--topbar-color);
-            transform: scale(1.2);
-        }
-        
-        .indicator-dot:hover:not(.active) {
-            background: rgba(1, 136, 159, 0.5);
-        }
-        
-        /* YENİ TASARIM: MODERN KATEGORİ KARTLARI */
+        /* MODERN KATEGORİLER BÖLÜMÜ - GÖRSEL ARKAPLANLI */
         .categories-section {
             margin: 60px 0;
             position: relative;
@@ -991,7 +901,7 @@
             border-radius: 8px;
             padding: 0;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--card-shadow);
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: pointer;
             border: 1px solid rgba(1, 136, 159, 0.1);
@@ -1030,7 +940,7 @@
 
         .category-card:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+            box-shadow: var(--card-hover-shadow);
             border-color: var(--topbar-color);
         }
 
@@ -1319,11 +1229,6 @@
         
         /* Responsive tasarım */
         @media (max-width: 1200px) {
-            .gallery-item {
-                flex: 0 0 calc((100vw - 160px) / 2.5);
-                max-width: calc((100vw - 160px) / 2.5);
-            }
-            
             .categories-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
@@ -1345,21 +1250,6 @@
             .main-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
-            }
-            
-            .gallery-container {
-                padding: 20px 60px;
-            }
-            
-            .gallery-item {
-                flex: 0 0 calc((100vw - 140px) / 2);
-                max-width: calc((100vw - 140px) / 2);
-            }
-            
-            .gallery-nav {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
             }
             
             .categories-grid {
@@ -1535,7 +1425,7 @@
             
             .slider-overlay {
                 padding: 25px 25px 30px;
-                min-height: 60%;
+                min-height: 70%;
             }
             
             .breaking-news-sidebar {
@@ -1558,35 +1448,6 @@
             .news-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
-            }
-            
-            .gallery-container {
-                padding: 15px 55px;
-            }
-            
-            .gallery-item {
-                flex: 0 0 calc((100vw - 120px) / 1.5);
-                max-width: calc((100vw - 120px) / 1.5);
-                min-height: 280px;
-            }
-            
-            .gallery-image {
-                height: 160px;
-            }
-            
-            .gallery-content {
-                padding: 15px;
-                height: calc(100% - 160px);
-            }
-            
-            .gallery-title {
-                font-size: 1rem;
-            }
-            
-            .gallery-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
             }
             
             .categories-grid {
@@ -1639,7 +1500,7 @@
             
             .slider-overlay {
                 padding: 20px 20px 25px;
-                min-height: 65%;
+                min-height: 75%;
             }
             
             .slider-title {
@@ -1648,12 +1509,6 @@
             
             .slider-summary {
                 font-size: 0.95rem;
-                margin-bottom: 20px;
-            }
-            
-            .slider-read-more {
-                padding: 10px 20px;
-                font-size: 0.9rem;
             }
             
             .breaking-news-sidebar {
@@ -1718,38 +1573,15 @@
                 font-size: 1.2rem;
             }
             
+            .breaking-news-img,
             .sidebar-news-img {
                 width: 80px;
                 height: 70px;
             }
             
-            .sidebar-news-title {
+            .breaking-news-title-text,
+            .sidebar-news-title-text {
                 font-size: 0.95rem;
-            }
-            
-            .gallery-container {
-                padding: 10px 45px;
-            }
-            
-            .gallery-item {
-                flex: 0 0 calc(100vw - 100px);
-                max-width: calc(100vw - 100px);
-                min-height: 260px;
-            }
-            
-            .gallery-image {
-                height: 150px;
-            }
-            
-            .gallery-content {
-                height: calc(100% - 150px);
-                padding: 12px;
-            }
-            
-            .gallery-nav {
-                width: 36px;
-                height: 36px;
-                font-size: 1rem;
             }
             
             .ad-section {
@@ -1776,24 +1608,6 @@
         }
         
         @media (max-width: 400px) {
-            .gallery-container {
-                padding: 10px 40px;
-            }
-            
-            .gallery-nav {
-                width: 34px;
-                height: 34px;
-                font-size: 0.9rem;
-            }
-            
-            .gallery-nav.prev {
-                left: 3px;
-            }
-            
-            .gallery-nav.next {
-                right: 3px;
-            }
-            
             .ad-section {
                 min-height: 90px;
             }
@@ -1807,12 +1621,7 @@
             }
             
             .slider-summary {
-                display: none;
-            }
-            
-            .slider-read-more {
-                padding: 8px 16px;
-                font-size: 0.85rem;
+                font-size: 0.9rem;
             }
         }
         
@@ -1843,7 +1652,7 @@
             }
             
             .slider-overlay {
-                padding: 40px 50px 50px;
+                padding: 40px 50px 30px;
             }
             
             .slider-title {
@@ -1910,8 +1719,8 @@
     <!-- Manşet Slider Bölümü -->
     <section class="slider-section">
         <div class="breaking-news-sidebar">
-            <i class="fas fa-bolt"></i>
-            <div class="breaking-title">SON DAKİKA</div>
+            <i class="fas fa-bullhorn"></i>
+            <div class="breaking-title">MANŞET</div>
         </div>
         
         <div class="container">
@@ -1942,6 +1751,17 @@
     <main class="container">
         <div class="main-content">
             <div class="main-news">
+                <!-- Son Dakika Haberler - Bartın Haberleri üzerine taşındı -->
+                <section class="breaking-news-section">
+                    <h3 class="breaking-news-title">
+                        <i class="fas fa-bolt"></i>
+                        Son Dakika Haberler
+                    </h3>
+                    <div class="breaking-news-list" id="breakingNewsList">
+                        <!-- Son dakika haberleri JavaScript ile eklenecek -->
+                    </div>
+                </section>
+
                 <!-- Bartın Haberleri Bölümü -->
                 <section class="news-category" id="bartin">
                     <h2 class="section-title" style="border-bottom-color: var(--bartin-color);">
@@ -1995,24 +1815,14 @@
                 </section>
             </div>
             
-            <!-- Sağ Sidebar - Son Dakika / En Son Haberler -->
+            <!-- Sağ Sidebar - En Çok Okunanlar -->
             <aside class="sidebar">
                 <h3 class="sidebar-title">
-                    <i class="fas fa-clock"></i>
-                    Son Dakika Haberler
+                    <i class="fas fa-fire"></i>
+                    En Çok Okunanlar
                 </h3>
-                <div class="sidebar-news-list" id="breakingNewsSidebar">
-                    <!-- Son dakika haberleri JavaScript ile eklenecek -->
-                </div>
-                
-                <div style="margin-top: 30px;">
-                    <h3 class="sidebar-title">
-                        <i class="fas fa-fire"></i>
-                        En Çok Okunanlar
-                    </h3>
-                    <div class="sidebar-news-list" id="mostReadSidebar">
-                        <!-- En çok okunan haberler JavaScript ile eklenecek -->
-                    </div>
+                <div class="sidebar-news-list" id="mostReadSidebar">
+                    <!-- En çok okunan haberler JavaScript ile eklenecek -->
                 </div>
             </aside>
         </div>
@@ -2045,39 +1855,6 @@
             </div>
         </div>
 
-        <!-- YENİ TASARIM: EN ÇOK OKUNAN HABERLER GALERİSİ -->
-        <section class="most-read-gallery">
-            <h2 class="section-title">
-                <i class="fas fa-chart-line" style="margin-right: 10px; color: var(--topbar-color);"></i>
-                En Çok Okunan Haberler
-            </h2>
-            
-            <div class="gallery-container">
-                <!-- Geri butonu -->
-                <button class="gallery-nav prev" id="prevBtn" aria-label="Önceki haberler" disabled>
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
-                <!-- İleri butonu -->
-                <button class="gallery-nav next" id="nextBtn" aria-label="Sonraki haberler">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                
-                <!-- Native scroll container -->
-                <div class="gallery-scroll-container" id="galleryScrollContainer">
-                    <!-- Haber kartları -->
-                    <div class="gallery-track" id="galleryTrack">
-                        <!-- Haber kartları JavaScript ile eklenecek -->
-                    </div>
-                </div>
-                
-                <!-- Gösterge noktaları -->
-                <div class="gallery-indicator" id="galleryIndicator">
-                    <!-- Gösterge noktaları JavaScript ile eklenecek -->
-                </div>
-            </div>
-        </section>
-        
         <!-- Reklam Alanı 5 -->
         <div class="ad-section" id="ad5">
             <div class="ad-content">
@@ -2546,30 +2323,6 @@
                     title: "Türk Sanat Müziği Konserine Davet",
                     image: "https://www.bartinduysun.com/images/belediye/turk-sanat-muzigi-konserine-davet.webp",
                     url: "https://www.bartinduysun.com/haberler/belediye/turk-sanat-muzigi-konserine-davet.html"
-                },
-                {
-                    id: 7,
-                    title: "Gürgenpınarı Mahallesi'ne yeni proje",
-                    image: "https://www.bartinduysun.com/images/belediye/bir-projede-gurgenpinari-mahallesine-kazandiriliyor.webp",
-                    url: "https://www.bartinduysun.com/haberler/belediye/gurgenpinari-mahallesine-yeni-proje.html"
-                },
-                {
-                    id: 8,
-                    title: "Vali Arslan Başkanlığında 2026 Yılının 1. İl Koordinasyon Kurulu Toplantısı Yapıldı",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-2026-yili-1-il-koordinasyon-kurulu-toplantisi-yapildi.webp",
-                    url: "https://www.bartinduysun.com/haberler/valilik/vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi-yapildi.html"
-                },
-                {
-                    id: 9,
-                    title: "Vali Arslan, vatandaşlarla buluştu",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-vatandaslarimizla-bulustu.webp",
-                    url: "https://www.bartinduysun.com/haberler/valilik/vali-arslan-vatandaslarla-bulustu.html"
-                },
-                {
-                    id: 10,
-                    title: "Karneler Başkan Yalçınkaya'dan",
-                    image: "https://www.bartinduysun.com/images/belediye/karneler-baskan-yalcinkayadan.webp",
-                    url: "https://www.bartinduysun.com/haberler/belediye/karneler-baskan-yalcinkayadan.html"
                 }
             ]
         };
@@ -2584,14 +2337,9 @@
         const sliderPagination = document.getElementById('sliderPagination');
         const prevSliderBtn = document.getElementById('prevSliderBtn');
         const nextSliderBtn = document.getElementById('nextSliderBtn');
-        const galleryScrollContainer = document.getElementById('galleryScrollContainer');
-        const galleryTrack = document.getElementById('galleryTrack');
-        const galleryIndicator = document.getElementById('galleryIndicator');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
+        const breakingNewsList = document.getElementById('breakingNewsList');
         const mainLogo = document.getElementById('mainLogo');
         const footerLogo = document.getElementById('footerLogo');
-        const breakingNewsSidebar = document.getElementById('breakingNewsSidebar');
         const mostReadSidebar = document.getElementById('mostReadSidebar');
 
         // Reklam görsellerini kontrol et
@@ -2655,28 +2403,27 @@
                 <div class="slider-overlay">
                     <span class="slider-category">${haber.category}</span>
                     <h3 class="slider-title">${haber.title}</h3>
-                    <p class="slider-summary">${haber.detail.substring(0, 150)}...</p>
-                    <span class="slider-read-more">Haberin Devamı <i class="fas fa-arrow-right"></i></span>
+                    <p class="slider-summary">${haber.detail.substring(0, 200)}...</p>
                 </div>
             `;
             return slide;
         }
 
-        // Sidebar haber öğesi oluşturma
-        function createSidebarNewsItem(haber, isBreaking = false) {
+        // Son dakika haber öğesi oluşturma
+        function createBreakingNewsItem(haber) {
             const item = document.createElement('a');
-            item.className = 'sidebar-news-item';
+            item.className = 'breaking-news-item';
             item.href = haber.url || `https://www.bartinduysun.com/haberler/${haber.category.toLowerCase().replace(/ /g, '-').replace('haberleri', '')}/${haber.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '')}.html`;
             
-            const timeAgo = isBreaking ? 'Şimdi' : `${Math.floor(Math.random() * 5) + 1} saat önce`;
+            const timeAgo = 'Şimdi';
             
             item.innerHTML = `
-                <div class="sidebar-news-img">
+                <div class="breaking-news-img">
                     <img src="${haber.image}" alt="${haber.title}" loading="lazy">
                 </div>
-                <div class="sidebar-news-content">
-                    <h4 class="sidebar-news-title">${haber.title}</h4>
-                    <div class="sidebar-news-time">
+                <div class="breaking-news-content">
+                    <h4 class="breaking-news-title-text">${haber.title}</h4>
+                    <div class="breaking-news-time">
                         <i class="far fa-clock"></i>
                         <span>${timeAgo}</span>
                     </div>
@@ -2685,39 +2432,27 @@
             return item;
         }
 
-        // Galeri kartı oluşturma fonksiyonu
-        function createGalleryCard(news) {
-            const card = document.createElement('a');
-            card.className = 'gallery-item';
+        // Sidebar haber öğesi oluşturma
+        function createSidebarNewsItem(haber) {
+            const item = document.createElement('a');
+            item.className = 'sidebar-news-item';
+            item.href = haber.url || `https://www.bartinduysun.com/haberler/${haber.category.toLowerCase().replace(/ /g, '-').replace('haberleri', '')}/${haber.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '')}.html`;
             
-            if (news.url && news.url !== "#") {
-                card.href = news.url;
-            } else {
-                card.href = "https://www.bartinduysun.com/";
-            }
+            const timeAgo = `${Math.floor(Math.random() * 5) + 1} saat önce`;
             
-            card.setAttribute('aria-label', news.title);
-            
-            card.innerHTML = `
-                <div class="gallery-image">
-                    <img src="${news.image}" alt="${news.title}" loading="lazy">
+            item.innerHTML = `
+                <div class="sidebar-news-img">
+                    <img src="${haber.image}" alt="${haber.title}" loading="lazy">
                 </div>
-                <div class="gallery-content">
-                    <h3 class="gallery-title">${news.title}</h3>
+                <div class="sidebar-news-content">
+                    <h4 class="sidebar-news-title-text">${haber.title}</h4>
+                    <div class="sidebar-news-time">
+                        <i class="far fa-clock"></i>
+                        <span>${timeAgo}</span>
+                    </div>
                 </div>
             `;
-            
-            return card;
-        }
-
-        // Gösterge noktası oluşturma fonksiyonu
-        function createIndicatorDot(index) {
-            const dot = document.createElement('div');
-            dot.className = 'indicator-dot';
-            if (index === 0) dot.classList.add('active');
-            dot.dataset.page = index;
-            dot.addEventListener('click', () => goToPage(index));
-            return dot;
+            return item;
         }
 
         // Slider değişkenleri
@@ -2752,85 +2487,24 @@
             startSlideInterval();
         }
 
-        // Sidebar haberlerini başlat
-        function initSidebarNews() {
+        // Son dakika haberlerini başlat
+        function initBreakingNews() {
             // Son dakika haberleri (ilk 5 slider haberi)
-            if (breakingNewsSidebar && haberData.slider) {
+            if (breakingNewsList && haberData.slider) {
                 haberData.slider.slice(0, 5).forEach(haber => {
-                    breakingNewsSidebar.appendChild(createSidebarNewsItem(haber, true));
+                    breakingNewsList.appendChild(createBreakingNewsItem(haber));
                 });
             }
-            
-            // En çok okunanlar (ilk 5 mostRead)
+        }
+
+        // En çok okunan haberleri başlat
+        function initMostReadNews() {
+            // En çok okunanlar
             if (mostReadSidebar && haberData.mostRead) {
                 haberData.mostRead.slice(0, 5).forEach(haber => {
-                    mostReadSidebar.appendChild(createSidebarNewsItem(haber, false));
+                    mostReadSidebar.appendChild(createSidebarNewsItem(haber));
                 });
             }
-        }
-
-        // Galeriyi başlat
-        function initGallery() {
-            if (!galleryTrack || !haberData.mostRead.length) return;
-            
-            // Galeri kartlarını oluştur
-            haberData.mostRead.forEach(news => {
-                galleryTrack.appendChild(createGalleryCard(news));
-            });
-            
-            // Gösterge noktalarını oluştur
-            if (galleryIndicator) {
-                setTimeout(() => {
-                    const totalItems = haberData.mostRead.length;
-                    const itemsPerPage = calculateItemsPerPage();
-                    const totalPages = Math.ceil(totalItems / itemsPerPage);
-                    
-                    for (let i = 0; i < totalPages; i++) {
-                        galleryIndicator.appendChild(createIndicatorDot(i));
-                    }
-                    
-                    updateButtonStates();
-                    updateIndicatorDots();
-                }, 100);
-            }
-            
-            // Scroll olayını dinle
-            if (galleryScrollContainer) {
-                galleryScrollContainer.addEventListener('scroll', handleGalleryScroll);
-            }
-            
-            // Ekran boyutunu dinle
-            window.addEventListener('resize', () => {
-                updateGalleryIndicator();
-            });
-        }
-
-        // Ekran boyutuna göre görüntülenecek öğe sayısını hesapla
-        function calculateItemsPerPage() {
-            const screenWidth = window.innerWidth;
-            
-            if (screenWidth >= 1200) {
-                return 3;
-            } else if (screenWidth >= 992) {
-                return 2.5;
-            } else if (screenWidth >= 768) {
-                return 2;
-            } else if (screenWidth >= 576) {
-                return 1.5;
-            } else {
-                return 1;
-            }
-        }
-
-        // Galeri scroll olayını yönet
-        function handleGalleryScroll() {
-            const scrollLeft = galleryScrollContainer.scrollLeft;
-            const itemWidth = galleryTrack.children[0] ? galleryTrack.children[0].offsetWidth + 20 : 320;
-            const itemsPerPage = calculateItemsPerPage();
-            const currentPage = Math.round(scrollLeft / (itemWidth * itemsPerPage));
-            
-            updateIndicatorDotsForPage(currentPage);
-            updateButtonStatesForPage(currentPage);
         }
 
         // Belirli bir slayta git
@@ -2878,137 +2552,6 @@
         function startSlideInterval() {
             clearInterval(slideInterval);
             slideInterval = setInterval(nextSlide, 5000);
-        }
-
-        // Galeri için sayfaya git
-        function goToPage(pageIndex) {
-            if (!galleryTrack || !galleryScrollContainer) return;
-            
-            const itemWidth = galleryTrack.children[0] ? galleryTrack.children[0].offsetWidth + 20 : 320;
-            const itemsPerPage = calculateItemsPerPage();
-            const scrollPosition = pageIndex * itemWidth * itemsPerPage;
-            
-            galleryScrollContainer.scrollTo({
-                left: scrollPosition,
-                behavior: 'smooth'
-            });
-        }
-
-        // Sonraki sayfaya git
-        function nextPage() {
-            const totalItems = haberData.mostRead.length;
-            const itemsPerPage = calculateItemsPerPage();
-            const totalPages = Math.ceil(totalItems / itemsPerPage);
-            const scrollLeft = galleryScrollContainer.scrollLeft;
-            const itemWidth = galleryTrack.children[0] ? galleryTrack.children[0].offsetWidth + 20 : 320;
-            const currentPage = Math.round(scrollLeft / (itemWidth * itemsPerPage));
-            
-            if (currentPage < totalPages - 1) {
-                goToPage(currentPage + 1);
-            }
-        }
-
-        // Önceki sayfaya git
-        function prevPage() {
-            const scrollLeft = galleryScrollContainer.scrollLeft;
-            const itemWidth = galleryTrack.children[0] ? galleryTrack.children[0].offsetWidth + 20 : 320;
-            const itemsPerPage = calculateItemsPerPage();
-            const currentPage = Math.round(scrollLeft / (itemWidth * itemsPerPage));
-            
-            if (currentPage > 0) {
-                goToPage(currentPage - 1);
-            }
-        }
-
-        // Buton durumlarını güncelle
-        function updateButtonStates() {
-            if (!prevBtn || !nextBtn) return;
-            
-            const totalItems = haberData.mostRead.length;
-            const itemsPerPage = calculateItemsPerPage();
-            const totalPages = Math.ceil(totalItems / itemsPerPage);
-            const scrollLeft = galleryScrollContainer.scrollLeft;
-            const itemWidth = galleryTrack.children[0] ? galleryTrack.children[0].offsetWidth + 20 : 320;
-            const currentPage = Math.round(scrollLeft / (itemWidth * itemsPerPage));
-            
-            if (currentPage === 0) {
-                prevBtn.disabled = true;
-                prevBtn.setAttribute('aria-disabled', 'true');
-            } else {
-                prevBtn.disabled = false;
-                prevBtn.setAttribute('aria-disabled', 'false');
-            }
-            
-            if (currentPage >= totalPages - 1) {
-                nextBtn.disabled = true;
-                nextBtn.setAttribute('aria-disabled', 'true');
-            } else {
-                nextBtn.disabled = false;
-                nextBtn.setAttribute('aria-disabled', 'false');
-            }
-        }
-
-        // Sayfa için buton durumlarını güncelle
-        function updateButtonStatesForPage(pageIndex) {
-            if (!prevBtn || !nextBtn) return;
-            
-            const totalItems = haberData.mostRead.length;
-            const itemsPerPage = calculateItemsPerPage();
-            const totalPages = Math.ceil(totalItems / itemsPerPage);
-            
-            if (pageIndex === 0) {
-                prevBtn.disabled = true;
-                prevBtn.setAttribute('aria-disabled', 'true');
-            } else {
-                prevBtn.disabled = false;
-                prevBtn.setAttribute('aria-disabled', 'false');
-            }
-            
-            if (pageIndex >= totalPages - 1) {
-                nextBtn.disabled = true;
-                nextBtn.setAttribute('aria-disabled', 'true');
-            } else {
-                nextBtn.disabled = false;
-                nextBtn.setAttribute('aria-disabled', 'false');
-            }
-        }
-
-        // Gösterge noktalarını güncelle
-        function updateIndicatorDots() {
-            if (!galleryIndicator) return;
-            
-            const dots = galleryIndicator.querySelectorAll('.indicator-dot');
-            const totalItems = haberData.mostRead.length;
-            const itemsPerPage = calculateItemsPerPage();
-            const totalPages = Math.ceil(totalItems / itemsPerPage);
-            
-            // Gerekiyorsa gösterge noktalarını yeniden oluştur
-            if (dots.length !== totalPages) {
-                galleryIndicator.innerHTML = '';
-                for (let i = 0; i < totalPages; i++) {
-                    galleryIndicator.appendChild(createIndicatorDot(i));
-                }
-            }
-        }
-
-        // Belirli sayfa için gösterge noktalarını güncelle
-        function updateIndicatorDotsForPage(pageIndex) {
-            if (!galleryIndicator) return;
-            
-            const dots = galleryIndicator.querySelectorAll('.indicator-dot');
-            dots.forEach((dot, index) => {
-                if (index === pageIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
-
-        // Galeri göstergesini güncelle
-        function updateGalleryIndicator() {
-            updateIndicatorDots();
-            updateButtonStates();
         }
 
         // Haber kategorilerini başlat
@@ -3132,15 +2675,6 @@
                 });
             }
             
-            // Galeri butonları
-            if (prevBtn) {
-                prevBtn.addEventListener('click', prevPage);
-            }
-            
-            if (nextBtn) {
-                nextBtn.addEventListener('click', nextPage);
-            }
-            
             // Pencere boyutu değiştiğinde dropdown'ı kapat
             window.addEventListener('resize', () => {
                 if (window.innerWidth > 768) {
@@ -3158,8 +2692,6 @@
                         icon.style.display = 'inline-block';
                     });
                 }
-                
-                updateGalleryIndicator();
             });
             
             // Slider için scroll olayını dinle
@@ -3192,9 +2724,9 @@
         // Sayfa yüklendiğinde çalışacak fonksiyonlar
         document.addEventListener('DOMContentLoaded', function() {
             initSlider();
+            initBreakingNews();
             initNewsCategories();
-            initSidebarNews();
-            initGallery();
+            initMostReadNews();
             setupEventListeners();
             
             setTimeout(checkAdImages, 1000);
