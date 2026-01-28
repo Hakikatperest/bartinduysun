@@ -332,7 +332,7 @@
             display: block;
         }
         
-        /* Slider Bölümü */
+        /* Slider Bölümü - GÜNCELLENDİ: Native scroll için */
         .slider-section {
             position: relative;
             margin-bottom: 30px;
@@ -343,33 +343,25 @@
             position: relative;
             height: 500px;
             overflow: hidden;
-            cursor: grab;
-            user-select: none;
-            -webkit-user-drag: none;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
         }
         
-        .slider-container:active {
-            cursor: grabbing;
+        .slider-wrapper {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            scroll-snap-type: x mandatory;
         }
         
         .slider-item {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+            flex: 0 0 100%;
             height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-            display: flex;
-            align-items: flex-end;
-            pointer-events: none;
+            scroll-snap-align: start;
+            position: relative;
         }
 
-        .slider-item.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        
         .slider-item img {
             width: 100%;
             height: 100%;
@@ -611,22 +603,22 @@
         
         /* GÜNCELLENMİŞ: Reklam Alanı - 5 ADET - ORANTILI VERSİYON */
         .ad-section {
-    background-color: var(--light-color);
-    border: 1px solid var(--border-color);
-    min-height: 160px;   /* ⬅ BURAYI BÜYÜTTÜK */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 30px 0;
-    border-radius: 8px;
-    color: var(--gray-color);
-    overflow: hidden;
-    position: relative;
-    padding: 10px;
-    width: 100%;
-    max-width: 100%;
-    transition: var(--transition);
-}
+            background-color: var(--light-color);
+            border: 1px solid var(--border-color);
+            min-height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            border-radius: 8px;
+            color: var(--gray-color);
+            overflow: hidden;
+            position: relative;
+            padding: 10px;
+            width: 100%;
+            max-width: 100%;
+            transition: var(--transition);
+        }
         
         .ad-section:hover {
             border-color: var(--topbar-color);
@@ -651,23 +643,23 @@
             border-radius: 4px;
         }
         
-       .ad-desktop {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-height: 150px;   /* 90 yerine 150 yaptık */
-    object-fit: contain;
-}
+        .ad-desktop {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: contain;
+        }
 
-.ad-mobile {
-    display: none;
-    width: 100%;
-    height: auto;
-    max-height: 180px;   /* 90 yerine 150 yaptık */
-    object-fit: contain;
-}
+        .ad-mobile {
+            display: none;
+            width: 100%;
+            height: auto;
+            max-height: 180px;
+            object-fit: contain;
+        }
         
-        /* YENİ TASARIM: EN ÇOK OKUNAN HABERLER GALERİSİ */
+        /* YENİ TASARIM: EN ÇOK OKUNAN HABERLER GALERİSİ - GÜNCELLENDİ: Native scroll için */
         .most-read-gallery {
             margin: 60px 0;
             position: relative;
@@ -682,24 +674,40 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
-        /* Galeri içeriği - yatay kaydırılabilir alan */
-        .gallery-track {
-            display: flex;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            gap: 20px;
+        /* Galeri için native scroll container */
+        .gallery-scroll-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
             padding: 5px 0;
             cursor: grab;
             user-select: none;
-            -webkit-overflow-scrolling: touch;
         }
         
-        .gallery-track:active {
+        .gallery-scroll-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        
+        .gallery-scroll-container:active {
             cursor: grabbing;
+        }
+        
+        /* Galeri içeriği - yatay kaydırılabilir alan */
+        .gallery-track {
+            display: flex;
+            gap: 20px;
+            padding: 5px 0;
+            width: max-content;
         }
         
         /* Galeri kartları */
         .gallery-item {
-            flex: 0 0 calc((100% - 40px) / 3);
+            flex: 0 0 calc((100vw - 180px) / 3);
+            max-width: calc((100vw - 180px) / 3);
+            min-width: 280px;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
@@ -708,9 +716,8 @@
             position: relative;
             display: block;
             min-height: 320px;
+            scroll-snap-align: start;
             -webkit-tap-highlight-color: transparent;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
         }
         
         .gallery-item:hover {
@@ -1168,7 +1175,8 @@
         /* Responsive tasarım */
         @media (max-width: 1200px) {
             .gallery-item {
-                flex: 0 0 calc((100% - 20px) / 2.5);
+                flex: 0 0 calc((100vw - 160px) / 2.5);
+                max-width: calc((100vw - 160px) / 2.5);
             }
             
             .categories-grid {
@@ -1194,7 +1202,8 @@
             }
             
             .gallery-item {
-                flex: 0 0 calc((100% - 20px) / 2);
+                flex: 0 0 calc((100vw - 140px) / 2);
+                max-width: calc((100vw - 140px) / 2);
             }
             
             .gallery-nav {
@@ -1387,7 +1396,8 @@
             }
             
             .gallery-item {
-                flex: 0 0 calc((100% - 20px) / 1.5);
+                flex: 0 0 calc((100vw - 120px) / 1.5);
+                max-width: calc((100vw - 120px) / 1.5);
                 min-height: 300px;
             }
             
@@ -1521,7 +1531,8 @@
             }
             
             .gallery-item {
-                flex: 0 0 calc(100% - 10px);
+                flex: 0 0 calc(100vw - 100px);
+                max-width: calc(100vw - 100px);
                 min-height: 280px;
             }
             
@@ -1621,26 +1632,6 @@
                 font-size: 2.2rem;
             }
         }
-        
-        /* iOS için özel düzeltmeler */
-        @supports (-webkit-touch-callout: none) {
-            .gallery-track {
-                -webkit-overflow-scrolling: touch;
-                scroll-snap-type: x mandatory;
-                scroll-behavior: smooth;
-            }
-            
-            .gallery-item {
-                scroll-snap-align: start;
-                -webkit-transform: translate3d(0,0,0);
-                transform: translate3d(0,0,0);
-                will-change: transform;
-            }
-            
-            .slider-container {
-                -webkit-overflow-scrolling: touch;
-            }
-        }
     </style>
 </head>
 <body>
@@ -1705,7 +1696,9 @@
         </div>
         
         <div class="slider-container" id="sliderContainer">
-            <!-- Slider öğeleri JavaScript ile eklenecek -->
+            <div class="slider-wrapper" id="sliderWrapper">
+                <!-- Slider öğeleri JavaScript ile eklenecek -->
+            </div>
         </div>
         
         <div class="slider-controls">
@@ -1824,9 +1817,12 @@
                     <i class="fas fa-chevron-right"></i>
                 </button>
                 
-                <!-- Haber kartları -->
-                <div class="gallery-track" id="galleryTrack">
-                    <!-- Haber kartları JavaScript ile eklenecek -->
+                <!-- Native scroll container -->
+                <div class="gallery-scroll-container" id="galleryScrollContainer">
+                    <!-- Haber kartları -->
+                    <div class="gallery-track" id="galleryTrack">
+                        <!-- Haber kartları JavaScript ile eklenecek -->
+                    </div>
                 </div>
                 
                 <!-- Gösterge noktaları -->
@@ -2337,10 +2333,12 @@
         const navMenu = document.getElementById('navMenu');
         const menuOverlay = document.getElementById('menuOverlay');
         const dropdownMenu = document.getElementById('dropdownMenu');
+        const sliderWrapper = document.getElementById('sliderWrapper');
         const sliderContainer = document.getElementById('sliderContainer');
         const sliderPagination = document.getElementById('sliderPagination');
         const prevSliderBtn = document.getElementById('prevSliderBtn');
         const nextSliderBtn = document.getElementById('nextSliderBtn');
+        const galleryScrollContainer = document.getElementById('galleryScrollContainer');
         const galleryTrack = document.getElementById('galleryTrack');
         const galleryIndicator = document.getElementById('galleryIndicator');
         const prevBtn = document.getElementById('prevBtn');
@@ -2398,9 +2396,9 @@
         }
 
         // Slider kartı oluşturma fonksiyonu
-        function createSliderCard(haber, index) {
+        function createSliderCard(haber) {
             const slide = document.createElement('a');
-            slide.className = `slider-item ${index === 0 ? 'active' : ''}`;
+            slide.className = 'slider-item';
             slide.href = haber.url || `https://www.bartinduysun.com/haberler/${haber.category.toLowerCase().replace(/ /g, '-').replace('haberleri', '')}/${haber.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '')}.html`;
             
             const imageUrl = haber.image || 'https://via.placeholder.com/1200x500?text=Bartın+Duysun';
@@ -2450,26 +2448,17 @@
             return dot;
         }
 
-        // Galeri değişkenleri
-        let currentSlideIndex = 0;
-        let slidesPerView = 3;
-        let totalSlides = haberData.mostRead.length;
-        let totalPages = 0;
-
-        // Slider ve galeri için dokunma/swipe değişkenleri
-        let sliderStartX = 0;
-        let sliderEndX = 0;
-        let galleryStartX = 0;
-        let galleryEndX = 0;
-        const swipeThreshold = 50;
+        // Slider değişkenleri
+        let currentSlide = 0;
+        let slideInterval;
 
         // Slider'ı başlat
         function initSlider() {
             // Slider öğelerini oluştur
-            if (haberData.slider && sliderContainer) {
-                haberData.slider.forEach((haber, index) => {
-                    const slide = createSliderCard(haber, index);
-                    sliderContainer.appendChild(slide);
+            if (haberData.slider && sliderWrapper) {
+                haberData.slider.forEach(haber => {
+                    const slide = createSliderCard(haber);
+                    sliderWrapper.appendChild(slide);
                 });
 
                 // Pagination noktalarını oluştur
@@ -2489,9 +2478,6 @@
             
             // Slider otomatik geçişini başlat
             startSlideInterval();
-            
-            // Slider için swipe olaylarını ekle
-            setupSwipeForSlider();
         }
 
         // Galeriyi başlat
@@ -2503,85 +2489,160 @@
                 galleryTrack.appendChild(createGalleryCard(news));
             });
             
-            // Ekran boyutuna göre görüntülenecek haber sayısını belirle
-            updateSlidesPerView();
-            
             // Gösterge noktalarını oluştur
             if (galleryIndicator) {
                 setTimeout(() => {
+                    const totalItems = haberData.mostRead.length;
+                    const itemsPerPage = calculateItemsPerPage();
+                    const totalPages = Math.ceil(totalItems / itemsPerPage);
+                    
                     for (let i = 0; i < totalPages; i++) {
                         galleryIndicator.appendChild(createIndicatorDot(i));
                     }
+                    
+                    updateButtonStates();
+                    updateIndicatorDots();
                 }, 100);
+            }
+            
+            // Scroll olayını dinle
+            if (galleryScrollContainer) {
+                galleryScrollContainer.addEventListener('scroll', handleGalleryScroll);
             }
             
             // Ekran boyutunu dinle
             window.addEventListener('resize', () => {
-                updateSlidesPerView();
+                updateGalleryIndicator();
             });
-            
-            // Dokunma/swipe olaylarını ekle
-            setupSwipeForGallery();
         }
 
-        // Ekran boyutuna göre görüntülenecek haber sayısını belirle
-        function updateSlidesPerView() {
+        // Ekran boyutuna göre görüntülenecek öğe sayısını hesapla
+        function calculateItemsPerPage() {
             const screenWidth = window.innerWidth;
             
             if (screenWidth >= 1200) {
-                slidesPerView = 3;
+                return 3;
             } else if (screenWidth >= 992) {
-                slidesPerView = 2.5;
+                return 2.5;
             } else if (screenWidth >= 768) {
-                slidesPerView = 2;
+                return 2;
             } else if (screenWidth >= 576) {
-                slidesPerView = 1.5;
+                return 1.5;
             } else {
-                slidesPerView = 1;
+                return 1;
             }
-            
-            // Toplam sayfa sayısını hesapla
-            totalPages = Math.ceil(totalSlides / slidesPerView);
-            
-            // İlk sayfaya dön
-            goToPage(0);
         }
 
-        // Belirli bir sayfaya git
-        function goToPage(pageIndex) {
-            pageIndex = Math.max(0, Math.min(pageIndex, totalPages - 1));
-            
-            const trackWidth = galleryTrack.offsetWidth;
+        // Galeri scroll olayını yönet
+        function handleGalleryScroll() {
+            const scrollLeft = galleryScrollContainer.scrollLeft;
             const itemWidth = galleryTrack.children[0] ? galleryTrack.children[0].offsetWidth + 20 : 320;
-            const slideWidth = itemWidth * slidesPerView;
-            const translateX = -(slideWidth * pageIndex);
+            const itemsPerPage = calculateItemsPerPage();
+            const currentPage = Math.round(scrollLeft / (itemWidth * itemsPerPage));
             
-            galleryTrack.style.transform = `translateX(${translateX}px)`;
+            updateIndicatorDotsForPage(currentPage);
+            updateButtonStatesForPage(currentPage);
+        }
+
+        // Belirli bir slayta git
+        function goToSlide(index) {
+            if (!sliderWrapper || !sliderContainer) return;
             
-            currentSlideIndex = pageIndex;
+            const slides = sliderWrapper.querySelectorAll('.slider-item');
+            const dots = sliderPagination.querySelectorAll('.pagination-dot');
             
-            updateButtonStates();
+            if (slides.length > 0 && dots.length > 0) {
+                currentSlide = index;
+                
+                // Native scroll ile kaydır
+                sliderContainer.scrollTo({
+                    left: sliderContainer.offsetWidth * index,
+                    behavior: 'smooth'
+                });
+                
+                // Pagination noktalarını güncelle
+                dots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        // Sonraki slayta geç
+        function nextSlide() {
+            const slides = sliderWrapper.querySelectorAll('.slider-item');
+            const nextIndex = (currentSlide + 1) % slides.length;
+            goToSlide(nextIndex);
+        }
+
+        // Önceki slayta geç
+        function prevSlide() {
+            const slides = sliderWrapper.querySelectorAll('.slider-item');
+            const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+            goToSlide(prevIndex);
+        }
+
+        // Slider otomatik geçişini başlat
+        function startSlideInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Galeri için sayfaya git
+        function goToPage(pageIndex) {
+            if (!galleryTrack || !galleryScrollContainer) return;
             
-            updateIndicatorDots();
+            const itemWidth = galleryTrack.children[0] ? galleryTrack.children[0].offsetWidth + 20 : 320;
+            const itemsPerPage = calculateItemsPerPage();
+            const scrollPosition = pageIndex * itemWidth * itemsPerPage;
+            
+            galleryScrollContainer.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
         }
 
         // Sonraki sayfaya git
         function nextPage() {
-            if (currentSlideIndex < totalPages - 1) {
-                goToPage(currentSlideIndex + 1);
+            const totalItems = haberData.mostRead.length;
+            const itemsPerPage = calculateItemsPerPage();
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            const scrollLeft = galleryScrollContainer.scrollLeft;
+            const itemWidth = galleryTrack.children[0] ? galleryTrack.children[0].offsetWidth + 20 : 320;
+            const currentPage = Math.round(scrollLeft / (itemWidth * itemsPerPage));
+            
+            if (currentPage < totalPages - 1) {
+                goToPage(currentPage + 1);
             }
         }
 
         // Önceki sayfaya git
         function prevPage() {
-            if (currentSlideIndex > 0) {
-                goToPage(currentSlideIndex - 1);
+            const scrollLeft = galleryScrollContainer.scrollLeft;
+            const itemWidth = galleryTrack.children[0] ? galleryTrack.children[0].offsetWidth + 20 : 320;
+            const itemsPerPage = calculateItemsPerPage();
+            const currentPage = Math.round(scrollLeft / (itemWidth * itemsPerPage));
+            
+            if (currentPage > 0) {
+                goToPage(currentPage - 1);
             }
         }
 
         // Buton durumlarını güncelle
         function updateButtonStates() {
-            if (currentSlideIndex === 0) {
+            if (!prevBtn || !nextBtn) return;
+            
+            const totalItems = haberData.mostRead.length;
+            const itemsPerPage = calculateItemsPerPage();
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            const scrollLeft = galleryScrollContainer.scrollLeft;
+            const itemWidth = galleryTrack.children[0] ? galleryTrack.children[0].offsetWidth + 20 : 320;
+            const currentPage = Math.round(scrollLeft / (itemWidth * itemsPerPage));
+            
+            if (currentPage === 0) {
                 prevBtn.disabled = true;
                 prevBtn.setAttribute('aria-disabled', 'true');
             } else {
@@ -2589,7 +2650,32 @@
                 prevBtn.setAttribute('aria-disabled', 'false');
             }
             
-            if (currentSlideIndex === totalPages - 1) {
+            if (currentPage >= totalPages - 1) {
+                nextBtn.disabled = true;
+                nextBtn.setAttribute('aria-disabled', 'true');
+            } else {
+                nextBtn.disabled = false;
+                nextBtn.setAttribute('aria-disabled', 'false');
+            }
+        }
+
+        // Sayfa için buton durumlarını güncelle
+        function updateButtonStatesForPage(pageIndex) {
+            if (!prevBtn || !nextBtn) return;
+            
+            const totalItems = haberData.mostRead.length;
+            const itemsPerPage = calculateItemsPerPage();
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            
+            if (pageIndex === 0) {
+                prevBtn.disabled = true;
+                prevBtn.setAttribute('aria-disabled', 'true');
+            } else {
+                prevBtn.disabled = false;
+                prevBtn.setAttribute('aria-disabled', 'false');
+            }
+            
+            if (pageIndex >= totalPages - 1) {
                 nextBtn.disabled = true;
                 nextBtn.setAttribute('aria-disabled', 'true');
             } else {
@@ -2600,9 +2686,29 @@
 
         // Gösterge noktalarını güncelle
         function updateIndicatorDots() {
+            if (!galleryIndicator) return;
+            
+            const dots = galleryIndicator.querySelectorAll('.indicator-dot');
+            const totalItems = haberData.mostRead.length;
+            const itemsPerPage = calculateItemsPerPage();
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            
+            // Gerekiyorsa gösterge noktalarını yeniden oluştur
+            if (dots.length !== totalPages) {
+                galleryIndicator.innerHTML = '';
+                for (let i = 0; i < totalPages; i++) {
+                    galleryIndicator.appendChild(createIndicatorDot(i));
+                }
+            }
+        }
+
+        // Belirli sayfa için gösterge noktalarını güncelle
+        function updateIndicatorDotsForPage(pageIndex) {
+            if (!galleryIndicator) return;
+            
             const dots = galleryIndicator.querySelectorAll('.indicator-dot');
             dots.forEach((dot, index) => {
-                if (index === currentSlideIndex) {
+                if (index === pageIndex) {
                     dot.classList.add('active');
                 } else {
                     dot.classList.remove('active');
@@ -2610,256 +2716,10 @@
             });
         }
 
-        // Slider değişkenleri
-        let currentSlide = 0;
-        let slideInterval;
-
-        // Slider otomatik geçişini başlat
-        function startSlideInterval() {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-
-        // Belirli bir slayta git
-        function goToSlide(index) {
-            const slides = document.querySelectorAll('.slider-item');
-            const dots = document.querySelectorAll('.pagination-dot');
-            
-            if (slides.length > 0 && dots.length > 0) {
-                slides[currentSlide].classList.remove('active');
-                dots[currentSlide].classList.remove('active');
-                
-                currentSlide = index;
-                
-                slides[currentSlide].classList.add('active');
-                dots[currentSlide].classList.add('active');
-            }
-        }
-
-        // Sonraki slayta geç
-        function nextSlide() {
-            const slides = document.querySelectorAll('.slider-item');
-            const dots = document.querySelectorAll('.pagination-dot');
-            
-            if (slides.length > 0 && dots.length > 0) {
-                slides[currentSlide].classList.remove('active');
-                dots[currentSlide].classList.remove('active');
-                
-                currentSlide = (currentSlide + 1) % slides.length;
-                
-                slides[currentSlide].classList.add('active');
-                dots[currentSlide].classList.add('active');
-            }
-        }
-
-        // Önceki slayta geç
-        function prevSlide() {
-            const slides = document.querySelectorAll('.slider-item');
-            const dots = document.querySelectorAll('.pagination-dot');
-            
-            if (slides.length > 0 && dots.length > 0) {
-                slides[currentSlide].classList.remove('active');
-                dots[currentSlide].classList.remove('active');
-                
-                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                
-                slides[currentSlide].classList.add('active');
-                dots[currentSlide].classList.add('active');
-            }
-        }
-
-        // Slider için swipe/dokunma desteği
-        function setupSwipeForSlider() {
-            if (!sliderContainer) return;
-            
-            sliderContainer.addEventListener('touchstart', (e) => {
-                sliderStartX = e.touches[0].clientX;
-                clearInterval(slideInterval);
-            }, { passive: true });
-            
-            sliderContainer.addEventListener('touchmove', (e) => {
-                if (Math.abs(e.touches[0].clientX - sliderStartX) > 10) {
-                    e.preventDefault();
-                }
-            }, { passive: false });
-            
-            sliderContainer.addEventListener('touchend', (e) => {
-                if (e.changedTouches.length > 0) {
-                    sliderEndX = e.changedTouches[0].clientX;
-                    
-                    const diffX = sliderStartX - sliderEndX;
-                    
-                    if (diffX > swipeThreshold) {
-                        nextSlide();
-                    }
-                    else if (diffX < -swipeThreshold) {
-                        prevSlide();
-                    }
-                }
-                
-                startSlideInterval();
-            }, { passive: true });
-            
-            sliderContainer.addEventListener('mousedown', (e) => {
-                sliderStartX = e.clientX;
-                clearInterval(slideInterval);
-                sliderContainer.style.cursor = 'grabbing';
-            });
-            
-            sliderContainer.addEventListener('mouseup', (e) => {
-                sliderEndX = e.clientX;
-                
-                const diffX = sliderStartX - sliderEndX;
-                
-                if (diffX > swipeThreshold) {
-                    nextSlide();
-                }
-                else if (diffX < -swipeThreshold) {
-                    prevSlide();
-                }
-                
-                startSlideInterval();
-                sliderContainer.style.cursor = 'grab';
-            });
-            
-            sliderContainer.addEventListener('mouseleave', () => {
-                sliderContainer.style.cursor = 'grab';
-                startSlideInterval();
-            });
-        }
-
-        // Galeri için swipe/dokunma desteği
-        function setupSwipeForGallery() {
-            if (!galleryTrack) return;
-            
-            let isDragging = false;
-            let startPos = 0;
-            let currentTranslate = 0;
-            let prevTranslate = 0;
-            let animationID = 0;
-            
-            galleryTrack.style.willChange = 'transform';
-            
-            galleryTrack.addEventListener('touchstart', touchStart, { passive: true });
-            galleryTrack.addEventListener('touchmove', touchMove, { passive: false });
-            galleryTrack.addEventListener('touchend', touchEnd, { passive: true });
-            
-            galleryTrack.addEventListener('mousedown', mouseDown);
-            galleryTrack.addEventListener('mousemove', mouseMove);
-            galleryTrack.addEventListener('mouseup', mouseUp);
-            galleryTrack.addEventListener('mouseleave', mouseLeave);
-            
-            function getPositionX(event) {
-                return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-            }
-            
-            function touchStart(event) {
-                startPos = getPositionX(event);
-                isDragging = true;
-                animationID = requestAnimationFrame(animation);
-                galleryTrack.style.cursor = 'grabbing';
-            }
-            
-            function touchMove(event) {
-                if (isDragging) {
-                    const currentPosition = getPositionX(event);
-                    currentTranslate = prevTranslate + currentPosition - startPos;
-                    
-                    const maxTranslate = 0;
-                    const minTranslate = -galleryTrack.scrollWidth + galleryTrack.offsetWidth;
-                    
-                    if (currentTranslate > maxTranslate) {
-                        currentTranslate = maxTranslate;
-                    } else if (currentTranslate < minTranslate) {
-                        currentTranslate = minTranslate;
-                    }
-                }
-            }
-            
-            function touchEnd() {
-                cancelAnimationFrame(animationID);
-                isDragging = false;
-                
-                const movedBy = currentTranslate - prevTranslate;
-                
-                if (movedBy < -swipeThreshold && currentSlideIndex < totalPages - 1) {
-                    nextPage();
-                } else if (movedBy > swipeThreshold && currentSlideIndex > 0) {
-                    prevPage();
-                } else {
-                    goToPage(currentSlideIndex);
-                }
-                
-                galleryTrack.style.cursor = 'grab';
-            }
-            
-            function mouseDown(event) {
-                startPos = getPositionX(event);
-                isDragging = true;
-                animationID = requestAnimationFrame(animation);
-                galleryTrack.style.cursor = 'grabbing';
-            }
-            
-            function mouseMove(event) {
-                if (isDragging) {
-                    const currentPosition = getPositionX(event);
-                    currentTranslate = prevTranslate + currentPosition - startPos;
-                    
-                    const maxTranslate = 0;
-                    const minTranslate = -galleryTrack.scrollWidth + galleryTrack.offsetWidth;
-                    
-                    if (currentTranslate > maxTranslate) {
-                        currentTranslate = maxTranslate;
-                    } else if (currentTranslate < minTranslate) {
-                        currentTranslate = minTranslate;
-                    }
-                }
-            }
-            
-            function mouseUp() {
-                cancelAnimationFrame(animationID);
-                isDragging = false;
-                
-                const movedBy = currentTranslate - prevTranslate;
-                
-                if (movedBy < -swipeThreshold && currentSlideIndex < totalPages - 1) {
-                    nextPage();
-                } else if (movedBy > swipeThreshold && currentSlideIndex > 0) {
-                    prevPage();
-                } else {
-                    goToPage(currentSlideIndex);
-                }
-                
-                galleryTrack.style.cursor = 'grab';
-            }
-            
-            function mouseLeave() {
-                if (isDragging) {
-                    cancelAnimationFrame(animationID);
-                    isDragging = false;
-                    goToPage(currentSlideIndex);
-                }
-                galleryTrack.style.cursor = 'grab';
-            }
-            
-            function animation() {
-                setGalleryPosition();
-                if (isDragging) requestAnimationFrame(animation);
-            }
-            
-            function setGalleryPosition() {
-                galleryTrack.style.transform = `translateX(${currentTranslate}px)`;
-            }
-            
-            const originalGoToPage = goToPage;
-            goToPage = function(pageIndex) {
-                originalGoToPage(pageIndex);
-                const trackWidth = galleryTrack.offsetWidth;
-                const itemWidth = galleryTrack.children[0] ? galleryTrack.children[0].offsetWidth + 20 : 320;
-                const slideWidth = itemWidth * slidesPerView;
-                prevTranslate = -(slideWidth * currentSlideIndex);
-                currentTranslate = prevTranslate;
-            };
+        // Galeri göstergesini güncelle
+        function updateGalleryIndicator() {
+            updateIndicatorDots();
+            updateButtonStates();
         }
 
         // Haber kategorilerini başlat
@@ -2992,15 +2852,6 @@
                 nextBtn.addEventListener('click', nextPage);
             }
             
-            // Klavye kontrolleri
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') {
-                    prevPage();
-                } else if (e.key === 'ArrowRight') {
-                    nextPage();
-                }
-            });
-            
             // Pencere boyutu değiştiğinde dropdown'ı kapat
             window.addEventListener('resize', () => {
                 if (window.innerWidth > 768) {
@@ -3019,8 +2870,34 @@
                     });
                 }
                 
-                updateSlidesPerView();
+                updateGalleryIndicator();
             });
+            
+            // Slider için scroll olayını dinle
+            if (sliderContainer) {
+                sliderContainer.addEventListener('scroll', () => {
+                    const slideWidth = sliderContainer.offsetWidth;
+                    const scrollLeft = sliderContainer.scrollLeft;
+                    const newSlide = Math.round(scrollLeft / slideWidth);
+                    
+                    if (newSlide !== currentSlide) {
+                        currentSlide = newSlide;
+                        
+                        // Pagination noktalarını güncelle
+                        const dots = sliderPagination.querySelectorAll('.pagination-dot');
+                        dots.forEach((dot, i) => {
+                            if (i === currentSlide) {
+                                dot.classList.add('active');
+                            } else {
+                                dot.classList.remove('active');
+                            }
+                        });
+                        
+                        // Slider interval'ı yeniden başlat
+                        startSlideInterval();
+                    }
+                });
+            }
         }
 
         // Sayfa yüklendiğinde çalışacak fonksiyonlar
