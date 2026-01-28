@@ -110,14 +110,8 @@
             padding: 10px 0;
         }
         
-        /* Sosyal medya ikonları renkli */
-        .social-icons {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-        }
-        
-        .social-icons a {
+        /* Sosyal medya ikonları - ORTAK STİL */
+        .social-icon {
             color: white;
             font-size: 1.1rem;
             transition: var(--transition);
@@ -127,32 +121,37 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.9);
         }
         
-        .social-icons a.facebook {
+        .social-icon.facebook {
             background-color: #1877F2;
         }
         
-        .social-icons a.instagram {
+        .social-icon.instagram {
             background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
         }
         
-        .social-icons a.twitter {
+        .social-icon.twitter {
             background-color: #000000;
         }
         
-        .social-icons a.youtube {
+        .social-icon.youtube {
             background-color: #FF0000;
         }
         
-        .social-icons a.telegram {
+        .social-icon.telegram {
             background-color: #0088cc;
         }
         
-        .social-icons a:hover {
+        .social-icon:hover {
             transform: translateY(-3px);
             opacity: 0.9;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
         }
         
         /* Logo sağa kaydırma için padding-left eklendi */
@@ -227,10 +226,6 @@
             gap: 5px;
         }
         
-        .nav-social-container {
-            display: none;
-        }
-        
         .nav-item {
             position: relative;
         }
@@ -269,16 +264,16 @@
             left: 0;
             background-color: white;
             box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            min-width: 200px; /* Daha dar yapıldı */
-            padding: 6px 0; /* Daha az padding */
+            min-width: 200px;
+            padding: 6px 0;
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
             transition: var(--transition);
             z-index: 100;
-            border-radius: 10px; /* Daha küçük border-radius */
+            border-radius: 10px;
             border-top: 3px solid var(--topbar-color);
-            max-width: 220px; /* Maksimum genişlik eklendi */
+            max-width: 220px;
         }
         
         .dropdown:hover .dropdown-menu {
@@ -288,31 +283,31 @@
         }
         
         .dropdown-menu li {
-            padding: 0 3px; /* Daha az padding */
-            margin: 1px 0; /* Daha az margin */
+            padding: 0 3px;
+            margin: 1px 0;
         }
         
         .dropdown-menu a {
             display: flex;
             align-items: center;
-            gap: 10px; /* Daha az gap */
+            gap: 10px;
             transition: var(--transition);
-            padding: 8px 15px; /* Daha az padding */
-            border-radius: 6px; /* Daha küçük border-radius */
+            padding: 8px 15px;
+            border-radius: 6px;
             font-weight: 500;
-            font-size: 0.95rem; /* Daha küçük font */
+            font-size: 0.95rem;
         }
         
         .dropdown-menu a:hover {
             color: var(--topbar-color);
             background-color: rgba(1, 136, 159, 0.08);
-            padding-left: 20px; /* Daha az padding */
+            padding-left: 20px;
         }
         
         .dropdown-menu a i {
-            width: 18px; /* Daha küçük ikon alanı */
+            width: 18px;
             text-align: center;
-            font-size: 0.9rem; /* Daha küçük ikon */
+            font-size: 0.9rem;
             color: var(--topbar-color);
         }
         
@@ -492,10 +487,6 @@
             padding: 30px 0;
             margin-bottom: 30px;
             border-bottom: 1px solid var(--border-color);
-        }
-        
-        .intro-title {
-            display: none;
         }
         
         .intro-text {
@@ -680,15 +671,15 @@
             -webkit-overflow-scrolling: touch;
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
             padding: 5px 0;
             cursor: grab;
             user-select: none;
         }
         
         .gallery-scroll-container::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
+            display: none;
         }
         
         .gallery-scroll-container:active {
@@ -1063,49 +1054,19 @@
             text-align: justify;
         }
         
-        /* Sosyal medya ikonları - Üst menüyle %100 aynı */
+        /* Footer sosyal medya */
         .footer-social {
             display: flex;
             gap: 10px;
             margin-top: 10px;
         }
         
-        .footer-social a {
-            color: white;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .footer-social a.facebook {
-            background-color: #1877F2;
-        }
-        
-        .footer-social a.instagram {
-            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
-        }
-        
-        .footer-social a.twitter {
-            background-color: #000000;
-        }
-        
-        .footer-social a.youtube {
-            background-color: #FF0000;
-        }
-        
-        .footer-social a.telegram {
-            background-color: #0088cc;
-        }
-        
-        .footer-social a:hover {
-            transform: translateY(-3px);
-            opacity: 0.9;
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
         }
         
         .footer-right {
@@ -1162,14 +1123,6 @@
             font-size: 0.8rem;
             width: 20px;
             color: white;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem;
         }
         
         /* Responsive tasarım */
@@ -1265,10 +1218,6 @@
                 gap: 0;
             }
             
-            .nav-social-container {
-                display: none;
-            }
-            
             .nav-menu.active {
                 right: 0;
             }
@@ -1325,11 +1274,11 @@
             
             /* GÜNCELLENMİŞ: Reklam görselleri mobil için */
             .ad-desktop {
-                display: none !important;
+                display: none;
             }
             
             .ad-mobile {
-                display: block !important;
+                display: block;
             }
             
             .ad-section {
@@ -1640,11 +1589,11 @@
         <div class="top-bar">
             <div class="container">
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/bartinduysun" title="Instagram" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="social-icon facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/bartinduysun" title="Instagram" class="social-icon instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/bartinduysun" title="X (Twitter)" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="social-icon youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/bartinduysun" title="Telegram" class="social-icon telegram" target="_blank"><i class="fab fa-telegram"></i></a>
                 </div>
             </div>
         </div>
@@ -1909,11 +1858,11 @@
                     </p>
                     
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/bartinduysun" title="Instagram" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="social-icon facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/bartinduysun" title="Instagram" class="social-icon instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/bartinduysun" title="X (Twitter)" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="social-icon youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://t.me/bartinduysun" title="Telegram" class="social-icon telegram" target="_blank"><i class="fab fa-telegram"></i></a>
                     </div>
                 </div>
                 
@@ -2353,7 +2302,6 @@
                 const desktopImg = adSection.querySelector('.ad-desktop');
                 const mobileImg = adSection.querySelector('.ad-mobile');
                 
-                // Eğer masaüstü görseli yüklenemezse, mobil görseli göster
                 if (desktopImg && desktopImg.complete === false) {
                     desktopImg.addEventListener('error', () => {
                         if (mobileImg) {
@@ -2363,7 +2311,6 @@
                     });
                 }
                 
-                // Eğer mobil görseli yüklenemezse, masaüstü görseli göster
                 if (mobileImg && mobileImg.complete === false) {
                     mobileImg.addEventListener('error', () => {
                         if (desktopImg) {
@@ -2454,14 +2401,12 @@
 
         // Slider'ı başlat
         function initSlider() {
-            // Slider öğelerini oluştur
             if (haberData.slider && sliderWrapper) {
                 haberData.slider.forEach(haber => {
                     const slide = createSliderCard(haber);
                     sliderWrapper.appendChild(slide);
                 });
 
-                // Pagination noktalarını oluştur
                 if (sliderPagination) {
                     haberData.slider.forEach((haber, index) => {
                         const dot = document.createElement('div');
@@ -2476,7 +2421,6 @@
                 }
             }
             
-            // Slider otomatik geçişini başlat
             startSlideInterval();
         }
 
@@ -2484,12 +2428,10 @@
         function initGallery() {
             if (!galleryTrack || !haberData.mostRead.length) return;
             
-            // Galeri kartlarını oluştur
             haberData.mostRead.forEach(news => {
                 galleryTrack.appendChild(createGalleryCard(news));
             });
             
-            // Gösterge noktalarını oluştur
             if (galleryIndicator) {
                 setTimeout(() => {
                     const totalItems = haberData.mostRead.length;
@@ -2505,12 +2447,10 @@
                 }, 100);
             }
             
-            // Scroll olayını dinle
             if (galleryScrollContainer) {
                 galleryScrollContainer.addEventListener('scroll', handleGalleryScroll);
             }
             
-            // Ekran boyutunu dinle
             window.addEventListener('resize', () => {
                 updateGalleryIndicator();
             });
@@ -2554,13 +2494,11 @@
             if (slides.length > 0 && dots.length > 0) {
                 currentSlide = index;
                 
-                // Native scroll ile kaydır
                 sliderContainer.scrollTo({
                     left: sliderContainer.offsetWidth * index,
                     behavior: 'smooth'
                 });
                 
-                // Pagination noktalarını güncelle
                 dots.forEach((dot, i) => {
                     if (i === index) {
                         dot.classList.add('active');
@@ -2693,7 +2631,6 @@
             const itemsPerPage = calculateItemsPerPage();
             const totalPages = Math.ceil(totalItems / itemsPerPage);
             
-            // Gerekiyorsa gösterge noktalarını yeniden oluştur
             if (dots.length !== totalPages) {
                 galleryIndicator.innerHTML = '';
                 for (let i = 0; i < totalPages; i++) {
@@ -2724,7 +2661,6 @@
 
         // Haber kategorilerini başlat
         function initNewsCategories() {
-            // Bartın Haberleri
             const bartinNewsContainer = document.getElementById('bartinNews');
             if (bartinNewsContainer && haberData.bartin) {
                 haberData.bartin.slice(0, 6).forEach(haber => {
@@ -2732,7 +2668,6 @@
                 });
             }
 
-            // Valilik Haberleri
             const valilikNewsContainer = document.getElementById('valilikNews');
             if (valilikNewsContainer && haberData.valilik) {
                 haberData.valilik.slice(0, 6).forEach(haber => {
@@ -2740,7 +2675,6 @@
                 });
             }
 
-            // Belediye Haberleri
             const belediyeNewsContainer = document.getElementById('belediyeNews');
             if (belediyeNewsContainer && haberData.belediye) {
                 haberData.belediye.slice(0, 6).forEach(haber => {
@@ -2748,7 +2682,6 @@
                 });
             }
 
-            // Siyaset Haberleri
             const siyasetNewsContainer = document.getElementById('siyasetNews');
             if (siyasetNewsContainer && haberData.siyaset) {
                 haberData.siyaset.slice(0, 6).forEach(haber => {
@@ -2797,27 +2730,22 @@
 
         // Event listener'ları kur
         function setupEventListeners() {
-            // Ana logo tıklama
             if (mainLogo) {
                 mainLogo.addEventListener('click', handleLogoClick);
             }
             
-            // Footer logo tıklama
             if (footerLogo) {
                 footerLogo.addEventListener('click', handleFooterLogoClick);
             }
             
-            // Hamburger menü
             if (hamburgerMenu) {
                 hamburgerMenu.addEventListener('click', toggleMobileMenu);
             }
             
-            // Menü overlay
             if (menuOverlay) {
                 menuOverlay.addEventListener('click', toggleMobileMenu);
             }
             
-            // Dropdown menü (mobil için)
             if (dropdownMenu) {
                 dropdownMenu.addEventListener('click', (e) => {
                     if (window.innerWidth <= 768) {
@@ -2828,7 +2756,6 @@
                 });
             }
             
-            // Slider kontrolleri
             if (prevSliderBtn) {
                 prevSliderBtn.addEventListener('click', () => {
                     prevSlide();
@@ -2843,7 +2770,6 @@
                 });
             }
             
-            // Galeri butonları
             if (prevBtn) {
                 prevBtn.addEventListener('click', prevPage);
             }
@@ -2852,7 +2778,6 @@
                 nextBtn.addEventListener('click', nextPage);
             }
             
-            // Pencere boyutu değiştiğinde dropdown'ı kapat
             window.addEventListener('resize', () => {
                 if (window.innerWidth > 768) {
                     if (navMenu) navMenu.classList.remove('active');
@@ -2873,7 +2798,6 @@
                 updateGalleryIndicator();
             });
             
-            // Slider için scroll olayını dinle
             if (sliderContainer) {
                 sliderContainer.addEventListener('scroll', () => {
                     const slideWidth = sliderContainer.offsetWidth;
@@ -2883,7 +2807,6 @@
                     if (newSlide !== currentSlide) {
                         currentSlide = newSlide;
                         
-                        // Pagination noktalarını güncelle
                         const dots = sliderPagination.querySelectorAll('.pagination-dot');
                         dots.forEach((dot, i) => {
                             if (i === currentSlide) {
@@ -2893,7 +2816,6 @@
                             }
                         });
                         
-                        // Slider interval'ı yeniden başlat
                         startSlideInterval();
                     }
                 });
@@ -2907,7 +2829,7 @@
             initGallery();
             setupEventListeners();
             
-            setTimeout(checkAdImages, 1000);
+            checkAdImages();
             
             if (window.innerWidth >= 769) {
                 document.querySelectorAll('.nav-link i').forEach(icon => {
