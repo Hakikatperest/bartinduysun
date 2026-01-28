@@ -335,88 +335,70 @@
             display: block;
         }
         
-        /* YENİ MODERN SLIDER TASARIMI */
+        /* SLİDER BÖLÜMÜ - GÜNCELLENDİ: İkinci HTML'den alındı */
         .slider-section {
             position: relative;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             overflow: hidden;
-            background: #f5f5f5;
-            padding: 20px 0;
         }
         
         .slider-container {
             position: relative;
-            height: 520px;
+            height: 500px;
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
         }
         
         .slider-wrapper {
             display: flex;
             height: 100%;
             width: 100%;
+            scroll-snap-type: x mandatory;
         }
         
         .slider-item {
             flex: 0 0 100%;
             height: 100%;
+            scroll-snap-align: start;
             position: relative;
-            background: #000;
         }
 
         .slider-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.9;
+            pointer-events: none;
         }
         
-        /* Modern slider overlay */
+        /* Slider overlay */
         .slider-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.4) 70%, transparent 100%);
-            padding: 40px 50px 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.3) 90%, transparent 100%);
+            padding: 30px 40px 40px;
             color: white;
-            min-height: 65%;
+            min-height: 45%;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-        }
-        
-        .slider-category {
-            display: inline-block;
-            background: var(--topbar-color);
-            color: white;
-            padding: 6px 15px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            pointer-events: none;
         }
         
         .slider-title {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            font-weight: 800;
+            font-size: 2.2rem;
+            margin-bottom: 0;
+            font-weight: 700;
             line-height: 1.2;
             text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+            margin-bottom: 30px;
+            margin-top: auto;
+            transform: translateY(-50%);
+            pointer-events: none;
         }
-        
-        .slider-summary {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.9);
-            max-width: 90%;
-            line-height: 1.5;
-            margin-bottom: 0;
-        }
-        
-        /* Kaldırıldı: slider-read-more butonu */
         
         .slider-controls {
             position: absolute;
@@ -427,11 +409,12 @@
             transform: translateY(-50%);
             padding: 0 20px;
             z-index: 10;
+            pointer-events: none;
         }
         
         .slider-btn {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: var(--topbar-color);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
             border: none;
             width: 50px;
             height: 50px;
@@ -443,13 +426,11 @@
             font-size: 1.5rem;
             transition: var(--transition);
             z-index: 20;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            pointer-events: auto;
         }
         
         .slider-btn:hover {
-            background-color: var(--topbar-color);
-            color: white;
-            transform: scale(1.1);
+            background-color: rgba(0,0,0,0.8);
         }
         
         /* Slider Pagination */
@@ -462,6 +443,7 @@
             justify-content: center;
             gap: 10px;
             z-index: 10;
+            pointer-events: none;
         }
         
         .pagination-dot {
@@ -472,11 +454,12 @@
             border: 2px solid transparent;
             cursor: pointer;
             transition: var(--transition);
+            pointer-events: auto;
         }
         
         .pagination-dot.active {
             background-color: var(--topbar-color);
-            transform: scale(1.3);
+            transform: scale(1.2);
             border-color: white;
         }
         
@@ -485,28 +468,25 @@
             transform: scale(1.1);
         }
         
-        /* GÜNCELLENMİŞ: Manşet yazısı */
+        /* Son dakika haberler kırmızı arka plan */
         .breaking-news-sidebar {
             position: absolute;
             right: 20px;
             top: 20px;
-            background-color: var(--breaking-red);
+            background-color: #8b0000;
             color: white;
-            padding: 12px 25px;
-            border-radius: 4px;
+            padding: 10px 20px;
+            border-radius: 5px;
             z-index: 5;
-            font-weight: 800;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            pointer-events: none;
         }
         
-        .breaking-news-sidebar i {
-            animation: blink 1s infinite;
+        .breaking-title {
+            font-size: 1rem;
+            text-align: center;
+            white-space: nowrap;
         }
         
         /* Main content layout - Haber sitesi düzeni */
@@ -1269,15 +1249,6 @@
             .category-name {
                 font-size: 1.2rem;
             }
-            
-            .slider-title {
-                font-size: 2rem;
-            }
-            
-            .slider-summary {
-                font-size: 1.1rem;
-                max-width: 90%;
-            }
         }
         
         @media (max-width: 768px) {
@@ -1416,16 +1387,12 @@
             
             .slider-title {
                 font-size: 1.6rem;
-            }
-            
-            .slider-summary {
-                font-size: 1rem;
-                max-width: 100%;
+                transform: translateY(-30%);
             }
             
             .slider-overlay {
-                padding: 25px 25px 30px;
-                min-height: 70%;
+                padding: 20px 20px 25px;
+                min-height: 50%;
             }
             
             .breaking-news-sidebar {
@@ -1499,16 +1466,13 @@
             }
             
             .slider-overlay {
-                padding: 20px 20px 25px;
-                min-height: 75%;
+                padding: 15px 15px 20px;
+                min-height: 55%;
             }
             
             .slider-title {
                 font-size: 1.4rem;
-            }
-            
-            .slider-summary {
-                font-size: 0.95rem;
+                transform: translateY(-20%);
             }
             
             .breaking-news-sidebar {
@@ -1618,10 +1582,7 @@
             
             .slider-title {
                 font-size: 1.2rem;
-            }
-            
-            .slider-summary {
-                font-size: 0.9rem;
+                transform: translateY(-15%);
             }
         }
         
@@ -1648,15 +1609,15 @@
             
             /* Slider düzenlemeleri */
             .slider-container {
-                height: 520px;
+                height: 500px;
             }
             
             .slider-overlay {
-                padding: 40px 50px 30px;
+                padding: 30px 40px 40px;
             }
             
             .slider-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
         }
     </style>
@@ -1716,28 +1677,25 @@
         </div>
     </header>
 
-    <!-- Manşet Slider Bölümü -->
+    <!-- Manşet Slider Bölümü - GÜNCELLENDİ: İkinci HTML'den alındı -->
     <section class="slider-section">
         <div class="breaking-news-sidebar">
-            <i class="fas fa-bullhorn"></i>
-            <div class="breaking-title">MANŞET</div>
+            <div class="breaking-title">SON DAKİKA HABERLER</div>
         </div>
         
-        <div class="container">
-            <div class="slider-container" id="sliderContainer">
-                <div class="slider-wrapper" id="sliderWrapper">
-                    <!-- Slider öğeleri JavaScript ile eklenecek -->
-                </div>
+        <div class="slider-container" id="sliderContainer">
+            <div class="slider-wrapper" id="sliderWrapper">
+                <!-- Slider öğeleri JavaScript ile eklenecek -->
             </div>
-            
-            <div class="slider-controls">
-                <button class="slider-btn" id="prevSliderBtn" aria-label="Önceki haber"><i class="fas fa-chevron-left"></i></button>
-                <button class="slider-btn" id="nextSliderBtn" aria-label="Sonraki haber"><i class="fas fa-chevron-right"></i></button>
-            </div>
-            
-            <div class="slider-pagination" id="sliderPagination">
-                <!-- Pagination noktaları JavaScript ile eklenecek -->
-            </div>
+        </div>
+        
+        <div class="slider-controls">
+            <button class="slider-btn" id="prevSliderBtn" aria-label="Önceki haber"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-btn" id="nextSliderBtn" aria-label="Sonraki haber"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <div class="slider-pagination" id="sliderPagination">
+            <!-- Pagination noktaları JavaScript ile eklenecek -->
         </div>
     </section>
 
@@ -2317,12 +2275,6 @@
                     title: "Bartın Belediyesi'nden araç filosuna büyük yatırım",
                     image: "https://www.bartinduysun.com/images/belediye/arac-filosuna-buyuk-yatirim.webp",
                     url: "https://www.bartinduysun.com/haberler/belediye/bartin-belediyesinden-arac-filosuna-buyuk-yatirim.html"
-                },
-                {
-                    id: 6,
-                    title: "Türk Sanat Müziği Konserine Davet",
-                    image: "https://www.bartinduysun.com/images/belediye/turk-sanat-muzigi-konserine-davet.webp",
-                    url: "https://www.bartinduysun.com/haberler/belediye/turk-sanat-muzigi-konserine-davet.html"
                 }
             ]
         };
@@ -2391,7 +2343,7 @@
             return card;
         }
 
-        // Slider kartı oluşturma fonksiyonu - GÜNCELLENDİ: Haber sitesi stili
+        // Slider kartı oluşturma fonksiyonu - GÜNCELLENDİ: İkinci HTML'den alındı
         function createSliderCard(haber) {
             const slide = document.createElement('a');
             slide.className = 'slider-item';
@@ -2401,9 +2353,9 @@
             slide.innerHTML = `
                 <img src="${imageUrl}" alt="${haber.title}" loading="lazy">
                 <div class="slider-overlay">
-                    <span class="slider-category">${haber.category}</span>
-                    <h3 class="slider-title">${haber.title}</h3>
-                    <p class="slider-summary">${haber.detail.substring(0, 200)}...</p>
+                    <div class="container">
+                        <h3 class="slider-title">${haber.title}</h3>
+                    </div>
                 </div>
             `;
             return slide;
