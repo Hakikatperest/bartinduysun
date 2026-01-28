@@ -1727,6 +1727,13 @@
                 margin: 0;
             }
         }
+        .slider-container.dragging {
+    cursor: grabbing;
+}
+
+.slider-container {
+    cursor: grab;
+}
     </style>
 </head>
 <body>
@@ -2052,7 +2059,6 @@
             </div>
         </div>
     </footer>
-
     <script>
         // Haber verisi - Güncellenmiş versiyon
         const haberData = {
@@ -2815,12 +2821,13 @@
 
         // Sayfa yüklendiğinde çalışacak fonksiyonlar
         document.addEventListener('DOMContentLoaded', function() {
-            initSlider();
-            initBreakingNews();
-            initNewsCategories();
-            initMostReadSidebar();
-            initAdvertisements();
-            setupEventListeners();
+    initSlider();
+    initBreakingNews();
+    initNewsCategories();
+    initMostReadSidebar();
+    initAdvertisements();
+    setupEventListeners();
+    enableSliderDrag(); 
             
             if (window.innerWidth >= 769) {
                 document.querySelectorAll('.nav-link i').forEach(icon => {
@@ -2828,6 +2835,56 @@
                 });
             }
         });
+        let isDown = false;
+let startX;
+let scrollLeft;
+
+function enableSliderDrag() {
+    const slider = sliderContainer;
+
+    // MOUSE (PC)
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.classList.add('dragging');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 1.5; // hız
+        slider.scrollLeft = scrollLeft - walk;
+    });
+
+    // TOUCH (Mobil)
+    slider.addEventListener('touchstart', (e) => {
+        isDown = true;
+        startX = e.touches[0].pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', () => {
+        isDown = false;
+    });
+
+    slider.addEventListener('touchmove', (e) => {
+        if (!isDown) return;
+        const x = e.touches[0].pageX - slider.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        slider.scrollLeft = scrollLeft - walk;
+    }, { passive: true });
+}
+
     </script>
 </body>
 </html>
