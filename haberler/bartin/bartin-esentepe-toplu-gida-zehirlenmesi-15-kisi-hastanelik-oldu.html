@@ -333,12 +333,57 @@
             display: block;
         }
         
+        /* HABER YOLU (BREADCRUMB) */
+        .news-breadcrumb {
+            margin: 25px 0 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            color: var(--gray-color);
+        }
+        
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .breadcrumb-item:not(:last-child)::after {
+            content: '≫';
+            margin-left: 8px;
+            color: var(--topbar-color);
+            font-weight: bold;
+        }
+        
+        .breadcrumb-link {
+            color: var(--topbar-color);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .breadcrumb-link:hover {
+            color: #01576d;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb-current {
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+        
         /* HABER DETAY İÇERİĞİ */
         .news-detail-container {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 40px;
-            margin: 40px auto;
+            margin: 20px auto 40px;
             align-items: start;
         }
         
@@ -366,18 +411,6 @@
             line-height: 1.3;
             margin-bottom: 15px;
             color: var(--dark-color);
-            display: flex;
-            align-items: center;
-        }
-        
-        .news-title-dot {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background-color: #c00;
-            border-radius: 50%;
-            margin-right: 12px;
-            animation: blink 1s infinite;
         }
         
         .news-date {
@@ -432,7 +465,7 @@
         
         .news-body h2, .news-body h3 {
             margin: 30px 0 15px;
-            color: var(--topbar-color);
+            color: var(--primary-color);
         }
         
         .news-body ul, .news-body ol {
@@ -1514,7 +1547,7 @@
     </style>
 </head>
 <body>
-    <!-- Header Bölümü - %100 AYNEN AKTARILDI -->
+    <!-- Header Bölümü -->
     <header>
         <div class="top-bar">
             <div class="container">
@@ -1571,13 +1604,26 @@
 
     <!-- Haber Detay İçeriği -->
     <main class="container">
+        <!-- Haber Yolu (Breadcrumb) -->
+        <nav class="news-breadcrumb">
+            <div class="breadcrumb-list">
+                <div class="breadcrumb-item">
+                    <a href="https://www.bartinduysun.com/" class="breadcrumb-link">Bartın Duysun</a>
+                </div>
+                <div class="breadcrumb-item">
+                    <a href="https://www.bartinduysun.com/bartin-haberleri.html" class="breadcrumb-link">Bartın Haberleri</a>
+                </div>
+                <div class="breadcrumb-item">
+                    <span class="breadcrumb-current">Esentepe'de Gıda Zehirlenmesi: 15 kişi hastanelik oldu</span>
+                </div>
+            </div>
+        </nav>
+        
         <div class="news-detail-container">
             <!-- Sol Bölüm: Haber Detayı -->
             <article class="news-detail-content">
                 <div class="news-category-badge">Bartın Haberleri</div>
-                <h1 class="news-title">
-                    <span class="news-title-dot"></span>Esentepe'de Gıda Zehirlenmesi: 15 kişi hastanelik oldu
-                </h1>
+                <h1 class="news-title">Esentepe'de Gıda Zehirlenmesi: 15 kişi hastanelik oldu</h1>
                 
                 <div class="news-date">
                     <i class="far fa-calendar-alt"></i>
@@ -1632,7 +1678,7 @@
                 </div>
             </article>
             
-            <!-- Sağ Bölüm: En Çok Okunan Haberler - %100 AYNEN AKTARILDI -->
+            <!-- Sağ Bölüm: En Çok Okunan Haberler -->
             <aside class="sidebar">
                 <h3 class="sidebar-title">
                     <i class="fas fa-fire" style="color: var(--topbar-color); animation: blink 1s infinite;"></i>
@@ -1655,7 +1701,7 @@
             </aside>
         </div>
 
-        <!-- MODERN KATEGORİLER BÖLÜMÜ - GÖRSEL ARKAPLANLI - %100 AYNEN AKTARILDI -->
+        <!-- MODERN KATEGORİLER BÖLÜMÜ - GÖRSEL ARKAPLANLI -->
         <section class="categories-section">
             <h2 class="section-title">
                 <i class="fas fa-bolt" style="margin-right: 10px; color: var(--topbar-color); animation: blink 1s infinite;"></i>
@@ -1717,7 +1763,7 @@
         </section>
     </main>
 
-    <!-- FOOTER - %100 AYNEN AKTARILDI -->
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-content">
