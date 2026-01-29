@@ -505,68 +505,6 @@
             line-height: 1.6;
         }
         
-        .social-channels {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-channel-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
-            background-color: white;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .social-channel-item:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--card-shadow);
-            border-color: var(--topbar-color);
-        }
-        
-        .social-channel-item i {
-            font-size: 1.5rem;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            color: white;
-        }
-        
-        .social-channel-item.facebook i {
-            background-color: #1877F2;
-        }
-        
-        .social-channel-item.instagram i {
-            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
-        }
-        
-        .social-channel-item.twitter i {
-            background-color: #000000;
-        }
-        
-        .social-channel-item.youtube i {
-            background-color: #FF0000;
-        }
-        
-        .social-channel-item.telegram i {
-            background-color: #0088cc;
-        }
-        
-        .social-channel-item span {
-            font-weight: 600;
-            color: var(--dark-color);
-        }
-        
         /* Footer */
         footer {
             background-color: white;
@@ -775,10 +713,6 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
-            
-            .social-channels {
-                justify-content: center;
-            }
         }
         
         @media (max-width: 768px) {
@@ -894,10 +828,6 @@
             .principles-grid {
                 grid-template-columns: 1fr;
                 gap: 15px;
-            }
-            
-            .social-channel-item {
-                min-width: 100%;
             }
             
             .footer-content {
@@ -1048,7 +978,7 @@
                     
                     <ul class="nav-menu" id="navMenu">
                         <div class="nav-links-container">
-                            <li class="nav-item"><a href="https://www.bartinduysun.com" class="nav-link"><i class="fas fa-home"></i> Anasayfa</a></li>
+                            <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Anasayfa</a></li>
                             <li class="nav-item"><a href="bartin-haberleri.html" class="nav-link"><i class="fas fa-newspaper"></i> Bartın Haberleri</a></li>
                             <li class="nav-item"><a href="bartin-valiligi-haberleri.html" class="nav-link"><i class="fas fa-landmark"></i> Bartın Valiliği Haberleri</a></li>
                             <li class="nav-item"><a href="bartin-belediyesi-haberleri.html" class="nav-link"><i class="fas fa-city"></i> Bartın Belediyesi Haberleri</a></li>
@@ -1124,32 +1054,6 @@
                     <li>Spor ve eğlence etkinlikleri</li>
                 </ul>
                 <p>Başta olmak üzere Bartın'a dair tüm güncel bilgiler okuyuculara sunulmaktadır.</p>
-                
-                <h3 style="margin-top: 30px; color: var(--topbar-color);">Sosyal Medya Kanallarımız</h3>
-                <p>Sitemiz yalnızca web sitesi üzerinden değil; aynı zamanda aşağıdaki sosyal medya kanallarımız aracılığıyla da yayın yaparak Bartın haberlerini daha geniş kitlelere ulaştırmaktadır. Böylece okuyucularımız, Bartın'daki gelişmeleri sosyal medya üzerinden de anlık olarak takip edebilmektedir.</p>
-                
-                <div class="social-channels">
-                    <a href="https://www.facebook.com/bartinduysun74/" class="social-channel-item facebook" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                        <span>Facebook</span>
-                    </a>
-                    <a href="https://www.instagram.com/bartinduysun" class="social-channel-item instagram" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                        <span>Instagram</span>
-                    </a>
-                    <a href="https://x.com/bartinduysun" class="social-channel-item twitter" target="_blank">
-                        <i class="fab fa-twitter"></i>
-                        <span>Twitter (X)</span>
-                    </a>
-                    <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" class="social-channel-item youtube" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                        <span>YouTube</span>
-                    </a>
-                    <a href="https://t.me/bartinduysun" class="social-channel-item telegram" target="_blank">
-                        <i class="fab fa-telegram"></i>
-                        <span>Telegram</span>
-                    </a>
-                </div>
             </section>
 
             <!-- Yayın İlkeleri Bölümü -->
@@ -1257,24 +1161,13 @@
         // Logo tıklama fonksiyonu
         function handleLogoClick(e) {
             e.preventDefault();
-            
-            if (window.location.pathname === '/' || window.location.pathname.includes('index')) {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            } else {
-                window.location.href = 'index.html';
-            }
+            window.location.href = 'index.html';
         }
 
         // Footer logo tıklama fonksiyonu
         function handleFooterLogoClick(e) {
             e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.location.href = 'index.html';
         }
 
         // Mobil menüyü aç/kapa
