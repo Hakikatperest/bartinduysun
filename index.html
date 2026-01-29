@@ -2876,13 +2876,12 @@
             
             // Dropdown menü (mobil için)
             if (dropdownMenu) {
-                dropdownMenu.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        dropdownMenu.classList.toggle('active');
-                    }
-                });
+                dropdownMenu.querySelector('.nav-link').addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+        e.preventDefault();
+        dropdownMenu.classList.toggle('active');
+    }
+});
             }
             
             // Slider kontrolleri
