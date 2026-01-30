@@ -54,6 +54,27 @@
       ]
     }
     </script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const banner = document.getElementById("cookie-banner");
+  const acceptBtn = document.getElementById("acceptCookies");
+  const rejectBtn = document.getElementById("rejectCookies");
+
+  if (!localStorage.getItem("cookieConsent")) {
+    banner.style.display = "block";
+  }
+
+  acceptBtn.addEventListener("click", function () {
+    localStorage.setItem("cookieConsent", "accepted");
+    banner.style.display = "none";
+  });
+
+  rejectBtn.addEventListener("click", function () {
+    localStorage.setItem("cookieConsent", "rejected");
+    banner.style.display = "none";
+  });
+});
+</script>
 </head>
 <body>
     <!-- Header Bölümü -->
