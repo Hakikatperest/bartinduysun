@@ -57,20 +57,14 @@
     <script>
 document.addEventListener("DOMContentLoaded", function () {
   const banner = document.getElementById("cookie-banner");
-  const acceptBtn = document.getElementById("acceptCookies");
-  const rejectBtn = document.getElementById("rejectCookies");
+  const closeBtn = document.getElementById("closeCookies");
 
-  if (!localStorage.getItem("cookieConsent")) {
-    banner.style.display = "block";
+  if (!localStorage.getItem("cookieInfoClosed")) {
+    banner.style.display = "flex";
   }
 
-  acceptBtn.addEventListener("click", function () {
-    localStorage.setItem("cookieConsent", "accepted");
-    banner.style.display = "none";
-  });
-
-  rejectBtn.addEventListener("click", function () {
-    localStorage.setItem("cookieConsent", "rejected");
+  closeBtn.addEventListener("click", function () {
+    localStorage.setItem("cookieInfoClosed", "true");
     banner.style.display = "none";
   });
 });
@@ -1355,15 +1349,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     </script>
     <!-- Çerez Bildirimi -->
-<div id="cookie-banner" class="cookie-banner" aria-live="polite">
-  <p>
-    Web sitemizde kullanıcı deneyimini geliştirmek amacıyla çerezler kullanılmaktadır.
-    Detaylı bilgi için <a href="cerez-politikasi/" target="_blank">Çerez Politikamızı</a> inceleyebilirsiniz.
-  </p>
-  <div class="cookie-buttons">
-    <button id="acceptCookies">Kabul Et</button>
-    <button id="rejectCookies">Reddet</button>
-  </div>
+<div id="cookie-banner" class="cookie-banner">
+  <span>
+    Bu web sitesinde kullanıcı deneyimini geliştirmek amacıyla çerezler kullanılmaktadır.
+    Detaylı bilgi için <a href="cerez-politikasi/">Çerez Politikası</a> sayfasını inceleyebilirsiniz.
+  </span>
+  <button id="closeCookies" aria-label="Çerez bildirimi kapat">Kapat</button>
+</div>
 </div>
 </body>
 </html>
