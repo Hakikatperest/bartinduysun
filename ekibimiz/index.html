@@ -1542,7 +1542,7 @@
                                     <li><a href="/kurulus-hakkinda/"><i class="fas fa-info-circle"></i> Kuruluş Hakkında</a></li>
                                     <li><a href="/kunye/"><i class="fas fa-users"></i> Künye</a></li>
                                     <li><a href="/ekibimiz/"><i class="fas fa-user-friends"></i> Ekibimiz</a></li>
-                                    <li><a href="/iletisim./"><i class="fas fa-envelope"></i> İletişim</a></li>
+                                    <li><a href="/iletisim/"><i class="fas fa-envelope"></i> İletişim</a></li>
                                 </ul>
                             </li>
                         </div>
@@ -1801,10 +1801,10 @@
                     <div class="footer-column">
                         <h3 class="footer-title">Hakkımızda</h3>
                         <ul class="footer-links">
-                            <li><a href="kurulus-hakkinda/"><i class="fas fa-chevron-right"></i> Kuruluş Hakkında</a></li>
-                            <li><a href="kunye/"><i class="fas fa-chevron-right"></i> Künye</a></li>
-                            <li><a href="ekibimiz/"><i class="fas fa-chevron-right"></i> Ekibimiz</a></li>
-                            <li><a href="iletisim/"><i class="fas fa-chevron-right"></i> İletişim</a></li>
+                            <li><a href="/kurulus-hakkinda/"><i class="fas fa-chevron-right"></i> Kuruluş Hakkında</a></li>
+                            <li><a href="/kunye/"><i class="fas fa-chevron-right"></i> Künye</a></li>
+                            <li><a href="/ekibimiz/"><i class="fas fa-chevron-right"></i> Ekibimiz</a></li>
+                            <li><a href="/iletisim/"><i class="fas fa-chevron-right"></i> İletişim</a></li>
                         </ul>
                     </div>
                     
@@ -1890,14 +1890,15 @@
             
             // Dropdown menü (mobil için)
             if (dropdownMenu) {
-                dropdownMenu.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        dropdownMenu.classList.toggle('active');
-                    }
-                });
-            }
+    const dropdownLink = dropdownMenu.querySelector('.nav-link');
+
+    dropdownLink.addEventListener('click', function (e) {
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            dropdownMenu.classList.toggle('active');
+        }
+    });
+}
             
             // Pencere boyutu değiştiğinde dropdown'ı kapat
             window.addEventListener('resize', () => {
