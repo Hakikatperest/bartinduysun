@@ -758,14 +758,14 @@
         }
         
         .article-meta {
-            display: flex;
-            justify-content: flex-start;
-            gap: 30px;
-            color: var(--gray-color);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
+    display: flex;
+    flex-direction: column; /* ALT ALTA */
+    align-items: flex-start; /* SOLA DAYALI */
+    gap: 4px; /* aradaki boşluk kontrolü */
+    color: var(--gray-color);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
         
         .article-meta-item {
             display: flex;
@@ -778,12 +778,6 @@
         }
         
         /* MOBİL İÇİN ÖZEL DÜZENLEME: Haber merkezi kısmını sola yaslama */
-        .article-meta-item.author-item {
-            width: 100%;
-            justify-content: flex-start;
-            margin-top: 10px;
-            padding-top: 10px;
-        }
         
         .article-featured-image {
             width: 100%;
@@ -1264,41 +1258,8 @@
                 max-height: 400px;
             }
             
-            /* MOBİLDE TARİH VE SAAT YAN YANA, HABER MERKEZİ ALTA SOLA */
-            .article-meta {
-                flex-direction: row;
-                gap: 20px;
-                align-items: center;
-                flex-wrap: wrap;
-            }
-            
             .article-meta-item {
                 flex-shrink: 0;
-            }
-            
-            .article-meta-item:nth-child(1) {
-                order: 1;
-            }
-            
-            .article-meta-item:nth-child(2) {
-                order: 2;
-            }
-            
-            /* HABER MERKEZİ KISMI - ALTA SOLA YASLI */
-            .article-meta-item:nth-child(3) {
-                order: 3;
-                width: 100%;
-                margin-top: 10px;
-                padding-top: 10px;
-                justify-content: flex-start;
-            }
-            
-            /* Haber merkezi kısmı için özel class */
-            .article-meta-item.author-item {
-                width: 100%;
-                justify-content: flex-start;
-                margin-top: 10px;
-                padding-top: 10px;
             }
             
             .share-btn {
@@ -1413,34 +1374,10 @@
                 font-size: 1.6rem;
                 text-align: left;
             }
-            
-            /* MOBİLDE TARİH VE SAAT YAN YANA, HABER MERKEZİ ALTA SOLA */
-            .article-meta {
-                flex-direction: row;
-                gap: 15px;
-                align-items: center;
-                flex-wrap: nowrap;
-            }
+
             
             .article-meta-item {
                 flex-shrink: 0;
-            }
-            
-            .article-meta-item:nth-child(1) {
-                order: 1;
-            }
-            
-            .article-meta-item:nth-child(2) {
-                order: 2;
-            }
-            
-            /* HABER MERKEZİ KISMI - ALTA SOLA YASLI */
-            .article-meta-item:nth-child(3) {
-                order: 3;
-                width: 100%;
-                margin-top: 10px;
-                padding-top: 10px;
-                justify-content: flex-start;
             }
             
             .article-featured-image {
