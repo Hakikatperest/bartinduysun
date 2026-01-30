@@ -81,29 +81,30 @@
             display: block;
         }
         
+        /* MASAÜSTÜ GENİŞLİK AYARLARI */
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 30px;
         }
         
         .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 0.8rem;
             display: flex;
             align-items: center;
             position: relative;
-            border-bottom: 2px solid var(--topbar-color);
+            border-bottom: 3px solid var(--topbar-color);
         }
         
         .blinking-dot {
             display: inline-block;
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 12px;
             animation: blink 1s infinite;
         }
         
@@ -124,24 +125,24 @@
         .top-bar {
             background-color: var(--topbar-color);
             color: white;
-            padding: 10px 0;
+            padding: 12px 0;
         }
         
         .social-icons {
             display: flex;
             justify-content: flex-end;
-            gap: 10px;
+            gap: 12px;
         }
         
         .social-icons a {
             color: white;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
         }
         
@@ -174,14 +175,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            padding: 15px 0;
         }
         
         .logo-container {
-            height: 70px;
+            height: 80px;
             display: flex;
             align-items: center;
-            margin-left: 30px;
+            margin-left: 40px;
         }
         
         .logo {
@@ -195,30 +196,30 @@
             height: 100%;
             width: auto;
             object-fit: contain;
-            transform: scale(1.2);
+            transform: scale(1.3);
         }
         
         .hamburger-menu {
             display: none;
             flex-direction: column;
             cursor: pointer;
-            padding: 10px;
+            padding: 12px;
             background: none;
             border: none;
             z-index: 1002;
         }
         
         .hamburger-menu span {
-            width: 28px;
-            height: 3px;
+            width: 32px;
+            height: 4px;
             background-color: var(--topbar-color);
-            margin: 4px 0;
+            margin: 5px 0;
             transition: var(--transition);
             border-radius: 3px;
         }
         
         .hamburger-menu.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
+            transform: rotate(45deg) translate(7px, 7px);
         }
         
         .hamburger-menu.active span:nth-child(2) {
@@ -226,7 +227,7 @@
         }
         
         .hamburger-menu.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
+            transform: rotate(-45deg) translate(7px, -7px);
         }
         
         .nav-menu {
@@ -237,7 +238,7 @@
         
         .nav-links-container {
             display: flex;
-            gap: 5px;
+            gap: 8px;
         }
         
         .nav-item {
@@ -246,13 +247,13 @@
         
         .nav-link {
             font-weight: 600;
-            font-size: 1.05rem;
-            padding: 14px 15px;
+            font-size: 1.1rem;
+            padding: 16px 20px;
             transition: var(--transition);
             border-radius: 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             white-space: nowrap;
         }
         
@@ -271,8 +272,8 @@
             left: 0;
             background-color: white;
             box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            min-width: 200px;
-            padding: 6px 0;
+            min-width: 220px;
+            padding: 8px 0;
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
@@ -280,7 +281,7 @@
             z-index: 100;
             border-radius: 10px;
             border-top: 3px solid var(--topbar-color);
-            max-width: 220px;
+            max-width: 250px;
         }
         
         .dropdown:hover .dropdown-menu {
@@ -290,31 +291,31 @@
         }
         
         .dropdown-menu li {
-            padding: 0 3px;
-            margin: 1px 0;
+            padding: 0 5px;
+            margin: 2px 0;
         }
         
         .dropdown-menu a {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             transition: var(--transition);
-            padding: 8px 15px;
+            padding: 10px 18px;
             border-radius: 6px;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
         
         .dropdown-menu a:hover {
             color: var(--topbar-color);
             background-color: rgba(1, 136, 159, 0.08);
-            padding-left: 20px;
+            padding-left: 22px;
         }
         
         .dropdown-menu a i {
-            width: 18px;
+            width: 20px;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--topbar-color);
         }
         
@@ -335,10 +336,10 @@
         
         /* HABER YOLU (BREADCRUMB) */
         .news-breadcrumb {
-            margin: 25px 0 15px;
-            padding: 15px 0;
+            margin: 30px 0 20px;
+            padding: 20px 0;
             border-bottom: 1px solid var(--border-color);
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--gray-color);
         }
         
@@ -346,20 +347,21 @@
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
         }
         
         .breadcrumb-item {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         
         .breadcrumb-item:not(:last-child)::after {
             content: '≫';
-            margin-left: 8px;
+            margin-left: 10px;
             color: var(--topbar-color);
             font-weight: bold;
+            font-size: 1.1rem;
         }
         
         .breadcrumb-link {
@@ -376,75 +378,78 @@
         .breadcrumb-current {
             color: var(--dark-color);
             font-weight: 600;
+            font-size: 1.05rem;
         }
         
-        /* HABER DETAY İÇERİĞİ */
+        /* GENİŞ HABER DETAY İÇERİĞİ */
         .news-detail-container {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-            margin: 20px auto 40px;
+            grid-template-columns: 3fr 1fr;
+            gap: 60px;
+            margin: 30px auto 60px;
             align-items: start;
         }
         
         .news-detail-content {
             background: white;
             border-radius: 12px;
-            padding: 30px;
+            padding: 50px;
             box-shadow: var(--card-shadow);
             border: 1px solid var(--border-color);
+            width: 100%;
         }
         
         .news-category-badge {
             display: inline-block;
-            padding: 6px 15px;
+            padding: 8px 20px;
             background-color: var(--topbar-color);
             color: white;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .news-title {
-            font-size: 2.2rem;
-            line-height: 1.3;
-            margin-bottom: 15px;
+            font-size: 2.8rem;
+            line-height: 1.25;
+            margin-bottom: 25px;
             color: var(--dark-color);
         }
         
         .news-date {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             color: var(--gray-color);
-            margin-bottom: 20px;
-            padding-left: 22px;
+            margin-bottom: 25px;
+            padding-left: 26px;
             display: flex;
             align-items: center;
         }
         
         .news-date i {
-            margin-right: 8px;
+            margin-right: 10px;
             color: var(--topbar-color);
+            font-size: 1.1rem;
         }
         
         .news-intro {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            line-height: 1.7;
+            margin-bottom: 30px;
             color: var(--dark-color);
             background-color: rgba(1, 136, 159, 0.05);
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid var(--topbar-color);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 6px solid var(--topbar-color);
         }
         
         .news-featured-image {
             width: 100%;
-            height: 500px;
+            height: 600px;
             overflow: hidden;
-            border-radius: 8px;
-            margin-bottom: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
         }
         
         .news-featured-image img {
@@ -454,72 +459,74 @@
         }
         
         .news-body {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-bottom: 50px;
         }
         
         .news-body p {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .news-body h2, .news-body h3 {
-            margin: 30px 0 15px;
+            margin: 40px 0 20px;
             color: var(--primary-color);
+            font-size: 1.8rem;
         }
         
         .news-body ul, .news-body ol {
-            margin-left: 20px;
-            margin-bottom: 20px;
+            margin-left: 25px;
+            margin-bottom: 25px;
         }
         
         .news-body li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .news-meta-share-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            margin: 30px 0;
+            padding: 25px 0;
+            border-top: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
+            margin: 40px 0;
         }
         
         .news-meta-bottom {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             color: var(--gray-color);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
         
         .share-section {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
         
         .share-title {
             font-weight: 600;
             color: var(--dark-color);
+            font-size: 1.1rem;
         }
         
         .share-buttons {
             display: flex;
-            gap: 10px;
+            gap: 15px;
         }
         
         .share-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             color: white;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             transition: var(--transition);
             cursor: pointer;
         }
@@ -544,43 +551,44 @@
         /* Sağ sidebar - En Çok Okunan Haberler */
         .sidebar {
             background: #f9f9f9;
-            border-radius: 8px;
-            padding: 25px;
+            border-radius: 12px;
+            padding: 30px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.05);
             border: 1px solid var(--border-color);
             margin-bottom: 30px;
             position: sticky;
-            top: 150px;
+            top: 180px;
             height: fit-content;
         }
         
         .sidebar-title {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
             border-bottom: 2px solid var(--topbar-color);
             color: var(--dark-color);
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         
         .sidebar-title i {
             color: var(--topbar-color);
             animation: blink 1s infinite;
+            font-size: 1.3rem;
         }
         
         .sidebar-news-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 18px;
         }
         
         .sidebar-news-item {
             display: flex;
-            gap: 15px;
-            padding-bottom: 15px;
+            gap: 18px;
+            padding-bottom: 18px;
             border-bottom: 1px dashed var(--border-color);
             transition: var(--transition);
         }
@@ -595,9 +603,9 @@
         }
         
         .sidebar-news-img {
-            width: 100px;
-            height: 80px;
-            border-radius: 4px;
+            width: 120px;
+            height: 90px;
+            border-radius: 6px;
             overflow: hidden;
             flex-shrink: 0;
         }
@@ -621,15 +629,15 @@
         }
         
         .sidebar-news-title-text {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
             line-height: 1.4;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             color: var(--dark-color);
         }
         
         .sidebar-news-time {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--gray-color);
             display: flex;
             align-items: center;
@@ -639,21 +647,22 @@
         .sidebar-news-details {
             color: var(--topbar-color);
             font-weight: 500;
+            font-size: 0.9rem;
         }
         
         /* Reklam Alanı */
         .ad-section {
             background-color: white;
-            min-height: 160px;
+            min-height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 30px 0;
+            margin: 40px 0;
             border-radius: 12px;
             color: var(--gray-color);
             overflow: hidden;
             position: relative;
-            padding: 15px;
+            padding: 20px;
             width: 100%;
             max-width: 100%;
             transition: var(--transition);
@@ -678,7 +687,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 15px;
             position: relative;
             cursor: pointer;
         }
@@ -687,7 +696,7 @@
             width: auto;
             height: auto;
             max-width: 100%;
-            max-height: 150px;
+            max-height: 170px;
             object-fit: contain;
             border-radius: 8px;
             transition: all 0.3s ease;
@@ -697,7 +706,7 @@
             display: block;
             width: 100%;
             height: auto;
-            max-height: 150px;
+            max-height: 170px;
             object-fit: contain;
         }
 
@@ -718,10 +727,10 @@
             background: linear-gradient(135deg, var(--topbar-color), #01576d);
             color: white;
             border: none;
-            padding: 14px 28px;
+            padding: 16px 32px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
             z-index: 10;
             opacity: 0;
@@ -730,14 +739,14 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             white-space: nowrap;
             max-width: 90%;
             text-align: center;
         }
         
         .ad-info-btn i {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
         
         .ad-info-btn:hover {
@@ -928,6 +937,96 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             margin-top: 10px;
             max-width: 90%;
+        }
+        
+        /* SAĞ ALT KÖŞE YUKARI ÇIK BUTONU */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--topbar-color), #01576d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 6px 20px rgba(1, 136, 159, 0.3);
+            border: 3px solid white;
+            outline: none;
+        }
+        
+        .scroll-to-top:hover {
+            background: linear-gradient(135deg, #01576d, var(--topbar-color));
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(1, 136, 159, 0.4);
+        }
+        
+        .scroll-to-top.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .scroll-to-top:active {
+            transform: translateY(0) scale(0.95);
+        }
+        
+        /* Çerez Bildirimi CSS - %100 aynen */
+        .cookie-banner {
+            position: fixed;
+            bottom: -100px; /* başlangıçta ekran dışında */
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            color: #000;
+            padding: 12px 14px;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            z-index: 99999;
+            font-size: 14px;
+            animation: slideUpCookie 0.8s ease forwards;
+        }
+
+        .cookie-banner a {
+            color: #0066cc;
+            text-decoration: underline;
+        }
+
+        .cookie-banner button {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        /* Slide-up animasyonu */
+        @keyframes slideUpCookie {
+            from {
+                bottom: -100px;
+                opacity: 0;
+            }
+            to {
+                bottom: 0;
+                opacity: 1;
+            }
         }
         
         /* Footer */
@@ -1181,6 +1280,15 @@
                 padding: 12px 24px;
                 font-size: 0.95rem;
             }
+            
+            /* Yukarı çık butonu tablet */
+            .scroll-to-top {
+                width: 55px;
+                height: 55px;
+                bottom: 25px;
+                right: 25px;
+                font-size: 1.3rem;
+            }
         }
         
         @media (max-width: 768px) {
@@ -1359,6 +1467,30 @@
             .category-card p {
                 font-size: 0.9rem;
             }
+            
+            /* Yukarı çık butonu mobil */
+            .scroll-to-top {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.2rem;
+                border-width: 2px;
+            }
+            
+            /* Çerez bildirimi mobil */
+            .cookie-banner {
+                padding: 10px 12px;
+                font-size: 13px;
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+            
+            .cookie-banner button {
+                width: 100%;
+                padding: 8px 12px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1496,6 +1628,15 @@
             .category-name {
                 font-size: 1rem;
             }
+            
+            /* Yukarı çık butonu küçük mobil */
+            .scroll-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 1.1rem;
+            }
         }
         
         @media (max-width: 400px) {
@@ -1522,6 +1663,15 @@
             
             .news-intro {
                 font-size: 0.9rem;
+            }
+            
+            /* Yukarı çık butonu çok küçük ekranlar */
+            .scroll-to-top {
+                width: 40px;
+                height: 40px;
+                bottom: 12px;
+                right: 12px;
+                font-size: 1rem;
             }
         }
         
@@ -1581,18 +1731,18 @@
                     <ul class="nav-menu" id="navMenu">
                         <div class="nav-links-container">
                             <li class="nav-item"><a href="https://www.bartinduysun.com" class="nav-link"><i class="fas fa-home"></i> Anasayfa</a></li>
-                            <li class="nav-item"><a href="bartin-haberleri.html" class="nav-link"><i class="fas fa-newspaper"></i> Bartın Haberleri</a></li>
-                            <li class="nav-item"><a href="bartin-valiligi-haberleri.html" class="nav-link"><i class="fas fa-landmark"></i> Bartın Valiliği Haberleri</a></li>
-                            <li class="nav-item"><a href="bartin-belediyesi-haberleri.html" class="nav-link"><i class="fas fa-city"></i> Bartın Belediyesi Haberleri</a></li>
-                            <li class="nav-item"><a href="bartin-siyaset-haberleri.html" class="nav-link"><i class="fas fa-users"></i> Bartın Siyaset Haberleri</a></li>
-                            <li class="nav-item"><a href="firma-rehberi.html" class="nav-link"><i class="fas fa-building"></i> Bartın Firma Rehberi</a></li>
+                            <li class="nav-item"><a href="/bartin-haberleri/" class="nav-link"><i class="fas fa-newspaper"></i> Bartın Haberleri</a></li>
+                            <li class="nav-item"><a href="/bartin-valiligi-haberleri/" class="nav-link"><i class="fas fa-landmark"></i> Bartın Valiliği Haberleri</a></li>
+                            <li class="nav-item"><a href="/bartin-belediyesi-haberleri/" class="nav-link"><i class="fas fa-city"></i> Bartın Belediyesi Haberleri</a></li>
+                            <li class="nav-item"><a href="/bartin-siyaset-haberleri/" class="nav-link"><i class="fas fa-users"></i> Bartın Siyaset Haberleri</a></li>
+                            <li class="nav-item"><a href="/firma-rehberi/" class="nav-link"><i class="fas fa-building"></i> Bartın Firma Rehberi</a></li>
                             <li class="nav-item dropdown" id="dropdownMenu">
                                 <a href="#" class="nav-link"><i class="fas fa-info-circle"></i> Hakkımızda <i class="fas fa-chevron-down"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="kurulus-hakkinda.html"><i class="fas fa-info-circle"></i> Kuruluş Hakkında</a></li>
-                                    <li><a href="kunye.html"><i class="fas fa-users"></i> Künye</a></li>
-                                    <li><a href="ekibimiz.html"><i class="fas fa-user-friends"></i> Ekibimiz</a></li>
-                                    <li><a href="iletisim.html"><i class="fas fa-envelope"></i> İletişim</a></li>
+                                    <li><a href="/kurulus-hakkinda/"><i class="fas fa-info-circle"></i> Kuruluş Hakkında</a></li>
+                                    <li><a href="/kunye/"><i class="fas fa-users"></i> Künye</a></li>
+                                    <li><a href="/ekibimiz/"><i class="fas fa-user-friends"></i> Ekibimiz</a></li>
+                                    <li><a href="/iletisim/"><i class="fas fa-envelope"></i> İletişim</a></li>
                                 </ul>
                             </li>
                         </div>
@@ -1608,10 +1758,10 @@
         <nav class="news-breadcrumb">
             <div class="breadcrumb-list">
                 <div class="breadcrumb-item">
-                    <a href="https://www.bartinduysun.com/" class="breadcrumb-link">Bartın Duysun</a>
+                    <a href="https://www.bartinduysun.com/" class="breadcrumb-link">Anasayfa</a>
                 </div>
                 <div class="breadcrumb-item">
-                    <a href="https://www.bartinduysun.com/bartin-haberleri.html" class="breadcrumb-link">Bartın Haberleri</a>
+                    <a href="https://www.bartinduysun.com/bartin-haberleri/" class="breadcrumb-link">Bartın Haberleri</a>
                 </div>
                 <div class="breadcrumb-item">
                     <span class="breadcrumb-current">Esentepe'de Gıda Zehirlenmesi: 15 kişi hastanelik oldu</span>
@@ -1709,7 +1859,7 @@
             </h2>
             
             <div class="categories-grid">
-                <a href="bartin-haberleri.html" class="category-card">
+                <a href="/bartin-haberleri/" class="category-card">
                     <div class="category-content">
                         <div class="category-icon"><i class="fas fa-newspaper"></i></div>
                         <h3 class="category-name">Bartın Haberleri</h3>
@@ -1717,7 +1867,7 @@
                     </div>
                 </a>
                 
-                <a href="bartin-valiligi-haberleri.html" class="category-card">
+                <a href="/bartin-valiligi-haberleri/" class="category-card">
                     <div class="category-content">
                         <div class="category-icon"><i class="fas fa-landmark"></i></div>
                         <h3 class="category-name">Bartın Valiliği Haberleri</h3>
@@ -1725,7 +1875,7 @@
                     </div>
                 </a>
                 
-                <a href="bartin-belediyesi-haberleri.html" class="category-card">
+                <a href="/bartin-belediyesi-haberleri/" class="category-card">
                     <div class="category-content">
                         <div class="category-icon"><i class="fas fa-city"></i></div>
                         <h3 class="category-name">Bartın Belediyesi Haberleri</h3>
@@ -1733,7 +1883,7 @@
                     </div>
                 </a>
                 
-                <a href="bartin-siyaset-haberleri.html" class="category-card">
+                <a href="bartin-siyaset-haberleri/" class="category-card">
                     <div class="category-content">
                         <div class="category-icon"><i class="fas fa-users"></i></div>
                         <h3 class="category-name">Bartın Siyaset Haberleri</h3>
@@ -1741,7 +1891,7 @@
                     </div>
                 </a>
                 
-                <a href="firma-rehberi.html" class="category-card">
+                <a href="/firma-rehberi/" class="category-card">
                     <div class="category-content">
                         <div class="category-icon"><i class="fas fa-building"></i></div>
                         <h3 class="category-name">Bartın Firma Rehberi</h3>
@@ -1795,10 +1945,10 @@
                     <div class="footer-column">
                         <h3 class="footer-title">Hakkımızda</h3>
                         <ul class="footer-links">
-                            <li><a href="kurulus-hakkinda.html"><i class="fas fa-chevron-right"></i> Kuruluş Hakkında</a></li>
-                            <li><a href="kunye.html"><i class="fas fa-chevron-right"></i> Künye</a></li>
-                            <li><a href="ekibimiz.html"><i class="fas fa-chevron-right"></i> Ekibimiz</a></li>
-                            <li><a href="iletisim.html"><i class="fas fa-chevron-right"></i> İletişim</a></li>
+                            <li><a href="/kurulus-hakkinda/"><i class="fas fa-chevron-right"></i> Kuruluş Hakkında</a></li>
+                            <li><a href="/kunye/"><i class="fas fa-chevron-right"></i> Künye</a></li>
+                            <li><a href="/ekibimiz/"><i class="fas fa-chevron-right"></i> Ekibimiz</a></li>
+                            <li><a href="/iletisim/"><i class="fas fa-chevron-right"></i> İletişim</a></li>
                         </ul>
                     </div>
                     
@@ -1806,11 +1956,11 @@
                     <div class="footer-column">
                         <h3 class="footer-title">Kurumsal</h3>
                         <ul class="footer-links">
-                            <li><a href="yayin-ilkeleleri.html"><i class="fas fa-chevron-right"></i> Yayın İlkelerimiz</a></li>
-                            <li><a href="kullanim-sartlari.html"><i class="fas fa-chevron-right"></i> Kullanım Şartları</a></li>
-                            <li><a href="gizlilik-politikasi.html"><i class="fas fa-chevron-right"></i> Gizlilik Politikası</a></li>
-                            <li><a href="cerez-politikasi.html"><i class="fas fa-chevron-right"></i> Çerez Politikası</a></li>
-                            <li><a href="kvkk-metni.html"><i class="fas fa-chevron-right"></i> Kişisel Verilerin Korunması</a></li>
+                            <li><a href="/yayin-ilkeleleri/"><i class="fas fa-chevron-right"></i> Yayın İlkelerimiz</a></li>
+                            <li><a href="/kullanim-sartlari/"><i class="fas fa-chevron-right"></i> Kullanım Şartları</a></li>
+                            <li><a href="/gizlilik-politikasi/"><i class="fas fa-chevron-right"></i> Gizlilik Politikası</a></li>
+                            <li><a href="/cerez-politikasi/"><i class="fas fa-chevron-right"></i> Çerez Politikası</a></li>
+                            <li><a href="/kvkk-metni/"><i class="fas fa-chevron-right"></i> Kişisel Verilerin Korunması</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1821,6 +1971,20 @@
             </div>
         </div>
     </footer>
+
+    <!-- SAĞ ALT KÖŞE YUKARI ÇIK BUTONU -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Sayfanın üstüne çık">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Çerez Bildirimi - %100 aynen aktarıldı -->
+    <div id="cookie-banner" class="cookie-banner">
+        <span>
+            Bu web sitesinde kullanıcı deneyimini geliştirmek amacıyla çerezler kullanılmaktadır.
+            Detaylı bilgi için <a href="/cerez-politikasi/">Çerez Politikası</a> sayfasını inceleyebilirsiniz.
+        </span>
+        <button id="closeCookies" aria-label="Çerez bildirimi kapat">Kapat</button>
+    </div>
 
     <script>
         // Haber verisi - Anasayfadan alınan veriler
@@ -1877,6 +2041,7 @@
         const mainLogo = document.getElementById('mainLogo');
         const footerLogo = document.getElementById('footerLogo');
         const mostReadSidebar = document.getElementById('mostReadSidebar');
+        const scrollToTopBtn = document.getElementById('scrollToTop');
 
         // Sidebar haber öğesi oluşturma (En çok okunanlar için)
         function createSidebarNewsItem(haber) {
@@ -1965,6 +2130,57 @@
             const url = encodeURIComponent(window.location.href);
             const text = encodeURIComponent(document.title);
             window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, '_blank', 'width=600,height=400');
+        }
+
+        // Yukarı çık butonu işlevselliği
+        function initScrollToTop() {
+            if (!scrollToTopBtn) return;
+            
+            // Sayfa kaydırıldığında butonu göster/gizle
+            function toggleScrollToTopButton() {
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.classList.add('active');
+                } else {
+                    scrollToTopBtn.classList.remove('active');
+                }
+            }
+            
+            // Butona tıklandığında sayfanın en üstüne git
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // Butona animasyon efekti ekle
+                this.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+            
+            // Sayfa kaydırma olayını dinle
+            window.addEventListener('scroll', toggleScrollToTopButton);
+            
+            // Sayfa yüklendiğinde kontrol et
+            toggleScrollToTopButton();
+        }
+
+        // Çerez bildirimi fonksiyonu
+        function setupCookieBanner() {
+            const banner = document.getElementById("cookie-banner");
+            const closeBtn = document.getElementById("closeCookies");
+
+            if (!banner || !closeBtn) return;
+
+            if (!localStorage.getItem("cookieInfoClosed")) {
+                banner.style.display = "flex";
+            }
+
+            closeBtn.addEventListener("click", function () {
+                localStorage.setItem("cookieInfoClosed", "true");
+                banner.style.display = "none";
+            });
         }
 
         // Footer logo tıklama fonksiyonu
@@ -2056,6 +2272,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             initMostReadSidebar();
             initAdvertisements();
+            initScrollToTop(); // Yukarı çık butonunu başlat
+            setupCookieBanner(); // Çerez bildirimini başlat
             setupEventListeners();
             
             if (window.innerWidth >= 769) {
