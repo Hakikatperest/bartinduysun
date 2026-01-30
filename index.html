@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preload" as="image" href="https://www.bartinduysun.com/images/valilik/kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.webp">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bartın Duysun - Son Dakika Bartın Haberleri</title>
@@ -29,7 +31,10 @@
 <link rel="icon" href="https://www.bartinduysun.com/images/bartinduysun-logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="https://www.bartinduysun.com/images/bartinduysun-logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</noscript>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -69,7 +74,10 @@
             <div class="main-header">
                 <div class="logo-container">
                     <div class="logo" id="mainLogo">
-                        <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp" alt="Bartın Duysun - Son Dakika Bartın Haberleri" loading="eager">
+                       <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp"
+     alt="Bartın Duysun - Son Dakika Bartın Haberleri"
+     loading="eager"
+     fetchpriority="high">
                     </div>
                 </div>
                 
@@ -399,7 +407,7 @@
         </div>
     </footer>
 
-    <script>
+    <script defer>
         // Haber verisi - Güncellenmiş versiyon
         const haberData = {
             slider: [
@@ -804,7 +812,7 @@
 
             link.innerHTML = `
                 <div class="news-image">
-                    <img src="${imageUrl}" alt="${haber.title}" loading="lazy">
+<img src="${imageUrl}" alt="${haber.title}" loading="lazy" decoding="async">
                 </div>
                 <div class="news-content">
                     <h3 class="news-title">${haber.title}</h3>
@@ -829,7 +837,7 @@
             
             const imageUrl = haber.image || 'https://via.placeholder.com/1200x500?text=Bartın+Duysun';
             slide.innerHTML = `
-                <img src="${imageUrl}" alt="${haber.title}" loading="lazy">
+<img src="${imageUrl}" alt="${haber.title}" loading="lazy" decoding="async">
                 <div class="slider-overlay">
                     <div class="container">
                         <h3 class="slider-title">${haber.title}</h3>
