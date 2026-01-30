@@ -1916,23 +1916,22 @@
         }
 .cookie-banner {
   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.85); /* beyaz + şeffaf */
-  backdrop-filter: blur(6px); /* cam efekti */
+  bottom: -100px; /* başlangıçta ekran dışında */
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   color: #000;
-  padding: 12px 18px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-  display: none;
-  z-index: 99999;
-  max-width: 90%;
-  font-size: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 10px;
+  z-index: 99999;
+  font-size: 14px;
+  animation: slideUpCookie 0.8s ease forwards;
 }
 
 .cookie-banner a {
@@ -1945,12 +1944,20 @@
   color: #fff;
   border: none;
   padding: 6px 14px;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 13px;
   white-space: nowrap;
 }
 
-.cookie-banner button:hover {
-  opacity: 0.8;
+/* Slide-up animasyonu */
+@keyframes slideUpCookie {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
 }
