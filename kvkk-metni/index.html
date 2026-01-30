@@ -1596,14 +1596,15 @@
             
             // Dropdown menü (mobil için)
             if (dropdownMenu) {
-                dropdownMenu.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        dropdownMenu.classList.toggle('active');
-                    }
-                });
-            }
+    const dropdownLink = dropdownMenu.querySelector('.nav-link');
+
+    dropdownLink.addEventListener('click', function (e) {
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            dropdownMenu.classList.toggle('active');
+        }
+    });
+}
             
             // Pencere boyutu değiştiğinde dropdown'ı kapat
             window.addEventListener('resize', () => {
