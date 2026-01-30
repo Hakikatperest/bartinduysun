@@ -355,7 +355,7 @@
         /* SLİDER BÖLÜMÜ */
         .slider-section {
             position: relative;
-            margin-bottom: 30px;
+            margin-bottom: 2px; /* Beyaz boşluk için 2px margin */
             overflow: hidden;
         }
         
@@ -501,7 +501,6 @@
             border-bottom: 2px solid #ff5252;
             box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
             margin: 0 0 30px 0;
-            margin-top: -15px;
             z-index: 5;
         }
         
@@ -560,10 +559,6 @@
             display: inline-block;
             text-overflow: ellipsis;
             overflow: hidden;
-        }
-        
-        .breaking-ticker-text:hover {
-            color: #ffeb3b;
         }
         
         /* Yanıp sönen efekti */
@@ -1261,28 +1256,19 @@
             gap: 30px;
         }
         
-        .footer-about-section {
+        .footer-logo-description-section {
             order: 1;
-        }
-        
-        .footer-about {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--dark-color);
-            text-align: justify;
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
             margin-bottom: 30px;
         }
         
-        .footer-logos-section {
-            order: 2;
+        .footer-logo-container {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
-            padding: 20px 0;
-            border-top: 1px solid rgba(1, 136, 159, 0.1);
-            border-bottom: 1px solid rgba(1, 136, 159, 0.1);
+            flex-direction: column;
+            gap: 20px;
+            min-width: 200px;
         }
         
         .footer-logo-img {
@@ -1310,8 +1296,19 @@
             transform: translateY(-2px);
         }
         
+        .footer-description {
+            flex-grow: 1;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--dark-color);
+            text-align: justify;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        
         .footer-links-sections {
-            order: 3;
+            order: 2;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 40px;
@@ -1370,7 +1367,7 @@
         }
         
         .footer-social-section {
-            order: 4;
+            order: 3;
             margin-top: 20px;
         }
         
@@ -1427,7 +1424,7 @@
             font-size: 0.85rem;
             background-color: var(--topbar-color);
             border-radius: 8px;
-            order: 5;
+            order: 4;
         }
         
         /* Responsive */
@@ -1597,7 +1594,15 @@
                 height: 60px;
             }
             
-            .footer-logos-section {
+            .footer-logo-description-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer-logo-container {
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
                 gap: 20px;
             }
             
@@ -1751,12 +1756,11 @@
                 height: 55px;
             }
             
-            .footer-logos-section {
+            .footer-logo-container {
                 gap: 15px;
-                flex-direction: column;
             }
             
-            .footer-about {
+            .footer-description {
                 font-size: 0.95rem;
             }
             
@@ -2227,36 +2231,24 @@
     <footer>
         <div class="container">
             <div class="footer-container">
-                <!-- 1. Açıklama Bölümü -->
+                <!-- Logo ve Açıklama Bölümü -->
                 <div class="footer-top-section">
-                    <div class="footer-about-section">
-                        <p class="footer-about">
-                            Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir. Yerel haberlerde güvenilir ve hızlı bir kaynak olmayı hedefliyoruz.
-                        </p>
-                    </div>
-                    
-                    <!-- 2. Logolar Bölümü -->
-                    <div class="footer-logos-section">
-                        <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp" alt="Bartın Duysun Logo" class="footer-logo-img" id="footerLogo">
-                        <a href="https://www.web4medya.com" target="_blank">
-                            <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Web4Medya Logo" class="web4medya-logo">
-                        </a>
-                    </div>
-                    
-                    <!-- 3. Linkler Bölümü -->
-                    <div class="footer-links-sections">
-                        <!-- Hakkımızda Sütunu -->
-                        <div class="footer-links-column">
-                            <h3 class="footer-title">Hakkımızda</h3>
-                            <ul class="footer-links">
-                                <li><a href="kurulus-hakkinda/"><i class="fas fa-chevron-right"></i> Kuruluş Hakkında</a></li>
-                                <li><a href="kunye/"><i class="fas fa-chevron-right"></i> Künye</a></li>
-                                <li><a href="ekibimiz/"><i class="fas fa-chevron-right"></i> Ekibimiz</a></li>
-                                <li><a href="iletisim/"><i class="fas fa-chevron-right"></i> İletişim</a></li>
-                            </ul>
+                    <div class="footer-logo-description-section">
+                        <div class="footer-logo-container">
+                            <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp" alt="Bartın Duysun Logo" class="footer-logo-img" id="footerLogo">
+                            <a href="https://www.web4medya.com" target="_blank">
+                                <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Web4Medya Logo" class="web4medya-logo">
+                            </a>
                         </div>
                         
-                        <!-- Kurumsal Sütunu -->
+                        <div class="footer-description">
+                            Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir. Yerel haberlerde güvenilir ve hızlı bir kaynak olmayı hedefliyoruz.
+                        </div>
+                    </div>
+                    
+                    <!-- Linkler Bölümü -->
+                    <div class="footer-links-sections">
+                        <!-- Kurumsal Sütunu (Solda) -->
                         <div class="footer-links-column">
                             <h3 class="footer-title">Kurumsal</h3>
                             <ul class="footer-links">
@@ -2267,9 +2259,20 @@
                                 <li><a href="kvkk-metni.html"><i class="fas fa-chevron-right"></i> Kişisel Verilerin Korunması</a></li>
                             </ul>
                         </div>
+                        
+                        <!-- Hakkımızda Sütunu (Sağda) -->
+                        <div class="footer-links-column">
+                            <h3 class="footer-title">Hakkımızda</h3>
+                            <ul class="footer-links">
+                                <li><a href="kurulus-hakkinda/"><i class="fas fa-chevron-right"></i> Kuruluş Hakkında</a></li>
+                                <li><a href="kunye/"><i class="fas fa-chevron-right"></i> Künye</a></li>
+                                <li><a href="ekibimiz/"><i class="fas fa-chevron-right"></i> Ekibimiz</a></li>
+                                <li><a href="iletisim/"><i class="fas fa-chevron-right"></i> İletişim</a></li>
+                            </ul>
+                        </div>
                     </div>
                     
-                    <!-- 4. Sosyal Medya Bölümü -->
+                    <!-- Sosyal Medya Bölümü -->
                     <div class="footer-social-section">
                         <h3 class="footer-title">Bizi Takip Edin</h3>
                         <div class="footer-social">
