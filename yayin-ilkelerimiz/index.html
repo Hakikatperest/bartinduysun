@@ -7,10 +7,10 @@
     <!-- Open Graph Meta Tags for WhatsApp/Facebook Sharing -->
     <meta property="og:title" content="Yayın İlkelerimiz - Bartın Duysun">
     <meta property="og:description" content="Bartın Duysun olarak haber yayıncılığında uyduğumuz ilkeler, etik kurallar ve yayın politikamız.">
-    <meta property="og:image" content="https://www.bartinduysun.com/images/yayin-ilkelerimiz-og-image.webp">
+    <meta property="og:image" content="https://www.bartinduysun.com/images/bartinduysun-logo.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://www.bartinduysun.com/yayin-ilkeleleri.html">
+    <meta property="og:url" content="https://www.bartinduysun.com/yayin-ilkelerimiz/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Bartın Duysun">
 
@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Yayın İlkelerimiz - Bartın Duysun">
     <meta name="twitter:description" content="Bartın Duysun olarak haber yayıncılığında uyduğumuz ilkeler, etik kurallar ve yayın politikamız.">
-    <meta name="twitter:image" content="https://www.bartinduysun.com/images/yayin-ilkelerimiz-og-image.webp">
+    <meta name="twitter:image" content="https://www.bartinduysun.com/images/bartinduysun-logo.webp">
     <meta name="twitter:site" content="@bartinduysun">
 
     <!-- Diğer meta etiketleri -->
@@ -1158,9 +1158,9 @@
         <div class="container">
             <div class="main-header">
                 <div class="logo-container">
-                    <div class="logo" id="mainLogo">
-                        <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp" alt="Bartın Duysun Logo">
-                    </div>
+                    <a href="https://www.bartinduysun.com/" class="logo" id="mainLogo">
+    <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp" alt="Bartın Duysun Logo">
+</a>
                 </div>
                 
                 <nav>
@@ -1434,20 +1434,6 @@
             });
         }
 
-        // Logo tıklama fonksiyonu
-        function handleLogoClick(e) {
-            e.preventDefault();
-            
-            if (window.location.pathname === '/' || window.location.pathname.includes('index')) {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            } else {
-                window.location.href = 'index.html';
-            }
-        }
-
         // Mobil menüyü aç/kapa
         function toggleMobileMenu() {
             if (navMenu && menuOverlay && hamburgerMenu) {
@@ -1465,10 +1451,6 @@
 
         // Event listener'ları kur
         function setupEventListeners() {
-            // Ana logo tıklama
-            if (mainLogo) {
-                mainLogo.addEventListener('click', handleLogoClick);
-            }
             
             // Footer logo tıklama
             if (footerLogo) {
