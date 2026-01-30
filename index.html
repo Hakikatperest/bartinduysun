@@ -491,16 +491,18 @@
             transform: scale(1.1);
         }
         
-        /* SON DAKİKA ŞERİDİ - YENİ EKLENDİ */
+        /* YENİ SON DAKİKA ŞERİDİ - GÜNCELLENMİŞ */
         .breaking-news-ticker {
             background: linear-gradient(90deg, #d32f2f, #c62828, #b71c1c);
             color: white;
-            padding: 12px 0;
+            padding: 15px 0;
             position: relative;
             overflow: hidden;
             border-bottom: 2px solid #ff5252;
             box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
             margin: 0 0 30px 0;
+            margin-top: -15px;
+            z-index: 5;
         }
         
         .breaking-ticker-container {
@@ -518,7 +520,7 @@
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 6px 15px;
+            padding: 8px 15px;
             border-radius: 4px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             flex-shrink: 0;
@@ -543,29 +545,25 @@
             flex: 1;
             overflow: hidden;
             position: relative;
-            height: 24px;
+            min-height: 26px;
+            display: flex;
+            align-items: center;
         }
         
         .breaking-ticker-text {
-            position: absolute;
-            top: 0;
-            left: 0;
             white-space: nowrap;
             font-weight: 600;
             font-size: 1rem;
-            animation: ticker-scroll 30s linear infinite;
-            padding-right: 50px;
+            padding-right: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: inline-block;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
         
         .breaking-ticker-text:hover {
             color: #ffeb3b;
-        }
-        
-        @keyframes ticker-scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
         }
         
         /* Yanıp sönen efekti */
@@ -1242,7 +1240,7 @@
             font-weight: 400;
         }
         
-        /* FOOTER - YENİ DÜZENLENDİ */
+        /* YENİ FOOTER DÜZENİ */
         footer {
             background-color: white;
             color: var(--dark-color);
@@ -1251,37 +1249,73 @@
             border-top: 2px solid var(--topbar-color);
         }
         
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 60px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-left {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        
-        .footer-right {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-        
-        /* Yeni footer düzeni */
-        .footer-reorganized {
+        .footer-container {
             display: flex;
             flex-direction: column;
             gap: 40px;
         }
         
         .footer-top-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .footer-about-section {
+            order: 1;
+        }
+        
+        .footer-about {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--dark-color);
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logos-section {
+            order: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            padding: 20px 0;
+            border-top: 1px solid rgba(1, 136, 159, 0.1);
+            border-bottom: 1px solid rgba(1, 136, 159, 0.1);
+        }
+        
+        .footer-logo-img {
+            height: 60px;
+            width: auto;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .footer-logo-img:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .web4medya-logo {
+            height: 70px;
+            width: auto;
+            opacity: 0.9;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .web4medya-logo:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+        
+        .footer-links-sections {
+            order: 3;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 60px;
-            margin-bottom: 30px;
+            gap: 40px;
+            margin-top: 20px;
         }
         
         .footer-links-column {
@@ -1335,58 +1369,16 @@
             color: var(--topbar-color);
         }
         
-        .footer-bottom-section {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
+        .footer-social-section {
+            order: 4;
             margin-top: 20px;
-        }
-        
-        .footer-logos {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .footer-logo-img {
-            height: 50px;
-            width: auto;
-            cursor: pointer;
-            transition: var(--transition);
-            pointer-events: auto;
-        }
-        
-        .footer-logo-img:hover {
-            opacity: 0.9;
-        }
-        
-        .web4medya-logo {
-            height: 60px;
-            width: auto;
-            opacity: 0.9;
-            transition: var(--transition);
-            cursor: pointer;
-            pointer-events: auto;
-        }
-        
-        .web4medya-logo:hover {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
-        
-        .footer-about {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--dark-color);
-            margin-bottom: 20px;
-            text-align: justify;
         }
         
         .footer-social {
             display: flex;
-            gap: 10px;
-            margin-top: 10px;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
         
         .footer-social a {
@@ -1396,8 +1388,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background-color: rgba(1, 136, 159, 0.9);
         }
@@ -1430,11 +1422,12 @@
         .copyright {
             text-align: center;
             padding: 20px 0;
-            margin-top: 20px;
+            margin-top: 40px;
             color: white;
             font-size: 0.85rem;
             background-color: var(--topbar-color);
             border-radius: 8px;
+            order: 5;
         }
         
         /* Responsive */
@@ -1445,18 +1438,6 @@
             
             .category-card {
                 min-height: 260px;
-            }
-            
-            .footer-content {
-                gap: 40px;
-            }
-            
-            .footer-right {
-                gap: 30px;
-            }
-            
-            .footer-top-section {
-                gap: 40px;
             }
         }
         
@@ -1494,9 +1475,8 @@
                 font-size: 0.95rem;
             }
             
-            .footer-top-section {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .footer-links-sections {
+                gap: 30px;
             }
         }
         
@@ -1609,26 +1589,21 @@
                 max-width: 85%;
             }
             
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .footer-right {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
-            
-            .footer-logo-container {
-                gap: 12px;
-            }
-            
             .footer-logo-img {
-                height: 45px;
+                height: 50px;
             }
             
             .web4medya-logo {
-                height: 55px;
+                height: 60px;
+            }
+            
+            .footer-logos-section {
+                gap: 20px;
+            }
+            
+            .footer-links-sections {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
             
             .slider-container {
@@ -1694,7 +1669,7 @@
             
             /* Son Dakika Şeridi Mobil */
             .breaking-news-ticker {
-                padding: 10px 0;
+                padding: 12px 0;
                 margin: 0 0 20px 0;
             }
             
@@ -1705,15 +1680,21 @@
             
             .breaking-ticker-label {
                 font-size: 0.85rem;
-                padding: 5px 10px;
+                padding: 6px 10px;
+            }
+            
+            .breaking-ticker-content {
+                min-height: 24px;
             }
             
             .breaking-ticker-text {
                 font-size: 0.9rem;
-            }
-            
-            .footer-top-section {
-                gap: 30px;
+                white-space: normal;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
         
@@ -1762,29 +1743,27 @@
                 gap: 8px;
             }
             
-            .footer-content {
-                gap: 30px;
-            }
-            
-            .footer-right {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .footer-logo-container {
-                gap: 10px;
-            }
-            
             .footer-logo-img {
-                height: 40px;
+                height: 45px;
             }
             
             .web4medya-logo {
-                height: 50px;
+                height: 55px;
+            }
+            
+            .footer-logos-section {
+                gap: 15px;
+                flex-direction: column;
             }
             
             .footer-about {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
+            }
+            
+            .footer-social a {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
             
             .nav-menu {
@@ -1849,24 +1828,17 @@
             
             /* Son Dakika Şeridi Küçük Ekran */
             .breaking-news-ticker {
-                padding: 8px 0;
+                padding: 10px 0;
             }
             
             .breaking-ticker-label {
                 font-size: 0.8rem;
-                padding: 4px 8px;
+                padding: 5px 8px;
             }
             
             .breaking-ticker-text {
                 font-size: 0.85rem;
-            }
-            
-            .footer-top-section {
-                gap: 25px;
-            }
-            
-            .footer-links-column {
-                margin-bottom: 20px;
+                -webkit-line-clamp: 2;
             }
         }
         
@@ -1887,6 +1859,16 @@
             .slider-title {
                 font-size: 1.2rem;
                 transform: translateY(-15%);
+            }
+            
+            .footer-social {
+                gap: 10px;
+            }
+            
+            .footer-social a {
+                width: 36px;
+                height: 36px;
+                font-size: 0.9rem;
             }
         }
         
@@ -1944,6 +1926,10 @@
             .ad-section {
                 margin: 0;
             }
+            
+            .footer-links-sections {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         /* Başlık rengini siyah yap */
@@ -1951,15 +1937,6 @@
             color: var(--dark-color) !important;
             font-size: 2.2rem;
             margin-bottom: 15px;
-        }
-        
-        /* Footer eski stil */
-        .footer-content {
-            display: none;
-        }
-        
-        .footer-reorganized {
-            display: block;
         }
     </style>
 </head>
@@ -2040,7 +2017,7 @@
         </div>
     </section>
 
-    <!-- SON DAKİKA ŞERİDİ -->
+    <!-- YENİ SON DAKİKA ŞERİDİ -->
     <div class="breaking-news-ticker" id="breakingNewsTicker">
         <div class="container">
             <div class="breaking-ticker-container">
@@ -2246,65 +2223,69 @@
         </section>
     </main>
 
-    <!-- FOOTER - YENİ DÜZENLEME -->
+    <!-- YENİ FOOTER DÜZENİ -->
     <footer>
         <div class="container">
-            <div class="footer-reorganized">
-                <!-- Üst Bölüm: Hakkımızda ve Kurumsal -->
+            <div class="footer-container">
+                <!-- 1. Açıklama Bölümü -->
                 <div class="footer-top-section">
-                    <!-- Hakkımızda Sütunu -->
-                    <div class="footer-links-column">
-                        <h3 class="footer-title">Hakkımızda</h3>
-                        <ul class="footer-links">
-                            <li><a href="kurulus-hakkinda/"><i class="fas fa-chevron-right"></i> Kuruluş Hakkında</a></li>
-                            <li><a href="kunye/"><i class="fas fa-chevron-right"></i> Künye</a></li>
-                            <li><a href="ekibimiz/"><i class="fas fa-chevron-right"></i> Ekibimiz</a></li>
-                            <li><a href="iletisim/"><i class="fas fa-chevron-right"></i> İletişim</a></li>
-                        </ul>
+                    <div class="footer-about-section">
+                        <p class="footer-about">
+                            Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir. Yerel haberlerde güvenilir ve hızlı bir kaynak olmayı hedefliyoruz.
+                        </p>
                     </div>
                     
-                    <!-- Kurumsal Sütunu -->
-                    <div class="footer-links-column">
-                        <h3 class="footer-title">Kurumsal</h3>
-                        <ul class="footer-links">
-                            <li><a href="yayin-ilkeleleri.html"><i class="fas fa-chevron-right"></i> Yayın İlkelerimiz</a></li>
-                            <li><a href="kullanim-sartlari.html"><i class="fas fa-chevron-right"></i> Kullanım Şartları</a></li>
-                            <li><a href="gizlilik-politikasi.html"><i class="fas fa-chevron-right"></i> Gizlilik Politikası</a></li>
-                            <li><a href="cerez-politikasi.html"><i class="fas fa-chevron-right"></i> Çerez Politikası</a></li>
-                            <li><a href="kvkk-metni.html"><i class="fas fa-chevron-right"></i> Kişisel Verilerin Korunması</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Alt Bölüm: Logolar, Açıklama ve Sosyal Medya -->
-                <div class="footer-bottom-section">
-                    <!-- Logolar -->
-                    <div class="footer-logos">
+                    <!-- 2. Logolar Bölümü -->
+                    <div class="footer-logos-section">
                         <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp" alt="Bartın Duysun Logo" class="footer-logo-img" id="footerLogo">
                         <a href="https://www.web4medya.com" target="_blank">
                             <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Web4Medya Logo" class="web4medya-logo">
                         </a>
                     </div>
                     
-                    <!-- Açıklama Yazısı -->
-                    <p class="footer-about">
-                        Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir. Yerel haberlerde güvenilir ve hızlı bir kaynak olmayı hedefliyoruz.
-                    </p>
+                    <!-- 3. Linkler Bölümü -->
+                    <div class="footer-links-sections">
+                        <!-- Hakkımızda Sütunu -->
+                        <div class="footer-links-column">
+                            <h3 class="footer-title">Hakkımızda</h3>
+                            <ul class="footer-links">
+                                <li><a href="kurulus-hakkinda/"><i class="fas fa-chevron-right"></i> Kuruluş Hakkında</a></li>
+                                <li><a href="kunye/"><i class="fas fa-chevron-right"></i> Künye</a></li>
+                                <li><a href="ekibimiz/"><i class="fas fa-chevron-right"></i> Ekibimiz</a></li>
+                                <li><a href="iletisim/"><i class="fas fa-chevron-right"></i> İletişim</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Kurumsal Sütunu -->
+                        <div class="footer-links-column">
+                            <h3 class="footer-title">Kurumsal</h3>
+                            <ul class="footer-links">
+                                <li><a href="yayin-ilkeleleri.html"><i class="fas fa-chevron-right"></i> Yayın İlkelerimiz</a></li>
+                                <li><a href="kullanim-sartlari.html"><i class="fas fa-chevron-right"></i> Kullanım Şartları</a></li>
+                                <li><a href="gizlilik-politikasi.html"><i class="fas fa-chevron-right"></i> Gizlilik Politikası</a></li>
+                                <li><a href="cerez-politikasi.html"><i class="fas fa-chevron-right"></i> Çerez Politikası</a></li>
+                                <li><a href="kvkk-metni.html"><i class="fas fa-chevron-right"></i> Kişisel Verilerin Korunması</a></li>
+                            </ul>
+                        </div>
+                    </div>
                     
-                    <!-- Sosyal Medya İkonları -->
-                    <div class="footer-social">
-                        <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/bartinduysun" title="Instagram" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <!-- 4. Sosyal Medya Bölümü -->
+                    <div class="footer-social-section">
+                        <h3 class="footer-title">Bizi Takip Edin</h3>
+                        <div class="footer-social">
+                            <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/bartinduysun" title="Instagram" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Copyright -->
-            <div class="copyright">
-                <p>© 2024 Bartın Duysun – Tüm Hakları Saklıdır.</p>
+                
+                <!-- Copyright -->
+                <div class="copyright">
+                    <p>© 2024 Bartın Duysun – Tüm Hakları Saklıdır.</p>
+                </div>
             </div>
         </div>
     </footer>
