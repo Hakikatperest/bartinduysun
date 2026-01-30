@@ -55,6 +55,49 @@
     }
     </script>
     <script>
+        // Yukarı çık butonu işlevselliği
+function initScrollToTop() {
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    if (!scrollToTopBtn) return;
+    
+    // Sayfa kaydırıldığında butonu göster/gizle
+    function toggleScrollToTopButton() {
+        if (window.scrollY > 300) {
+            scrollToTopBtn.classList.add('active');
+        } else {
+            scrollToTopBtn.classList.remove('active');
+        }
+    }
+    
+    // Butona tıklandığında sayfanın en üstüne git
+    scrollToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        
+        // Butona animasyon efekti ekle
+        this.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 150);
+    });
+    
+    // Sayfa kaydırma olayını dinle
+    window.addEventListener('scroll', toggleScrollToTopButton);
+    
+    // Sayfa yüklendiğinde kontrol et
+    toggleScrollToTopButton();
+}
+
+// DOM yüklendiğinde çalıştır
+document.addEventListener('DOMContentLoaded', function() {
+    initScrollToTop();
+});
+
+// Ayrıca, eğer sayfa yüklendikten sonra dinamik içerik ekleniyorsa:
+// window.addEventListener('load', initScrollToTop);
 document.addEventListener("DOMContentLoaded", function () {
   const banner = document.getElementById("cookie-banner");
   const closeBtn = document.getElementById("closeCookies");
@@ -1357,5 +1400,8 @@ document.addEventListener("DOMContentLoaded", function () {
   <button id="closeCookies" aria-label="Çerez bildirimi kapat">Kapat</button>
 </div>
 </div>
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Sayfanın üstüne çık">
+    <i class="fas fa-chevron-up"></i>
+</button>
 </body>
 </html>
