@@ -352,7 +352,7 @@
             display: block;
         }
         
-        /* SLİDER BÖLÜMÜ - ÖNCEKİ SAYFADAN AYNEN ALINDI */
+        /* SLİDER BÖLÜMÜ */
         .slider-section {
             position: relative;
             margin-bottom: 30px;
@@ -489,6 +489,103 @@
         .pagination-dot:hover {
             background-color: white;
             transform: scale(1.1);
+        }
+        
+        /* SON DAKİKA ŞERİDİ - YENİ EKLENDİ */
+        .breaking-news-ticker {
+            background: linear-gradient(90deg, #d32f2f, #c62828, #b71c1c);
+            color: white;
+            padding: 12px 0;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid #ff5252;
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+            margin: 0 0 30px 0;
+        }
+        
+        .breaking-ticker-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            overflow: hidden;
+            padding: 0 15px;
+        }
+        
+        .breaking-ticker-label {
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 15px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        
+        .breaking-ticker-label i {
+            color: #ffeb3b;
+            animation: bell-ring 1.5s infinite;
+        }
+        
+        @keyframes bell-ring {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30%, 50%, 70%, 90% { transform: rotate(-10deg); }
+            20%, 40%, 60%, 80% { transform: rotate(10deg); }
+        }
+        
+        .breaking-ticker-content {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            height: 24px;
+        }
+        
+        .breaking-ticker-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: 1rem;
+            animation: ticker-scroll 30s linear infinite;
+            padding-right: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .breaking-ticker-text:hover {
+            color: #ffeb3b;
+        }
+        
+        @keyframes ticker-scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Yanıp sönen efekti */
+        .breaking-news-ticker::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.2), 
+                transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
         
         /* YANIP SÖNEN MANŞET YAZISI */
@@ -1145,7 +1242,7 @@
             font-weight: 400;
         }
         
-        /* Footer */
+        /* FOOTER - YENİ DÜZENLENDİ */
         footer {
             background-color: white;
             color: var(--dark-color);
@@ -1167,100 +1264,27 @@
             align-items: flex-start;
         }
         
-        .footer-logo-container {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            justify-content: flex-start;
-            width: 100%;
-        }
-        
-        .footer-logo-img {
-            height: 50px;
-            width: auto;
-            cursor: pointer;
-            transition: var(--transition);
-            pointer-events: auto;
-        }
-        
-        .footer-logo-img:hover {
-            opacity: 0.9;
-        }
-        
-        .web4medya-logo {
-            height: 60px;
-            width: auto;
-            opacity: 0.9;
-            transition: var(--transition);
-            cursor: pointer;
-            pointer-events: auto;
-        }
-        
-        .web4medya-logo:hover {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
-        
-        .footer-about {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--dark-color);
-            margin-bottom: 25px;
-            text-align: justify;
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .footer-social a {
-            color: white;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: rgba(1, 136, 159, 0.9);
-        }
-        
-        .footer-social a.facebook {
-            background-color: #1877F2;
-        }
-        
-        .footer-social a.instagram {
-            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
-        }
-        
-        .footer-social a.twitter {
-            background-color: #000000;
-        }
-        
-        .footer-social a.youtube {
-            background-color: #FF0000;
-        }
-        
-        .footer-social a.telegram {
-            background-color: #0088cc;
-        }
-        
-        .footer-social a:hover {
-            transform: translateY(-3px);
-            opacity: 0.9;
-        }
-        
         .footer-right {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 40px;
         }
         
-        .footer-column {
+        /* Yeni footer düzeni */
+        .footer-reorganized {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .footer-top-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links-column {
             display: flex;
             flex-direction: column;
         }
@@ -1311,6 +1335,98 @@
             color: var(--topbar-color);
         }
         
+        .footer-bottom-section {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .footer-logos {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo-img {
+            height: 50px;
+            width: auto;
+            cursor: pointer;
+            transition: var(--transition);
+            pointer-events: auto;
+        }
+        
+        .footer-logo-img:hover {
+            opacity: 0.9;
+        }
+        
+        .web4medya-logo {
+            height: 60px;
+            width: auto;
+            opacity: 0.9;
+            transition: var(--transition);
+            cursor: pointer;
+            pointer-events: auto;
+        }
+        
+        .web4medya-logo:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+        
+        .footer-about {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .footer-social a {
+            color: white;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(1, 136, 159, 0.9);
+        }
+        
+        .footer-social a.facebook {
+            background-color: #1877F2;
+        }
+        
+        .footer-social a.instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+        
+        .footer-social a.twitter {
+            background-color: #000000;
+        }
+        
+        .footer-social a.youtube {
+            background-color: #FF0000;
+        }
+        
+        .footer-social a.telegram {
+            background-color: #0088cc;
+        }
+        
+        .footer-social a:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+        
         .copyright {
             text-align: center;
             padding: 20px 0;
@@ -1337,6 +1453,10 @@
             
             .footer-right {
                 gap: 30px;
+            }
+            
+            .footer-top-section {
+                gap: 40px;
             }
         }
         
@@ -1372,6 +1492,11 @@
             .ad-info-btn {
                 padding: 12px 24px;
                 font-size: 0.95rem;
+            }
+            
+            .footer-top-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
         }
         
@@ -1566,6 +1691,30 @@
             .category-card p {
                 font-size: 0.9rem;
             }
+            
+            /* Son Dakika Şeridi Mobil */
+            .breaking-news-ticker {
+                padding: 10px 0;
+                margin: 0 0 20px 0;
+            }
+            
+            .breaking-ticker-container {
+                gap: 10px;
+                padding: 0 10px;
+            }
+            
+            .breaking-ticker-label {
+                font-size: 0.85rem;
+                padding: 5px 10px;
+            }
+            
+            .breaking-ticker-text {
+                font-size: 0.9rem;
+            }
+            
+            .footer-top-section {
+                gap: 30px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1697,6 +1846,28 @@
             .category-name {
                 font-size: 1rem;
             }
+            
+            /* Son Dakika Şeridi Küçük Ekran */
+            .breaking-news-ticker {
+                padding: 8px 0;
+            }
+            
+            .breaking-ticker-label {
+                font-size: 0.8rem;
+                padding: 4px 8px;
+            }
+            
+            .breaking-ticker-text {
+                font-size: 0.85rem;
+            }
+            
+            .footer-top-section {
+                gap: 25px;
+            }
+            
+            .footer-links-column {
+                margin-bottom: 20px;
+            }
         }
         
         @media (max-width: 400px) {
@@ -1774,9 +1945,22 @@
                 margin: 0;
             }
         }
+        
+        /* Başlık rengini siyah yap */
         .intro-section h1 {
-    color: red;
-}
+            color: var(--dark-color) !important;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer eski stil */
+        .footer-content {
+            display: none;
+        }
+        
+        .footer-reorganized {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -1836,7 +2020,7 @@
         </div>
     </header>
 
-    <!-- Manşet Slider Bölümü - ÖNCEKİ SAYFADAN AYNEN ALINDI -->
+    <!-- Manşet Slider Bölümü -->
     <section class="slider-section">
         <div class="breaking-news-sidebar">
             <div class="breaking-title">MANŞET HABERLER</div>
@@ -1855,6 +2039,23 @@
             <!-- Pagination noktaları JavaScript ile eklenecek -->
         </div>
     </section>
+
+    <!-- SON DAKİKA ŞERİDİ -->
+    <div class="breaking-news-ticker" id="breakingNewsTicker">
+        <div class="container">
+            <div class="breaking-ticker-container">
+                <div class="breaking-ticker-label">
+                    <i class="fas fa-bolt"></i>
+                    SON DAKİKA
+                </div>
+                <div class="breaking-ticker-content">
+                    <div class="breaking-ticker-text" id="breakingTickerText">
+                        <!-- JavaScript ile haber başlığı buraya gelecek -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Tanıtım Alanı -->
     <section class="intro-section">
@@ -2045,36 +2246,14 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER - YENİ DÜZENLEME -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <!-- Sol Bölüm: Logo, Hakkımızda, Sosyal Medya -->
-                <div class="footer-left">
-                    <div class="footer-logo-container">
-                        <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp" alt="Bartın Duysun Logo" class="footer-logo-img" id="footerLogo">
-                        <a href="https://www.web4medya.com" target="_blank">
-                            <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Web4Medya Logo" class="web4medya-logo">
-                        </a>
-                    </div>
-                    
-                    <p class="footer-about">
-                        Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir. Yerel haberlerde güvenilir ve hızlı bir kaynak olmayı hedefliyoruz.
-                    </p>
-                    
-                    <div class="footer-social">
-                        <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/bartinduysun" title="Instagram" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
-                    </div>
-                </div>
-                
-                <!-- Sağ Bölüm: 2 Sütunlu Bağlantılar -->
-                <div class="footer-right">
-                    <!-- İlk Sütun: Hakkımızda -->
-                    <div class="footer-column">
+            <div class="footer-reorganized">
+                <!-- Üst Bölüm: Hakkımızda ve Kurumsal -->
+                <div class="footer-top-section">
+                    <!-- Hakkımızda Sütunu -->
+                    <div class="footer-links-column">
                         <h3 class="footer-title">Hakkımızda</h3>
                         <ul class="footer-links">
                             <li><a href="kurulus-hakkinda/"><i class="fas fa-chevron-right"></i> Kuruluş Hakkında</a></li>
@@ -2084,8 +2263,8 @@
                         </ul>
                     </div>
                     
-                    <!-- İkinci Sütun: Kurumsal -->
-                    <div class="footer-column">
+                    <!-- Kurumsal Sütunu -->
+                    <div class="footer-links-column">
                         <h3 class="footer-title">Kurumsal</h3>
                         <ul class="footer-links">
                             <li><a href="yayin-ilkeleleri.html"><i class="fas fa-chevron-right"></i> Yayın İlkelerimiz</a></li>
@@ -2096,8 +2275,34 @@
                         </ul>
                     </div>
                 </div>
+                
+                <!-- Alt Bölüm: Logolar, Açıklama ve Sosyal Medya -->
+                <div class="footer-bottom-section">
+                    <!-- Logolar -->
+                    <div class="footer-logos">
+                        <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp" alt="Bartın Duysun Logo" class="footer-logo-img" id="footerLogo">
+                        <a href="https://www.web4medya.com" target="_blank">
+                            <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Web4Medya Logo" class="web4medya-logo">
+                        </a>
+                    </div>
+                    
+                    <!-- Açıklama Yazısı -->
+                    <p class="footer-about">
+                        Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir. Yerel haberlerde güvenilir ve hızlı bir kaynak olmayı hedefliyoruz.
+                    </p>
+                    
+                    <!-- Sosyal Medya İkonları -->
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/bartinduysun" title="Instagram" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
             </div>
             
+            <!-- Copyright -->
             <div class="copyright">
                 <p>© 2024 Bartın Duysun – Tüm Hakları Saklıdır.</p>
             </div>
@@ -2114,7 +2319,8 @@
                     category: "Valilik Haberleri",
                     image: "https://www.bartinduysun.com/images/valilik/kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.webp",
                     detail: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı.",
-                    url: "https://www.bartinduysun.com/haberler/valilik/kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.html"
+                    url: "https://www.bartinduysun.com/haberler/valilik/kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.html",
+                    breaking: true // Son dakika haberi
                 },
                 {
                     id: 2,
@@ -2130,7 +2336,8 @@
                     category: "Bartın Haberleri",
                     image: "https://www.bartinduysun.com/images/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.webp",
                     detail: "Bartın'ın Esentepe Mahallesi'nde düzenlenen bir asker uğurlama etkinliği, istenmeyen bir sonla noktalandı.",
-                    url: "https://www.bartinduysun.com/haberler/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.html"
+                    url: "https://www.bartinduysun.com/haberler/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.html",
+                    breaking: true // Son dakika haberi
                 },
                 {
                     id: 4,
@@ -2271,7 +2478,7 @@
                     id: 7,
                     title: "Vali Arslan Vatandaşlarımızla Buluştu",
                     category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-gikam-yilbasi-tedbirleri-toplantisi.webp",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-vatandaslarimizla-bulustu.webp",
                     excerpt: "Vali Arslan, vatandaşlarımızla bir araya gelerek sorunlarını dinledi ve çözüm yolları aradı.",
                     detail: "Vali Arslan, vatandaşlarımızla bir araya gelerek sorunlarını dinledi ve çözüm yolları aradı. Ziyarette vatandaşların günlük yaşamda karşılaştığı sorunlar ele alındı ve çözüm için gerekli adımlar belirlendi.",
                     url: "https://www.bartinduysun.com/haberler/valilik/vali-arslan-vatandaslarimizla-bulustu.html"
@@ -2477,42 +2684,44 @@
         const mainLogo = document.getElementById('mainLogo');
         const footerLogo = document.getElementById('footerLogo');
         const mostReadSidebar = document.getElementById('mostReadSidebar');
+        const breakingTickerText = document.getElementById('breakingTickerText');
+        const breakingNewsTicker = document.getElementById('breakingNewsTicker');
 
         // Haber kartı oluşturma fonksiyonu
         function createNewsCard(haber) {
-    const article = document.createElement('article');
-    article.className = 'news-card';
+            const article = document.createElement('article');
+            article.className = 'news-card';
 
-    const imageUrl = haber.image || 'https://via.placeholder.com/400x200?text=Bartın+Duysun';
-    const haberUrl = haber.url || `https://www.bartinduysun.com/haberler/${haber.category.toLowerCase().replace(/ /g, '-').replace('haberleri', '')}/${haber.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '')}.html`;
+            const imageUrl = haber.image || 'https://via.placeholder.com/400x200?text=Bartın+Duysun';
+            const haberUrl = haber.url || `https://www.bartinduysun.com/haberler/${haber.category.toLowerCase().replace(/ /g, '-').replace('haberleri', '')}/${haber.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '')}.html`;
 
-    let readMoreColor = 'var(--topbar-color)';
-    if (haber.category.includes('Siyaset')) readMoreColor = 'var(--siyaset-color)';
-    else if (haber.category.includes('Valilik')) readMoreColor = 'var(--valilik-color)';
-    else if (haber.category.includes('Belediye')) readMoreColor = 'var(--belediye-color)';
-    else if (haber.category.includes('Bartın')) readMoreColor = 'var(--bartin-color)';
+            let readMoreColor = 'var(--topbar-color)';
+            if (haber.category.includes('Siyaset')) readMoreColor = 'var(--siyaset-color)';
+            else if (haber.category.includes('Valilik')) readMoreColor = 'var(--valilik-color)';
+            else if (haber.category.includes('Belediye')) readMoreColor = 'var(--belediye-color)';
+            else if (haber.category.includes('Bartın')) readMoreColor = 'var(--bartin-color)';
 
-    const link = document.createElement('a');
-    link.href = haberUrl;
+            const link = document.createElement('a');
+            link.href = haberUrl;
 
-    link.innerHTML = `
-        <div class="news-image">
-            <img src="${imageUrl}" alt="${haber.title}" loading="lazy">
-        </div>
-        <div class="news-content">
-            <h3 class="news-title">${haber.title}</h3>
-            <p class="news-excerpt">${haber.excerpt || haber.detail.substring(0,120)}...</p>
-            <span class="read-more" style="color:${readMoreColor}">
-                Detayları Oku <i class="fas fa-arrow-right"></i>
-            </span>
-        </div>
-    `;
+            link.innerHTML = `
+                <div class="news-image">
+                    <img src="${imageUrl}" alt="${haber.title}" loading="lazy">
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">${haber.title}</h3>
+                    <p class="news-excerpt">${haber.excerpt || haber.detail.substring(0,120)}...</p>
+                    <span class="read-more" style="color:${readMoreColor}">
+                        Detayları Oku <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+            `;
 
-    article.appendChild(link);
-    return article;
-}
+            article.appendChild(link);
+            return article;
+        }
 
-        // Slider kartı oluşturma fonksiyonu - ÖNCEKİ SAYFADAN AYNEN ALINDI
+        // Slider kartı oluşturma fonksiyonu
         function createSliderCard(haber, index) {
             const slide = document.createElement('a');
             slide.className = `slider-item ${index === 0 ? 'active' : ''}`;
@@ -2579,7 +2788,7 @@
         let sliderEndX = 0;
         const swipeThreshold = 50;
 
-        // Slider'ı başlat - ÖNCEKİ SAYFADAN AYNEN ALINDI
+        // Slider'ı başlat
         function initSlider() {
             // Slider öğelerini oluştur
             if (haberData.slider && sliderContainer) {
@@ -2606,11 +2815,11 @@
             // Slider otomatik geçişini başlat
             startSlideInterval();
             
-            // Slider için swipe olaylarını ekle - ÖNCEKİ SAYFADAN AYNEN ALINDI
+            // Slider için swipe olaylarını ekle
             setupSwipeForSlider();
         }
 
-        // Slider için swipe/dokunma desteği - ÖNCEKİ SAYFADAN AYNEN ALINDI
+        // Slider için swipe/dokunma desteği
         function setupSwipeForSlider() {
             if (!sliderContainer) return;
             
@@ -2688,6 +2897,33 @@
             }
         }
 
+        // Son dakika şeridini başlat
+        function initBreakingNewsTicker() {
+            if (breakingTickerText && haberData.slider && haberData.slider.length > 0) {
+                // Breaking olarak işaretlenmiş haberleri bul
+                const breakingNews = haberData.slider.filter(haber => haber.breaking);
+                
+                // Breaking haber varsa onu göster, yoksa ilk haberi göster
+                const latestBreakingNews = breakingNews.length > 0 ? breakingNews[0] : haberData.slider[0];
+                
+                breakingTickerText.textContent = latestBreakingNews.title;
+                
+                // Tıklanınca haber sayfasına git
+                breakingTickerText.addEventListener('click', function() {
+                    window.location.href = latestBreakingNews.url;
+                });
+                
+                // Tüm şeride tıklanınca da habere git
+                if (breakingNewsTicker) {
+                    breakingNewsTicker.addEventListener('click', function(e) {
+                        if (!e.target.closest('.breaking-ticker-label')) {
+                            window.location.href = latestBreakingNews.url;
+                        }
+                    });
+                }
+            }
+        }
+
         // Haber kategorilerini başlat
         function initNewsCategories() {
             // Bartın Siyaset Haberleri (Ana bölüm)
@@ -2723,13 +2959,13 @@
             }
         }
 
-        // Slider otomatik geçişini başlat - ÖNCEKİ SAYFADAN AYNEN ALINDI
+        // Slider otomatik geçişini başlat
         function startSlideInterval() {
             clearInterval(slideInterval);
             slideInterval = setInterval(nextSlide, 5000);
         }
 
-        // Belirli bir slayta git - ÖNCEKİ SAYFADAN AYNEN ALINDI
+        // Belirli bir slayta git
         function goToSlide(index) {
             const slides = document.querySelectorAll('.slider-item');
             const dots = document.querySelectorAll('.pagination-dot');
@@ -2745,7 +2981,7 @@
             }
         }
 
-        // Sonraki slayta geç - ÖNCEKİ SAYFADAN AYNEN ALINDI
+        // Sonraki slayta geç
         function nextSlide() {
             const slides = document.querySelectorAll('.slider-item');
             const dots = document.querySelectorAll('.pagination-dot');
@@ -2761,7 +2997,7 @@
             }
         }
 
-        // Önceki slayta geç - ÖNCEKİ SAYFADAN AYNEN ALINDI
+        // Önceki slayta geç
         function prevSlide() {
             const slides = document.querySelectorAll('.slider-item');
             const dots = document.querySelectorAll('.pagination-dot');
@@ -2880,11 +3116,11 @@
             // Dropdown menü (mobil için)
             if (dropdownMenu) {
                 dropdownMenu.querySelector('.nav-link').addEventListener('click', function(e) {
-    if (window.innerWidth <= 768) {
-        e.preventDefault();
-        dropdownMenu.classList.toggle('active');
-    }
-});
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        dropdownMenu.classList.toggle('active');
+                    }
+                });
             }
             
             // Slider kontrolleri
@@ -2929,6 +3165,7 @@
             initNewsCategories();
             initMostReadSidebar();
             initAdvertisements();
+            initBreakingNewsTicker(); // Son dakika şeridi
             setupEventListeners();
             
             if (window.innerWidth >= 769) {
