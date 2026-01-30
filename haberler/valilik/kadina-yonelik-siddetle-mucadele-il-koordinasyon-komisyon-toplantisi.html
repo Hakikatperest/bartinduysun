@@ -1256,6 +1256,27 @@
                 max-height: 400px;
             }
             
+            /* MOBİLDE TARİH VE SAAT YAN YANA */
+            .article-meta {
+                flex-direction: row;
+                gap: 20px;
+                align-items: center;
+            }
+            
+            .article-meta-item:nth-child(1) {
+                order: 1;
+            }
+            
+            .article-meta-item:nth-child(2) {
+                order: 2;
+            }
+            
+            .article-meta-item:nth-child(3) {
+                order: 3;
+                width: 100%;
+                margin-top: 10px;
+            }
+            
             .share-btn {
                 padding: 10px 20px;
                 font-size: 0.9rem;
@@ -1369,10 +1390,22 @@
                 text-align: left;
             }
             
+            /* MOBİLDE TARİH VE SAAT YAN YANA */
             .article-meta {
-                flex-direction: column;
-                align-items: flex-start;
+                flex-direction: row;
                 gap: 15px;
+                align-items: center;
+                flex-wrap: nowrap;
+            }
+            
+            .article-meta-item {
+                flex-shrink: 0;
+            }
+            
+            .article-meta-item:nth-child(3) {
+                width: auto;
+                margin-top: 0;
+                order: 3;
             }
             
             .article-featured-image {
@@ -1441,6 +1474,15 @@
                 padding: 8px 16px;
                 font-size: 0.85rem;
                 gap: 8px;
+            }
+            
+            /* MOBİLDE TARİH VE SAAT YAN YANA */
+            .article-meta {
+                gap: 10px;
+            }
+            
+            .article-meta-item span {
+                font-size: 0.85rem;
             }
         }
         
@@ -1632,17 +1674,6 @@
             
         </article>
         
-        <!-- İKİNCİ REKLAM ALANI (Kategorilerden önce) -->
-        <div class="haber-reklam" id="haberReklam2" data-url="https://www.bartinduysun.com/sponsorlarımız/rgold-mucevherat.html">
-            <div class="haber-reklam-content">
-                <img src="https://www.bartinduysun.com/images/rgold-mucevherat.webp" alt="RGold Mücevherat - Kaliteli Takı ve Mücevher" class="haber-reklam-image haber-reklam-desktop" loading="lazy">
-                <img src="https://www.bartinduysun.com/images/rgold-kuyumcu2.webp" alt="RGold Mücevherat - Kaliteli Takı ve Mücevher" class="haber-reklam-image haber-reklam-mobile" loading="lazy">
-                <button class="haber-reklam-info-btn" type="button">
-                    <i class="fas fa-info-circle"></i> Daha Fazla Bilgi Al
-                </button>
-            </div>
-        </div>
-        
         <!-- İlgili Haberler Bölümü -->
         <section class="related-news">
             <h2 class="related-title">İlgili Haberler</h2>
@@ -1694,6 +1725,17 @@
                 </article>
             </div>
         </section>
+        
+        <!-- İKİNCİ REKLAM ALANI (Tüm Haberler / Hızlı Erişim bölümünün üstünde) -->
+        <div class="haber-reklam" id="haberReklam2" data-url="https://www.bartinduysun.com/sponsorlarımız/rgold-mucevherat.html">
+            <div class="haber-reklam-content">
+                <img src="https://www.bartinduysun.com/images/rgold-mucevherat.webp" alt="RGold Mücevherat - Kaliteli Takı ve Mücevher" class="haber-reklam-image haber-reklam-desktop" loading="lazy">
+                <img src="https://www.bartinduysun.com/images/rgold-kuyumcu2.webp" alt="RGold Mücevherat - Kaliteli Takı ve Mücevher" class="haber-reklam-image haber-reklam-mobile" loading="lazy">
+                <button class="haber-reklam-info-btn" type="button">
+                    <i class="fas fa-info-circle"></i> Daha Fazla Bilgi Al
+                </button>
+            </div>
+        </div>
 
         <!-- MODERN KATEGORİLER BÖLÜMÜ - GÖRSEL ARKAPLANLI -->
         <section class="categories-section" aria-labelledby="categoriesTitle">
