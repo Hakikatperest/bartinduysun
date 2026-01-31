@@ -1599,6 +1599,22 @@
                 display: inline-block;
             }
         }
+        @media (min-width: 769px) {
+    .nav-menu {
+        position: static;
+        flex-direction: row;
+        height: auto;
+        width: auto;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .nav-links-container > ul {
+        display: flex;
+        align-items: center;
+    }
+}
     </style>
 </head>
 <body>
@@ -2190,14 +2206,7 @@
                     if (hamburgerMenu) hamburgerMenu.classList.remove('active');
                     if (dropdownMenu) dropdownMenu.classList.remove('active');
                     document.body.style.overflow = 'auto';
-                    
-                    document.querySelectorAll('.nav-link i').forEach(icon => {
-                        icon.style.display = 'none';
-                    });
                 } else {
-                    document.querySelectorAll('.nav-link i').forEach(icon => {
-                        icon.style.display = 'inline-block';
-                    });
                 }
             });
         }
