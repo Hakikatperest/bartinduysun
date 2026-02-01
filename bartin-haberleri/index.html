@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bartın Haberleri - Bartın Duysun</title>
+    <meta name="description" content="Bartın'daki en güncel haberler. Asayiş, kaza, siyaset ve sosyal olaylardan anında haberler.">
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Bartın Haberleri - Bartın Duysun">
+    <meta property="og:description" content="Bartın'daki en güncel haberler. Asayiş, kaza, siyaset ve sosyal olaylardan anında haberler.">
+    <meta property="og:image" content="https://www.bartinduysun.com/images/bartinduysun-logo.webp">
+    <meta property="og:url" content="https://www.bartinduysun.com/bartin-haberleri/">
+    <meta property="og:type" content="website">
+    <!-- Diğer meta etiketleri -->
+    <meta name="theme-color" content="#01889F">
+    <link rel="icon" href="https://www.bartinduysun.com/images/bartinduysun-logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Ana Sayfa ile Aynı CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #c00;
+            --secondary-color: #ffc107;
+            --dark-color: #222;
+            --light-color: #f8f9fa;
+            --gray-color: #6c757d;
+            --border-color: #dee2e6;
+            --transition: all 0.3s ease;
+            --topbar-color: #01889f;
+            --valilik-color: #28a745;
+            --belediye-color: #007bff;
+            --siyaset-color: #ffc107;
+            --bartin-color: #c00;
+            --breaking-red: #d32f2f;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #fff;
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* HEADER (Örnek Sayfadan Birebir) */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .top-bar {
+            background-color: var(--topbar-color);
+            color: white;
+            padding: 10px 0;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+        }
+        
+        .social-icons a.facebook { background-color: #1877F2; }
+        .social-icons a.instagram { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); }
+        .social-icons a.twitter { background-color: #000000; }
+        .social-icons a.youtube { background-color: #FF0000; }
+        .social-icons a.telegram { background-color: #0088cc; }
+        .social-icons a:hover { transform: translateY(-3px); opacity: 0.9; }
+        
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+        
+        .logo-container {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            margin-left: 30px;
+        }
+        
+        .logo {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            transform: scale(1.2);
+        }
+        
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            background: none;
+            border: none;
+            z-index: 1002;
+        }
+        
+        .hamburger-menu span {
+            width: 28px;
+            height: 3px;
+            background-color: var(--topbar-color);
+            margin: 4px 0;
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+        
+        .hamburger-menu.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+        .hamburger-menu.active span:nth-child(2) { opacity: 0; }
+        .hamburger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+        
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        .nav-links-container {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 14px 15px;
+            transition: var(--transition);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        
+        .nav-link:hover {
+            color: var(--topbar-color);
+            background-color: rgba(1, 136, 159, 0.08);
+        }
+        
+        .dropdown.active .nav-link i { transform: rotate(180deg); }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            min-width: 200px;
+            padding: 6px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+            border-radius: 10px;
+            border-top: 3px solid var(--topbar-color);
+            max-width: 220px;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li { padding: 0 3px; margin: 1px 0; }
+        
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        .dropdown-menu a:hover {
+            color: var(--topbar-color);
+            background-color: rgba(1, 136, 159, 0.08);
+            padding-left: 20px;
+        }
+        
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        
+        .menu-overlay.active { display: block; }
+        
+        /* SAYFA BAŞLIĞI VE SON DAKİKA ŞERİDİ */
+        .page-header-section {
+            padding: 30px 0 15px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .page-description {
+            font-size: 1.2rem;
+            color: var(--gray-color);
+            max-width: 800px;
+        }
+        
+        /* MODERN SON DAKİKA ŞERİDİ - GÜNCELLENMİŞ */
+        .breaking-news-ticker {
+            background: linear-gradient(135deg, #ff3b30 0%, #d32f2f 50%, #b71c1c 100%);
+            color: white;
+            padding: 0;
+            margin: 0 0 40px 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.25);
+            border-left: 6px solid #ff9800;
+        }
+        
+        .breaking-ticker-container {
+            display: flex;
+            align-items: stretch;
+            min-height: 70px;
+            position: relative;
+        }
+        
+        .breaking-ticker-label {
+            background: rgba(0, 0, 0, 0.15);
+            color: #fff;
+            font-weight: 800;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            padding: 0 25px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Sola yasla */
+            white-space: nowrap;
+            position: relative;
+            flex-shrink: 0;
+            min-width: 220px;
+            animation: blinkText 1s infinite; /* Yanıp sönen efekt */
+        }
+        
+        /* Yanıp sönen efekt */
+        @keyframes blinkText {
+            0%, 100% { 
+                opacity: 1;
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            }
+            50% { 
+                opacity: 0.7;
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            }
+        }
+        
+        .breaking-ticker-label::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* SARI İKON KALDIRILDI - Sadece metin */
+        
+        .breaking-ticker-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .breaking-ticker-text {
+            font-weight: 700;
+            font-size: 1.15rem;
+            line-height: 1.4;
+            padding: 5px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .breaking-ticker-text:hover {
+            color: #ffeb3b;
+            transform: translateX(5px);
+        }
+        
+        .breaking-ticker-text::before {
+            content: '▶';
+            margin-right: 15px;
+            font-size: 0.8rem;
+            color: #ffeb3b;
+            opacity: 0.8;
+        }
+        
+        /* Haber şeridi için parlak çizgi efekti */
+        .breaking-news-ticker::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.15), 
+                rgba(255, 255, 255, 0.25), 
+                rgba(255, 255, 255, 0.15), 
+                transparent);
+            animation: slide 6s infinite;
+            z-index: 1;
+        }
+        
+        @keyframes slide {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Sağ taraftaki ok ikonu */
+        .breaking-ticker-arrow {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+        
+        .breaking-news-ticker:hover .breaking-ticker-arrow {
+            transform: translateY(-50%) translateX(5px);
+            color: white;
+        }
+        
+        /* HABER LİSTESİ (Son Dakika Haberler Tasarımı) */
+        .news-list-section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-bottom: 2px solid var(--bartin-color);
+        }
+        
+        .section-title span {
+            color: var(--bartin-color);
+        }
+        
+        .blinking-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-color: var(--bartin-color);
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        .news-item {
+            display: flex;
+            gap: 20px;
+            padding: 25px 0;
+            border-bottom: 1px dashed var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .news-item:hover {
+            transform: translateX(10px);
+        }
+        
+        .news-img {
+            width: 300px;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .news-item:hover .news-img img {
+            transform: scale(1.08);
+        }
+        
+        .news-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .news-item-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            color: var(--dark-color);
+        }
+        
+        .news-item-excerpt {
+            color: var(--gray-color);
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+        
+        .news-item-details {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+        
+        .read-more-link {
+            color: var(--bartin-color);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+        
+        .news-item:hover .read-more-link {
+            gap: 12px;
+        }
+        
+        /* REKLAM ALANLARI */
+        .ad-section {
+            background-color: white;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            padding: 15px;
+            width: 100%;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            border: 3px solid transparent;
+            border-image: linear-gradient(45deg, #ff5722, #ff9800, #ff5722) 1;
+            animation: border-glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes border-glow {
+            0%, 100% { border-color: #ff5722; box-shadow: 0 0 10px rgba(255, 87, 34, 0.3); }
+            50% { border-color: #ff9800; box-shadow: 0 0 15px rgba(255, 152, 0, 0.5); }
+        }
+        
+        .ad-section:hover {
+            box-shadow: var(--card-hover-shadow);
+        }
+        
+        .ad-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .ad-image {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 150px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        /* KATEGORİLER (Örnek Sayfadan Aynen) */
+        .categories-section {
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .categories-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(1, 136, 159, 0.05) 0%, rgba(255, 255, 255, 0.1) 100%);
+            z-index: -1;
+            border-radius: 16px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 0;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            border: 1px solid rgba(1, 136, 159, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            min-height: 280px;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(1, 136, 159, 0.85), rgba(1, 136, 159, 0.95));
+            z-index: 2;
+            opacity: 0.9;
+            transition: opacity 0.4s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--card-hover-shadow);
+            border-color: var(--topbar-color);
+        }
+
+        .category-card:hover::after {
+            opacity: 0.95;
+        }
+
+        .category-card:hover::before {
+            transform: scale(1.1);
+        }
+
+        .category-card[href*="bartin-haberleri"]::before {
+            background-image: url('https://www.bartinduysun.com/images/bartin-haberleri.webp');
+        }
+
+        .category-card[href*="bartin-valiligi"]::before {
+            background-image: url('https://www.bartinduysun.com/images/bartin-valiligi.webp');
+        }
+
+        .category-card[href*="bartin-belediyesi"]::before {
+            background-image: url('https://www.bartinduysun.com/images/bartin-belediyesi.webp');
+        }
+
+        .category-card[href*="bartin-siyaset"]::before {
+            background-image: url('https://www.bartinduysun.com/images/bartin-siyaset.webp');
+        }
+
+        .category-card[href*="firma-rehberi"]::before {
+            background-image: url('https://www.bartinduysun.com/images/firma-rehberi.webp');
+            background-position: center 30%;
+        }
+
+        .category-content {
+            position: relative;
+            z-index: 3;
+            padding: 30px 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .category-icon {
+            font-size: 2.8rem;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-icon {
+            transform: scale(1.1) translateY(-5px);
+            color: var(--secondary-color);
+        }
+
+        .category-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .category-name::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .category-card:hover .category-name::after {
+            width: 70px;
+        }
+
+        .category-card p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+            max-width: 90%;
+        }
+        
+        /* FOOTER (Örnek Sayfadan Birebir) */
+        footer {
+            background-color: white;
+            color: #333333;
+            padding: 50px 0 25px;
+            margin-top: 50px;
+            border-top: 2px solid var(--topbar-color);
+        }
+
+       .footer-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+       .footer-top-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+       .footer-logo-description-section {
+            order: 1;
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo-container {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            min-width: 200px;
+        }
+        
+       .footer-logo-img {
+            height: 60px;
+            width: auto;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+       .web4medya-logo {
+            height: 70px;
+            width: auto;
+            opacity: 0.9;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .footer-description {
+            flex-grow: 1;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #333333;
+            text-align: justify;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links-sections {
+            order: 2;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        .footer-links-column { display: flex; flex-direction: column; }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(1, 136, 159, 0.2);
+            color: #333333;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--topbar-color);
+        }
+        
+        .footer-links li { margin-bottom: 12px; }
+        
+        .footer-links a {
+            transition: var(--transition);
+            color: var(--topbar-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            padding: 5px 0;
+            font-weight: 500;
+        }
+        
+        .footer-links a:hover {
+            color: #01576d;
+            padding-left: 8px;
+        }
+        
+        .footer-social-section { order: 3; margin-top: 20px; }
+        
+        .footer-social {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            color: white;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: rgba(1, 136, 159, 0.9);
+        }
+        
+        .footer-social a.facebook { background-color: #1877F2; }
+        .footer-social a.instagram { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); }
+        .footer-social a.twitter { background-color: #000000; }
+        .footer-social a.youtube { background-color: #FF0000; }
+        .footer-social a.telegram { background-color: #0088cc; }
+        .footer-social a:hover { transform: translateY(-3px); opacity: 0.9; }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            color: white;
+            font-size: 0.85rem;
+            background-color: var(--topbar-color);
+            border-radius: 8px;
+            order: 4;
+        }
+        
+        /* Çerez Bildirimi ve Yukarı Çık (Örnekten) */
+        .cookie-banner {
+          position: fixed;
+          bottom: -100px;
+          left: 0;
+          width: 100%;
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(6px);
+          color: #000;
+          padding: 12px 14px;
+          box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          z-index: 99999;
+          font-size: 14px;
+          animation: slideUpCookie 0.8s ease forwards;
+        }
+        @keyframes slideUpCookie {
+          from { bottom: -100px; opacity: 0; }
+          to { bottom: 0; opacity: 1; }
+        }
+        .cookie-banner a { color: #0066cc; text-decoration: underline; }
+        .cookie-banner button {
+          background: #000;
+          color: #fff;
+          border: none;
+          padding: 6px 14px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 13px;
+          white-space: nowrap;
+        }
+        
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--topbar-color), #01576d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 6px 20px rgba(1, 136, 159, 0.3);
+            border: 3px solid white;
+        }
+        .scroll-to-top:hover {
+            background: linear-gradient(135deg, #01576d, var(--topbar-color));
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(1, 136, 159, 0.4);
+        }
+        .scroll-to-top.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .news-img { width: 250px; height: 180px; }
+            .categories-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+            .category-card { min-height: 260px; }
+            .scroll-to-top { width: 55px; height: 55px; bottom: 25px; right: 25px; font-size: 1.3rem; }
+        }
+        @media (max-width: 768px) {
+            .hamburger-menu { display: flex; }
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 320px;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 80px 25px 25px;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.15);
+                transition: var(--transition);
+                z-index: 1001;
+                overflow-y: auto;
+            }
+            .nav-links-container { flex-direction: column; gap: 0; }
+            .nav-menu.active { right: 0; }
+            .nav-link { padding: 14px 15px; font-size: 1rem; margin-bottom: 3px; }
+            .nav-link i { display: inline-block; }
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                padding: 4px 0;
+                display: none;
+                background-color: rgba(1, 136, 159, 0.05);
+                border-radius: 8px;
+                margin: 3px 0 8px;
+                border-top: none;
+                border-left: 3px solid var(--topbar-color);
+                min-width: auto;
+                max-width: 100%;
+                width: 100%;
+            }
+            .dropdown.active .dropdown-menu { display: block; }
+            
+            /* Modern Son Dakika Şeridi - Mobil */
+            .breaking-news-ticker {
+                border-radius: 10px;
+                margin-bottom: 30px;
+            }
+            
+            .breaking-ticker-label {
+                min-width: 180px;
+                padding: 0 20px;
+                font-size: 0.9rem;
+                justify-content: flex-start; /* Sola yasla - mobil */
+            }
+            
+            .breaking-ticker-content {
+                padding: 0 20px;
+            }
+            
+            .breaking-ticker-text {
+                font-size: 1rem;
+                white-space: normal;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+            .breaking-ticker-text::before {
+                margin-right: 10px;
+            }
+            
+            .breaking-ticker-arrow {
+                right: 15px;
+            }
+            
+            .news-item { flex-direction: column; gap: 15px; }
+            .news-img { width: 100%; height: 250px; }
+            .categories-grid { grid-template-columns: 1fr; gap: 20px; }
+            .category-card { min-height: 240px; }
+            .footer-logo-description-section { flex-direction: column; gap: 20px; }
+            .footer-logo-container { flex-direction: row; justify-content: flex-start; align-items: center; gap: 20px; }
+            .footer-links-sections { grid-template-columns: 1fr; gap: 30px; }
+            .scroll-to-top { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 1.2rem; }
+        }
+        @media (max-width: 576px) {
+            .page-title { font-size: 2rem; }
+            .section-title { font-size: 1.5rem; }
+            .news-item-title { font-size: 1.2rem; }
+            
+            /* Modern Son Dakika Şeridi - Küçük Mobil */
+            .breaking-ticker-label {
+                min-width: 150px;
+                padding: 0 15px;
+                font-size: 0.85rem;
+                justify-content: flex-start; /* Sola yasla - küçük mobil */
+                animation: blinkText 0.8s infinite; /* Daha hızlı yanıp sönme */
+            }
+            
+            .breaking-ticker-content {
+                padding: 0 15px;
+            }
+            
+            .breaking-ticker-text {
+                font-size: 0.9rem;
+                -webkit-line-clamp: 2;
+            }
+            
+            .breaking-ticker-text::before {
+                margin-right: 8px;
+                font-size: 0.7rem;
+            }
+            
+            .breaking-ticker-arrow {
+                font-size: 1rem;
+                right: 10px;
+            }
+            
+            .category-card { min-height: 220px; }
+            .category-content { padding: 20px 15px; }
+            .category-icon { font-size: 2rem; }
+            .category-name { font-size: 1.1rem; }
+            .footer-social a { width: 40px; height: 40px; font-size: 1rem; }
+            .scroll-to-top { width: 45px; height: 45px; bottom: 15px; right: 15px; font-size: 1.1rem; }
+        }
+        
+        @media (max-width: 400px) {
+            .breaking-ticker-label {
+                min-width: 130px;
+                padding: 0 10px;
+                font-size: 0.8rem;
+                letter-spacing: 0.5px;
+                justify-content: flex-start; /* Sola yasla - çok küçük ekran */
+            }
+            
+            .breaking-ticker-text {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER (Örnek Sayfadan Birebir) -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/bartinduysun" title="Instagram" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="main-header">
+                <div class="logo-container">
+                    <div class="logo" id="mainLogo">
+                       <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp"
+     alt="Bartın Duysun - Son Dakika Bartın Haberleri">
+                    </div>
+                </div>
+                
+                <nav aria-label="Ana Navigasyon">
+                    <button class="hamburger-menu" id="hamburgerMenu" aria-label="Menü" type="button">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                
+                    <div class="menu-overlay" id="menuOverlay"></div>
+                    
+                    <ul class="nav-menu" id="navMenu">
+                        <div class="nav-links-container">
+                            <li class="nav-item"><a href="https://www.bartinduysun.com" class="nav-link"><i class="fas fa-home"></i> Anasayfa</a></li>
+                            <li class="nav-item"><a href="/bartin-haberleri/" class="nav-link"><i class="fas fa-newspaper"></i> Bartın Haberleri</a></li>
+                            <li class="nav-item"><a href="/bartin-valiligi-haberleri/" class="nav-link"><i class="fas fa-landmark"></i> Bartın Valiliği Haberleri</a></li>
+                            <li class="nav-item"><a href="/bartin-belediyesi-haberleri/" class="nav-link"><i class="fas fa-city"></i> Bartın Belediyesi Haberleri</a></li>
+                            <li class="nav-item"><a href="/bartin-siyaset-haberleri/" class="nav-link"><i class="fas fa-users"></i> Bartın Siyaset Haberleri</a></li>
+                            <li class="nav-item"><a href="/firma-rehberi/" class="nav-link"><i class="fas fa-building"></i> Bartın Firma Rehberi</a></li>
+                            <li class="nav-item dropdown" id="dropdownMenu">
+                                <a href="#" class="nav-link"><i class="fas fa-info-circle"></i> Hakkımızda <i class="fas fa-chevron-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/kurulus-hakkinda/"><i class="fas fa-info-circle"></i> Kuruluş Hakkında</a></li>
+                                    <li><a href="/kunye/"><i class="fas fa-users"></i> Künye</a></li>
+                                    <li><a href="/ekibimiz/"><i class="fas fa-user-friends"></i> Ekibimiz</a></li>
+                                    <li><a href="/iletisim/"><i class="fas fa-envelope"></i> İletişim</a></li>
+                                </ul>
+                            </li>
+                        </div>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- SAYFA BAŞLIĞI -->
+    <section class="page-header-section">
+        <div class="container">
+            <h1 class="page-title">Bartın Haberleri</h1>
+            <p class="page-description">Bartın ve ilçelerinden en güncel, doğru ve tarafsız haberler. Asayiş, kaza, siyaset, sosyal olaylar ve daha fazlası için güvenilir kaynağınız.</p>
+        </div>
+    </section>
+
+    <!-- MODERN SON DAKİKA ŞERİDİ - GÜNCELLENMİŞ -->
+    <div class="breaking-news-ticker" id="breakingNewsTicker" role="alert" aria-live="polite">
+        <div class="container">
+            <div class="breaking-ticker-container">
+                <div class="breaking-ticker-label">
+                    SON DAKİKA
+                </div>
+                <div class="breaking-ticker-content">
+                    <div class="breaking-ticker-text" id="breakingTickerText">
+                        Esentepe'de Gıda Zehirlenmesi: 15 kişi hastanelik oldu
+                    </div>
+                    <div class="breaking-ticker-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <!-- HABER LİSTESİ -->
+        <section class="news-list-section">
+            <h2 class="section-title">
+                <span class="blinking-dot"></span>
+                <span>Tüm Bartın Haberleri</span>
+            </h2>
+            
+            <div class="news-list" id="bartinNewsList">
+                <!-- Haber 1 -->
+                <article class="news-item">
+                    <a href="https://www.bartinduysun.com/haberler/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.html" class="news-img">
+                        <img src="https://www.bartinduysun.com/images/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.webp" alt="Esentepe'de Gıda Zehirlenmesi">
+                    </a>
+                    <div class="news-content">
+                        <h3 class="news-item-title">Esentepe'de Gıda Zehirlenmesi: 15 kişi hastanelik oldu</h3>
+                        <p class="news-item-excerpt">Bartın'ın Esentepe Mahallesi'nde düzenlenen bir asker uğurlama etkinliği, istenmeyen bir sonla noktalandı. Etkinlikte ikram edilen yemeği tüketen 15 kişi, ardından ortaya çıkan mide bulantısı ve kusma şikayetleri üzerine Bartın Devlet Hastanesi acil servisine başvurdu.</p>
+                        <div class="news-item-details">
+                            <span>1 Şubat 2026</span>
+                            <a href="https://www.bartinduysun.com/haberler/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.html" class="read-more-link">
+                                Haberin Detayları <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Haber 2 -->
+                <article class="news-item">
+                    <a href="https://www.bartinduysun.com/haberler/bartin/mugada-sahilinde-tartisma-silahli-saldiri-bir-kisi-agir-yarali.html" class="news-img">
+                        <img src="https://www.bartinduysun.com/images/bartin/bartin-mugada-silahli-saldiri-72-yasindaki-adam-agir-yaralandi.webp" alt="Mugada Sahilinde Silahlı Saldırı">
+                    </a>
+                    <div class="news-content">
+                        <h3 class="news-item-title">Mugada Sahilinde Tartışma Silahlı Saldırıya Dönüştü: Bir Kişi Ağır Yaralı</h3>
+                        <p class="news-item-excerpt">Bartın'ın Mugada sahilinde iki kişi arasında çıkan tartışma, silahlı saldırıyla sonuçlandı. İddiaya göre Y.T. (49), H.Ö. (72) ile yaşadığı sözlü tartışmanın ardından av tüfeğiyle ateş açtı. Baş ve göğüs bölgesinden ağır yaralanan H.Ö., Bartın Devlet Hastanesi'ne kaldırıldı.</p>
+                        <div class="news-item-details">
+                            <span>31 Ocak 2026</span>
+                            <a href="https://www.bartinduysun.com/haberler/bartin/mugada-sahilinde-tartisma-silahli-saldiri-bir-kisi-agir-yarali.html" class="read-more-link">
+                                Haberin Detayları <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- REKLAM 1 -->
+                <div class="ad-section" id="ad1">
+                    <div class="ad-content">
+                        <img src="https://www.bartinduysun.com/images/bahcen-kebap.webp" alt="Bahçen Kebap - Lezzetli Döner ve Kebap" class="ad-image">
+                    </div>
+                </div>
+                
+                <!-- Haber 3 -->
+                <article class="news-item">
+                    <a href="https://www.bartinduysun.com/haberler/bartin/bartin-kahveciler-serbetciler-esnaf-odasi-ayhan-tepe-yeniden-baskan-secildi.html" class="news-img">
+                        <img src="https://www.bartinduysun.com/images/bartin/bartinda-kahveciler-ve-serbetciler-esnaf-odasi-baskanligi-secimi-yapildi.webp" alt="Kahveciler Esnaf Odası Seçimi">
+                    </a>
+                    <div class="news-content">
+                        <h3 class="news-item-title">Bartın Kahveciler ve Şerbetçiler Esnaf Odası'nda Ayhan Tepe Yeniden Başkan Seçildi</h3>
+                        <p class="news-item-excerpt">Bartın Kahveciler ve Şerbetçiler Esnaf Odası Başkanlığı seçimleri iki adayın katılımıyla gerçekleştirildi. Yapılan oylamada Ayhan Tepe 343 oy alarak yeniden başkanlığa seçilirken, diğer aday Taşkın Özmen 59 oyda kaldı.</p>
+                        <div class="news-item-details">
+                            <span>30 Ocak 2026</span>
+                            <a href="https://www.bartinduysun.com/haberler/bartin/bartin-kahveciler-serbetciler-esnaf-odasi-ayhan-tepe-yeniden-baskan-secildi.html" class="read-more-link">
+                                Haberin Detayları <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Haber 4 -->
+                <article class="news-item">
+                    <a href="https://www.bartinduysun.com/haberler/bartin/gurgenpinari-ucuruma-yuvarlanan-kamyon-surucusu-hayatini-kaybetti.html" class="news-img">
+                        <img src="https://www.bartinduysun.com/images/bartin/gurgenpinar-tas-ocagi-kazasi-kamyon-soforu-hayatini-kaybetti.webp" alt="Gürgenpınarı'nda Kaza">
+                    </a>
+                    <div class="news-content">
+                        <h3 class="news-item-title">Gürgenpınarı'nda Uçuruma Yuvarlanan Kamyonun Sürücüsü Hayatını Kaybetti</h3>
+                        <p class="news-item-excerpt">Bartın'da bir taş ocağında malzeme boşaltımı sırasında kontrolden çıkan kamyon yaklaşık 5 metrelik uçuruma yuvarlandı. Kazada kamyonun sürücüsü hayatını kaybetti. Olayla ilgili soruşturma başlatıldı.</p>
+                        <div class="news-item-details">
+                            <span>29 Ocak 2026</span>
+                            <a href="https://www.bartinduysun.com/haberler/bartin/gurgenpinari-ucuruma-yuvarlanan-kamyon-surucusu-hayatini-kaybetti.html" class="read-more-link">
+                                Haberin Detayları <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Haber 5 -->
+                <article class="news-item">
+                    <a href="https://www.bartinduysun.com/haberler/bartin/gurgenpinari-acik-konsept-avm-projesi-baskan-yalcinkaya-duyurdu.html" class="news-img">
+                        <img src="https://www.bartinduysun.com/images/bartin/gurgenpinari-acik-konsept-avm-projesi-baskan-yalcinkaya-duyurdu.webp" alt="Gürgenpınarı AVM Projesi">
+                    </a>
+                    <div class="news-content">
+                        <h3 class="news-item-title">Gürgenpınarı Açık Konsept AVM Projesini Başkan Yalçınkaya Duyurdu</h3>
+                        <p class="news-item-excerpt">Gürgenpınarı'nda hayata geçirilmesi planlanan açık konsept AVM projesi, Belediye Başkanı Yalçınkaya tarafından kamuoyuna duyuruldu. Projenin bölgeye sosyal ve ekonomik katkı sağlaması hedefleniyor.</p>
+                        <div class="news-item-details">
+                            <span>28 Ocak 2026</span>
+                            <a href="https://www.bartinduysun.com/haberler/bartin/gurgenpinari-acik-konsept-avm-projesi-baskan-yalcinkaya-duyurdu.html" class="read-more-link">
+                                Haberin Detayları <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- REKLAM 2 -->
+                <div class="ad-section" id="ad2">
+                    <div class="ad-content">
+                        <img src="https://www.bartinduysun.com/images/sultana-kunefe.webp" alt="Sultana Künefe - Özel Lezzetler" class="ad-image">
+                    </div>
+                </div>
+                
+                <!-- Haber 6 -->
+                <article class="news-item">
+                    <a href="https://www.bartinduysun.com/haberler/bartin/sipahiler-koyunde-yangin.html" class="news-img">
+                        <img src="https://www.bartinduysun.com/images/bartin/sipahiler-koyunde-yangin.webp" alt="Sipahiler Köyünde Yangın">
+                    </a>
+                    <div class="news-content">
+                        <h3 class="news-item-title">Sipahiler Köyünde Yangın</h3>
+                        <p class="news-item-excerpt">Bartın'ın Sipahiler Köyü'nde çıkan yangında büyük maddi hasar meydana geldi. Bir ev ve samanlık yangın sonrası kullanılamaz hale geldi. İtfaiye ekiplerinin müdahalesiyle yangın kontrol altına alındı.</p>
+                        <div class="news-item-details">
+                            <span>27 Ocak 2026</span>
+                            <a href="https://www.bartinduysun.com/haberler/bartin/sipahiler-koyunde-yangin.html" class="read-more-link">
+                                Haberin Detayları <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+        <!-- TÜM HABERLER / HIZLI ERİŞİM BÖLÜMÜ (Örnek Sayfadan Aynen) -->
+        <section class="categories-section" aria-labelledby="categoriesTitle">
+            <h2 class="section-title" id="categoriesTitle">
+                <i class="fas fa-bolt" style="margin-right: 10px; color: var(--topbar-color); animation: blink 1s infinite;"></i>
+                Tüm Haberler / Hızlı Erişim
+            </h2>
+            
+            <div class="categories-grid">
+                <a href="/bartin-haberleri/" class="category-card">
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fas fa-newspaper"></i></div>
+                        <h3 class="category-name">Bartın Haberleri</h3>
+                        <p>Bartın'dan güncel ve genel haberler</p>
+                    </div>
+                </a>
+                
+                <a href="/bartin-valiligi-haberleri/" class="category-card">
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fas fa-landmark"></i></div>
+                        <h3 class="category-name">Bartın Valiliği Haberleri</h3>
+                        <p>Bartın Valiliği'nden güncel duyuru ve haberler</p>
+                    </div>
+                </a>
+                
+                <a href="/bartin-belediyesi-haberleri/" class="category-card">
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fas fa-city"></i></div>
+                        <h3 class="category-name">Bartın Belediyesi Haberleri</h3>
+                        <p>Bartın Belediyesi faaliyet ve projeleri</p>
+                    </div>
+                </a>
+                
+                <a href="/bartin-siyaset-haberleri/" class="category-card">
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fas fa-users"></i></div>
+                        <h3 class="category-name">Bartın Siyaset Haberleri</h3>
+                        <p>Yerel ve genel siyasetten gelişmeler</p>
+                    </div>
+                </a>
+                
+                <a href="/firma-rehberi/" class="category-card">
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fas fa-building"></i></div>
+                        <h3 class="category-name">Bartın Firma Rehberi</h3>
+                        <p>Bartın'daki firmalar ve işletmeler</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (Örnek Sayfadan Birebir) -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-top-section">
+                    <div class="footer-logo-description-section">
+                        <div class="footer-logo-container">
+                            <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp" alt="Bartın Duysun Logo" class="footer-logo-img" id="footerLogo" loading="lazy">
+                            <a href="https://www.web4medya.com" target="_blank" rel="noopener noreferrer">
+                                <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Web4Medya Logo" class="web4medya-logo" loading="lazy">
+                            </a>
+                        </div>
+                        
+                        <div class="footer-description">
+                            Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir. Yerel haberlerde güvenilir ve hızlı bir kaynak olmayı hedefliyoruz.
+                        </div>
+                    </div>
+                    
+                    <div class="footer-links-sections">
+                        <div class="footer-links-column">
+                            <h3 class="footer-title">Kurumsal</h3>
+                            <ul class="footer-links">
+                                <li><a href="yayin-ilkelerimiz/"><i class="fas fa-chevron-right"></i> Yayın İlkelerimiz</a></li>
+                                <li><a href="kullanim-sartlari/"><i class="fas fa-chevron-right"></i> Kullanım Şartları</a></li>
+                                <li><a href="gizlilik-politikasi/"><i class="fas fa-chevron-right"></i> Gizlilik Politikası</a></li>
+                                <li><a href="cerez-politikasi/"><i class="fas fa-chevron-right"></i> Çerez Politikası</a></li>
+                                <li><a href="kvkk-metni/"><i class="fas fa-chevron-right"></i> Kişisel Verilerin Korunması</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-links-column">
+                            <h3 class="footer-title">Hakkımızda</h3>
+                            <ul class="footer-links">
+                                <li><a href="kurulus-hakkinda/"><i class="fas fa-chevron-right"></i> Kuruluş Hakkında</a></li>
+                                <li><a href="kunye/"><i class="fas fa-chevron-right"></i> Künye</a></li>
+                                <li><a href="ekibimiz/"><i class="fas fa-chevron-right"></i> Ekibimiz</a></li>
+                                <li><a href="iletisim/"><i class="fas fa-chevron-right"></i> İletişim</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-social-section">
+                        <h3 class="footer-title">Bizi Takip Edin</h3>
+                        <div class="footer-social">
+                            <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/bartinduysun" title="Instagram" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    <p>© 2020 Bartın Duysun – Tüm Hakları Saklıdır.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ÇEREZ BİLDİRİMİ -->
+    <div id="cookie-banner" class="cookie-banner">
+      <span>
+        Bu web sitesinde kullanıcı deneyimini geliştirmek amacıyla çerezler kullanılmaktadır.
+        Detaylı bilgi için <a href="cerez-politikasi/">Çerez Politikası</a> sayfasını inceleyebilirsiniz.
+      </span>
+      <button id="closeCookies" aria-label="Çerez bildirimi kapat">Kapat</button>
+    </div>
+    
+    <!-- YUKARI ÇIK BUTONU -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Sayfanın üstüne çık">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Haber verisi (Örnek sayfadan alınan 6 Bartın Haberi)
+        const bartinHaberleri = [
+            {
+                id: 1,
+                title: "Esentepe'de Gıda Zehirlenmesi: 15 kişi hastanelik oldu",
+                category: "Bartın Haberleri",
+                image: "https://www.bartinduysun.com/images/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.webp",
+                excerpt: "Bartın'ın Esentepe Mahallesi'nde düzenlenen bir asker uğurlama etkinliği, istenmeyen bir sonla noktalandı. Etkinlikte ikram edilen yemeği tüketen 15 kişi, ardından ortaya çıkan mide bulantısı ve kusma şikayetleri üzerine Bartın Devlet Hastanesi acil servisine başvurdu.",
+                url: "https://www.bartinduysun.com/haberler/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.html",
+                date: "1 Şubat 2026"
+            },
+            {
+                id: 2,
+                title: "Mugada Sahilinde Tartışma Silahlı Saldırıya Dönüştü: Bir Kişi Ağır Yaralı",
+                category: "Bartın Haberleri",
+                image: "https://www.bartinduysun.com/images/bartin/bartin-mugada-silahli-saldiri-72-yasindaki-adam-agir-yaralandi.webp",
+                excerpt: "Bartın'ın Mugada sahilinde iki kişi arasında çıkan tartışma, silahlı saldırıyla sonuçlandı. İddiaya göre Y.T. (49), H.Ö. (72) ile yaşadığı sözlü tartışmanın ardından av tüfeğiyle ateş açtı. Baş ve göğüs bölgesinden ağır yaralanan H.Ö., Bartın Devlet Hastanesi'ne kaldırıldı.",
+                url: "https://www.bartinduysun.com/haberler/bartin/mugada-sahilinde-tartisma-silahli-saldiri-bir-kisi-agir-yarali.html",
+                date: "31 Ocak 2026"
+            },
+            {
+                id: 3,
+                title: "Bartın Kahveciler ve Şerbetçiler Esnaf Odası'nda Ayhan Tepe Yeniden Başkan Seçildi",
+                category: "Bartın Haberleri",
+                image: "https://www.bartinduysun.com/images/bartin/bartinda-kahveciler-ve-serbetciler-esnaf-odasi-baskanligi-secimi-yapildi.webp",
+                excerpt: "Bartın Kahveciler ve Şerbetçiler Esnaf Odası Başkanlığı seçimleri iki adayın katılımıyla gerçekleştirildi. Yapılan oylamada Ayhan Tepe 343 oy alarak yeniden başkanlığa seçilirken, diğer aday Taşkın Özmen 59 oyda kaldı.",
+                url: "https://www.bartinduysun.com/haberler/bartin/bartin-kahveciler-serbetciler-esnaf-odasi-ayhan-tepe-yeniden-baskan-secildi.html",
+                date: "30 Ocak 2026"
+            },
+            {
+                id: 4,
+                title: "Gürgenpınarı'nda Uçuruma Yuvarlanan Kamyonun Sürücüsü Hayatını Kaybetti",
+                category: "Bartın Haberleri",
+                image: "https://www.bartinduysun.com/images/bartin/gurgenpinar-tas-ocagi-kazasi-kamyon-soforu-hayatini-kaybetti.webp",
+                excerpt: "Bartın'da bir taş ocağında malzeme boşaltımı sırasında kontrolden çıkan kamyon yaklaşık 5 metrelik uçuruma yuvarlandı. Kazada kamyonun sürücüsü hayatını kaybetti. Olayla ilgili soruşturma başlatıldı.",
+                url: "https://www.bartinduysun.com/haberler/bartin/gurgenpinari-ucuruma-yuvarlanan-kamyon-surucusu-hayatini-kaybetti.html",
+                date: "29 Ocak 2026"
+            },
+            {
+                id: 5,
+                title: "Gürgenpınarı Açık Konsept AVM Projesini Başkan Yalçınkaya Duyurdu",
+                category: "Bartın Haberleri",
+                image: "https://www.bartinduysun.com/images/bartin/gurgenpinari-acik-konsept-avm-projesi-baskan-yalcinkaya-duyurdu.webp",
+                excerpt: "Gürgenpınarı'nda hayata geçirilmesi planlanan açık konsept AVM projesi, Belediye Başkanı Yalçınkaya tarafından kamuoyuna duyuruldu. Projenin bölgeye sosyal ve ekonomik katkı sağlaması hedefleniyor.",
+                url: "https://www.bartinduysun.com/haberler/bartin/gurgenpinari-acik-konsept-avm-projesi-baskan-yalcinkaya-duyurdu.html",
+                date: "28 Ocak 2026"
+            },
+            {
+                id: 6,
+                title: "Sipahiler Köyünde Yangın",
+                category: "Bartın Haberleri",
+                image: "https://www.bartinduysun.com/images/bartin/sipahiler-koyunde-yangin.webp",
+                excerpt: "Bartın'ın Sipahiler Köyü'nde çıkan yangında büyük maddi hasar meydana geldi. Bir ev ve samanlık yangın sonrası kullanılamaz hale geldi. İtfaiye ekiplerinin müdahalesiyle yangın kontrol altına alındı.",
+                url: "https://www.bartinduysun.com/haberler/bartin/sipahiler-koyunde-yangin.html",
+                date: "27 Ocak 2026"
+            }
+        ];
+
+        // DOM Elementleri
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const breakingTickerText = document.getElementById('breakingTickerText');
+        const breakingNewsTicker = document.getElementById('breakingNewsTicker');
+        const cookieBanner = document.getElementById('cookie-banner');
+        const closeCookiesBtn = document.getElementById('closeCookies');
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        const mainLogo = document.getElementById('mainLogo');
+        const footerLogo = document.getElementById('footerLogo');
+
+        // MODERN SON DAKİKA ŞERİDİNİ AYARLA
+        if (breakingTickerText && bartinHaberleri.length > 0) {
+            breakingTickerText.textContent = bartinHaberleri[0].title;
+            
+            // Tıklanınca ilk habere git
+            breakingTickerText.addEventListener('click', function() {
+                window.location.href = bartinHaberleri[0].url;
+            });
+            
+            // Tüm şeride tıklanınca da habere git
+            if (breakingNewsTicker) {
+                breakingNewsTicker.addEventListener('click', function(e) {
+                    if (!e.target.closest('.breaking-ticker-label')) {
+                        window.location.href = bartinHaberleri[0].url;
+                    }
+                });
+            }
+        }
+
+        // MOBİL MENÜ
+        function toggleMobileMenu() {
+            if (navMenu && menuOverlay && hamburgerMenu) {
+                navMenu.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                hamburgerMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        // ÇEREZ BİLDİRİMİ
+        if (cookieBanner && closeCookiesBtn) {
+            if (!localStorage.getItem("cookieInfoClosed")) {
+                cookieBanner.style.display = "flex";
+            }
+            closeCookiesBtn.addEventListener("click", function() {
+                localStorage.setItem("cookieInfoClosed", "true");
+                cookieBanner.style.display = "none";
+            });
+        }
+
+        // YUKARI ÇIK BUTONU
+        function initScrollToTop() {
+            if (!scrollToTopBtn) return;
+            
+            function toggleScrollToTopButton() {
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.classList.add('active');
+                } else {
+                    scrollToTopBtn.classList.remove('active');
+                }
+            }
+            
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                this.style.transform = 'scale(0.9)';
+                setTimeout(() => { this.style.transform = ''; }, 150);
+            });
+            
+            window.addEventListener('scroll', toggleScrollToTopButton);
+            toggleScrollToTopButton();
+        }
+
+        // LOGO TIKLAMA
+        function handleLogoClick(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // EVENT LISTENER'LARI KUR
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobil menü
+            if (hamburgerMenu) hamburgerMenu.addEventListener('click', toggleMobileMenu);
+            if (menuOverlay) menuOverlay.addEventListener('click', toggleMobileMenu);
+            
+            // Logo
+            if (mainLogo) mainLogo.addEventListener('click', handleLogoClick);
+            if (footerLogo) footerLogo.addEventListener('click', handleLogoClick);
+            
+            // Yukarı çık butonu
+            initScrollToTop();
+            
+            // Dropdown menü (mobil)
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            if (dropdownMenu && window.innerWidth <= 768) {
+                dropdownMenu.querySelector('.nav-link').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    dropdownMenu.classList.toggle('active');
+                });
+            }
+            
+            // Pencere boyutu değiştiğinde dropdown'ı kapat
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    if (navMenu) navMenu.classList.remove('active');
+                    if (menuOverlay) menuOverlay.classList.remove('active');
+                    if (hamburgerMenu) hamburgerMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
