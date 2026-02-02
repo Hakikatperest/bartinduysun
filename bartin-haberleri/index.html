@@ -276,17 +276,20 @@
             max-width: 800px;
         }
         
-        /* MODERN SON DAKİKA ŞERİDİ - GÜNCELLENMİŞ */
+        /* MODERN SON DAKİKA ŞERİDİ - GÜNCELLENMİŞ (BEYAZ ARKA PLAN, KIRMIZI YAZI) */
         .breaking-news-ticker {
-            background: linear-gradient(135deg, #ff3b30 0%, #d32f2f 50%, #b71c1c 100%);
-            color: white;
+            background: white;
+            color: #333;
             padding: 0;
             margin: 0 0 40px 0;
             position: relative;
             overflow: hidden;
             border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.25);
-            border-left: 6px solid #ff9800;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #d32f2f;
+            border-top: 1px solid #eee;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
         }
         
         .breaking-ticker-container {
@@ -297,8 +300,8 @@
         }
         
         .breaking-ticker-label {
-            background: rgba(0, 0, 0, 0.15);
-            color: #fff;
+            background: rgba(211, 47, 47, 0.1);
+            color: #d32f2f;
             font-weight: 800;
             font-size: 1rem;
             text-transform: uppercase;
@@ -306,23 +309,22 @@
             padding: 0 25px;
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Sola yasla */
+            justify-content: flex-start;
             white-space: nowrap;
             position: relative;
             flex-shrink: 0;
             min-width: 220px;
-            animation: blinkText 1s infinite; /* Yanıp sönen efekt */
+            animation: blinkText 1s infinite;
         }
         
-        /* Yanıp sönen efekt */
         @keyframes blinkText {
             0%, 100% { 
                 opacity: 1;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+                text-shadow: 0 0 10px rgba(211, 47, 47, 0.3);
             }
             50% { 
                 opacity: 0.7;
-                text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+                text-shadow: 0 0 5px rgba(211, 47, 47, 0.1);
             }
         }
         
@@ -334,10 +336,8 @@
             transform: translateY(-50%);
             width: 1px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(211, 47, 47, 0.3);
         }
-        
-        /* SARI İKON KALDIRILDI - Sadece metin */
         
         .breaking-ticker-content {
             flex: 1;
@@ -361,11 +361,11 @@
             overflow: hidden;
             text-overflow: ellipsis;
             max-width: 100%;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            color: #333;
         }
         
         .breaking-ticker-text:hover {
-            color: #ffeb3b;
+            color: #d32f2f;
             transform: translateX(5px);
         }
         
@@ -373,11 +373,10 @@
             content: '▶';
             margin-right: 15px;
             font-size: 0.8rem;
-            color: #ffeb3b;
+            color: #333;
             opacity: 0.8;
         }
         
-        /* Haber şeridi için parlak çizgi efekti */
         .breaking-news-ticker::before {
             content: '';
             position: absolute;
@@ -387,9 +386,9 @@
             height: 100%;
             background: linear-gradient(90deg, 
                 transparent, 
-                rgba(255, 255, 255, 0.15), 
-                rgba(255, 255, 255, 0.25), 
-                rgba(255, 255, 255, 0.15), 
+                rgba(211, 47, 47, 0.05),
+                rgba(211, 47, 47, 0.1), 
+                rgba(211, 47, 47, 0.05), 
                 transparent);
             animation: slide 6s infinite;
             z-index: 1;
@@ -400,21 +399,22 @@
             100% { left: 100%; }
         }
         
-        /* Sağ taraftaki ok ikonu */
         .breaking-ticker-arrow {
             position: absolute;
             right: 25px;
             top: 50%;
             transform: translateY(-50%);
-            color: rgba(255, 255, 255, 0.7);
+            color: #333;
             font-size: 1.2rem;
             z-index: 2;
             transition: transform 0.3s ease;
+            opacity: 0.7;
         }
         
         .breaking-news-ticker:hover .breaking-ticker-arrow {
             transform: translateY(-50%) translateX(5px);
-            color: white;
+            color: #d32f2f;
+            opacity: 1;
         }
         
         /* HABER LİSTESİ (Son Dakika Haberler Tasarımı) */
@@ -1021,7 +1021,7 @@
                 min-width: 180px;
                 padding: 0 20px;
                 font-size: 0.9rem;
-                justify-content: flex-start; /* Sola yasla - mobil */
+                justify-content: flex-start;
             }
             
             .breaking-ticker-content {
@@ -1065,8 +1065,8 @@
                 min-width: 150px;
                 padding: 0 15px;
                 font-size: 0.85rem;
-                justify-content: flex-start; /* Sola yasla - küçük mobil */
-                animation: blinkText 0.8s infinite; /* Daha hızlı yanıp sönme */
+                justify-content: flex-start;
+                animation: blinkText 0.8s infinite;
             }
             
             .breaking-ticker-content {
@@ -1102,7 +1102,7 @@
                 padding: 0 10px;
                 font-size: 0.8rem;
                 letter-spacing: 0.5px;
-                justify-content: flex-start; /* Sola yasla - çok küçük ekran */
+                justify-content: flex-start;
             }
             
             .breaking-ticker-text {
@@ -1176,7 +1176,7 @@
         </div>
     </section>
 
-    <!-- MODERN SON DAKİKA ŞERİDİ - GÜNCELLENMİŞ -->
+    <!-- MODERN SON DAKİKA ŞERİDİ - GÜNCELLENMİŞ (BEYAZ ARKA PLAN, KIRMIZI YAZI) -->
     <div class="breaking-news-ticker" id="breakingNewsTicker" role="alert" aria-live="polite">
         <div class="container">
             <div class="breaking-ticker-container">
