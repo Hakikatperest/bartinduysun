@@ -75,7 +75,7 @@
             padding: 0 15px;
         }
         
-        /* YENİ HEADER (Referans sayfadan %100 Aynı) */
+        /* YENİ HEADER (İletişim sayfasından %100 Aynı) */
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -87,54 +87,65 @@
         .top-bar {
             background-color: var(--topbar-color);
             color: white;
-            padding: 8px 0;
-        }
-        
-        .top-bar .container {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-        
-        .contact-info {
-            display: none;
+            padding: 10px 0;
         }
         
         .social-icons {
             display: flex;
+            justify-content: flex-end;
             gap: 10px;
         }
         
         .social-icons a {
             color: white;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 30px;
-            height: 30px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.2);
         }
         
-        .social-icons a.facebook:hover { background-color: #1877F2; }
-        .social-icons a.instagram:hover { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); }
-        .social-icons a.twitter:hover { background-color: #000000; }
-        .social-icons a.youtube:hover { background-color: #FF0000; }
-        .social-icons a.telegram:hover { background-color: #0088cc; }
+        .social-icons a.facebook {
+            background-color: #1877F2;
+        }
+        
+        .social-icons a.instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+        
+        .social-icons a.twitter {
+            background-color: #000000;
+        }
+        
+        .social-icons a.youtube {
+            background-color: #FF0000;
+        }
+        
+        .social-icons a.telegram {
+            background-color: #0088cc;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
         
         .main-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 12px 0;
         }
         
+        /* LOGO BOYUTU İletişim sayfasındaki gibi ayarlandı */
         .logo-container {
             height: 70px;
             display: flex;
             align-items: center;
+            margin-left: 30px;
         }
         
         .logo {
@@ -148,6 +159,7 @@
             height: 100%;
             width: auto;
             object-fit: contain;
+            transform: scale(1.2); /* İletişim sayfasındaki gibi %20 büyütme */
         }
         
         .hamburger-menu {
@@ -169,9 +181,17 @@
             border-radius: 3px;
         }
         
-        .hamburger-menu.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-        .hamburger-menu.active span:nth-child(2) { opacity: 0; }
-        .hamburger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
         
         .nav-menu {
             display: flex;
@@ -190,15 +210,14 @@
         
         .nav-link {
             font-weight: 600;
-            font-size: 1rem;
-            padding: 12px 15px;
+            font-size: 1.05rem;
+            padding: 14px 15px;
             transition: var(--transition);
             border-radius: 8px;
             display: flex;
             align-items: center;
             gap: 8px;
             white-space: nowrap;
-            color: #333;
         }
         
         .nav-link:hover {
@@ -206,12 +225,9 @@
             background-color: rgba(1, 136, 159, 0.08);
         }
         
-        .nav-link.active {
-            color: var(--topbar-color);
-            background-color: rgba(1, 136, 159, 0.1);
+        .dropdown.active .nav-link i {
+            transform: rotate(180deg);
         }
-        
-        .dropdown.active .nav-link i.fa-chevron-down { transform: rotate(180deg); }
         
         .dropdown-menu {
             position: absolute;
@@ -228,6 +244,7 @@
             z-index: 100;
             border-radius: 10px;
             border-top: 3px solid var(--topbar-color);
+            max-width: 220px;
         }
         
         .dropdown:hover .dropdown-menu {
@@ -236,7 +253,10 @@
             transform: translateY(0);
         }
         
-        .dropdown-menu li { padding: 0 3px; margin: 1px 0; }
+        .dropdown-menu li {
+            padding: 0 3px;
+            margin: 1px 0;
+        }
         
         .dropdown-menu a {
             display: flex;
@@ -247,13 +267,19 @@
             border-radius: 6px;
             font-weight: 500;
             font-size: 0.95rem;
-            color: #333;
         }
         
         .dropdown-menu a:hover {
             color: var(--topbar-color);
             background-color: rgba(1, 136, 159, 0.08);
             padding-left: 20px;
+        }
+        
+        .dropdown-menu a i {
+            width: 18px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--topbar-color);
         }
         
         .menu-overlay {
@@ -267,7 +293,9 @@
             z-index: 999;
         }
         
-        .menu-overlay.active { display: block; }
+        .menu-overlay.active {
+            display: block;
+        }
         
         /* SAYFA BAŞLIĞI VE SON DAKİKA ŞERİDİ */
         .page-header-section {
@@ -289,7 +317,7 @@
             max-width: 800px;
         }
         
-        /* YENİ MODERN SON DAKİKA ŞERİDİ (Referans sayfaya göre güncellendi) */
+        /* YENİ MODERN SON DAKİKA ŞERİDİ (KIRMIZI ARKAPLANLI) */
         .son-dakika-bar {
             display: flex;
             align-items: center;
@@ -297,15 +325,15 @@
             color: #000000;
             overflow: hidden;
             height: 50px;
-            border-bottom: 2px solid #01889F;
+            border-bottom: 2px solid #c00;
             margin: 0 0 40px 0;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(1, 136, 159, 0.15);
+            box-shadow: 0 4px 15px rgba(192, 0, 0, 0.15);
             position: relative;
         }
         
         .son-dakika-etiket {
-            background: #01889F;
+            background: #c00; /* KIRMIZI ARKAPLAN */
             color: #ffffff;
             padding: 0 20px;
             height: 100%;
@@ -322,9 +350,9 @@
         }
         
         @keyframes yanip-sonme {
-            0% { background: #01889F; }
-            50% { background: #0198b5; }
-            100% { background: #01889F; }
+            0% { background: #c00; }
+            50% { background: #e00; }
+            100% { background: #c00; }
         }
         
         .son-dakika-etiket::after {
@@ -385,7 +413,7 @@
         }
         
         .son-dakika-bar:hover {
-            box-shadow: 0 6px 20px rgba(1, 136, 159, 0.2);
+            box-shadow: 0 6px 20px rgba(192, 0, 0, 0.2);
             transform: translateY(-1px);
             transition: all 0.3s ease;
         }
@@ -719,7 +747,7 @@
             max-width: 90%;
         }
         
-        /* FOOTER (Referans sayfadan Birebir) */
+        /* FOOTER (İletişim sayfasından %100 Aynı) */
         footer {
             background-color: white;
             color: var(--dark-color);
@@ -727,20 +755,20 @@
             margin-top: 50px;
             border-top: 2px solid var(--topbar-color);
         }
-
+        
         .footer-content {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 60px;
             margin-bottom: 30px;
         }
-
+        
         .footer-left {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
         }
-
+        
         .footer-logo-container {
             margin-bottom: 20px;
             display: flex;
@@ -749,7 +777,7 @@
             justify-content: flex-start;
             width: 100%;
         }
-
+        
         .footer-logo-img {
             height: 50px;
             width: auto;
@@ -757,11 +785,11 @@
             transition: var(--transition);
             pointer-events: auto;
         }
-
+        
         .footer-logo-img:hover {
             opacity: 0.9;
         }
-
+        
         .web4medya-logo {
             height: 60px;
             width: auto;
@@ -770,12 +798,12 @@
             cursor: pointer;
             pointer-events: auto;
         }
-
+        
         .web4medya-logo:hover {
             opacity: 1;
             transform: translateY(-2px);
         }
-
+        
         .footer-about {
             font-size: 0.95rem;
             line-height: 1.6;
@@ -783,13 +811,13 @@
             margin-bottom: 25px;
             text-align: justify;
         }
-
+        
         .footer-social {
             display: flex;
             gap: 10px;
             margin-top: 10px;
         }
-
+        
         .footer-social a {
             color: white;
             font-size: 1.1rem;
@@ -802,43 +830,43 @@
             border-radius: 50%;
             background-color: rgba(1, 136, 159, 0.9);
         }
-
+        
         .footer-social a.facebook {
             background-color: #1877F2;
         }
-
+        
         .footer-social a.instagram {
             background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
         }
-
+        
         .footer-social a.twitter {
             background-color: #000000;
         }
-
+        
         .footer-social a.youtube {
             background-color: #FF0000;
         }
-
+        
         .footer-social a.telegram {
             background-color: #0088cc;
         }
-
+        
         .footer-social a:hover {
             transform: translateY(-3px);
             opacity: 0.9;
         }
-
+        
         .footer-right {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 40px;
         }
-
+        
         .footer-column {
             display: flex;
             flex-direction: column;
         }
-
+        
         .footer-title {
             font-size: 1.2rem;
             margin-bottom: 20px;
@@ -848,7 +876,7 @@
             font-weight: 600;
             position: relative;
         }
-
+        
         .footer-title::after {
             content: '';
             position: absolute;
@@ -858,11 +886,11 @@
             height: 2px;
             background-color: var(--topbar-color);
         }
-
+        
         .footer-links li {
             margin-bottom: 12px;
         }
-
+        
         .footer-links a {
             transition: var(--transition);
             color: var(--topbar-color);
@@ -873,18 +901,18 @@
             padding: 5px 0;
             font-weight: 500;
         }
-
+        
         .footer-links a:hover {
             color: #01576d;
             padding-left: 8px;
         }
-
+        
         .footer-links a i {
             font-size: 0.8rem;
             width: 20px;
             color: var(--topbar-color);
         }
-
+        
         .copyright {
             text-align: center;
             padding: 20px 0;
@@ -1009,10 +1037,6 @@
             }
             .dropdown.active .dropdown-menu { display: block; }
             
-            .contact-info {
-                display: none;
-            }
-            
             /* Modern Son Dakika Şeridi - Mobil */
             .son-dakika-bar {
                 height: 45px;
@@ -1036,6 +1060,16 @@
             .news-img { width: 100%; height: 250px; }
             .categories-grid { grid-template-columns: 1fr; gap: 20px; }
             .category-card { min-height: 240px; }
+            
+            /* Logo boyutu mobil için ayarlandı */
+            .logo-container {
+                height: 50px;
+                margin-left: 0;
+            }
+            
+            .main-header {
+                padding: 8px 0;
+            }
             
             /* Footer Responsive */
             .footer-content {
@@ -1093,6 +1127,11 @@
             .category-icon { font-size: 2rem; }
             .category-name { font-size: 1.1rem; }
             
+            /* Logo boyutu küçük mobil için */
+            .logo-container {
+                height: 45px;
+            }
+            
             /* Footer Responsive */
             .footer-content {
                 gap: 30px;
@@ -1130,23 +1169,6 @@
                 font-size: 0.9rem;
             }
             
-            .category-card {
-                min-height: 220px;
-            }
-            
-            .category-content {
-                padding: 18px 12px;
-            }
-            
-            .category-icon {
-                font-size: 2rem;
-                margin-bottom: 10px;
-            }
-            
-            .category-name {
-                font-size: 1rem;
-            }
-            
             .footer-social a { width: 40px; height: 40px; font-size: 1rem; }
             .scroll-to-top { width: 45px; height: 45px; bottom: 15px; right: 15px; font-size: 1.1rem; }
         }
@@ -1165,7 +1187,7 @@
     </style>
 </head>
 <body>
-    <!-- HEADER (İletişim sayfasından %100 Aynı) -->
+    <!-- HEADER (İletişim sayfasından %100 Aynı - Logo boyutu düzeltildi) -->
     <header>
         <div class="top-bar">
             <div class="container">
@@ -1367,7 +1389,7 @@
             </div>
         </section>
         
-        <!-- TÜM HABERLER / HIZLI ERİŞİM BÖLÜMÜ (Referans sayfadan Aynen) -->
+        <!-- TÜM HABERLER / HIZLI ERİŞİM BÖLÜMÜ -->
         <section class="categories-section" aria-labelledby="categoriesTitle">
             <h2 class="section-title" id="categoriesTitle">
                 <i class="fas fa-bolt" style="margin-right: 10px; color: var(--topbar-color); animation: blink 1s infinite;"></i>
