@@ -25,18 +25,18 @@
         }
         
         :root {
-            --primary-color: #c00;
+            --primary-color: #01889F;
             --secondary-color: #ffc107;
             --dark-color: #222;
             --light-color: #f8f9fa;
             --gray-color: #6c757d;
             --border-color: #dee2e6;
             --transition: all 0.3s ease;
-            --topbar-color: #01889f;
+            --topbar-color: #01889F;
             --valilik-color: #28a745;
             --belediye-color: #007bff;
             --siyaset-color: #ffc107;
-            --bartin-color: #c00;
+            --bartin-color: #01889F;
             --breaking-red: #d32f2f;
             --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
@@ -75,7 +75,7 @@
             padding: 0 15px;
         }
         
-        /* HEADER (Örnek Sayfadan Birebir) */
+        /* YENİ HEADER (Referans sayfadan %100 Aynı) */
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -87,46 +87,54 @@
         .top-bar {
             background-color: var(--topbar-color);
             color: white;
-            padding: 10px 0;
+            padding: 8px 0;
+        }
+        
+        .top-bar .container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .contact-info {
+            display: none;
         }
         
         .social-icons {
             display: flex;
-            justify-content: flex-end;
             gap: 10px;
         }
         
         .social-icons a {
             color: white;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
         }
         
-        .social-icons a.facebook { background-color: #1877F2; }
-        .social-icons a.instagram { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); }
-        .social-icons a.twitter { background-color: #000000; }
-        .social-icons a.youtube { background-color: #FF0000; }
-        .social-icons a.telegram { background-color: #0088cc; }
-        .social-icons a:hover { transform: translateY(-3px); opacity: 0.9; }
+        .social-icons a.facebook:hover { background-color: #1877F2; }
+        .social-icons a.instagram:hover { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); }
+        .social-icons a.twitter:hover { background-color: #000000; }
+        .social-icons a.youtube:hover { background-color: #FF0000; }
+        .social-icons a.telegram:hover { background-color: #0088cc; }
         
         .main-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            padding: 15px 0;
         }
         
         .logo-container {
             height: 70px;
             display: flex;
             align-items: center;
-            margin-left: 30px;
         }
         
         .logo {
@@ -140,7 +148,6 @@
             height: 100%;
             width: auto;
             object-fit: contain;
-            transform: scale(1.2);
         }
         
         .hamburger-menu {
@@ -183,14 +190,15 @@
         
         .nav-link {
             font-weight: 600;
-            font-size: 1.05rem;
-            padding: 14px 15px;
+            font-size: 1rem;
+            padding: 12px 15px;
             transition: var(--transition);
             border-radius: 8px;
             display: flex;
             align-items: center;
             gap: 8px;
             white-space: nowrap;
+            color: #333;
         }
         
         .nav-link:hover {
@@ -198,7 +206,12 @@
             background-color: rgba(1, 136, 159, 0.08);
         }
         
-        .dropdown.active .nav-link i { transform: rotate(180deg); }
+        .nav-link.active {
+            color: var(--topbar-color);
+            background-color: rgba(1, 136, 159, 0.1);
+        }
+        
+        .dropdown.active .nav-link i.fa-chevron-down { transform: rotate(180deg); }
         
         .dropdown-menu {
             position: absolute;
@@ -215,7 +228,6 @@
             z-index: 100;
             border-radius: 10px;
             border-top: 3px solid var(--topbar-color);
-            max-width: 220px;
         }
         
         .dropdown:hover .dropdown-menu {
@@ -235,6 +247,7 @@
             border-radius: 6px;
             font-weight: 500;
             font-size: 0.95rem;
+            color: #333;
         }
         
         .dropdown-menu a:hover {
@@ -276,7 +289,7 @@
             max-width: 800px;
         }
         
-        /* YENİ MODERN SON DAKİKA ŞERİDİ */
+        /* YENİ MODERN SON DAKİKA ŞERİDİ (Referans sayfaya göre güncellendi) */
         .son-dakika-bar {
             display: flex;
             align-items: center;
@@ -284,15 +297,15 @@
             color: #000000;
             overflow: hidden;
             height: 50px;
-            border-bottom: 2px solid #d90000;
+            border-bottom: 2px solid #01889F;
             margin: 0 0 40px 0;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(217, 0, 0, 0.15);
+            box-shadow: 0 4px 15px rgba(1, 136, 159, 0.15);
             position: relative;
         }
         
         .son-dakika-etiket {
-            background: #d90000;
+            background: #01889F;
             color: #ffffff;
             padding: 0 20px;
             height: 100%;
@@ -309,9 +322,9 @@
         }
         
         @keyframes yanip-sonme {
-            0% { background: #d90000; }
-            50% { background: #ff0000; }
-            100% { background: #d90000; }
+            0% { background: #01889F; }
+            50% { background: #0198b5; }
+            100% { background: #01889F; }
         }
         
         .son-dakika-etiket::after {
@@ -337,9 +350,10 @@
         
         .son-dakika-yazi {
             display: flex;
-            animation: kaydir 30s linear infinite;
+            animation: kaydir 40s linear infinite;
             white-space: nowrap;
             will-change: transform;
+            padding-left: 100%;
         }
         
         .son-dakika-alan:hover .son-dakika-yazi {
@@ -352,32 +366,31 @@
             font-weight: 600;
             font-size: 1.1rem;
             transition: color 0.3s ease;
-            padding-right: 50px;
+            padding-right: 60px;
+            flex-shrink: 0;
         }
         
         .son-dakika-yazi a:hover {
             text-decoration: underline;
-            color: #d90000;
+            color: #01889F;
         }
         
-        /* Kesintisiz döngü için animasyon */
         @keyframes kaydir {
             0% {
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-50%);
+                transform: translateX(-100%);
             }
         }
         
-        /* Hover efekti için */
         .son-dakika-bar:hover {
-            box-shadow: 0 6px 20px rgba(217, 0, 0, 0.2);
+            box-shadow: 0 6px 20px rgba(1, 136, 159, 0.2);
             transform: translateY(-1px);
             transition: all 0.3s ease;
         }
         
-        /* HABER LİSTESİ (Son Dakika Haberler Tasarımı) */
+        /* HABER LİSTESİ */
         .news-list-section {
             margin-bottom: 50px;
         }
@@ -496,7 +509,7 @@
             gap: 12px;
         }
         
-        /* REKLAM ALANLARI */
+        /* REKLAM ALANLARI (Referans sayfaya göre güncellendi) */
         .ad-section {
             background-color: white;
             height: 180px;
@@ -512,13 +525,13 @@
             transition: var(--transition);
             box-shadow: var(--card-shadow);
             border: 3px solid transparent;
-            border-image: linear-gradient(45deg, #ff5722, #ff9800, #ff5722) 1;
+            border-image: linear-gradient(45deg, #01889F, #0198b5, #01889F) 1;
             animation: border-glow 2s ease-in-out infinite;
         }
         
         @keyframes border-glow {
-            0%, 100% { border-color: #ff5722; box-shadow: 0 0 10px rgba(255, 87, 34, 0.3); }
-            50% { border-color: #ff9800; box-shadow: 0 0 15px rgba(255, 152, 0, 0.5); }
+            0%, 100% { border-color: #01889F; box-shadow: 0 0 10px rgba(1, 136, 159, 0.3); }
+            50% { border-color: #0198b5; box-shadow: 0 0 15px rgba(1, 152, 181, 0.5); }
         }
         
         .ad-section:hover {
@@ -545,7 +558,7 @@
             border-radius: 8px;
         }
         
-        /* KATEGORİLER (Örnek Sayfadan Aynen) */
+        /* KATEGORİLER (Referans sayfadan Aynen) */
         .categories-section {
             margin: 60px 0;
             position: relative;
@@ -706,7 +719,7 @@
             max-width: 90%;
         }
         
-        /* FOOTER (Örnek Sayfadan Birebir) */
+        /* FOOTER (Referans sayfadan Birebir) */
         footer {
             background-color: white;
             color: #333333;
@@ -812,7 +825,7 @@
         }
         
         .footer-links a:hover {
-            color: #01576d;
+            color: #017085;
             padding-left: 8px;
         }
         
@@ -857,7 +870,7 @@
             order: 4;
         }
         
-        /* Çerez Bildirimi ve Yukarı Çık (Örnekten) */
+        /* Çerez Bildirimi ve Yukarı Çık */
         .cookie-banner {
           position: fixed;
           bottom: -100px;
@@ -898,7 +911,7 @@
             right: 30px;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--topbar-color), #01576d);
+            background: linear-gradient(135deg, var(--topbar-color), #017085);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -915,7 +928,7 @@
             border: 3px solid white;
         }
         .scroll-to-top:hover {
-            background: linear-gradient(135deg, #01576d, var(--topbar-color));
+            background: linear-gradient(135deg, #017085, var(--topbar-color));
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 10px 25px rgba(1, 136, 159, 0.4);
         }
@@ -970,6 +983,10 @@
                 width: 100%;
             }
             .dropdown.active .dropdown-menu { display: block; }
+            
+            .contact-info {
+                display: none;
+            }
             
             /* Modern Son Dakika Şeridi - Mobil */
             .son-dakika-bar {
@@ -1047,7 +1064,7 @@
     </style>
 </head>
 <body>
-    <!-- HEADER (Örnek Sayfadan Birebir) -->
+    <!-- YENİ HEADER (Referans sayfadan %100 Aynı) -->
     <header>
         <div class="top-bar">
             <div class="container">
@@ -1082,7 +1099,7 @@
                     <ul class="nav-menu" id="navMenu">
                         <div class="nav-links-container">
                             <li class="nav-item"><a href="https://www.bartinduysun.com" class="nav-link"><i class="fas fa-home"></i> Anasayfa</a></li>
-                            <li class="nav-item"><a href="/bartin-haberleri/" class="nav-link"><i class="fas fa-newspaper"></i> Bartın Haberleri</a></li>
+                            <li class="nav-item"><a href="/bartin-haberleri/" class="nav-link active"><i class="fas fa-newspaper"></i> Bartın Haberleri</a></li>
                             <li class="nav-item"><a href="/bartin-valiligi-haberleri/" class="nav-link"><i class="fas fa-landmark"></i> Bartın Valiliği Haberleri</a></li>
                             <li class="nav-item"><a href="/bartin-belediyesi-haberleri/" class="nav-link"><i class="fas fa-city"></i> Bartın Belediyesi Haberleri</a></li>
                             <li class="nav-item"><a href="/bartin-siyaset-haberleri/" class="nav-link"><i class="fas fa-users"></i> Bartın Siyaset Haberleri</a></li>
@@ -1250,7 +1267,7 @@
             </div>
         </section>
         
-        <!-- TÜM HABERLER / HIZLI ERİŞİM BÖLÜMÜ (Örnek Sayfadan Aynen) -->
+        <!-- TÜM HABERLER / HIZLI ERİŞİM BÖLÜMÜ (Referans sayfadan Aynen) -->
         <section class="categories-section" aria-labelledby="categoriesTitle">
             <h2 class="section-title" id="categoriesTitle">
                 <i class="fas fa-bolt" style="margin-right: 10px; color: var(--topbar-color); animation: blink 1s infinite;"></i>
@@ -1301,7 +1318,7 @@
         </section>
     </main>
 
-    <!-- FOOTER (Örnek Sayfadan Birebir) -->
+    <!-- FOOTER (Referans sayfadan Birebir) -->
     <footer>
         <div class="container">
             <div class="footer-container">
@@ -1447,7 +1464,7 @@
         const mainLogo = document.getElementById('mainLogo');
         const footerLogo = document.getElementById('footerLogo');
 
-        // SON DAKİKA ŞERİDİNİ AYARLA (KESİNTİSİZ DÖNGÜ)
+        // SON DAKİKA ŞERİDİNİ AYARLA (DÜZGÜN BAŞLANGIÇ İLE KESİNTİSİZ DÖNGÜ)
         function setupBreakingNewsTicker() {
             if (!breakingNewsContent || bartinHaberleri.length === 0) return;
             
@@ -1455,10 +1472,10 @@
             const firstNews = bartinHaberleri[0];
             const newsText = `${firstNews.title}. ${firstNews.excerpt}`;
             
-            // Aynı haberi iki kere ekleyerek kesintisiz döngü sağla
+            // Temizle
             breakingNewsContent.innerHTML = '';
             
-            // 2 kopya oluştur (kaydırma efekti için)
+            // Haber metnini iki kopya oluştur (kesintisiz döngü için)
             for (let i = 0; i < 2; i++) {
                 const newsLink = document.createElement('a');
                 newsLink.href = firstNews.url;
@@ -1466,7 +1483,7 @@
                 
                 // Fare ile üzerine gelindiğinde rengi değişsin
                 newsLink.addEventListener('mouseenter', function() {
-                    this.style.color = '#d90000';
+                    this.style.color = '#01889F';
                 });
                 
                 newsLink.addEventListener('mouseleave', function() {
@@ -1484,6 +1501,13 @@
                     }
                 });
             }
+            
+            // Şerit animasyonunu düzgün başlat
+            setTimeout(() => {
+                if (breakingNewsContent) {
+                    breakingNewsContent.style.animation = 'kaydir 40s linear infinite';
+                }
+            }, 100);
         }
 
         // MOBİL MENÜ
