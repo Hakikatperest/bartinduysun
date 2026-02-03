@@ -1736,7 +1736,6 @@
                 // Butona tıklama
                 if (infoBtn) {
                     infoBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
                         e.stopPropagation();
                         const url = adSection.getAttribute('data-url');
                         if (url) {
