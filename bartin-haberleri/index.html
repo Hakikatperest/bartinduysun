@@ -537,15 +537,16 @@
             gap: 12px;
         }
         
-        /* REKLAM ALANLARI (Referans sayfaya göre güncellendi) */
+        /* REKLAM ALANLARI (YENİ: Referans sayfaya göre güncellendi) */
         .ad-section {
             background-color: white;
-            height: 180px;
+            min-height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 40px 0;
             border-radius: 12px;
+            color: var(--gray-color);
             overflow: hidden;
             position: relative;
             padding: 15px;
@@ -553,13 +554,13 @@
             transition: var(--transition);
             box-shadow: var(--card-shadow);
             border: 3px solid transparent;
-            border-image: linear-gradient(45deg, #01889F, #0198b5, #01889F) 1;
+            border-image: linear-gradient(45deg, #28a745, #20c997, #28a745) 1;
             animation: border-glow 2s ease-in-out infinite;
         }
         
         @keyframes border-glow {
-            0%, 100% { border-color: #01889F; box-shadow: 0 0 10px rgba(1, 136, 159, 0.3); }
-            50% { border-color: #0198b5; box-shadow: 0 0 15px rgba(1, 152, 181, 0.5); }
+            0%, 100% { border-color: #28a745; box-shadow: 0 0 10px rgba(40, 167, 69, 0.3); }
+            50% { border-color: #20c997; box-shadow: 0 0 15px rgba(32, 201, 151, 0.5); }
         }
         
         .ad-section:hover {
@@ -572,7 +573,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 15px;
             position: relative;
             cursor: pointer;
         }
@@ -581,9 +582,86 @@
             width: auto;
             height: auto;
             max-width: 100%;
-            max-height: 150px;
+            max-height: 170px;
             object-fit: contain;
             border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .ad-desktop {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 170px;
+            object-fit: contain;
+        }
+
+        .ad-mobile {
+            display: none;
+            width: 100%;
+            height: auto;
+            max-height: 180px;
+            object-fit: contain;
+        }
+        
+        /* Daha Fazla Bilgi Al Butonu */
+        .ad-info-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--topbar-color), #01576d);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            white-space: nowrap;
+            max-width: 90%;
+            text-align: center;
+        }
+        
+        .ad-info-btn i {
+            font-size: 1.2rem;
+        }
+        
+        .ad-info-btn:hover {
+            background: linear-gradient(135deg, #01576d, var(--topbar-color));
+            transform: translate(-50%, -50%) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ad-section.active .ad-info-btn {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .ad-section.active .ad-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(3px);
+            z-index: 5;
+            border-radius: 8px;
+        }
+        
+        .ad-section.active .ad-image {
+            filter: brightness(0.7);
+            transform: scale(1.02);
         }
         
         /* KATEGORİLER (Referans sayfadan Aynen) */
@@ -1095,6 +1173,15 @@
             }
             
             .scroll-to-top { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 1.2rem; }
+            
+            /* Reklam Responsive */
+            .ad-desktop {
+                display: none !important;
+            }
+            
+            .ad-mobile {
+                display: block !important;
+            }
         }
         @media (max-width: 576px) {
             .page-title { font-size: 2rem; }
@@ -1187,16 +1274,26 @@
     </style>
 </head>
 <body>
-    <!-- HEADER (İletişim sayfasından %100 Aynı - Logo boyutu düzeltildi) -->
+    <!-- HEADER (Referans sayfadan %100 Aynı - Logo boyutu düzeltildi) -->
     <header>
         <div class="top-bar">
             <div class="container">
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/bartinduysun/" title="Instagram" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://x.com/bartinduysun/" title="X (Twitter)" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://t.me/bartinduysun/" title="Telegram" class="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/bartinduysun/" title="Instagram" class="instagram" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-telegram"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1218,6 +1315,7 @@
                     
                     <div class="menu-overlay" id="menuOverlay"></div>
                     
+                    <!-- SAĞ ÜST AÇILIR MENÜ BARI %100 AYNEN AKTARILDI -->
                     <ul class="nav-menu" id="navMenu">
                         <div class="nav-links-container">
                             <li class="nav-item"><a href="https://www.bartinduysun.com" class="nav-link"><i class="fas fa-home"></i> Anasayfa</a></li>
@@ -1305,10 +1403,14 @@
                     </div>
                 </article>
                 
-                <!-- REKLAM 1 -->
-                <div class="ad-section" id="ad1">
+                <!-- REKLAM 1 (YENİ) -->
+                <div class="ad-section" id="ad1" data-url="https://www.bartinduysun.com/sponsorlarimiz/irmak-mobilya.html">
                     <div class="ad-content">
-                        <img src="https://www.bartinduysun.com/images/bahcen-kebap.webp" alt="Bahçen Kebap - Lezzetli Döner ve Kebap" class="ad-image">
+                        <img src="https://www.bartinduysun.com/images/irmak-mobilya.webp" alt="İrmak Mobilya" class="ad-image ad-desktop" loading="lazy">
+                        <img src="https://www.bartinduysun.com/images/irmak-mobilya2.webp" alt="İrmak Mobilya" class="ad-image ad-mobile" loading="lazy">
+                        <button class="ad-info-btn" type="button">
+                            <i class="fas fa-info-circle"></i> Daha Fazla Bilgi Al
+                        </button>
                     </div>
                 </div>
                 
@@ -1363,7 +1465,7 @@
                     </div>
                 </article>
                 
-                <!-- REKLAM 2 -->
+                <!-- REKLAM 2 (YENİ) -->
                 <div class="ad-section" id="ad2">
                     <div class="ad-content">
                         <img src="https://www.bartinduysun.com/images/sultana-kunefe.webp" alt="Sultana Künefe - Özel Lezzetler" class="ad-image">
@@ -1448,7 +1550,7 @@
                 <div class="footer-left">
                     <div class="footer-logo-container">
                         <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp" alt="Bartın Duysun Logo" class="footer-logo-img" id="footerLogo">
-                        <a href="https://www.web4medya.com" target="_blank">
+                        <a href="https://www.web4medya.com" target="_blank" rel="noopener noreferrer">
                             <img src="https://www.bartinduysun.com/images/web4medya.webp" alt="Web4Medya Logo" class="web4medya-logo">
                         </a>
                     </div>
@@ -1458,11 +1560,21 @@
                     </p>
                     
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/bartinduysun/" title="Instagram" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/bartinduysun/" title="Instagram" class="instagram" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-telegram"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1586,6 +1698,45 @@
         const footerLogo = document.getElementById('footerLogo');
         const dropdownMenu = document.getElementById('dropdownMenu');
 
+        // REKLAM ALANI İŞLEMLERİ
+        function initAdvertisements() {
+            const adSections = document.querySelectorAll('.ad-section');
+            
+            adSections.forEach(adSection => {
+                const adContent = adSection.querySelector('.ad-content');
+                const infoBtn = adSection.querySelector('.ad-info-btn');
+                
+                // Görsele tıklama
+                if (adContent) {
+                    adContent.addEventListener('click', function(e) {
+                        if (!e.target.classList.contains('ad-info-btn')) {
+                            adSection.classList.toggle('active');
+                        }
+                    });
+                }
+                
+                // Butona tıklama
+                if (infoBtn) {
+                    infoBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const url = adSection.getAttribute('data-url');
+                        if (url) {
+                            window.location.href = url;
+                        }
+                    });
+                }
+            });
+            
+            // Dışarı tıklayınca butonu kapat
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.ad-section')) {
+                    document.querySelectorAll('.ad-section').forEach(ad => {
+                        ad.classList.remove('active');
+                    });
+                }
+            });
+        }
+
         // SON DAKİKA ŞERİDİNİ AYARLA (DÜZGÜN BAŞLANGIÇ İLE KESİNTİSİZ DÖNGÜ)
         function setupBreakingNewsTicker() {
             if (!breakingNewsContent || bartinHaberleri.length === 0) return;
@@ -1690,6 +1841,9 @@
 
         // EVENT LISTENER'LARI KUR
         document.addEventListener('DOMContentLoaded', function() {
+            // Reklam alanlarını kur
+            initAdvertisements();
+            
             // Son dakika şeridini kur
             setupBreakingNewsTicker();
             
