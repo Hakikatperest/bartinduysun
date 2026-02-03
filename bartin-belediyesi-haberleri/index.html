@@ -1887,11 +1887,6 @@
                     if (hamburgerMenu) hamburgerMenu.classList.remove('active');
                     if (dropdownMenu) dropdownMenu.classList.remove('active');
                     document.body.style.overflow = '';
-                    
-                    // Masaüstünde menü ikonlarını gizle
-                    document.querySelectorAll('.nav-link i').forEach(icon => {
-                        icon.style.display = 'none';
-                    });
                 } else {
                     // Mobilde menü ikonlarını göster
                     document.querySelectorAll('.nav-link i').forEach(icon => {
@@ -1902,9 +1897,6 @@
             
             // Masaüstü görünümde menü ikonlarını gizle
             if (window.innerWidth >= 769) {
-                document.querySelectorAll('.nav-link i').forEach(icon => {
-                    icon.style.display = 'none';
-                });
             }
         });
     </script>
