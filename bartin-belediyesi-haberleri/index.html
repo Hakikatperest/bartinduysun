@@ -75,7 +75,7 @@
             padding: 0 15px;
         }
         
-        /* YENİ HEADER (Orijinal tasarımdan %100 Aynı) */
+        /* YENİ HEADER (Örnek sayfadaki ile %100 Aynı) */
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -140,7 +140,7 @@
             padding: 12px 0;
         }
         
-        /* LOGO BOYUTU Orijinal tasarımdaki gibi ayarlandı */
+        /* LOGO BOYUTU Örnek sayfadaki gibi ayarlandı */
         .logo-container {
             height: 70px;
             display: flex;
@@ -193,10 +193,39 @@
             transform: rotate(-45deg) translate(6px, -6px);
         }
         
+        /* NAV MENÜ - ÖRNEK SAYFADAKİ İLE %100 AYNI */
         .nav-menu {
             display: flex;
             flex-direction: column;
             gap: 0;
+        }
+        
+        /* MASAÜSTÜ GÖRÜNÜM - ÖRNEK SAYFADAKİ İLE AYNI */
+        @media (min-width: 769px) {
+            .nav-menu {
+                position: static;
+                flex-direction: row;
+                height: auto;
+                width: auto;
+                background: transparent;
+                box-shadow: none;
+                padding: 0;
+            }
+            
+            .nav-links-container {
+                display: flex;
+                gap: 5px;
+            }
+            
+            .nav-link {
+                font-size: 0.95rem;
+                padding: 14px 10px;
+                white-space: nowrap;
+            }
+            
+            .nav-link i {
+                display: none;
+            }
         }
         
         .nav-links-container {
@@ -825,7 +854,7 @@
             max-width: 90%;
         }
         
-        /* FOOTER (Orijinal tasarımdan %100 Aynı) */
+        /* FOOTER (Örnek sayfadaki ile %100 Aynı) */
         footer {
             background-color: white;
             color: var(--dark-color);
@@ -1076,6 +1105,7 @@
             .category-card { min-height: 260px; }
             .scroll-to-top { width: 55px; height: 55px; bottom: 25px; right: 25px; font-size: 1.3rem; }
         }
+        
         @media (max-width: 768px) {
             .hamburger-menu { display: flex; }
             .nav-menu {
@@ -1183,6 +1213,7 @@
             
             .scroll-to-top { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 1.2rem; }
         }
+        
         @media (max-width: 576px) {
             .page-title { font-size: 2rem; }
             .section-title { font-size: 1.5rem; }
@@ -1274,7 +1305,7 @@
     </style>
 </head>
 <body>
-    <!-- HEADER (Orijinal tasarımdan %100 Aynı) -->
+    <!-- HEADER (Örnek sayfadaki ile %100 Aynı) -->
     <header>
         <div class="top-bar">
             <div class="container">
@@ -1305,6 +1336,7 @@
                     
                     <div class="menu-overlay" id="menuOverlay"></div>
                     
+                    <!-- NAV MENÜ YAPISI ÖRNEK SAYFADAKİ İLE %100 AYNI -->
                     <ul class="nav-menu" id="navMenu">
                         <div class="nav-links-container">
                             <li class="nav-item"><a href="https://www.bartinduysun.com" class="nav-link"><i class="fas fa-home"></i> Anasayfa</a></li>
@@ -1535,7 +1567,7 @@
         </section>
     </main>
 
-    <!-- FOOTER (Orijinal tasarımdan %100 Aynı) -->
+    <!-- FOOTER (Örnek sayfadaki ile %100 Aynı) -->
     <footer>
         <div class="container">
             <div class="footer-content">
