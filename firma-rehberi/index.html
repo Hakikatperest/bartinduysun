@@ -56,6 +56,10 @@
             --kahve-color: #8d6e63;
             --balik-color: #1d3557;
             --diger-color: #6a4c93;
+            --mobilya-color: #8b4513;
+            --firin-color: #d2691e;
+            --kuyumcu-color: #ffd700;
+            --kunefe-color: #ff6b6b;
         }
         
         html {
@@ -393,8 +397,20 @@
             background-color: var(--balik-color);
         }
         
-        .category-icon.diger {
-            background-color: var(--diger-color);
+        .category-icon.mobilya {
+            background-color: var(--mobilya-color);
+        }
+        
+        .category-icon.firin {
+            background-color: var(--firin-color);
+        }
+        
+        .category-icon.kuyumcu {
+            background-color: var(--kuyumcu-color);
+        }
+        
+        .category-icon.kunefe {
+            background-color: var(--kunefe-color);
         }
         
         .category-title {
@@ -424,8 +440,20 @@
             color: var(--balik-color);
         }
         
-        .category-title.diger {
-            color: var(--diger-color);
+        .category-title.mobilya {
+            color: var(--mobilya-color);
+        }
+        
+        .category-title.firin {
+            color: var(--firin-color);
+        }
+        
+        .category-title.kuyumcu {
+            color: var(--kuyumcu-color);
+        }
+        
+        .category-title.kunefe {
+            color: var(--kunefe-color);
         }
         
         .category-description {
@@ -492,9 +520,24 @@
             color: var(--balik-color);
         }
         
-        .diger .business-icon {
-            background-color: rgba(106, 76, 147, 0.15);
-            color: var(--diger-color);
+        .mobilya .business-icon {
+            background-color: rgba(139, 69, 19, 0.15);
+            color: var(--mobilya-color);
+        }
+        
+        .firin .business-icon {
+            background-color: rgba(210, 105, 30, 0.15);
+            color: var(--firin-color);
+        }
+        
+        .kuyumcu .business-icon {
+            background-color: rgba(255, 215, 0, 0.15);
+            color: var(--kuyumcu-color);
+        }
+        
+        .kunefe .business-icon {
+            background-color: rgba(255, 107, 107, 0.15);
+            color: var(--kunefe-color);
         }
         
         .business-info {
@@ -526,6 +569,41 @@
         .detail-item i {
             width: 18px;
             color: var(--topbar-color);
+        }
+        
+        /* Instagram İkonları Stili - NUMARANIN ALTINDA */
+        .instagram-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        
+        .instagram-icon {
+            color: #E1306C;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .instagram-icon.active {
+            cursor: pointer;
+        }
+        
+        .instagram-icon.active:hover {
+            transform: scale(1.2);
+            color: #C13584;
+        }
+        
+        .instagram-icon.inactive {
+            color: #aaa !important;
+            cursor: default;
+            opacity: 0.5;
+        }
+        
+        .instagram-label {
+            font-size: 0.85rem;
+            color: var(--gray-color);
+            margin-right: 3px;
         }
         
         /* MODERN KATEGORİLER BÖLÜMÜ - SİYASET SAYFASINDAN AYNEN */
@@ -963,6 +1041,10 @@
             .category-name {
                 font-size: 1.2rem;
             }
+            
+            .instagram-icon {
+                font-size: 1.1rem;
+            }
         }
         
         @media (max-width: 768px) {
@@ -1080,6 +1162,7 @@
             .business-details {
                 flex-direction: column;
                 gap: 10px;
+                width: 100%;
             }
             
             .categories-grid {
@@ -1128,6 +1211,10 @@
             
             .web4medya-logo {
                 height: 55px;
+            }
+            
+            .instagram-label {
+                display: none;
             }
         }
         
@@ -1335,71 +1422,39 @@
     </section>
 
     <main class="container">
-        <!-- TANTUNİCİLER & KEBAPÇILAR -->
-        <div class="modern-category-card tantuni">
+        <!-- KUYUMCULAR -->
+        <div class="modern-category-card kuyumcu">
             <div class="category-header">
-                <div class="category-icon tantuni">
-                    <i class="fas fa-utensils"></i>
+                <div class="category-icon kuyumcu">
+                    <i class="fas fa-gem"></i>
                 </div>
                 <div>
-                    <h2 class="category-title tantuni">Tantuni & Kebap Restoranları</h2>
-                    <p class="category-description">Bartın'ın en lezzetli tantuni ve kebap adresleri</p>
+                    <h2 class="category-title kuyumcu">Kuyumcular</h2>
+                    <p class="category-description">Bartın'daki kuyumcular ve mücevher mağazaları</p>
                 </div>
             </div>
             
             <div class="business-list">
                 <div class="business-item">
                     <div class="business-icon">
-                        <i class="fas fa-fire"></i>
+                        <i class="fas fa-gem"></i>
                     </div>
                     <div class="business-info">
-                        <h3 class="business-name">Bahcen Tantuni</h3>
+                        <h3 class="business-name">Rgold Mücevher Kuyumculuk</h3>
                         <div class="business-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Merkez, İstiklal Caddesi No:45, Bartın</span>
+                                <span>-</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-phone"></i>
-                                <span>(0378) 123 45 67</span>
+                                <span>(0378) 901 23 45</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="business-item">
-                    <div class="business-icon">
-                        <i class="fas fa-pepper-hot"></i>
-                    </div>
-                    <div class="business-info">
-                        <h3 class="business-name">Mersin Tantuni</h3>
-                        <div class="business-details">
-                            <div class="detail-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Kemer Köprü Mahallesi, Cumhuriyet Caddesi No:28, Bartın</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-phone"></i>
-                                <span>(0378) 234 56 78</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="business-item">
-                    <div class="business-icon">
-                        <i class="fas fa-drumstick-bite"></i>
-                    </div>
-                    <div class="business-info">
-                        <h3 class="business-name">Bahçen Kebap Tantuni</h3>
-                        <div class="business-details">
-                            <div class="detail-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Yenişehir Mahallesi, Atatürk Bulvarı No:112, Bartın</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-phone"></i>
-                                <span>(0378) 345 67 89</span>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <a href="https://www.instagram.com/rgold.mucevher/" target="_blank" class="instagram-icon active" title="Instagram'da Takip Et">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -1407,90 +1462,79 @@
             </div>
         </div>
 
-        <!-- HIZLI YEMEK & ATIŞTIRMALIK -->
-        <div class="modern-category-card hizli-yemek">
+        <!-- MOBİLYA MAĞAZALARI -->
+        <div class="modern-category-card mobilya">
             <div class="category-header">
-                <div class="category-icon hizli-yemek">
-                    <i class="fas fa-hamburger"></i>
+                <div class="category-icon mobilya">
+                    <i class="fas fa-couch"></i>
                 </div>
                 <div>
-                    <h2 class="category-title hizli-yemek">Hızlı Yemek & Atıştırmalık</h2>
-                    <p class="category-description">Acele yemek isteyenler ya da atıştırmalık arayanlar için ideal mekanlar</p>
+                    <h2 class="category-title mobilya">Mobilya Mağazaları</h2>
+                    <p class="category-description">Bartın'daki mobilya mağazaları ve dekorasyon merkezleri</p>
                 </div>
             </div>
             
             <div class="business-list">
                 <div class="business-item">
                     <div class="business-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="fas fa-couch"></i>
                     </div>
                     <div class="business-info">
-                        <h3 class="business-name">ALPİ Fast&Food</h3>
+                        <h3 class="business-name">Irmak Mobilya</h3>
                         <div class="business-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Merkez, Gazi Caddesi No:15, Bartın</span>
+                                <span>-</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-phone"></i>
-                                <span>(0378) 456 78 90</span>
+                                <span>0530 321 54 74</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <a href="https://www.instagram.com/irmakmobilya74/" target="_blank" class="instagram-icon active" title="Instagram'da Takip Et">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="business-item">
-                    <div class="business-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <div class="business-info">
-                        <h3 class="business-name">Antep Çiğ Köfte Orduyeri Bartın</h3>
-                        <div class="business-details">
-                            <div class="detail-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Orduyeri Mahallesi, İnönü Caddesi No:33, Bartın</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-phone"></i>
-                                <span>(0378) 567 89 01</span>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+
+        <!-- KÜNEFECİLER -->
+        <div class="modern-category-card kunefe">
+            <div class="category-header">
+                <div class="category-icon kunefe">
+                    <i class="fas fa-cheese"></i>
                 </div>
-                
-                <div class="business-item">
-                    <div class="business-icon">
-                        <i class="fas fa-bread-slice"></i>
-                    </div>
-                    <div class="business-info">
-                        <h3 class="business-name">Rico Streetwich</h3>
-                        <div class="business-details">
-                            <div class="detail-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Şehir Merkezi, Cumhuriyet Meydanı No:8, Bartın</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-phone"></i>
-                                <span>(0378) 678 90 12</span>
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                    <h2 class="category-title kunefe">Tatlıcı & Künefeciler</h2>
+                    <p class="category-description">Bartın'ın en nefis tatlılarını ve künefelerini sunan mekanlar</p>
                 </div>
-                
+            </div>
+            
+            <div class="business-list">
                 <div class="business-item">
                     <div class="business-icon">
-                        <i class="fas fa-drumstick-bite"></i>
+                        <i class="fas fa-cheese"></i>
                     </div>
                     <div class="business-info">
-                        <h3 class="business-name">Ferhat Kuzum Kokoreç</h3>
+                        <h3 class="business-name">Sultana Künefe</h3>
                         <div class="business-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Çarşı İçi, Uzun Çarşı No:12, Bartın</span>
+                                <span>-</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-phone"></i>
-                                <span>(0378) 789 01 23</span>
+                                <span>0542 633 27 74</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <a href="https://www.instagram.com/sultanakunefebartin/" target="_blank" class="instagram-icon active" title="Instagram'da Takip Et">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -1520,11 +1564,15 @@
                         <div class="business-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Merkez, Hükümet Caddesi No:25, Bartın</span>
+                                <span>-</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-phone"></i>
                                 <span>(0378) 890 12 34</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <i class="fab fa-instagram instagram-icon inactive"></i>
                             </div>
                         </div>
                     </div>
@@ -1539,11 +1587,15 @@
                         <div class="business-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Kültür Mahallesi, Sanat Sokak No:7, Bartın</span>
+                                <span>-</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-phone"></i>
                                 <span>(0378) 901 23 45</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <i class="fab fa-instagram instagram-icon inactive"></i>
                             </div>
                         </div>
                     </div>
@@ -1558,11 +1610,15 @@
                         <div class="business-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Çarşı Mahallesi, Yeni Sokak No:18, Bartın</span>
+                                <span>-</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-phone"></i>
                                 <span>(0378) 012 34 56</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <i class="fab fa-instagram instagram-icon inactive"></i>
                             </div>
                         </div>
                     </div>
@@ -1577,11 +1633,15 @@
                         <div class="business-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Yenişehir, Atatürk Bulvarı No:78, Bartın</span>
+                                <span>-</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-phone"></i>
                                 <span>(0378) 123 45 67</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <i class="fab fa-instagram instagram-icon inactive"></i>
                             </div>
                         </div>
                     </div>
@@ -1596,11 +1656,15 @@
                         <div class="business-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Sanayi Bölgesi, Organize Sanayi No:45, Bartın</span>
+                                <span>-</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-phone"></i>
                                 <span>(0378) 234 56 78</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <i class="fab fa-instagram instagram-icon inactive"></i>
                             </div>
                         </div>
                     </div>
@@ -1615,11 +1679,212 @@
                         <div class="business-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Merkez, Kültür Sokak No:22, Bartın</span>
+                                <span>-</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-phone"></i>
-                                <span>(0378) 345 67 89</span>
+                                <span>0532 066 333 74</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <a href="https://www.instagram.com/sistersbartin/" target="_blank" class="instagram-icon active" title="Instagram'da Takip Et">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="business-item">
+                    <div class="business-icon">
+                        <i class="fas fa-bread-slice"></i>
+                    </div>
+                    <div class="business-info">
+                        <h3 class="business-name">Sercan Ateş Fırını</h3>
+                        <div class="business-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>-</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-phone"></i>
+                                <span>0531 669 43 74</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <a href="https://www.instagram.com/sercanatesfirini/" target="_blank" class="instagram-icon active" title="Instagram'da Takip Et">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HIZLI YEMEK & ATIŞTIRMALIK -->
+        <div class="modern-category-card hizli-yemek">
+            <div class="category-header">
+                <div class="category-icon hizli-yemek">
+                    <i class="fas fa-hamburger"></i>
+                </div>
+                <div>
+                    <h2 class="category-title hizli-yemek">Hızlı Yemek & Atıştırmalık</h2>
+                    <p class="category-description">Acele yemek isteyenler ya da atıştırmalık arayanlar için ideal mekanlar</p>
+                </div>
+            </div>
+            
+            <div class="business-list">
+                <div class="business-item">
+                    <div class="business-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="business-info">
+                        <h3 class="business-name">ALPİ Fast&Food</h3>
+                        <div class="business-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>-</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-phone"></i>
+                                <span>(0378) 456 78 90</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <i class="fab fa-instagram instagram-icon inactive"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="business-item">
+                    <div class="business-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="business-info">
+                        <h3 class="business-name">Antep Çiğ Köfte Orduyeri Bartın</h3>
+                        <div class="business-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>-</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-phone"></i>
+                                <span>(0378) 567 89 01</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <i class="fab fa-instagram instagram-icon inactive"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="business-item">
+                    <div class="business-icon">
+                        <i class="fas fa-bread-slice"></i>
+                    </div>
+                    <div class="business-info">
+                        <h3 class="business-name">Rico Streetwich</h3>
+                        <div class="business-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>-</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-phone"></i>
+                                <span>(0378) 678 90 12</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <i class="fab fa-instagram instagram-icon inactive"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="business-item">
+                    <div class="business-icon">
+                        <i class="fas fa-drumstick-bite"></i>
+                    </div>
+                    <div class="business-info">
+                        <h3 class="business-name">Ferhat Kuzum Kokoreç</h3>
+                        <div class="business-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>-</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-phone"></i>
+                                <span>(0378) 789 01 23</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <i class="fab fa-instagram instagram-icon inactive"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TANTUNİCİLER & KEBAPÇILAR -->
+        <div class="modern-category-card tantuni">
+            <div class="category-header">
+                <div class="category-icon tantuni">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div>
+                    <h2 class="category-title tantuni">Tantuni & Kebap Restoranları</h2>
+                    <p class="category-description">Bartın'ın en lezzetli tantuni ve kebap adresleri</p>
+                </div>
+            </div>
+            
+            <div class="business-list">
+                <div class="business-item">
+                    <div class="business-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="business-info">
+                        <h3 class="business-name">Bahçen Kebap & Tantuni</h3>
+                        <div class="business-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>-</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-phone"></i>
+                                <span>0378 228 28 41</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <a href="https://www.instagram.com/bartinbahcenkebap/" target="_blank" class="instagram-icon active" title="Instagram'da Takip Et">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="business-item">
+                    <div class="business-icon">
+                        <i class="fas fa-pepper-hot"></i>
+                    </div>
+                    <div class="business-info">
+                        <h3 class="business-name">Mersin Tantuni</h3>
+                        <div class="business-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>-</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-phone"></i>
+                                <span>(0378) 234 56 78</span>
+                            </div>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <i class="fab fa-instagram instagram-icon inactive"></i>
                             </div>
                         </div>
                     </div>
@@ -1649,30 +1914,15 @@
                         <div class="business-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Merkez, İstasyon Caddesi No:27, Bartın</span>
+                                <span>-</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-phone"></i>
                                 <span>(0378) 456 78 90</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="business-item">
-                    <div class="business-icon">
-                        <i class="fas fa-cheese"></i>
-                    </div>
-                    <div class="business-info">
-                        <h3 class="business-name">Sultana Künefe</h3>
-                        <div class="business-details">
-                            <div class="detail-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Çarşı İçi, Tatlıcılar Sokak No:5, Bartın</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-phone"></i>
-                                <span>(0378) 567 89 01</span>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <i class="fab fa-instagram instagram-icon inactive"></i>
                             </div>
                         </div>
                     </div>
@@ -1702,83 +1952,15 @@
                         <div class="business-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Liman Bölgesi, Balıkçı Barınağı No:3, Bartın</span>
+                                <span>-</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-phone"></i>
                                 <span>(0378) 678 90 12</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- DİĞER İŞLETMELER -->
-        <div class="modern-category-card diger">
-            <div class="category-header">
-                <div class="category-icon diger">
-                    <i class="fas fa-store"></i>
-                </div>
-                <div>
-                    <h2 class="category-title diger">Diğer İşletmeler & Mağazalar</h2>
-                    <p class="category-description">Bartın'daki mobilya mağazaları, kuyumcular, fırınlar ve diğer işletmeler</p>
-                </div>
-            </div>
-            
-            <div class="business-list">
-                <div class="business-item">
-                    <div class="business-icon">
-                        <i class="fas fa-couch"></i>
-                    </div>
-                    <div class="business-info">
-                        <h3 class="business-name">Irmak Mobilya</h3>
-                        <div class="business-details">
-                            <div class="detail-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Sanayi Caddesi, Mobilyacılar Sitesi No:12, Bartın</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-phone"></i>
-                                <span>(0378) 789 01 23</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="business-item">
-                    <div class="business-icon">
-                        <i class="fas fa-bread-slice"></i>
-                    </div>
-                    <div class="business-info">
-                        <h3 class="business-name">Sercan Ateş Fırını</h3>
-                        <div class="business-details">
-                            <div class="detail-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Çarşı Mahallesi, Fırıncılar Sokak No:8, Bartın</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-phone"></i>
-                                <span>(0378) 890 12 34</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="business-item">
-                    <div class="business-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <div class="business-info">
-                        <h3 class="business-name">Rgold Mücevher Kuyumculuk</h3>
-                        <div class="business-details">
-                            <div class="detail-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Çarşı İçi, Kuyumcular Caddesi No:15, Bartın</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-phone"></i>
-                                <span>(0378) 901 23 45</span>
+                            <div class="instagram-container">
+                                <span class="instagram-label">Instagram:</span>
+                                <i class="fab fa-instagram instagram-icon inactive"></i>
                             </div>
                         </div>
                     </div>
@@ -1955,6 +2137,20 @@
             });
         }
 
+        // Instagram ikonlarına tıklanabilirlik özelliği ekle
+        function setupInstagramIcons() {
+            const activeIcons = document.querySelectorAll('.instagram-icon.active');
+            activeIcons.forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.2)';
+                });
+                
+                icon.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        }
+
         // Event listener'ları kur
         function setupEventListeners() {
             
@@ -2009,6 +2205,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             setupEventListeners();
             setupCookieBanner(); // Çerez bildirimini başlat
+            setupInstagramIcons(); // Instagram ikonlarını başlat
             
             if (window.innerWidth >= 769) {
                 document.querySelectorAll('.nav-link i').forEach(icon => {
