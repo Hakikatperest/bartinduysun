@@ -573,15 +573,16 @@
             gap: 12px;
         }
         
-        /* REKLAM ALANLARI */
+        /* REKLAM ALANLARI - TÜM ÖZELLİKLERİYLE AKTARILDI */
         .ad-section {
             background-color: white;
-            height: 180px;
+            min-height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 40px 0;
             border-radius: 12px;
+            color: var(--gray-color);
             overflow: hidden;
             position: relative;
             padding: 15px;
@@ -608,7 +609,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 15px;
             position: relative;
             cursor: pointer;
         }
@@ -617,9 +618,86 @@
             width: auto;
             height: auto;
             max-width: 100%;
-            max-height: 150px;
+            max-height: 170px;
             object-fit: contain;
             border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .ad-desktop {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 170px;
+            object-fit: contain;
+        }
+
+        .ad-mobile {
+            display: none;
+            width: 100%;
+            height: auto;
+            max-height: 180px;
+            object-fit: contain;
+        }
+        
+        /* Daha Fazla Bilgi Al Butonu */
+        .ad-info-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--topbar-color), #01576d);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            white-space: nowrap;
+            max-width: 90%;
+            text-align: center;
+        }
+        
+        .ad-info-btn i {
+            font-size: 1.2rem;
+        }
+        
+        .ad-info-btn:hover {
+            background: linear-gradient(135deg, #01576d, var(--topbar-color));
+            transform: translate(-50%, -50%) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ad-section.active .ad-info-btn {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .ad-section.active .ad-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(3px);
+            z-index: 5;
+            border-radius: 8px;
+        }
+        
+        .ad-section.active .ad-image {
+            filter: brightness(0.7);
+            transform: scale(1.02);
         }
         
         /* MODERN KATEGORİLER BÖLÜMÜ - GÖRSEL ARKAPLANLI */
@@ -1089,10 +1167,6 @@
                 gap: 0;
             }
             
-            .nav-social-container {
-                display: none;
-            }
-            
             .nav-menu.active {
                 right: 0;
             }
@@ -1143,6 +1217,15 @@
             
             .dropdown-menu a:hover {
                 padding-left: 20px;
+            }
+            
+            /* Reklam mobil görünüm */
+            .ad-desktop {
+                display: none !important;
+            }
+            
+            .ad-mobile {
+                display: block !important;
             }
             
             .news-item {
@@ -1444,10 +1527,14 @@
                     </div>
                 </article>
                 
-                <!-- REKLAM 1 -->
-                <div class="ad-section" id="ad1">
+                <!-- REKLAM 1 - TÜM ÖZELLİKLERİYLE AKTARILDI -->
+                <div class="ad-section" id="ad1" data-url="https://www.bartinduysun.com/sponsorlarimiz/irmak-mobilya.html">
                     <div class="ad-content">
-                        <img src="https://www.bartinduysun.com/images/irmak-mobilya.webp" alt="İrmak Mobilya - Kaliteli Mobilya Çözümleri" class="ad-image">
+                        <img src="https://www.bartinduysun.com/images/irmak-mobilya.webp" alt="İrmak Mobilya" class="ad-image ad-desktop" loading="lazy">
+                        <img src="https://www.bartinduysun.com/images/irmak-mobilya2.webp" alt="İrmak Mobilya" class="ad-image ad-mobile" loading="lazy">
+                        <button class="ad-info-btn" type="button">
+                            <i class="fas fa-info-circle"></i> Daha Fazla Bilgi Al
+                        </button>
                     </div>
                 </div>
                 
@@ -1502,10 +1589,14 @@
                     </div>
                 </article>
                 
-                <!-- REKLAM 2 -->
-                <div class="ad-section" id="ad2">
+                <!-- REKLAM 2 - TÜM ÖZELLİKLERİYLE AKTARILDI -->
+                <div class="ad-section" id="ad2" data-url="https://www.bartinduysun.com/sponsorlarimiz/sultana-kunefe.html">
                     <div class="ad-content">
-                        <img src="https://www.bartinduysun.com/images/sultana-kunefe.webp" alt="Sultana Künefe - Özel Lezzetler" class="ad-image">
+                        <img src="https://www.bartinduysun.com/images/sultana-kunefe.webp" alt="Sultana Künefe" class="ad-image ad-desktop" loading="lazy">
+                        <img src="https://www.bartinduysun.com/images/sultana-kunefe2.webp" alt="Sultana Künefe" class="ad-image ad-mobile" loading="lazy">
+                        <button class="ad-info-btn" type="button">
+                            <i class="fas fa-info-circle"></i> Daha Fazla Bilgi Al
+                        </button>
                     </div>
                 </div>
                 
@@ -1718,6 +1809,45 @@
         const cookieBanner = document.getElementById('cookie-banner');
         const closeCookiesBtn = document.getElementById('closeCookies');
 
+        // REKLAM ALANI İŞLEMLERİ - TÜM ÖZELLİKLERİYLE AKTARILDI
+        function initAdvertisements() {
+            const adSections = document.querySelectorAll('.ad-section');
+            
+            adSections.forEach(adSection => {
+                const adContent = adSection.querySelector('.ad-content');
+                const infoBtn = adSection.querySelector('.ad-info-btn');
+                
+                // Görsele tıklama
+                if (adContent) {
+                    adContent.addEventListener('click', function(e) {
+                        if (!e.target.classList.contains('ad-info-btn')) {
+                            adSection.classList.toggle('active');
+                        }
+                    });
+                }
+                
+                // Butona tıklama
+                if (infoBtn) {
+                    infoBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const url = adSection.getAttribute('data-url');
+                        if (url) {
+                            window.location.href = url;
+                        }
+                    });
+                }
+            });
+            
+            // Dışarı tıklayınca butonu kapat
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.ad-section')) {
+                    document.querySelectorAll('.ad-section').forEach(ad => {
+                        ad.classList.remove('active');
+                    });
+                }
+            });
+        }
+
         // Footer logo tıklama fonksiyonu
         function handleFooterLogoClick(e) {
             e.preventDefault();
@@ -1805,6 +1935,8 @@
 
         // Event listener'ları kur
         function setupEventListeners() {
+            // Reklam alanlarını başlat
+            initAdvertisements();
             
             // Footer logo tıklama
             if (footerLogo) {
