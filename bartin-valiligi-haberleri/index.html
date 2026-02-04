@@ -75,7 +75,7 @@
             padding: 0 15px;
         }
         
-        /* YENİ HEADER - BARTIN BELEDİYESİ SAYFASINDAN %100 AYNEN AKTARILDI */
+        /* YENİ HEADER - BARTIN SİYASET SAYFASINDAN %100 AYNEN AKTARILDI */
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -198,10 +198,10 @@
             gap: 0;
         }
         
-        /* NAV-LİNKS-CONTAINER GAP 2PX OLMALI (BELEDİYE SAYFASINDAKİ GİBİ) */
+        /* NAV-LİNKS-CONTAINER GAP 5PX OLMALI (SİYASET SAYFASINDAKİ GİBİ) */
         .nav-links-container {
             display: flex;
-            gap: 2px; /* BARTIN BELEDİYESİ SAYFASINDAKİ GİBİ 2px */
+            gap: 5px; /* BARTIN SİYASET SAYFASINDAKİ GİBİ 5px */
         }
         
         .nav-item {
@@ -317,7 +317,7 @@
             max-width: 800px;
         }
         
-        /* YENİ MODERN SON DAKİKA ŞERİDİ (KIRMIZI ARKAPLANLI) */
+        /* YENİ MODERN SON DAKİKA ŞERİDİ (KIRMIZI ARKAPLANLI) - SİYASET SAYFASINDAKİ GİBİ */
         .son-dakika-bar {
             display: flex;
             align-items: center;
@@ -992,15 +992,74 @@
         }
         
         /* RESPONSIVE */
+        @media (max-width: 1200px) {
+            .categories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .category-card {
+                min-height: 260px;
+            }
+            
+            .footer-content {
+                gap: 40px;
+            }
+            
+            .footer-right {
+                gap: 30px;
+            }
+        }
+        
         @media (max-width: 992px) {
-            .news-img { width: 250px; height: 180px; }
-            .categories-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
-            .category-card { min-height: 260px; }
-            .scroll-to-top { width: 55px; height: 55px; bottom: 25px; right: 25px; font-size: 1.3rem; }
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .category-content {
+                padding: 25px 15px;
+            }
+            
+            .category-icon {
+                font-size: 2.4rem;
+                margin-bottom: 12px;
+            }
+            
+            .category-name {
+                font-size: 1.2rem;
+            }
+            
+            .scroll-to-top {
+                width: 55px;
+                height: 55px;
+                bottom: 25px;
+                right: 25px;
+                font-size: 1.3rem;
+            }
         }
         
         @media (max-width: 768px) {
-            .hamburger-menu { display: flex; }
+            .main-header {
+                padding: 8px 0;
+            }
+            
+            .logo-container {
+                height: 50px;
+                margin-left: 0;
+            }
+            
+            .hamburger-menu {
+                display: flex;
+            }
+            
             .nav-menu {
                 position: fixed;
                 top: 0;
@@ -1015,17 +1074,30 @@
                 z-index: 1001;
                 overflow-y: auto;
             }
-            .nav-links-container { 
-                flex-direction: column; 
-                gap: 0; 
+            
+            .nav-links-container {
+                flex-direction: column;
+                gap: 0;
             }
-            .nav-menu.active { right: 0; }
-            .nav-link { 
-                padding: 14px 15px; 
-                font-size: 1rem; 
-                margin-bottom: 3px; 
+            
+            .nav-social-container {
+                display: none;
             }
-            .nav-link i { display: inline-block; }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-link {
+                padding: 14px 15px;
+                font-size: 1rem;
+                margin-bottom: 3px;
+            }
+            
+            .nav-link i {
+                display: inline-block;
+            }
+            
             .dropdown-menu {
                 position: static;
                 opacity: 1;
@@ -1043,40 +1115,60 @@
                 max-width: 100%;
                 width: 100%;
             }
-            .dropdown.active .dropdown-menu { display: block; }
             
-            /* Modern Son Dakika Şeridi - Mobil */
-            .son-dakika-bar {
-                height: 45px;
-                margin-bottom: 30px;
+            .dropdown.active .dropdown-menu {
+                display: block;
             }
             
-            .son-dakika-etiket {
-                padding: 0 15px;
-                font-size: 1rem;
+            .dropdown-menu li {
+                padding: 0 3px;
+                margin: 1px 0;
             }
             
-            .son-dakika-alan {
-                padding: 0 15px;
+            .dropdown-menu a {
+                padding: 7px 15px;
+                font-size: 0.95rem;
+                gap: 8px;
+                margin: 0;
             }
             
-            .son-dakika-yazi a {
-                font-size: 1rem;
+            .dropdown-menu a:hover {
+                padding-left: 20px;
             }
             
-            .news-item { flex-direction: column; gap: 15px; }
-            .news-img { width: 100%; height: 250px; }
-            .categories-grid { grid-template-columns: 1fr; gap: 20px; }
-            .category-card { min-height: 240px; }
-            
-            /* Logo boyutu mobil için ayarlandı */
-            .logo-container {
-                height: 50px;
-                margin-left: 0;
+            .news-item {
+                flex-direction: column;
+                gap: 15px;
             }
             
-            .main-header {
-                padding: 8px 0;
+            .news-img {
+                width: 100%;
+                height: 250px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .category-card {
+                min-height: 240px;
+            }
+            
+            .category-content {
+                padding: 20px 15px;
+            }
+            
+            .category-icon {
+                font-size: 2.2rem;
+            }
+            
+            .category-name {
+                font-size: 1.1rem;
+            }
+            
+            .category-card p {
+                font-size: 0.9rem;
             }
             
             /* Footer Responsive */
@@ -1102,46 +1194,58 @@
                 height: 55px;
             }
             
-            .scroll-to-top { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 1.2rem; }
+            .scroll-to-top {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.2rem;
+            }
         }
         
         @media (max-width: 576px) {
-            .page-title { font-size: 2rem; }
-            .section-title { font-size: 1.5rem; }
-            .news-item-title { font-size: 1.2rem; }
-            
-            /* Modern Son Dakika Şeridi - Küçük Mobil */
-            .son-dakika-bar {
-                height: 40px;
-                margin-bottom: 25px;
-            }
-            
-            .son-dakika-etiket {
-                padding: 0 12px;
-                font-size: 0.9rem;
-                min-width: 120px;
-            }
-            
-            .son-dakika-alan {
-                padding: 0 12px;
-            }
-            
-            .son-dakika-yazi a {
-                font-size: 0.9rem;
-                font-weight: 500;
-            }
-            
-            .category-card { min-height: 220px; }
-            .category-content { padding: 20px 15px; }
-            .category-icon { font-size: 2rem; }
-            .category-name { font-size: 1.1rem; }
-            
-            /* Logo boyutu küçük mobil için */
             .logo-container {
                 height: 45px;
+                margin-left: 0;
             }
             
-            /* Footer Responsive */
+            .main-header {
+                padding: 6px 0;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .page-description {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .news-item-title {
+                font-size: 1.2rem;
+            }
+            
+            .category-card {
+                min-height: 220px;
+            }
+            
+            .category-content {
+                padding: 18px 12px;
+            }
+            
+            .category-icon {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+            
+            .category-name {
+                font-size: 1rem;
+            }
+            
             .footer-content {
                 gap: 30px;
             }
@@ -1178,43 +1282,64 @@
                 font-size: 0.9rem;
             }
             
-            .footer-social a { width: 40px; height: 40px; font-size: 1rem; }
-            .scroll-to-top { width: 45px; height: 45px; bottom: 15px; right: 15px; font-size: 1.1rem; }
+            /* Çerez bildirimi mobil */
+            .cookie-banner {
+                padding: 10px 12px;
+                font-size: 13px;
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+            
+            .cookie-banner button {
+                width: 100%;
+                padding: 8px 12px;
+            }
+            
+            .footer-social a {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .scroll-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 1.1rem;
+            }
         }
         
         @media (max-width: 400px) {
-            .son-dakika-etiket {
-                padding: 0 10px;
-                font-size: 0.85rem;
-                min-width: 110px;
-            }
-            
-            .son-dakika-yazi a {
-                font-size: 0.85rem;
-            }
-        }
-        
-        /* Responsive medya sorgularında nav-link i ikonlarının gösterilmesi için ek */
-        @media (max-width: 768px) {
-            .nav-link i {
-                display: inline-block;
+            .page-title {
+                font-size: 1.6rem;
             }
         }
         
         @media (min-width: 769px) {
+            .nav-link {
+                font-size: 0.95rem;
+                padding: 14px 10px;
+                white-space: nowrap;
+            }
+            
             .nav-link i {
                 display: none;
             }
             
-            /* Masaüstünde nav-links-container gap 2px olacak şekilde */
             .nav-links-container {
                 gap: 2px;
+            }
+            
+            .dropdown-menu a i {
+                display: inline-block;
             }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER - BARTIN BELEDİYESİ SAYFASINDAN %100 AYNEN AKTARILDI -->
+    <!-- HEADER - BARTIN SİYASET SAYFASINDAN %100 AYNEN AKTARILDI -->
     <header>
         <div class="top-bar">
             <div class="container">
@@ -1404,7 +1529,7 @@
                     </a>
                     <div class="news-content">
                         <h3 class="news-item-title">Vali Arslan Başkanlığında 2026 Yılının 1. İl Koordinasyon Kurulu Toplantısı Yapıldı</h3>
-                        <p class="news-item-excerpt">Vali Arslan başkanlığıda 2026 yılının ilk İl Koordinasyon Kurulu Toplantısı gerçekleştirildi. Toplantıda, 2026 yılına yönelik hedefler ve stratejiler belirlendi, ilin kalkınma projeleri ele alındı.</p>
+                        <p class="news-item-excerpt">Vali Arslan başkanlığında 2026 yılının ilk İl Koordinasyon Kurulu Toplantısı gerçekleştirildi. Toplantıda, 2026 yılına yönelik hedefler ve stratejiler belirlendi, ilin kalkınma projeleri ele alındı.</p>
                         <div class="news-item-details">
                             <span>24 Ocak 2026</span>
                             <a href="https://www.bartinduysun.com/haberler/valilik/vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi-yapildi.html" class="read-more-link">
@@ -1540,7 +1665,7 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT - BARTIN SİYASET SAYFASINDAKİ %100 AYNI KODLAR -->
     <script>
         // Haber verisi (Verilen sayfadan alınan Valilik Haberleri)
         const valilikHaberleri = [
@@ -1604,16 +1729,40 @@
         const hamburgerMenu = document.getElementById('hamburgerMenu');
         const navMenu = document.getElementById('navMenu');
         const menuOverlay = document.getElementById('menuOverlay');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const mainLogo = document.getElementById('mainLogo');
+        const footerLogo = document.getElementById('footerLogo');
         const breakingNewsTicker = document.getElementById('breakingNewsTicker');
         const breakingNewsContent = document.getElementById('breakingNewsContent');
         const cookieBanner = document.getElementById('cookie-banner');
         const closeCookiesBtn = document.getElementById('closeCookies');
         const scrollToTopBtn = document.getElementById('scrollToTop');
-        const mainLogo = document.getElementById('mainLogo');
-        const footerLogo = document.getElementById('footerLogo');
-        const dropdownMenu = document.getElementById('dropdownMenu');
 
-        // SON DAKİKA ŞERİDİNİ AYARLA (DÜZGÜN BAŞLANGIÇ İLE KESİNTİSİZ DÖNGÜ)
+        // Footer logo tıklama fonksiyonu - Siyaset sayfasındakiyle %100 aynı
+        function handleFooterLogoClick(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Mobil menüyü aç/kapa - Siyaset sayfasındakiyle %100 aynı
+        function toggleMobileMenu() {
+            if (navMenu && menuOverlay && hamburgerMenu) {
+                navMenu.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                hamburgerMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        }
+
+        // SON DAKİKA ŞERİDİNİ AYARLA - Siyaset sayfasındakiyle %100 aynı (sadece renk değişikliği var)
         function setupBreakingNewsTicker() {
             if (!breakingNewsContent || valilikHaberleri.length === 0) return;
             
@@ -1632,7 +1781,7 @@
                 
                 // Fare ile üzerine gelindiğinde rengi değişsin
                 newsLink.addEventListener('mouseenter', function() {
-                    this.style.color = '#28a745';
+                    this.style.color = '#01889F';
                 });
                 
                 newsLink.addEventListener('mouseleave', function() {
@@ -1659,35 +1808,22 @@
             }, 100);
         }
 
-        // MOBİL MENÜ
-        function toggleMobileMenu() {
-            if (navMenu && menuOverlay && hamburgerMenu) {
-                navMenu.classList.toggle('active');
-                menuOverlay.classList.toggle('active');
-                hamburgerMenu.classList.toggle('active');
-                
-                if (navMenu.classList.contains('active')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            }
-        }
-
-        // ÇEREZ BİLDİRİMİ
+        // Çerez bildirimi fonksiyonu - Siyaset sayfasındakiyle %100 aynı
         function setupCookieBanner() {
-            if (cookieBanner && closeCookiesBtn) {
-                if (!localStorage.getItem("cookieInfoClosed")) {
-                    cookieBanner.style.display = "flex";
-                }
-                closeCookiesBtn.addEventListener("click", function() {
-                    localStorage.setItem("cookieInfoClosed", "true");
-                    cookieBanner.style.display = "none";
-                });
+            const banner = document.getElementById("cookie-banner");
+            const closeBtn = document.getElementById("closeCookies");
+
+            if (!localStorage.getItem("cookieInfoClosed")) {
+                banner.style.display = "flex";
             }
+
+            closeBtn.addEventListener("click", function () {
+                localStorage.setItem("cookieInfoClosed", "true");
+                banner.style.display = "none";
+            });
         }
 
-        // YUKARI ÇIK BUTONU
+        // Yukarı çık butonu fonksiyonu
         function initScrollToTop() {
             if (!scrollToTopBtn) return;
             
@@ -1709,71 +1845,90 @@
             toggleScrollToTopButton();
         }
 
-        // LOGO TIKLAMA
-        function handleLogoClick(e) {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // EVENT LISTENER'LARI KUR
-        document.addEventListener('DOMContentLoaded', function() {
-            // Son dakika şeridini kur
-            setupBreakingNewsTicker();
+        // Event listener'ları kur - Siyaset sayfasındakiyle %100 aynı
+        function setupEventListeners() {
             
-            // Mobil menü
-            if (hamburgerMenu) hamburgerMenu.addEventListener('click', toggleMobileMenu);
-            if (menuOverlay) menuOverlay.addEventListener('click', toggleMobileMenu);
-            
-            // Logo
-            if (mainLogo) mainLogo.addEventListener('click', handleLogoClick);
-            if (footerLogo) footerLogo.addEventListener('click', handleLogoClick);
-            
-            // Çerez bildirimi
-            setupCookieBanner();
-            
-            // Yukarı çık butonu
-            initScrollToTop();
-            
-            // Dropdown menü (mobil)
-            if (dropdownMenu) {
-                const dropdownLink = dropdownMenu.querySelector('.nav-link');
-                if (dropdownLink) {
-                    dropdownLink.addEventListener('click', function(e) {
-                        if (window.innerWidth <= 768) {
-                            e.preventDefault();
-                            dropdownMenu.classList.toggle('active');
-                        }
-                    });
-                }
+            // Footer logo tıklama
+            if (footerLogo) {
+                footerLogo.addEventListener('click', handleFooterLogoClick);
             }
             
-            // Pencere boyutu değiştiğinde dropdown'ı kapat
-            window.addEventListener('resize', function() {
+            // Hamburger menü
+            if (hamburgerMenu) {
+                hamburgerMenu.addEventListener('click', toggleMobileMenu);
+            }
+            
+            // Menü overlay
+            if (menuOverlay) {
+                menuOverlay.addEventListener('click', toggleMobileMenu);
+            }
+            
+            // Dropdown menü (mobil için) - Siyaset sayfasındakiyle %100 aynı
+            if (dropdownMenu) {
+                const dropdownLink = dropdownMenu.querySelector('.nav-link');
+
+                dropdownLink.addEventListener('click', function (e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        dropdownMenu.classList.toggle('active');
+                    }
+                });
+            }
+            
+            // Pencere boyutu değiştiğinde dropdown'ı kapat - Siyaset sayfasındakiyle %100 aynı
+            window.addEventListener('resize', () => {
                 if (window.innerWidth > 768) {
                     if (navMenu) navMenu.classList.remove('active');
                     if (menuOverlay) menuOverlay.classList.remove('active');
                     if (hamburgerMenu) hamburgerMenu.classList.remove('active');
                     if (dropdownMenu) dropdownMenu.classList.remove('active');
-                    document.body.style.overflow = '';
+                    document.body.style.overflow = 'auto';
                     
-                    // Masaüstünde menü ikonlarını gizle
                     document.querySelectorAll('.nav-link i').forEach(icon => {
                         icon.style.display = 'none';
                     });
                 } else {
-                    // Mobilde menü ikonlarını göster
                     document.querySelectorAll('.nav-link i').forEach(icon => {
                         icon.style.display = 'inline-block';
                     });
                 }
             });
+        }
+
+        // Sayfa yüklendiğinde çalışacak fonksiyonlar - Siyaset sayfasındakiyle %100 aynı
+        document.addEventListener('DOMContentLoaded', function() {
+            setupEventListeners();
+            setupCookieBanner();
+            setupBreakingNewsTicker();
+            initScrollToTop();
             
-            // Masaüstü görünümde menü ikonlarını gizle
             if (window.innerWidth >= 769) {
                 document.querySelectorAll('.nav-link i').forEach(icon => {
                     icon.style.display = 'none';
                 });
             }
+            
+            // Haber kartlarına hover efekti ekleme - Siyaset sayfasındakiyle %100 aynı
+            document.querySelectorAll('.news-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(10px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+            
+            // Reklam alanlarına hover efekti - Siyaset sayfasındakiyle %100 aynı
+            document.querySelectorAll('.ad-section').forEach(ad => {
+                ad.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                });
+                
+                ad.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
         });
     </script>
 </body>
