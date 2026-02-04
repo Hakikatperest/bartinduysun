@@ -25,7 +25,6 @@
     <link rel="icon" href="https://www.bartinduysun.com/images/bartinduysun-logo.ico" type="image/x-icon">
     <link rel="shortcut icon" href="https://www.bartinduysun.com/images/bartinduysun-logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Ana Sayfa ile Aynı CSS -->
     <style>
         * {
             margin: 0;
@@ -85,7 +84,31 @@
             padding: 0 15px;
         }
         
-        /* BİRİNCİ SAYFADAN ALINAN HEADER - %100 AYNEN */
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-bottom: 2px solid var(--topbar-color);
+        }
+        
+        .blinking-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        /* Header - %100 SİYASET SAYFASINDAN AYNEN AKTARILDI */
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -210,7 +233,7 @@
         
         .nav-links-container {
             display: flex;
-            gap: 2px;
+            gap: 5px;
         }
         
         .nav-item {
@@ -326,7 +349,7 @@
             max-width: 800px;
         }
         
-        /* YENİ MODERN SON DAKİKA ŞERİDİ (KIRMIZI ARKAPLANLI) - SİYASET SAYFASINDAN AYNEN */
+        /* YENİ MODERN SON DAKİKA ŞERİDİ (KIRMIZI ARKAPLANLI) */
         .son-dakika-bar {
             display: flex;
             align-items: center;
@@ -342,7 +365,7 @@
         }
         
         .son-dakika-etiket {
-            background: #c00; /* KIRMIZI ARKAPLAN */
+            background: #c00;
             color: #ffffff;
             padding: 0 20px;
             height: 100%;
@@ -546,7 +569,7 @@
             gap: 12px;
         }
         
-        /* REKLAM ALANLARI - SİYASET SAYFASINDAN AYNEN */
+        /* REKLAM ALANLARI */
         .ad-section {
             background-color: white;
             height: 180px;
@@ -595,7 +618,7 @@
             border-radius: 8px;
         }
         
-        /* MODERN KATEGORİLER BÖLÜMÜ - SİYASET SAYFASINDAN AYNEN */
+        /* MODERN KATEGORİLER BÖLÜMÜ - GÖRSEL ARKAPLANLI */
         .categories-section {
             margin: 60px 0;
             position: relative;
@@ -756,7 +779,7 @@
             max-width: 90%;
         }
         
-        /* FOOTER - SİYASET SAYFASINDAN AYNEN */
+        /* Footer */
         footer {
             background-color: white;
             color: var(--dark-color);
@@ -932,10 +955,10 @@
             border-radius: 8px;
         }
         
-        /* Çerez Bildirimi CSS - Ana sayfadan %100 aynen aktarıldı */
+        /* Çerez Bildirimi CSS */
         .cookie-banner {
           position: fixed;
-          bottom: -100px; /* başlangıçta ekran dışında */
+          bottom: -100px;
           left: 0;
           width: 100%;
           background: rgba(255, 255, 255, 0.85);
@@ -969,7 +992,6 @@
           white-space: nowrap;
         }
 
-        /* Slide-up animasyonu */
         @keyframes slideUpCookie {
           from {
             bottom: -100px;
@@ -981,7 +1003,7 @@
           }
         }
         
-        /* Responsive - SİYASET SAYFASINDAN AYNEN */
+        /* Responsive */
         @media (max-width: 1200px) {
             .categories-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -1153,7 +1175,6 @@
                 font-size: 0.9rem;
             }
             
-            /* Footer Responsive */
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -1256,7 +1277,6 @@
                 font-size: 0.9rem;
             }
             
-            /* Çerez bildirimi mobil */
             .cookie-banner {
                 padding: 10px 12px;
                 font-size: 13px;
@@ -1289,7 +1309,7 @@
             }
             
             .nav-links-container {
-                gap: 5px;
+                gap: 2px;
             }
             
             .dropdown-menu a i {
@@ -1299,7 +1319,7 @@
     </style>
 </head>
 <body>
-    <!-- Header Bölümü - %100 AYNEN AKTARILDI (Siyaset sayfasından) -->
+    <!-- Header Bölümü - SİYASET SAYFASINDAN %100 AYNEN AKTARILDI -->
     <header>
         <div class="top-bar">
             <div class="container">
@@ -1501,7 +1521,7 @@
             </div>
         </section>
 
-        <!-- MODERN KATEGORİLER BÖLÜMÜ - GÖRSEL ARKAPLANLI - %100 AYNEN AKTARILDI -->
+        <!-- MODERN KATEGORİLER BÖLÜMÜ - GÖRSEL ARKAPLANLI -->
         <section class="categories-section">
             <h2 class="section-title">
                 <i class="fas fa-bolt" style="margin-right: 10px; color: var(--topbar-color); animation: blink 1s infinite;"></i>
@@ -1552,11 +1572,10 @@
         </section>
     </main>
 
-    <!-- FOOTER - %100 AYNEN AKTARILDI -->
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <!-- Sol Bölüm: Logo, Hakkımızda, Sosyal Medya -->
                 <div class="footer-left">
                     <div class="footer-logo-container">
                         <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp" alt="Bartın Duysun Logo" class="footer-logo-img" id="footerLogo">
@@ -1578,9 +1597,7 @@
                     </div>
                 </div>
                 
-                <!-- Sağ Bölüm: 2 Sütunlu Bağlantılar -->
                 <div class="footer-right">
-                    <!-- İlk Sütun: Hakkımızda -->
                     <div class="footer-column">
                         <h3 class="footer-title">Hakkımızda</h3>
                         <ul class="footer-links">
@@ -1591,7 +1608,6 @@
                         </ul>
                     </div>
                     
-                    <!-- İkinci Sütun: Kurumsal -->
                     <div class="footer-column">
                         <h3 class="footer-title">Kurumsal</h3>
                         <ul class="footer-links">
@@ -1611,7 +1627,7 @@
         </div>
     </footer>
 
-    <!-- Çerez Bildirimi - Ana sayfadan %100 aynen aktarıldı -->
+    <!-- Çerez Bildirimi -->
     <div id="cookie-banner" class="cookie-banner">
       <span>
         Bu web sitesinde kullanıcı deneyimini geliştirmek amacıyla çerezler kullanılmaktadır.
@@ -1761,7 +1777,7 @@
             }, 100);
         }
 
-        // Çerez bildirimi fonksiyonu - Ana sayfadan %100 aynen aktarıldı
+        // Çerez bildirimi fonksiyonu
         function setupCookieBanner() {
             const banner = document.getElementById("cookie-banner");
             const closeBtn = document.getElementById("closeCookies");
@@ -1829,8 +1845,8 @@
         // Sayfa yüklendiğinde çalışacak fonksiyonlar
         document.addEventListener('DOMContentLoaded', function() {
             setupEventListeners();
-            setupCookieBanner(); // Çerez bildirimini başlat
-            setupBreakingNewsTicker(); // Son dakika şeridini başlat
+            setupCookieBanner();
+            setupBreakingNewsTicker();
             
             if (window.innerWidth >= 769) {
                 document.querySelectorAll('.nav-link i').forEach(icon => {
@@ -1838,7 +1854,6 @@
                 });
             }
             
-            // Belediye haberleri sayfasına özel işlemler
             console.log('Bartın Belediyesi Haberleri sayfası yüklendi. Bartın Duysun - Profesyonel Haber Sitesi');
             
             // Haber kartlarına hover efekti ekleme
