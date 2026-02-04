@@ -75,7 +75,7 @@
             padding: 0 15px;
         }
         
-        /* YENİ HEADER (İletişim sayfasından %100 Aynı) */
+        /* BELEDİYE SAYFASININ HEADER'I %100 AYNEN ALINDI */
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -140,7 +140,6 @@
             padding: 12px 0;
         }
         
-        /* LOGO BOYUTU İletişim sayfasındaki gibi ayarlandı */
         .logo-container {
             height: 70px;
             display: flex;
@@ -159,7 +158,7 @@
             height: 100%;
             width: auto;
             object-fit: contain;
-            transform: scale(1.2); /* İletişim sayfasındaki gibi %20 büyütme */
+            transform: scale(1.2);
         }
         
         .hamburger-menu {
@@ -1274,26 +1273,16 @@
     </style>
 </head>
 <body>
-    <!-- HEADER (Referans sayfadan %100 Aynı - Logo boyutu düzeltildi) -->
+    <!-- HEADER (BELEDİYE SAYFASININ HEADER'I %100 AYNEN AKTARILDI) -->
     <header>
         <div class="top-bar">
             <div class="container">
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com/bartinduysun/" title="Instagram" class="instagram" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-telegram"></i>
-                    </a>
+                    <a href="https://www.facebook.com/bartinduysun74/" title="Facebook" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/bartinduysun/" title="Instagram" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/bartinduysun" title="X (Twitter)" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/channel/UCLMcjvHfcztfi7fs0dnXzsQ" title="YouTube" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/bartinduysun" title="Telegram" class="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
                 </div>
             </div>
         </div>
@@ -1315,7 +1304,6 @@
                     
                     <div class="menu-overlay" id="menuOverlay"></div>
                     
-                    <!-- SAĞ ÜST AÇILIR MENÜ BARI %100 AYNEN AKTARILDI -->
                     <ul class="nav-menu" id="navMenu">
                         <div class="nav-links-container">
                             <li class="nav-item"><a href="https://www.bartinduysun.com" class="nav-link"><i class="fas fa-home"></i> Anasayfa</a></li>
@@ -1709,7 +1697,7 @@
                 // Görsele tıklama
                 if (adContent) {
                     adContent.addEventListener('click', function(e) {
-                        if (!e.target.classList.contains('ad-info-btn')) {
+                        if (!e.target.classList.contains('.ad-info-btn')) {
                             adSection.classList.toggle('active');
                         }
                     });
