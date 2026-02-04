@@ -75,7 +75,7 @@
             padding: 0 15px;
         }
         
-        /* YENİ HEADER (Orijinal tasarımdan %100 Aynı) - BARTIN BELEDİYESİ SAYFASINDAN AKTARILDI */
+        /* YENİ HEADER - BARTIN BELEDİYESİ SAYFASINDAN %100 AYNEN AKTARILDI */
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -198,9 +198,10 @@
             gap: 0;
         }
         
+        /* NAV-LİNKS-CONTAINER GAP 2PX OLMALI (BELEDİYE SAYFASINDAKİ GİBİ) */
         .nav-links-container {
             display: flex;
-            gap: 5px;
+            gap: 2px; /* BARTIN BELEDİYESİ SAYFASINDAKİ GİBİ 2px */
         }
         
         .nav-item {
@@ -332,7 +333,7 @@
         }
         
         .son-dakika-etiket {
-            background: #c00; /* KIRMIZI ARKAPLAN */
+            background: #c00;
             color: #ffffff;
             padding: 0 20px;
             height: 100%;
@@ -585,7 +586,7 @@
             border-radius: 8px;
         }
         
-        /* KATEGORİLER - FOOTER RENGİYLE AYNI (#01889F) */
+        /* KATEGORİLER */
         .categories-section {
             margin: 60px 0;
             position: relative;
@@ -746,7 +747,7 @@
             max-width: 90%;
         }
         
-        /* FOOTER (Orijinal tasarımdan %100 Aynı) */
+        /* FOOTER */
         footer {
             background-color: white;
             color: var(--dark-color);
@@ -997,6 +998,7 @@
             .category-card { min-height: 260px; }
             .scroll-to-top { width: 55px; height: 55px; bottom: 25px; right: 25px; font-size: 1.3rem; }
         }
+        
         @media (max-width: 768px) {
             .hamburger-menu { display: flex; }
             .nav-menu {
@@ -1013,9 +1015,16 @@
                 z-index: 1001;
                 overflow-y: auto;
             }
-            .nav-links-container { flex-direction: column; gap: 0; }
+            .nav-links-container { 
+                flex-direction: column; 
+                gap: 0; 
+            }
             .nav-menu.active { right: 0; }
-            .nav-link { padding: 14px 15px; font-size: 1rem; margin-bottom: 3px; }
+            .nav-link { 
+                padding: 14px 15px; 
+                font-size: 1rem; 
+                margin-bottom: 3px; 
+            }
             .nav-link i { display: inline-block; }
             .dropdown-menu {
                 position: static;
@@ -1095,6 +1104,7 @@
             
             .scroll-to-top { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 1.2rem; }
         }
+        
         @media (max-width: 576px) {
             .page-title { font-size: 2rem; }
             .section-title { font-size: 1.5rem; }
@@ -1195,11 +1205,16 @@
             .nav-link i {
                 display: none;
             }
+            
+            /* Masaüstünde nav-links-container gap 2px olacak şekilde */
+            .nav-links-container {
+                gap: 2px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER (Bartın Belediyesi sayfasından %100 aynen aktarıldı) -->
+    <!-- HEADER - BARTIN BELEDİYESİ SAYFASINDAN %100 AYNEN AKTARILDI -->
     <header>
         <div class="top-bar">
             <div class="container">
@@ -1389,7 +1404,7 @@
                     </a>
                     <div class="news-content">
                         <h3 class="news-item-title">Vali Arslan Başkanlığında 2026 Yılının 1. İl Koordinasyon Kurulu Toplantısı Yapıldı</h3>
-                        <p class="news-item-excerpt">Vali Arslan başkanlığında 2026 yılının ilk İl Koordinasyon Kurulu Toplantısı gerçekleştirildi. Toplantıda, 2026 yılına yönelik hedefler ve stratejiler belirlendi, ilin kalkınma projeleri ele alındı.</p>
+                        <p class="news-item-excerpt">Vali Arslan başkanlığıda 2026 yılının ilk İl Koordinasyon Kurulu Toplantısı gerçekleştirildi. Toplantıda, 2026 yılına yönelik hedefler ve stratejiler belirlendi, ilin kalkınma projeleri ele alındı.</p>
                         <div class="news-item-details">
                             <span>24 Ocak 2026</span>
                             <a href="https://www.bartinduysun.com/haberler/valilik/vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi-yapildi.html" class="read-more-link">
@@ -1452,7 +1467,7 @@
         </section>
     </main>
 
-    <!-- FOOTER (Orijinal tasarımdan %100 Aynı) -->
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-content">
