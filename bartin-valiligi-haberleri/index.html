@@ -75,7 +75,7 @@
             padding: 0 15px;
         }
         
-        /* YENİ HEADER (Orijinal tasarımdan %100 Aynı) */
+        /* YENİ HEADER (Orijinal tasarımdan %100 Aynı) - BARTIN BELEDİYESİ SAYFASINDAN AKTARILDI */
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -140,7 +140,6 @@
             padding: 12px 0;
         }
         
-        /* LOGO BOYUTU Orijinal tasarımdaki gibi ayarlandı */
         .logo-container {
             height: 70px;
             display: flex;
@@ -201,7 +200,7 @@
         
         .nav-links-container {
             display: flex;
-            gap: 2px;
+            gap: 5px;
         }
         
         .nav-item {
@@ -1184,10 +1183,23 @@
                 font-size: 0.85rem;
             }
         }
+        
+        /* Responsive medya sorgularında nav-link i ikonlarının gösterilmesi için ek */
+        @media (max-width: 768px) {
+            .nav-link i {
+                display: inline-block;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .nav-link i {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- HEADER (Orijinal tasarımdan %100 Aynı) -->
+    <!-- HEADER (Bartın Belediyesi sayfasından %100 aynen aktarıldı) -->
     <header>
         <div class="top-bar">
             <div class="container">
@@ -1205,8 +1217,8 @@
             <div class="main-header">
                 <div class="logo-container">
                     <a href="https://www.bartinduysun.com/" class="logo" id="mainLogo">
-    <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp" alt="Bartın Duysun Logo">
-</a>
+                        <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp" alt="Bartın Duysun Logo">
+                    </a>
                 </div>
                 
                 <nav>
