@@ -2017,6 +2017,59 @@
         font-size: 1rem;
     }
 }
+        @media (max-width: 768px) {
+
+    .slide-overlay {
+        background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.95) 0%,
+            rgba(0,0,0,0.85) 40%,
+            rgba(0,0,0,0.4) 70%,
+            transparent 100%
+        );
+        padding: 20px 20px 110px 20px;
+    }
+
+    .slide-content {
+        transform: translateY(-40px);
+    }
+
+    .current-label {
+        background: linear-gradient(135deg, #d32f2f, #ff1744);
+        font-size: 0.75rem;
+        letter-spacing: 1.5px;
+        padding: 5px 12px;
+        border-radius: 50px;
+        box-shadow: 0 4px 12px rgba(211,47,47,0.4);
+    }
+
+    .slide-title {
+        font-size: 1.6rem;
+        font-weight: 800;
+        line-height: 1.25;
+        letter-spacing: -0.3px;
+        text-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    }
+
+    .gallery-navigation {
+        margin-top: -60px;
+        z-index: 15;
+    }
+
+    .nav-number {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+        border-radius: 6px;
+        backdrop-filter: blur(8px);
+        background: rgba(255,255,255,0.15);
+    }
+
+    .nav-number.active {
+        background: #d32f2f;
+        box-shadow: 0 4px 15px rgba(211,47,47,0.6);
+    }
+}
     </style>
     <link rel="shortcut icon" href="https://www.bartinduysun.com/images/bartinduysun-logo.ico" type="image/x-icon">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
