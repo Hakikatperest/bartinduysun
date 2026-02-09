@@ -153,9 +153,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <!-- Anasayfa butonu eklendi -->
                             <li class="nav-item"><a href="https://www.bartinduysun.com" class="nav-link"><i class="fas fa-home"></i> Anasayfa</a></li>
                             <li class="nav-item"><a href="/bartin-haberleri/" class="nav-link"><i class="fas fa-newspaper"></i> Bartın Haberleri</a></li>
-                            <li class="nav-item"><a href="/bartin-valiligi-haberleri/" class="nav-link"><i class="fas fa-landmark"></i> Bartın Valiliği Haberleri</a></li>
-                            <li class="nav-item"><a href="/bartin-belediyesi-haberleri/" class="nav-link"><i class="fas fa-city"></i> Bartın Belediyesi Haberleri</a></li>
-                            <li class="nav-item"><a href="/bartin-siyaset-haberleri/" class="nav-link"><i class="fas fa-users"></i> Bartın Siyaset Haberleri</a></li>
+                            <li class="nav-item"><a href="/bartin-haberleri/" class="nav-link"><i class="fas fa-landmark"></i> Bartın Haberleri</a></li>
+                            <li class="nav-item"><a href="/bartin-haberleri/" class="nav-link"><i class="fas fa-city"></i> Bartın Haberleri</a></li>
+                            <li class="nav-item"><a href="/bartin-haberleri/" class="nav-link"><i class="fas fa-users"></i> Bartın Haberleri</a></li>
                             <li class="nav-item"><a href="/firma-rehberi/" class="nav-link"><i class="fas fa-building"></i> Bartın Firma Rehberi</a></li>
                             <li class="nav-item dropdown" id="dropdownMenu">
                                 <a href="#" class="nav-link"><i class="fas fa-info-circle"></i> Hakkımızda <i class="fas fa-chevron-down"></i></a>
@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <!-- Tanıtım Alanı -->
     <section class="intro-section">
         <div class="container">
-            <h1 class="main-title">Bartın Duysun – En Güncel Bartın Haberleri</h1>
+            <h1 class="main-title">Bartın Duysun – Bartın Haber Sitesi - Son Dakika Bartın Haberleri</h1>
             <p class="intro-text">Bartın ve çevresindeki en güncel, doğru ve tarafsız haberlerin adresi. Valilik, belediye, siyaset ve asayiş haberlerini ilk elden sizlere ulaştırıyoruz.</p>
         </div>
     </section>
@@ -225,118 +225,27 @@ document.addEventListener("DOMContentLoaded", function () {
                 <section class="breaking-news-section" aria-labelledby="breakingNewsTitle">
                     <h3 class="breaking-news-title" id="breakingNewsTitle">
                         <i class="fas fa-bolt"></i>
-                        Son Dakika Haberler
+                        BARTIN SON DAKİKA HABERLERİ
                     </h3>
                     <div class="breaking-news-list" id="breakingNewsList">
                         <!-- Son dakika haberleri JavaScript ile eklenecek -->
                     </div>
                 </section>
                 
-                <!-- Reklam 1: İrmak Mobilya - Son Dakika ile Bartın Haberleri arasına -->
-                <div class="ad-section" id="ad1" data-url="https://www.instagram.com/irmakmobilya74/">
-                    <div class="ad-content">
-                        <img src="https://www.bartinduysun.com/images/irmak-mobilya.webp" alt="İrmak Mobilya - Kaliteli Mobilya Çözümleri" class="ad-image ad-desktop" loading="lazy">
-                        <img src="https://www.bartinduysun.com/images/irmak-mobilya2.webp" alt="İrmak Mobilya - Kaliteli Mobilya Çözümleri" class="ad-image ad-mobile" loading="lazy">
-                        <button class="ad-info-btn" type="button">
-                          <i class="fas fa-info-circle"></i> İnstagram Sayfasına Git
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Bartın Siyaset Haberleri Bölümü (Eski En Çok Okunanlar) -->
-                <section class="news-category" id="siyaset" aria-labelledby="siyasetTitle">
-                    <h2 class="section-title" id="siyasetTitle" style="border-bottom-color: var(--siyaset-color);">
-                        <span class="blinking-dot" style="background-color: var(--siyaset-color);"></span>
-                        <span style="color: var(--siyaset-color);">Bartın Siyaset Haberleri</span>
-                    </h2>
-                    
-                    <div class="news-grid" id="siyasetNews">
-                        <!-- Bartın Siyaset haber kartları JavaScript ile eklenecek -->
-                    </div>
-                </section>
-                
-                <!-- Reklam 2: Rgold - Bartın Siyaset Haberleri ile Valilik arasına -->
-                <div class="ad-section" id="ad2" data-url="https://www.instagram.com/rgold.mucevher/">
-                    <div class="ad-content">
-                        <img src="https://www.bartinduysun.com/images/rgold-mucevherat.webp" alt="RGold Mücevherat - Kaliteli Takı ve Mücevher" class="ad-image ad-desktop" loading="lazy">
-                        <img src="https://www.bartinduysun.com/images/rgold-kuyumcu2.webp" alt="RGold Mücevherat - Kaliteli Takı ve Mücevher" class="ad-image ad-mobile" loading="lazy">
-                        <button class="ad-info-btn" type="button">
-                            <i class="fas fa-info-circle"></i> İnstagram Sayfasına Git
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Valilik Haberleri Bölümü -->
-                <section class="news-category" id="valilik" aria-labelledby="valilikTitle">
-                    <h2 class="section-title" id="valilikTitle" style="border-bottom-color: var(--valilik-color);">
-                        <span class="blinking-dot" style="background-color: var(--valilik-color);"></span>
-                        <span style="color: var(--valilik-color);">Bartın Valiliği Haberleri</span>
-                    </h2>
-                    
-                    <div class="news-grid" id="valilikNews">
-                        <!-- Valilik haber kartları JavaScript ile eklenecek -->
-                    </div>
-                </section>
-                
-                <!-- Reklam 3: Sultana Künefe - Valilik ile Belediye arasına -->
-                <div class="ad-section" id="ad3" data-url="https://www.instagram.com/sultanakunefebartin/">
-                    <div class="ad-content">
-                        <img src="https://www.bartinduysun.com/images/sultana-kunefe.webp" alt="Sultana Künefe - Özel Lezzetler" class="ad-image ad-desktop" loading="lazy">
-                        <img src="https://www.bartinduysun.com/images/sultana-kunefe2.webp" alt="Sultana Künefe - Özel Lezzetler" class="ad-image ad-mobile" loading="lazy">
-                        <button class="ad-info-btn" type="button">
-                            <i class="fas fa-info-circle"></i> İnstagram Sayfasına Git
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Belediye Haberleri Bölümü -->
-                <section class="news-category" id="belediye" aria-labelledby="belediyeTitle">
-                    <h2 class="section-title" id="belediyeTitle" style="border-bottom-color: var(--belediye-color);">
-                        <span class="blinking-dot" style="background-color: var(--belediye-color);"></span>
-                        <span style="color: var(--belediye-color);">Bartın Belediyesi Haberleri</span>
-                    </h2>
-                    
-                    <div class="news-grid" id="belediyeNews">
-                        <!-- Belediye haber kartları JavaScript ile eklenecek -->
-                    </div>
-                </section>
-                
-                <!-- Reklam 4: Sercan Ateş - Belediye ile Bartın Haberleri arasına -->
-                <div class="ad-section" id="ad4" data-url="https://www.instagram.com/sercanatesfirini/">
-                    <div class="ad-content">
-                        <img src="https://www.bartinduysun.com/images/sercan-ates.webp" alt="Sercan Ateş Fırını - Taze Ekmek ve Unlu Mamüller" class="ad-image ad-desktop" loading="lazy">
-                        <img src="https://www.bartinduysun.com/images/sercan-ates2.webp" alt="Sercan Ateş Fırını - Taze Ekmek ve Unlu Mamüller" class="ad-image ad-mobile" loading="lazy">
-                        <button class="ad-info-btn" type="button">
-                            <i class="fas fa-info-circle"></i> İnstagram Sayfasına Git
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Bartın Haberleri Bölümü (Eski Siyaset Haberleri) -->
-                <section class="news-category" id="bartin" aria-labelledby="bartinTitle">
-                    <h2 class="section-title" id="bartinTitle" style="border-bottom-color: var(--bartin-color);">
+                <!-- Tüm Haberler Tek Kategoride -->
+                <section class="news-category" id="bartinSonDakika" aria-labelledby="sonDakikaTitle">
+                    <h2 class="section-title" id="sonDakikaTitle" style="border-bottom-color: var(--bartin-color);">
                         <span class="blinking-dot" style="background-color: var(--bartin-color);"></span>
-                        <span style="color: var(--bartin-color);">Bartın Haberleri</span>
+                        <span style="color: var(--bartin-color);">BARTIN SON DAKİKA HABERLERİ</span>
                     </h2>
                     
-                    <div class="news-grid" id="bartinNews">
-                        <!-- Bartın haber kartları JavaScript ile eklenecek -->
+                    <div class="news-grid" id="allNewsContainer">
+                        <!-- Tüm haberler burada listelenecek, her 5 haberde 1 reklam -->
                     </div>
                 </section>
-                
-                <!-- Reklam 5: Bahçen Kebap - Bartın Haberleri ile Kategoriler arasına -->
-                <div class="ad-section" id="ad5" data-url="https://www.instagram.com/bartinbahcenkebap/">
-                    <div class="ad-content">
-                        <img src="https://www.bartinduysun.com/images/bahcen-kebap.webp" alt="Bahçen Kebap - Lezzetli Döner ve Kebap" class="ad-image ad-desktop" loading="lazy">
-                        <img src="https://www.bartinduysun.com/images/bahcen-kebap2.webp" alt="Bahçen Kebap - Lezzetli Döner ve Kebap" class="ad-image ad-mobile" loading="lazy">
-                        <button class="ad-info-btn" type="button">
-                            <i class="fas fa-info-circle"></i> İnstagram Sayfasına Git
-                        </button>
-                    </div>
-                </div>
             </div>
             
-            <!-- Sağ Sidebar - En Çok Okunan Haberler (Eski Siyaset Haberleri) -->
+            <!-- Sağ Sidebar - En Çok Okunan Haberler -->
             <aside class="sidebar" aria-labelledby="mostReadTitle">
                 <h3 class="sidebar-title" id="mostReadTitle">
                     <i class="fas fa-fire" style="color: var(--topbar-color); animation: blink 1s infinite;"></i>
@@ -364,27 +273,27 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                 </a>
                 
-                <a href="/bartin-valiligi-haberleri/" class="category-card">
+                <a href="/bartin-haberleri/" class="category-card">
                     <div class="category-content">
                         <div class="category-icon"><i class="fas fa-landmark"></i></div>
-                        <h3 class="category-name">Bartın Valiliği Haberleri</h3>
-                        <p>Bartın Valiliği'nden güncel duyuru ve haberler</p>
+                        <h3 class="category-name">Bartın Haberleri</h3>
+                        <p>Bartın'dan tüm güncel haberler</p>
                     </div>
                 </a>
                 
-                <a href="/bartin-belediyesi-haberleri/" class="category-card">
+                <a href="/bartin-haberleri/" class="category-card">
                     <div class="category-content">
                         <div class="category-icon"><i class="fas fa-city"></i></div>
-                        <h3 class="category-name">Bartın Belediyesi Haberleri</h3>
-                        <p>Bartın Belediyesi faaliyet ve projeleri</p>
+                        <h3 class="category-name">Bartın Haberleri</h3>
+                        <p>Bartın'dan en yeni haberler</p>
                     </div>
                 </a>
                 
-                <a href="/bartin-siyaset-haberleri/" class="category-card">
+                <a href="/bartin-haberleri/" class="category-card">
                     <div class="category-content">
                         <div class="category-icon"><i class="fas fa-users"></i></div>
-                        <h3 class="category-name">Bartın Siyaset Haberleri</h3>
-                        <p>Yerel ve genel siyasetten gelişmeler</p>
+                        <h3 class="category-name">Bartın Haberleri</h3>
+                        <p>Bartın'dan son dakika haberleri</p>
                     </div>
                 </a>
                 
@@ -553,233 +462,42 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             ],
             
-            // Siyaset Haberleri (Ana bölüm için)
-            siyaset: [
+            // Reklam verisi
+            advertisements: [
                 {
-                    id: 12,
-                    title: "Bartın'a 1,4 Milyon Dolarlık Yöresel Ürünler Pazarı Kazandırılıyor",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/bartina-1-4-milyon-dolarlik-yoresel-urunler-pazari-kazandiriliyor.webp",
-                    excerpt: "Yöresel Ürünler İçin Modern Pazar Geliyor",
-                    detail: "Bartın'da yerel üreticilerin ürünlerini değer fiyatla satabileceği, yaklaşık 1,4 milyon dolar değerinde modern bir yöresel ürünler pazarı inşa ediliyor.",
-                    url: "https://www.bartinduysun.com/haberler/siyaset/bartina-1-4-milyon-dolarlik-yoresel-urunler-pazari-kazandiriliyor.html"
+                    id: "ad1",
+                    url: "https://www.instagram.com/irmakmobilya74/",
+                    desktopImage: "https://www.bartinduysun.com/images/irmak-mobilya.webp",
+                    mobileImage: "https://www.bartinduysun.com/images/irmak-mobilya2.webp",
+                    alt: "İrmak Mobilya - Kaliteli Mobilya Çözümleri"
                 },
                 {
-                    id: 13,
-                    title: "Milletvekili Bankoğlu: Çocuk İstismarı Davasının İlk Duruşması Tamamlandı",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/cocuk-istismari-davasinın-ilk-durusmasi-sona-erdi.webp",
-                    excerpt: "Aysu Bankoğlu: Adli Süreç ve Çocuk İstismarı Davasını Yakından Takip Ediyoruz",
-                    detail: "CHP Bartın Milletvekili Aysu Bankoğlu, Meclis'te yaşandığı iddia edilen çocuk istismarı ve taciz olaylarına ilişkin davanın ilk duruşmasının sona erdiğini açıkladı.",
-                    url: "https://www.bartinduysun.com/haberler/siyaset/milletvekili-bankoglu-cocuk-istismari-davasi-ilk-durusma-tamamlandi.html"
+                    id: "ad2",
+                    url: "https://www.instagram.com/rgold.mucevher/",
+                    desktopImage: "https://www.bartinduysun.com/images/rgold-mucevherat.webp",
+                    mobileImage: "https://www.bartinduysun.com/images/rgold-kuyumcu2.webp",
+                    alt: "RGold Mücevherat - Kaliteli Takı ve Mücevher"
                 },
                 {
-                    id: 21,
-                    title: "Başkan Yalçınkaya'dan CHP 39. Olağan Kurultayı Sonrası Açıklama",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/baskan-yalcinkaya-dan-chp-kurultayi-sonrasi-aciklama.webp",
-                    excerpt: "Başkan Yalçınkaya'dan Özgür Özel'e Tebrik ve Kurultay Değerlendirmesi",
-                    detail: "Bartın Belediye Başkanı Rıza Yalçınkaya, CHP 39. Olağan Kurultayı'nın ikinci gününün tamamlanmasının ardından Genel Başkanlığa seçilen Özgür Özel'i tebrik edti.",
-                    url: "https://www.bartinduysun.com/haberler/siyaset/baskan-yalcinkaya-dan-chp-39-olagan-kurultayi-sonrasi-aciklama.html"
+                    id: "ad3",
+                    url: "https://www.instagram.com/sultanakunefebartin/",
+                    desktopImage: "https://www.bartinduysun.com/images/sultana-kunefe.webp",
+                    mobileImage: "https://www.bartinduysun.com/images/sultana-kunefe2.webp",
+                    alt: "Sultana Künefe - Özel Lezzetler"
                 },
                 {
-                    id: 22,
-                    title: "Milletvekili Bankoğlu'ndan TBMM'deki Emekli Maaşı Oylamasına Ret Tepkisi",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/milletvekili-bankoglu-ndan-tbmm-deki-emekli-maasi-oylamasina-tepki.webp",
-                    excerpt: "Aysu Bankoğlu: Emeklilerin Haklarını Savunmak İçin Ret Verdik",
-                    detail: "CHP Bartın Milletvekili Aysu Bankoğlu, TBMM'de en düşük emekli maaşıyla ilgili yapılan oylamada ret oyu verdiğini açıkladı.",
-                    url: "https://www.bartinduysun.com/haberler/siyaset/milletvekili-bankoglu-tbmm-emekli-maasi-oylamasi-ret-tepkisi.html"
+                    id: "ad4",
+                    url: "https://www.instagram.com/sercanatesfirini/",
+                    desktopImage: "https://www.bartinduysun.com/images/sercan-ates.webp",
+                    mobileImage: "https://www.bartinduysun.com/images/sercan-ates2.webp",
+                    alt: "Sercan Ateş Fırını - Taze Ekmek ve Unlu Mamüller"
                 },
                 {
-                    id: 23,
-                    title: "AK Parti Bartın'da Genişletilmiş İl Danışa Meclisi ve Vefa Buluşması Düzenlendi",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.webp",
-                    excerpt: "AK Parti Bartın Teşkilatı Vefa ve İstişare Toplantısında Bir Araya Geldi",
-                    detail: "AK Parti Bartın İl Başkanlığı tarafından düzenlenen Genişletilmiş İl Danışma Meclisi ve Vefa Buluşması, teşkilatın tüm kademelerinden yoğun katılımla gerçekleştirildi.",
-                    url: "https://www.bartinduysun.com/haberler/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.html"
-                },
-                {
-                    id: 24,
-                    title: "Başkan Çakır: Türk Bayrağı Sahipsiz Değildir",
-                    category: "Siyaset Haberleri",
-                    image: "https://www.bartinduysun.com/images/siyaset/baskan-cakir-turk-bayragi-sahipsiz-degildir.webp",
-                    excerpt: "Başkan Çakır: Bayrağımıza Uzanan Ellere Geit Yok",
-                    detail: "Amasra Belediye Başkanı Recai Çakır, Türk bayrağına yönelik son saldırıyı kınayarak, 14 Ağustos 1996'da Kıbrıs'ta bayrağa sahip çıkan kahraman askerleri andı.",
-                    url: "https://www.bartinduysun.com/haberler/siyaset/baskan-cakir-turk-bayragi-sahipsiz-degildir.html"
-                }
-            ],
-            
-            valilik: [
-                {
-                    id: 5,
-                    title: "Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı Yapıldı",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.webp",
-                    excerpt: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı.",
-                    detail: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı. Toplantıda, kadına yönelik şiddetle mücadele kapsamında yapılan çalışmalar değerlendirildi ve yeni stratejiler belirlendi.",
-                    url: "https://www.bartinduysun.com/haberler/valilik/kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.html"
-                },
-                {
-                    id: 6,
-                    title: "Vali Arslan Başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi.webp",
-                    excerpt: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı.",
-                    detail: "Vali Arslan başkanlığında Genişletilmiş İl Güvenlik ve Asayiş Koordinasyon Merkezi Yılbaşı Tedbirleri Gündemiyle Toplandı. Toplantıda, yılbaşı döneminde alınacak güvenlik tedbirleri ve asayiş önlemleri görüşüldü.",
-                    url: "https://www.bartinduysun.com/haberler/valilik/vali-arslan-baskanliginda-genisletilmis-il-guvenlik-ve-asayis-koordinasyon-merkezi-yilbasi-tedbirleri-gundemiyle-toplandi.html"
-                },
-                {
-                    id: 7,
-                    title: "Vali Arslan Vatandaşlarımızla Buluştu",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-vatandaslarimizla-bulustu.webp",
-                    excerpt: "Vali Arslan, vatandaşlarımızla bir araya gelerek sorunlarını dinledi ve çözüm yolları aradı.",
-                    detail: "Vali Arslan, vatandaşlarımızla bir araya gelerek sorunlarını dinledi ve çözüm yolları aradı. Ziyarette vatandaşların günlük yaşamda karşılaştığı sorunlar ele alındı ve çözüm için gerekli adımlar belirlendi.",
-                    url: "https://www.bartinduysun.com/haberler/valilik/vali-arslan-vatandaslarla-bulustu.html"
-                },
-                {
-                    id: 8,
-                    title: "Vali Arslan, Öğrencilerimizin Karne Heyecanını Paylaştı",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-ogrencilerin-karne-heyecanini-paylasti.webp",
-                    excerpt: "Vali Arslan, yarıyıl tatili öncesi öğrencilerin karne heyecanını paylaşmak için okulları ziyaret etti.",
-                    detail: "Vali Arslan, yarıyıl tatili öncesi öğrencilerin karne heyecanını paylaşmak için okulları ziyaret etti. Ziyaretlerde öğrencilerle sohbet eden Vali Arslan, başarılı öğrencileri tebrik etti ve tatillerini iyi değerlendirmelerini tavsiye etti.",
-                    url: "https://www.bartinduysun.com/haberler/valilik/vali-arslan-ogrencilerin-karne-heyecanini-paylasti.html"
-                },
-                {
-                    id: 16,
-                    title: "Arslan Başkanlığında İl İdare Şube Başkanları Toplantısı Yapıldı",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-il-idare-subebaskanlari-toplantisi.webp",
-                    excerpt: "Vali Arslan başkanlığında İl İdare Şube Başkanları Toplantısı gerçekleştirildi.",
-                    detail: "Vali Arslan başkanlığında İl İdare Şube Başkanları Toplantısı gerçekleştirildi. Toplantıda il idaresinin çalışmaları değerlendirildi ve önümüzdeki dönemde yapılacak faaliyetler planlandı.",
-                    url: "https://www.bartinduysun.com/haberler/valilik/arslan-baskanliginda-il-idare-sube-baskanlari-toplantisi-yapildi.html"
-                },
-                {
-                    id: 17,
-                    title: "Vali Arslan Başkanlığında 2026 Yılının 1. İl Koordinasyon Kurulu Toplantısı Yapıldı",
-                    category: "Valilik Haberleri",
-                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi.webp",
-                    excerpt: "Vali Arslan başkanlığında 2026 yılının ilk İl Koordinasyon Kurulu Toplantısı gerçekleştirildi.",
-                    detail: "Vali Arslan başkanlığında 2026 yılının ilk İl Koordinasyon Kurulu Toplantısı gerçekleştirildi. Toplantıda, 2026 yılına yönelik hedefler ve stratejiler belirlendi, ilin kalkınma projeleri ele alındı.",
-                    url: "https://www.bartinduysun.com/haberler/valilik/vali-arslan-baskanliginda-genisletilmis-il-guvenlik-ve-asayis-koordinasyon-merkezi-yilbasi-tedbirleri-gundemiyle-toplandi.html"
-                }
-            ],
-            
-            belediye: [
-                {
-                    id: 9,
-                    title: "Bartın Belediyesi'nde Yeni Proje",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/bir-projede-gurgenpinari-mahallesine-kazandiriliyor.webp",
-                    excerpt: "Bir projede Gürpınarı Mahallesi'ne kazandırılıyor.",
-                    detail: "Bartın Belediyesi, kent genelinde yaşam kalitesini artırmaya yönelik projelerine hız kesmeden devam ediyor. Bu kapsamda Gürgenpınarı Mahallesi'nde hayata geçirilecek olan Gürgenpınarı Park Alanları Projesi'nin yapım çalışmalarına başlandı.",
-                    url: "https://www.bartinduysun.com/haberler/belediye/bartin-belediyesinde-yeni-proje.html"
-                },
-                {
-                    id: 10,
-                    title: "Türk Sanat Müziği Konserine Davet",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/turk-sanat-muzigi-konserine-davet.webp",
-                    excerpt: "Türk Sanat Müziği Konserine vatandaşlar davet edildi",
-                    detail: "Bartın Belediyesi tarafından kültür ve sanat etkinlikleri kapsamında düzenlenen Türk Sanat Müziği Konseri, sanatseverlerle buluşmaya hazırlanıyor.",
-                    url: "https://www.bartinduysun.com/haberler/belediye/turk-sanat-muzigi-konserine-davet.html"
-                },
-                {
-                    id: 11,
-                    title: "Ekipler don riskine karşı önlem aldı",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/ekip-don-riski-karsi-724-gorev-basinda.webp",
-                    excerpt: "Bartın Belediyesi, don riskine karşı 7/24 nöbette",
-                    detail: "Bartın Belediyesi karla mücadele ekipleri, hava sıcaklıklarının eksi derecelere düşmesi ve don riskinin artmasi nedeniyle şehir genelinde tuzlama çalışmalarını aralıksız sürdürüyor.",
-                    url: "https://www.bartinduysun.com/haberler/belediye/ekip-don-riski-karsi-onlem-aldi.html"
-                },
-                {
-                    id: 18,
-                    title: "Bartın Belediyesi'nden araç filosuna büyük yatırım",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/arac-filosuna-buyuk-yatirim.webp",
-                    excerpt: "Araç filosuna yapılan yatırımın detayları paylaşıldı",
-                    detail: "Bartın Belediyesi, hizmet kapasitesini artırmak amacıyla araç filosunu önemli ölçüde güçlendirdi.",
-                    url: "https://www.bartinduysun.com/haberler/belediye/bartin-belediyesinden-arac-filosuna-buyuk-yatirim.html"
-                },
-                {
-                    id: 19,
-                    title: "Belediye Belediyesinden yeni hizmet",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/yeni-bir-egitim-yuvasi-daha-hizmete-giriyor.webp",
-                    excerpt: "Yeni bir eğitim yuvası daha hizmete giriyor.",
-                    detail: "Bartın Belediyesi, sosyal belediyecilik anlayışı doğrultusunda çocukların erken yaşta nitelikli eğitimle buluşmasını sağlamak amacıyla önemli bir projeyi daha hayata geçiriyor.",
-                    url: "https://www.bartinduysun.com/haberler/belediye/belediye-belediyesinden-yeni-hizmet.html"
-                },
-                {
-                    id: 20,
-                    title: "Bartın Belediyesi, çocuklar için hazırlandı.",
-                    category: "Belediye Haberleri",
-                    image: "https://www.bartinduysun.com/images/belediye/karne-senligi-etkinlikleri-basladi.webp",
-                    excerpt: "Bartın Belediyesi, karne şenliği etkinlikleri başladı.",
-                    detail: "Bartın Belediyesi tarafından çocukların karne sevincini doyasıya yaşamaları amacıyla düzenlenen Karne Şenliği etkinlikleri başladı.",
-                    url: "https://www.bartinduysun.com/haberler/belediye/bartin-belediyesi-cocuklar-icin-hazirlandi.html"
-                }
-            ],
-            
-            // Bartın Haberleri (Eski Siyaset bölümünden taşındı)
-            bartin: [
-                {
-                    id: 14,
-                    title: "Esentepe'de Gıda Zehirlenmesi: 15 kişi hastanelik oldu",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.webp",
-                    excerpt: "Bartın'ın Esentepe Mahallesi'nde düzenlenen bir asker uğurlama etkinliği, istenmeyen bir sonla noktalandı.",
-                    detail: "Etkinlikte ikram edilen yemeği tüketen 15 kişi, ardından ortaya çıkan mide bulantısı ve kusma şikayetleri üzerine Bartın Devlet Hastanesi acil servisine başvurdu.",
-                    url: "https://www.bartinduysun.com/haberler/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.html"
-                },
-                {
-                    id: 15,
-                    title: "Mugada Sahilinde Tartışma Silahlı Saldıraya Dönüştü: Bir Kişi Ağır Yaralı",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/bartin/bartin-mugada-silahli-saldiri-72-yasindaki-adam-agir-yaralandi.webp",
-                    excerpt: "Bartın'ın Mugada sahilinde iki kişi arasında çıkan tartışma, silahlı saldırıyla sonuçlandı. İddiaya göre Y.T. (49), H.Ö. (72) ile yaşadığı sözlü tartışmanın ardından av tüfeğiyle ateş açtı.",
-                    detail: "Baş ve göğüs bölgesinden ağır yaralanan H.Ö., Bartın Devlet Hastanesi'ne kaldırıldı ve hayati tehlikesinin devam ettiği bildirildi.",
-                    url: "https://www.bartinduysun.com/haberler/bartin/mugada-sahilinde-tartisma-silahli-saldiri-bir-kisi-agir-yarali.html"
-                },
-                {
-                    id: 25,
-                    title: "Bartın Kahveciler ve Şerbetçiler Esnaf Odası'nda Ayhan Tepe Yeniden Başkan Seçildi",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/bartin/bartinda-kahveciler-ve-serbetciler-esnaf-odasi-baskanligi-secimi-yapildi.webp",
-                    excerpt: "Bartın Kahveciler ve Şerbetçiler Esnaf Odası Başkanlığı seçimleri iki adayın katılımıyla gerçekleştirildi.",
-                    detail: "Yapılan oylamada Ayhan Tepe 343 oy alarak yeniden başkanlığa seçilirken, diğer aday Taşkın Özmen 59 oyda kaldı.",
-                    url: "https://www.bartinduysun.com/haberler/bartin/bartin-kahveciler-serbetciler-esnaf-odasi-ayhan-tepe-yeniden-baskan-secildi.html"
-                },
-                {
-                    id: 26,
-                    title: "Gürgenpınarı'nda Uçuruma yuvarlanan kamyonun sürücüsü hayatını kaybetti",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/bartin/gurgenpinar-tas-ocagi-kazasi-kamyon-soforu-hayatini-kaybetti.webp",
-                    excerpt: "Bartın'da Taş Ocağında Feci Kaza: Kamyon Şarampole Yuvarlandı, Sürücü Hayatını Kaybetti",
-                    detail: "Bartın'da bir taş ocağında malzeme boşaltımı sırasında kontrolden çıkan kamyon yaklaşık 5 metrelik uçuruma yuvarlandı.",
-                    url: "https://www.bartinduysun.com/haberler/bartin/gurgenpinari-ucuruma-yuvarlanan-kamyon-surucusu-hayatini-kaybetti.html"
-                },
-                {
-                    id: 27,
-                    title: "Gürgenpınarı Açık Konsept AVM Projesini Başkan Yalçınkaya Duyurdu",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/bartin/gurgenpinari-acik-konsept-avm-projesi-baskan-yalcinkaya-duyurdu.webp",
-                    excerpt: "Gürgenpınarı'nda hayata geçirilmesi planlanan açık konsept AVM projesi, Belediye Başkanı Yalçınkaya tarafından kamuoyuna duyuruldu.",
-                    detail: "Projenin bölgeye sosyal ve ekonomik katkı sağlaması hedefleniyor.",
-                    url: "https://www.bartinduysun.com/haberler/bartin/gurgenpinari-acik-konsept-avm-projesi-baskan-yalcinkaya-duyurdu.html"
-                },
-                {
-                    id: 28,
-                    title: "Sipahiler Köyünde Yangın",
-                    category: "Bartın Haberleri",
-                    image: "https://www.bartinduysun.com/images/bartin/sipahiler-koyunde-yangin.webp",
-                    excerpt: "Bartın'ın Sipahiler Köyü'nde çıkan yangında büyük maddi hasar meydana geldi.",
-                    detail: "Bir ev ve samanlık yangın sonrası kullanılamaz hale geldi.",
-                    url: "https://www.bartinduysun.com/haberler/bartin/sipahiler-koyunde-yangin.html"
+                    id: "ad5",
+                    url: "https://www.instagram.com/bartinbahcenkebap/",
+                    desktopImage: "https://www.bartinduysun.com/images/bahcen-kebap.webp",
+                    mobileImage: "https://www.bartinduysun.com/images/bahcen-kebap2.webp",
+                    alt: "Bahçen Kebap - Lezzetli Döner ve Kebap"
                 }
             ],
             
@@ -827,6 +545,12 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         };
 
+        // Tüm haberleri tek bir array'de topla
+        const allNews = [
+            ...haberData.slider,
+            // Diğer haberleri de buraya ekleyebiliriz
+        ];
+
         // DOM Elementleri
         const hamburgerMenu = document.getElementById('hamburgerMenu');
         const navMenu = document.getElementById('navMenu');
@@ -842,6 +566,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const mostReadSidebar = document.getElementById('mostReadSidebar');
         const breakingTickerText = document.getElementById('breakingTickerText');
         const breakingNewsTicker = document.getElementById('breakingNewsTicker');
+        const allNewsContainer = document.getElementById('allNewsContainer');
 
         // Slider değişkenleri
         let currentSlide = 0;
@@ -883,6 +608,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
             article.appendChild(link);
             return article;
+        }
+
+        // Reklam kartı oluşturma fonksiyonu
+        function createAdCard(ad, index) {
+            const adSection = document.createElement('div');
+            adSection.className = 'ad-section';
+            adSection.id = ad.id;
+            adSection.setAttribute('data-url', ad.url);
+            
+            adSection.innerHTML = `
+                <div class="ad-content">
+                    <img src="${ad.desktopImage}" alt="${ad.alt}" class="ad-image ad-desktop" loading="lazy">
+                    <img src="${ad.mobileImage}" alt="${ad.alt}" class="ad-image ad-mobile" loading="lazy">
+                    <button class="ad-info-btn" type="button">
+                        <i class="fas fa-info-circle"></i> İnstagram Sayfasına Git
+                    </button>
+                </div>
+            `;
+            
+            return adSection;
         }
 
         // Slider kartı oluşturma fonksiyonu
@@ -978,6 +723,29 @@ document.addEventListener("DOMContentLoaded", function () {
             
             // Slider için swipe olaylarını ekle
             setupSwipeForSlider();
+        }
+
+        // Tüm haberleri tek kategoride listele (her 5 haberde 1 reklam)
+        function initAllNews() {
+            if (!allNewsContainer) return;
+            
+            let adIndex = 0;
+            
+            // Tüm haberleri listele
+            allNews.forEach((haber, index) => {
+                // Her 5 haberde bir reklam ekle
+                if (index > 0 && index % 5 === 0) {
+                    if (adIndex < haberData.advertisements.length) {
+                        const adCard = createAdCard(haberData.advertisements[adIndex], adIndex);
+                        allNewsContainer.appendChild(adCard);
+                        adIndex++;
+                    }
+                }
+                
+                // Haber kartını ekle
+                const newsCard = createNewsCard(haber);
+                allNewsContainer.appendChild(newsCard);
+            });
         }
 
         // Slider için swipe/dokunma desteği
@@ -1095,39 +863,44 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        // Haber kategorilerini başlat
-        function initNewsCategories() {
-            // Bartın Siyaset Haberleri (Ana bölüm)
-            const siyasetNewsContainer = document.getElementById('siyasetNews');
-            if (siyasetNewsContainer && haberData.siyaset) {
-                haberData.siyaset.slice(0, 6).forEach(haber => {
-                    siyasetNewsContainer.appendChild(createNewsCard(haber));
-                });
-            }
-
-            // Valilik Haberleri
-            const valilikNewsContainer = document.getElementById('valilikNews');
-            if (valilikNewsContainer && haberData.valilik) {
-                haberData.valilik.slice(0, 6).forEach(haber => {
-                    valilikNewsContainer.appendChild(createNewsCard(haber));
-                });
-            }
-
-            // Belediye Haberleri
-            const belediyeNewsContainer = document.getElementById('belediyeNews');
-            if (belediyeNewsContainer && haberData.belediye) {
-                haberData.belediye.slice(0, 6).forEach(haber => {
-                    belediyeNewsContainer.appendChild(createNewsCard(haber));
-                });
-            }
-
-            // Bartın Haberleri (Eski Siyaset bölümünden taşındı)
-            const bartinNewsContainer = document.getElementById('bartinNews');
-            if (bartinNewsContainer && haberData.bartin) {
-                haberData.bartin.slice(0, 6).forEach(haber => {
-                    bartinNewsContainer.appendChild(createNewsCard(haber));
-                });
-            }
+        // Reklam alanı işlemleri
+        function initAdvertisements() {
+            const adSections = document.querySelectorAll('.ad-section');
+            
+            adSections.forEach(adSection => {
+                const adContent = adSection.querySelector('.ad-content');
+                const adImage = adSection.querySelector('.ad-image');
+                const infoBtn = adSection.querySelector('.ad-info-btn');
+                
+                // Görsele tıklama
+                if (adContent && adImage) {
+                    adContent.addEventListener('click', function(e) {
+                        if (!e.target.classList.contains('ad-info-btn')) {
+                            adSection.classList.toggle('active');
+                        }
+                    });
+                }
+                
+                // Butona tıklama
+                if (infoBtn) {
+                    infoBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const url = adSection.getAttribute('data-url');
+                        if (url) {
+                            window.location.href = url;
+                        }
+                    });
+                }
+            });
+            
+            // Dışarı tıklayınca butonu kapat
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.ad-section')) {
+                    document.querySelectorAll('.ad-section').forEach(ad => {
+                        ad.classList.remove('active');
+                    });
+                }
+            });
         }
 
         // Slider otomatik geçişini başlat
@@ -1188,46 +961,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 slides[currentSlide].setAttribute('aria-hidden', 'false');
                 dots[currentSlide].classList.add('active');
             }
-        }
-
-        // Reklam alanı işlemleri
-        function initAdvertisements() {
-            const adSections = document.querySelectorAll('.ad-section');
-            
-            adSections.forEach(adSection => {
-                const adContent = adSection.querySelector('.ad-content');
-                const adImage = adSection.querySelector('.ad-image');
-                const infoBtn = adSection.querySelector('.ad-info-btn');
-                
-                // Görsele tıklama
-                if (adContent && adImage) {
-                    adContent.addEventListener('click', function(e) {
-                        if (!e.target.classList.contains('ad-info-btn')) {
-                            adSection.classList.toggle('active');
-                        }
-                    });
-                }
-                
-                // Butona tıklama
-                if (infoBtn) {
-                    infoBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const url = adSection.getAttribute('data-url');
-                        if (url) {
-                            window.location.href = url;
-                        }
-                    });
-                }
-            });
-            
-            // Dışarı tıklayınca butonu kapat
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.ad-section')) {
-                    document.querySelectorAll('.ad-section').forEach(ad => {
-                        ad.classList.remove('active');
-                    });
-                }
-            });
         }
 
         // Footer logo tıklama fonksiyonu
@@ -1375,7 +1108,7 @@ document.addEventListener("DOMContentLoaded", function () {
             try {
                 initSlider();
                 initBreakingNews();
-                initNewsCategories();
+                initAllNews();
                 initMostReadSidebar();
                 initAdvertisements();
                 initBreakingNewsTicker();
