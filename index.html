@@ -2016,8 +2016,7 @@
         right: 12px;
         font-size: 1rem;
     }
-}
-        @media (max-width: 768px) {
+}@media (max-width: 768px) {
 
     .slide-overlay {
         background: linear-gradient(
@@ -2069,6 +2068,14 @@
         background: #d32f2f;
         box-shadow: 0 4px 15px rgba(211,47,47,0.6);
     }
+}
+        .gallery-slide.active .slide-image {
+    animation: zoomHero 6s ease forwards;
+}
+
+@keyframes zoomHero {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
 }
     </style>
     <link rel="shortcut icon" href="https://www.bartinduysun.com/images/bartinduysun-logo.ico" type="image/x-icon">
@@ -2194,9 +2201,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <!-- Anasayfa butonu eklendi -->
                             <li class="nav-item"><a href="https://www.bartinduysun.com" class="nav-link"><i class="fas fa-home"></i> Anasayfa</a></li>
                             <li class="nav-item"><a href="/bartin-haberleri/" class="nav-link"><i class="fas fa-newspaper"></i> Bartın Haberleri</a></li>
-                            <li class="nav-item"><a href="/bartin-haberleri/" class="nav-link"><i class="fas fa-landmark"></i> Bartın Haberleri</a></li>
-                            <li class="nav-item"><a href="/bartin-haberleri/" class="nav-link"><i class="fas fa-city"></i> Bartın Haberleri</a></li>
-                            <li class="nav-item"><a href="/bartin-haberleri/" class="nav-link"><i class="fas fa-users"></i> Bartın Haberleri</a></li>
+                            <li class="nav-item"><a href="/valilik-haberleri/" class="nav-link"><i class="fas fa-landmark"></i> Valilik Haberleri</a></li>
+                            <li class="nav-item"><a href="/belediye-haberleri/" class="nav-link"><i class="fas fa-city"></i> Belediye Haberleri</a></li>
+                            <li class="nav-item"><a href="/siyaset-haberleri/" class="nav-link"><i class="fas fa-users"></i> Siyaset Haberleri</a></li>
                             <li class="nav-item"><a href="/firma-rehberi/" class="nav-link"><i class="fas fa-building"></i> Bartın Firma Rehberi</a></li>
                             <li class="nav-item dropdown" id="dropdownMenu">
                                 <a href="#" class="nav-link"><i class="fas fa-info-circle"></i> Hakkımızda <i class="fas fa-chevron-down"></i></a>
@@ -2652,7 +2659,11 @@ document.addEventListener("DOMContentLoaded", function () {
             slide.setAttribute('aria-hidden', index !== 0);
             
             slide.innerHTML = `
-                <img src="${item.image}" alt="${item.title}" class="slide-image" loading="lazy">
+               <img src="${item.image}" 
+     alt="${item.title}" 
+     class="slide-image"
+     ${index === 0 ? 'fetchpriority="high"' : 'loading="lazy"'}
+>
                 <div class="slide-overlay">
                     <div class="slide-content">
                         <span class="current-label">GÜNCEL</span>
@@ -3110,7 +3121,6 @@ document.addEventListener("DOMContentLoaded", function () {
     Detaylı bilgi için <a href="cerez-politikasi/">Çerez Politikası</a> sayfasını inceleyebilirsiniz.
   </span>
   <button id="closeCookies" aria-label="Çerez bildirimi kapat">Kapat</button>
-</div>
 </div>
     <button class="scroll-to-top" id="scrollToTop" aria-label="Sayfanın üstüne çık">
     <i class="fas fa-chevron-up"></i>
