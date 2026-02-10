@@ -10,6 +10,7 @@ input, textarea { width:100%; padding:10px; margin-bottom:10px; }
 button { padding:10px 15px; margin-right:5px; cursor:pointer; }
 .news-item { border:1px solid #ddd; padding:10px; margin-top:10px; }
 </style>
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 <body>
 
@@ -19,7 +20,7 @@ button { padding:10px 15px; margin-right:5px; cursor:pointer; }
 
 <input type="text" id="title" placeholder="Haber Başlığı">
 <input type="text" id="image" placeholder="Görsel URL">
-<textarea id="content" placeholder="Haber İçeriği" rows="5"></textarea>
+<div id="editor" style="height:300px; background:white;"></div>
   <label>
   <input type="checkbox" id="isSlider">
   Manşet (Slider)
@@ -41,6 +42,7 @@ button { padding:10px 15px; margin-right:5px; cursor:pointer; }
 
 <h2>Mevcut Haberler</h2>
 <div id="newsList"></div>
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script type="module">
 
 import { initializeApp } 
@@ -75,6 +77,19 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 let editingId = null;
+  const quill = new Quill('#editor', {
+  theme: 'snow',
+  placeholder: 'Haber içeriğini buraya yaz...',
+  modules: {
+    toolbar: [
+      [{ header: [1, 2, 3, false] }],
+      ['bold', 'italic', 'underline'],
+      ['link', 'image'],
+      [{ list: 'ordered'}, { list: 'bullet' }],
+      ['clean']
+    ]
+  }
+});
 
 onAuthStateChanged(auth, (user) => {
   if (!user) window.location.href = "admin.html";
@@ -100,7 +115,7 @@ window.saveNews = async function() {
 
   const title = document.getElementById("title").value;
   const image = document.getElementById("image").value;
-  const content = document.getElementById("content").value;
+  const content = quill.root.innerHTML;
   const isSlider = document.getElementById("isSlider").checked;
   const isBreaking = document.getElementById("isBreaking").checked;
 
@@ -160,7 +175,7 @@ window.saveNews = async function() {
 
   document.getElementById("title").value="";
   document.getElementById("image").value="";
-  document.getElementById("content").value="";
+  quill.setContents([]);
   document.getElementById("isSlider").checked = false;
   document.getElementById("isBreaking").checked = false;
 
@@ -206,9 +221,9 @@ window.editNews = async function(id){
 
   if (docSnap.exists()) {
     const data = docSnap.data();
+    quill.root.innerHTML = data.content;
     document.getElementById("title").value = data.title;
     document.getElementById("image").value = data.image;
-    document.getElementById("content").value = data.content;
     document.getElementById("isSlider").checked = data.isSlider || false;
     document.getElementById("isBreaking").checked = data.isBreaking || false;
 
@@ -218,6 +233,5 @@ window.editNews = async function(id){
 };
 
 </script>
-
 </body>
 </html>
