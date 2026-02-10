@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Haber Detayı</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<h1 id="title"></h1>
+<img id="image" style="max-width:600px;">
+<p id="content"></p>
+<p><strong>Okunma:</strong> <span id="views"></span></p>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+import { getFirestore, doc, getDoc, updateDoc, increment }
+from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDL5f3Hv_H1fXLM25W8z-OW_AclIJEW7Ho",
+  authDomain: "bartin-duysun.firebaseapp.com",
+  projectId: "bartin-duysun",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+async function loadNews() {
+  const ref = doc(db, "haberler", id);
+  const snap = await getDoc(ref);
+
+  if (snap.exists()) {
+    const data = snap.data();
+
+    document.getElementById("title").innerText = data.title;
+    document.getElementById("image").src = data.image;
+    document.getElementById("content").innerHTML = data.content;
+    document.getElementById("views").innerText = data.views || 0;
+
+    await updateDoc(ref, {
+      views: increment(1)
+    });
+  }
+}
+
+loadNews();
+
+</script>
+
+</body>
+</html>
