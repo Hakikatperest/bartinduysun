@@ -20,6 +20,17 @@ button { padding:10px 15px; margin-right:5px; cursor:pointer; }
 <input type="text" id="title" placeholder="Haber Başlığı">
 <input type="text" id="image" placeholder="Görsel URL">
 <textarea id="content" placeholder="Haber İçeriği" rows="5"></textarea>
+  <label>
+  <input type="checkbox" id="isSlider">
+  Manşet (Slider)
+</label>
+<br><br>
+
+<label>
+  <input type="checkbox" id="isBreaking">
+  Son Dakika
+</label>
+<br><br>
 
 <button onclick="saveNews()">Kaydet</button>
 <button onclick="logout()">Çıkış Yap</button>
@@ -91,20 +102,31 @@ window.saveNews = async function() {
   }
 
   const slug = slugify(title);
+  const isSlider = document.getElementById("isSlider").checked;
+const isBreaking = document.getElementById("isBreaking").checked;
 
   if (editingId) {
-    await updateDoc(doc(db,"haberler",editingId),{
-      title,image,content,slug
-    });
+   await updateDoc(doc(db,"haberler",editingId),{
+  title,
+  image,
+  content,
+  slug,
+  isSlider,
+  isBreaking
+});
     editingId = null;
     document.getElementById("formTitle").innerText="Yeni Haber";
   } else {
-    await addDoc(collection(db,"haberler"),{
-      title,image,content,
-      slug,
-      views:0,
-      createdAt:serverTimestamp()
-    });
+   await addDoc(collection(db,"haberler"),{
+  title,
+  image,
+  content,
+  slug,
+  views:0,
+  createdAt:serverTimestamp(),
+  isSlider:isSlider,
+  isBreaking:isBreaking
+});
   }
 
   document.getElementById("title").value="";
@@ -146,6 +168,8 @@ window.editNews = async function(id){
     if(docSnap.id===id){
       const data=docSnap.data();
       document.getElementById("title").value=data.title;
+      document.getElementById("isSlider").checked = data.isSlider || false;
+document.getElementById("isBreaking").checked = data.isBreaking || false;
       document.getElementById("image").value=data.image;
       document.getElementById("content").value=data.content;
       editingId=id;
