@@ -23,7 +23,7 @@ async function loadAllNews() {
     card.className = "news-card";
 
     card.innerHTML = `
-      <a href="haber.html?id=${doc.id}">
+      <a href="haber.html?slug=${data.slug}">
         <div class="news-image">
           <img src="${data.image}" alt="${data.title}">
         </div>
@@ -53,7 +53,7 @@ async function loadBreakingNews() {
     const data = doc.data();
 
     breakingContainer.innerHTML = `
-      <a href="haber.html?id=${doc.id}">
+<a href="haber.html?slug=${data.slug}">
         ${data.title}
       </a>
     `;
@@ -76,7 +76,7 @@ async function loadMostRead() {
 
     const item = document.createElement("a");
     item.className = "sidebar-news-item";
-    item.href = `haber.html?id=${doc.id}`;
+item.href = `haber.html?slug=${data.slug}`;
 
     item.innerHTML = `
       <div class="sidebar-news-img">
