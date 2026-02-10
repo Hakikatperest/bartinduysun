@@ -11,6 +11,7 @@
 <img id="image" style="max-width:600px;">
 <p id="content"></p>
 <p><strong>Okunma:</strong> <span id="views"></span></p>
+
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
@@ -26,7 +27,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// URL'den slug al
 const params = new URLSearchParams(window.location.search);
 const slug = params.get("slug");
 
@@ -49,12 +49,12 @@ async function loadNews() {
   const data = docSnap.data();
 
   document.title = data.title + " | Bartın Duysun";
+
   document.getElementById("title").innerText = data.title;
   document.getElementById("image").src = data.image;
   document.getElementById("content").innerHTML = data.content;
 
   let currentViews = data.views || 0;
-
   const viewed = localStorage.getItem("viewed_" + slug);
 
   if (!viewed) {
@@ -67,18 +67,45 @@ async function loadNews() {
 
   document.getElementById("views").innerText = currentViews;
 
-  // 🔥 META DESCRIPTION
+  const cleanText = data.content.replace(/<[^>]*>?/gm, '');
+
+  // META DESCRIPTION
   const meta = document.createElement("meta");
   meta.name = "description";
-  const cleanText = data.content.replace(/<[^>]*>?/gm, '');
-meta.content = cleanText.substring(0, 160);
+  meta.content = cleanText.substring(0, 160);
   document.head.appendChild(meta);
 
-  // 🔥 CANONICAL
+  // CANONICAL
   const canonical = document.createElement("link");
   canonical.rel = "canonical";
   canonical.href = "https://www.bartinduysun.com/haber.html?slug=" + slug;
   document.head.appendChild(canonical);
+
+  // OPEN GRAPH
+  const ogTitle = document.createElement("meta");
+  ogTitle.setAttribute("property", "og:title");
+  ogTitle.content = data.title;
+  document.head.appendChild(ogTitle);
+
+  const ogDesc = document.createElement("meta");
+  ogDesc.setAttribute("property", "og:description");
+  ogDesc.content = cleanText.substring(0,160);
+  document.head.appendChild(ogDesc);
+
+  const ogImage = document.createElement("meta");
+  ogImage.setAttribute("property", "og:image");
+  ogImage.content = data.image;
+  document.head.appendChild(ogImage);
+
+  const ogUrl = document.createElement("meta");
+  ogUrl.setAttribute("property", "og:url");
+  ogUrl.content = "https://www.bartinduysun.com/haber.html?slug=" + slug;
+  document.head.appendChild(ogUrl);
+
+  const ogType = document.createElement("meta");
+  ogType.setAttribute("property", "og:type");
+  ogType.content = "article";
+  document.head.appendChild(ogType);
 }
 
 loadNews();
@@ -86,3 +113,4 @@ loadNews();
 </script>
 </body>
 </html>
+
