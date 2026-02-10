@@ -4,29 +4,48 @@
 <meta charset="UTF-8">
 <title>Admin Panel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body { font-family: Arial; max-width: 900px; margin: 40px auto; }
+input, textarea { width:100%; padding:10px; margin-bottom:10px; }
+button { padding:10px 15px; margin-right:5px; cursor:pointer; }
+.news-item { border:1px solid #ddd; padding:10px; margin-top:10px; }
+</style>
 </head>
 <body>
 
 <h1>Admin Panel</h1>
 
-<h2>Yeni Haber Ekle</h2>
+<h2 id="formTitle">Yeni Haber</h2>
 
-<input type="text" id="title" placeholder="Haber Başlığı"><br><br>
-<input type="text" id="image" placeholder="Görsel URL"><br><br>
-<textarea id="content" placeholder="Haber İçeriği" rows="6" cols="50"></textarea><br><br>
+<input type="text" id="title" placeholder="Haber Başlığı">
+<input type="text" id="image" placeholder="Görsel URL">
+<textarea id="content" placeholder="Haber İçeriği" rows="5"></textarea>
 
-<button onclick="addNews()">Haberi Kaydet</button>
+<button onclick="saveNews()">Kaydet</button>
 <button onclick="logout()">Çıkış Yap</button>
 
 <p id="status"></p>
+
+<hr>
+
+<h2>Mevcut Haberler</h2>
+<div id="newsList"></div>
 
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut }
 from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
-import { getFirestore, collection, addDoc, serverTimestamp }
-from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+import { 
+  getFirestore, 
+  collection, 
+  addDoc, 
+  getDocs,
+  doc,
+  deleteDoc,
+  updateDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDL5f3Hv_H1fXLM25W8z-OW_AclIJEW7Ho",
@@ -38,14 +57,103 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+let editingId = null;
+
 onAuthStateChanged(auth, (user) => {
-  if (!user) {
-    window.location.href = "admin.html";
-  }
+  if (!user) window.location.href = "admin.html";
+  loadNews();
 });
 
-window.logout = function () {
-  signOut(auth);
+window.logout = () => signOut(auth);
+
+function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/ğ/g,"g")
+    .replace(/ü/g,"u")
+    .replace(/ş/g,"s")
+    .replace(/ı/g,"i")
+    .replace(/ö/g,"o")
+    .replace(/ç/g,"c")
+    .replace(/[^a-z0-9]+/g,"-")
+    .replace(/(^-|-$)/g,"");
 }
 
-window.addNews = async function ()
+window.saveNews = async function() {
+
+  const title = document.getElementById("title").value;
+  const image = document.getElementById("image").value;
+  const content = document.getElementById("content").value;
+
+  if (!title || !content) {
+    document.getElementById("status").innerText = "Başlık ve içerik zorunlu!";
+    return;
+  }
+
+  const slug = slugify(title);
+
+  if (editingId) {
+    await updateDoc(doc(db,"haberler",editingId),{
+      title,image,content,slug
+    });
+    editingId = null;
+    document.getElementById("formTitle").innerText="Yeni Haber";
+  } else {
+    await addDoc(collection(db,"haberler"),{
+      title,image,content,
+      slug,
+      views:0,
+      createdAt:serverTimestamp()
+    });
+  }
+
+  document.getElementById("title").value="";
+  document.getElementById("image").value="";
+  document.getElementById("content").value="";
+  document.getElementById("status").innerText="Kaydedildi!";
+  loadNews();
+}
+
+async function loadNews() {
+  const snapshot = await getDocs(collection(db,"haberler"));
+  const container = document.getElementById("newsList");
+  container.innerHTML="";
+
+  snapshot.forEach(docSnap=>{
+    const data = docSnap.data();
+    const div = document.createElement("div");
+    div.className="news-item";
+    div.innerHTML=`
+      <strong>${data.title}</strong><br>
+      Slug: ${data.slug || "-"}<br>
+      <button onclick="editNews('${docSnap.id}')">Düzenle</button>
+      <button onclick="deleteNews('${docSnap.id}')">Sil</button>
+    `;
+    container.appendChild(div);
+  });
+}
+
+window.deleteNews = async function(id){
+  if(confirm("Silmek istiyor musun?")){
+    await deleteDoc(doc(db,"haberler",id));
+    loadNews();
+  }
+}
+
+window.editNews = async function(id){
+  const snapshot = await getDocs(collection(db,"haberler"));
+  snapshot.forEach(docSnap=>{
+    if(docSnap.id===id){
+      const data=docSnap.data();
+      document.getElementById("title").value=data.title;
+      document.getElementById("image").value=data.image;
+      document.getElementById("content").value=data.content;
+      editingId=id;
+      document.getElementById("formTitle").innerText="Haberi Düzenle";
+    }
+  });
+}
+
+</script>
+</body>
+</html>
