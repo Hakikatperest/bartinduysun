@@ -13,7 +13,10 @@
 <p><strong>Okunma:</strong> <span id="views"></span></p>
 
 <script type="module">
-
+  const meta = document.createElement("meta");
+meta.name = "description";
+meta.content = data.content.substring(0,150);
+document.head.appendChild(meta);
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 import { getFirestore, doc, getDoc, updateDoc, increment }
 from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
