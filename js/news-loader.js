@@ -46,7 +46,8 @@ async function loadBreakingNews() {
     orderBy("createdAt", "desc"),
     limit(1)
   );
-
+const galleryContainer = document.getElementById("gallerySlider");
+const galleryNavigation = document.getElementById("galleryNavigation");
   const snapshot = await getDocs(q);
 
   snapshot.forEach(doc => {
@@ -90,7 +91,52 @@ item.href = `haber.html?slug=${data.slug}`;
     mostReadContainer.appendChild(item);
   });
 }
+async function loadSliderNews() {
 
+  const q = query(
+    collection(db, "haberler"),
+    where("isSlider", "==", true),
+    orderBy("createdAt", "desc"),
+    limit(5)
+  );
+
+  const snapshot = await getDocs(q);
+
+  galleryContainer.innerHTML = "";
+  galleryNavigation.innerHTML = "";
+
+  let index = 0;
+
+  snapshot.forEach(doc => {
+    const data = doc.data();
+
+    const slide = document.createElement("div");
+    slide.className = "gallery-slide" + (index === 0 ? " active" : "");
+
+    slide.innerHTML = `
+      <a href="haber.html?slug=${data.slug}">
+        <img src="${data.image}" class="slide-image" alt="${data.title}">
+        <div class="slide-overlay">
+          <div class="slide-content">
+            <h2 class="slide-title">${data.title}</h2>
+            <p class="slide-excerpt">${data.excerpt || ""}</p>
+          </div>
+        </div>
+      </a>
+    `;
+
+    galleryContainer.appendChild(slide);
+
+    // Navigation kutuları
+    const nav = document.createElement("div");
+    nav.className = "nav-number" + (index === 0 ? " active" : "");
+    nav.innerText = index + 1;
+    galleryNavigation.appendChild(nav);
+
+    index++;
+  });
+}
+loadSliderNews();
 loadAllNews();
 loadBreakingNews();
 loadMostRead();
