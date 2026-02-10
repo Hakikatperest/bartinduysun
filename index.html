@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
+<head> 
+    <meta name="robots" content="index, follow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="preload" as="image" href="https://www.bartinduysun.com/images/valilik/kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.webp">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bartın Duysun - Son Dakika Bartın Haberleri</title>
+    <title>Bartın Duysun | Son Dakika Bartın Haberleri</title>
     <!-- Open Graph Meta Tags for WhatsApp/Facebook Sharing -->
-    <meta property="og:title" content="Bartın Duysun - Son Dakika Bartın Haberleri">
+    <meta property="og:title" content="Bartın Duysun | Son Dakika Bartın Haberleri">
     <meta property="og:description" content="Bartın ve çevresindeki en güncel, doğru ve tarafsız haberlerin adresi. Valilik, belediye, siyaset ve asayiş haberlerini ilk elden sizlere ulaştırıyoruz.">
     <meta property="og:image" content="https://www.bartinduysun.com/images/bartinduysun-logo.webp">
     <meta property="og:image:width" content="1200">
@@ -18,7 +19,7 @@
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Bartın Duysun - Son Dakika Bartın Haberleri">
+    <meta name="twitter:title" content="Bartın Duysun | Son Dakika Bartın Haberleri">
     <meta name="twitter:description" content="Bartın ve çevresindeki en güncel, doğru ve tarafsız haberlerin adresi.">
     <meta name="twitter:image" content="https://www.bartinduysun.com/images/bartinduysun-logo.webp">
     <meta name="twitter:site" content="@bartinduysun">
@@ -28,7 +29,6 @@
     <meta name="apple-mobile-web-app-capable" content="Yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="description" content="Bartın ve çevresindeki en güncel, doğru ve tarafsız haberlerin adresi.">
-    <link rel="icon" href="https://www.bartinduysun.com/images/bartinduysun-logo.ico" type="image/x-icon">
     <style>
         * {
             margin: 0;
@@ -1368,7 +1368,7 @@
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
-            z-index: 1001;
+            z-index: 2000;
             opacity: 0;
             visibility: hidden;
             transform: translateY(20px);
@@ -1950,6 +1950,31 @@
                 line-height: 1.3;
             }
         }
+        @media (max-width: 768px) {
+
+    .slide-overlay {
+        height: 100%;
+        align-items: flex-end;
+        padding: 20px;
+        padding-bottom: 70px;
+        background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.85) 0%,
+            rgba(0,0,0,0.7) 40%,
+            rgba(0,0,0,0.3) 75%,
+            transparent 100%
+        );
+    }
+}
+        .gallery-slide.active .slide-image {
+    animation: zoomEffect 6s ease-in-out forwards;
+}
+
+@keyframes zoomEffect {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+}
+
     </style>
     <link rel="shortcut icon" href="https://www.bartinduysun.com/images/bartinduysun-logo.ico" type="image/x-icon">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -1975,6 +2000,10 @@
       ]
     }
     </script>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://www.bartinduysun.com">
+    <link rel="canonical" href="https://www.bartinduysun.com/">
+
 </head>
 <body>
     <!-- Header Bölümü -->
@@ -1996,7 +2025,7 @@
                 <div class="logo-container">
                     <div class="logo" id="mainLogo">
                        <img src="https://www.bartinduysun.com/images/bartinduysun-logo.webp"
-     alt="Bartın Duysun - Son Dakika Bartın Haberleri"
+     alt="Bartın Duysun | Son Dakika Bartın Haberleri"
      loading="eager"
      fetchpriority="high">
                     </div>
@@ -2071,8 +2100,8 @@
     <!-- Tanıtım Alanı -->
     <section class="intro-section">
         <div class="container">
-            <h1 class="main-title">Bartın Haberleri - Bartın Haber Sitesi</h1>
-            <p class="intro-text">Bartın ve çevresindeki en güncel, doğru ve tarafsız haberlerin adresi. Valilik, belediye, siyaset ve asayiş haberlerini ilk elden sizlere ulaştırıyoruz.</p>
+            <h1 class="main-title">Bartın Duysun | Son Dakika Bartın Haberleri</h1>
+            <p class="intro-text">Bartın ve çevresindeki en güncel, doğru ve tarafsız haberlerin adresi. Valilik, belediye, siyaset ve asayiş haberlerini ilk elden sizlere ulaştırıyoruz. Son dakika Bartın Haberlerini bizimle takip edin.</p>
         </div>
     </section>
 
@@ -2170,7 +2199,7 @@
                         </div>
                         
                         <div class="footer-description">
-                            Bartın Duysun, 2024 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir. Yerel haberlerde güvenilir ve hızlı bir kaynak olmayı hedefliyoruz.
+                            Bartın Duysun, 2020 yılından beri Bartın ve çevresindeki en güncel, doğru ve tarafsız haberleri sunmaktadır. Amacımız, Bartın halkını her alanda bilgilendirmek ve haberdar etmektir. Yerel haberlerde güvenilir ve hızlı bir kaynak olmayı hedefliyoruz.
                         </div>
                     </div>
                     
