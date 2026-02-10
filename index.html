@@ -2028,10 +2028,26 @@
         );
         padding: 20px 20px 110px 20px;
     }
+@media (max-width: 768px) {
+
+    .slide-overlay {
+        background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.95) 0%,
+            rgba(0,0,0,0.85) 40%,
+            rgba(0,0,0,0.4) 70%,
+            transparent 100%
+        );
+        padding: 20px;
+        justify-content: flex-end; /* içeriği aşağı yaslar */
+    }
 
     .slide-content {
-        transform: translateY(-40px);
+        transform: none; /* yukarı çekmeyi iptal eder */
+        margin-bottom: 40px; /* başlığı biraz yukarı alır ama dengeli */
     }
+
+}
 
     .current-label {
         background: linear-gradient(135deg, #d32f2f, #ff1744);
