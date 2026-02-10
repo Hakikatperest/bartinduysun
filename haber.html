@@ -11,18 +11,10 @@
 <img id="image" style="max-width:600px;">
 <p id="content"></p>
 <p><strong>Okunma:</strong> <span id="views"></span></p>
-
 <script type="module">
-  const canonical = document.createElement("link");
-canonical.rel = "canonical";
-canonical.href = "https://www.bartinduysun.com/haber.html?slug=" + slug;
-document.head.appendChild(canonical);
-  const meta = document.createElement("meta");
-meta.name = "description";
-meta.content = data.content.substring(0,150);
-document.head.appendChild(meta);
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { getFirestore, doc, getDoc, updateDoc, increment }
+import { getFirestore, collection, query, where, getDocs, updateDoc, increment }
 from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -34,30 +26,63 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// URL'den slug al
 const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
+const slug = params.get("slug");
+
+if (!slug) {
+  document.body.innerHTML = "<h2>Haber bulunamadı</h2>";
+  throw new Error("Slug yok");
+}
 
 async function loadNews() {
-  const ref = doc(db, "haberler", id);
-  const snap = await getDoc(ref);
 
-  if (snap.exists()) {
-    const data = snap.data();
+  const q = query(collection(db,"haberler"), where("slug","==",slug));
+  const snapshot = await getDocs(q);
 
-    document.getElementById("title").innerText = data.title;
-    document.getElementById("image").src = data.image;
-    document.getElementById("content").innerHTML = data.content;
-    document.getElementById("views").innerText = data.views || 0;
+  if (snapshot.empty) {
+    document.body.innerHTML = "<h2>Haber bulunamadı</h2>";
+    return;
+  }
 
-    await updateDoc(ref, {
+  const docSnap = snapshot.docs[0];
+  const data = docSnap.data();
+
+  document.title = data.title + " | Bartın Duysun";
+  document.getElementById("title").innerText = data.title;
+  document.getElementById("image").src = data.image;
+  document.getElementById("content").innerHTML = data.content;
+
+  let currentViews = data.views || 0;
+
+  const viewed = localStorage.getItem("viewed_" + slug);
+
+  if (!viewed) {
+    await updateDoc(docSnap.ref, {
       views: increment(1)
     });
+    localStorage.setItem("viewed_" + slug, "true");
+    currentViews += 1;
   }
+
+  document.getElementById("views").innerText = currentViews;
+
+  // 🔥 META DESCRIPTION
+  const meta = document.createElement("meta");
+  meta.name = "description";
+  const cleanText = data.content.replace(/<[^>]*>?/gm, '');
+meta.content = cleanText.substring(0, 160);
+  document.head.appendChild(meta);
+
+  // 🔥 CANONICAL
+  const canonical = document.createElement("link");
+  canonical.rel = "canonical";
+  canonical.href = "https://www.bartinduysun.com/haber.html?slug=" + slug;
+  document.head.appendChild(canonical);
 }
 
 loadNews();
 
 </script>
-
 </body>
 </html>
