@@ -2263,6 +2263,784 @@
     <button class="scroll-to-top" id="scrollToTop" aria-label="Sayfanın üstüne çık">
         <i class="fas fa-chevron-up"></i>
     </button>
-    <script type="module" src="js/news-loader.js"></script>
+
+    <script defer>
+        // Haber verisi - Güncellenmiş versiyon
+        const haberData = {
+            gallery: [
+                {
+                    id: 1,
+                    title: "Bartın'da Acı Kayıp: Alper Demirkesen Hayatını Kaybetti",
+                    excerpt: "Bartın'da yaşanan üzücü olayda, genç yaşta hayatını kaybeden Alper Demirkesen için sevenleri yasta.",
+                    image: "https://www.bartinduysun.com/images/bartin/bartinda-aci-kayip-alper-demirkesen-hayatini-kaybetti.webp",
+                    detail: "Bartın'da Acı Kayıp: Alper Demirkesen Hayatını Kaybetti",
+                    url: "https://www.bartinduysun.com/haberler/bartin/bartinda-aci-kayip-alper-demirkesen-hayatini-kaybetti.html",
+                    breaking: true
+                },
+                {
+                    id: 2,
+                    title: "Bartın'da 6 Şubat Depremleri Anıldı: Sergi ve Söyleşiyle Farkındalık Mesajı",
+                    excerpt: "Bartın'da 6 Şubat depremlerinin yıl dönümünde anma etkinliği düzenlendi, deprem farkındalığı vurgulandı.",
+                    image: "https://www.bartinduysun.com/images/valilik/bartin-6-subat-depremleri-anma-etkinligi1.webp",
+                    detail: "Bartın'da 6 Şubat Depremleri Anıldı: Sergi ve Söyleşiyle Farkındalık Mesajı",
+                    url: "https://www.bartinduysun.com/haberler/valilik/bartinda-6-subat-depremleri-anildi-sergi-ve-soylesiyle-farkindalik-mesaji.html"
+                },
+                {
+                    id: 3,
+                    title: "Esentepe'de Gıda Zehirlenmesi: 15 Kişi Hastanelik Oldu",
+                    excerpt: "Bartın'ın Esentepe Mahallesi'nde düzenlenen etkinlik sonrası 15 kişi gıda zehirlenmesi şüphesiyle hastaneye kaldırıldı.",
+                    image: "https://www.bartinduysun.com/images/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.webp",
+                    detail: "Bartın'ın Esentepe Mahallesi'nde düzenlenen bir asker uğurlama etkinliği, istenmeyen bir sonla noktalandı.",
+                    url: "https://www.bartinduysun.com/haberler/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.html",
+                    breaking: true
+                },
+                {
+                    id: 4,
+                    title: "AK Parti Bartın'da Genişletilmiş İl Danışma Meclisi Toplantısı",
+                    excerpt: "AK Parti Bartın İl Başkanlığı tarafından düzenlenen Genişletilmiş İl Danışma Meclisi toplantısı gerçekleştirildi.",
+                    image: "https://www.bartinduysun.com/images/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.webp",
+                    detail: "Ak Parti Bartın İl Başkanlığı tarafından düzenlenen Genişletilmiş İl Danışma Meclisi toplantısı ve geleneksel Vefa Buluşması, partililerin ve vatandaşların yoğun katılımıyla gerçekleşti.",
+                    url: "https://www.bartinduysun.com/haberler/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.html"
+                },
+                {
+                    id: 5,
+                    title: "Bartın Belediyesi'nden Araç Filosuna Büyük Yatırım",
+                    excerpt: "Bartın Belediyesi, hizmet kalitesini artırmak amacıyla araç filosuna önemli yatırım yaptı.",
+                    image: "https://www.bartinduysun.com/images/belediye/arac-filosuna-buyuk-yatirim.webp",
+                    detail: "Bartın Belediyesi, hizmet kapasitesini artırmak amacıyla araç filosunu önemli ölçüde güçlendirdi.",
+                    url: "https://www.bartinduysun.com/haberler/belediye/bartin-belediyesinden-arac-filosuna-buyuk-yatirim.html"
+                },
+                {
+                    id: 6,
+                    title: "Türk Sanat Müziği Konserine Yoğun İlgi",
+                    excerpt: "Bartın Belediyesi'nin düzenlediği Türk Sanat Müziği konseri sanatseverlerden büyük ilgi gördü.",
+                    image: "https://www.bartinduysun.com/images/belediye/turk-sanat-muzigi-konserine-davet.webp",
+                    detail: "Bartın Belediyesi tarafından kültür ve sanat etkinlikleri kapsamında düzenlenen Türk Sanat Müziği Konseri, sanatseverlerle buluşmaya hazırlanıyor.",
+                    url: "https://www.bartinduysun.com/haberler/belediye/turk-sanat-muzigi-konserine-davet.html"
+                },
+                {
+                    id: 7,
+                    title: "Gürgenpınarı Mahallesi'ne Yeni Park Projesi",
+                    excerpt: "Bartın Belediyesi, Gürgenpınarı Mahallesi'nde yeni park projesinin yapım çalışmalarına başladı.",
+                    image: "https://www.bartinduysun.com/images/belediye/bir-projede-gurgenpinari-mahallesine-kazandiriliyor.webp",
+                    detail: "Bartın Belediyesi, kent genelinde yaşam kalitesini artırmaya yönelik projelerine hız kesmeden devam ediyor. Bu kapsamda Gürgenpınarı Mahallesi'nde hayata geçirilecek olan Gürgenpınarı Park Alanları Projesi'nin yapım çalışmalarına başlandı.",
+                    url: "https://www.bartinduysun.com/haberler/belediye/bir-proje-de-gurgenpinari-mahallesine-kazandiriliyor.html"
+                },
+                {
+                    id: 8,
+                    title: "Vali Arslan Başkanlığında İl Koordinasyon Toplantısı",
+                    excerpt: "2026 yılının ilk İl Koordinasyon Kurulu Toplantısı Vali Dr. Nurtaç Arslan başkanlığında gerçekleştirildi.",
+                    image: "https://www.bartinduysun.com/images/valilik/vali-arslan-baskanliginda-2026-yilinin-1-il-koordinasyon-kurulu-toplantisi.webp",
+                    detail: "2026 yılının ilk İl Koordinasyon Kurulu Toplantısı Valimiz Dr. Nurtaç Arslan başkanlığında Valilik 12 Divan Toplantı Salonunda yapıldı.",
+                    url: "https://www.bartinduysun.com/haberler/valilik/vali-arslan-baskanliginda-genisletilmis-il-guvenlik-ve-asayis-koordinasyon-merkezi-yilbasi-tedbirleri-gundemiyle-toplandi.html"
+                }
+            ],
+            
+            // Bartın Haberleri
+            bartinHaberleri: [
+                {
+                    id: 1,
+                    title: "Bartın Heyetinden Ankara'da Spor Yatırımları Zirvesi",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/bartin/bartin-heyeti-osman-askin-bak-ziyaret.webp",
+                    excerpt: "Bartın heyeti, Gençlik ve Spor Bakanlığı'nda önemli bir temas gerçekleştirdi. Adalet Bakanı Yılmaz Tunç, Bartın Belediye Başkanı Muhammet Rıza Yalçınkaya ve AK Parti Bartın Milletvekili Yusuf Ziya Aldatmaz, Gençlik ve Spor Bakanı Osman Aşkın Bak'ı makamında ziyaret etti.",
+                    url: "https://www.bartinduysun.com/haberler/bartin/bartin-heyeti-osman-askin-bak-ziyaret.html",
+                    date: "2 Şubat 2026"
+                },
+                {
+                    id: 2,
+                    title: "Esentepe'de Gıda Zehirlenmesi: 15 kişi hastanelik oldu",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.webp",
+                    excerpt: "Bartın'ın Esentepe Mahallesi'nde düzenlenen bir asker uğurlama etkinliği, istenmeyen bir sonla noktalandı. Etkinlikte ikram edilen yemeği tüketen 15 kişi, ardından ortaya çıkan mide bulantısı ve kusma şikayetleri üzerine Bartın Devlet Hastanesi acil servisine başvurdu.",
+                    url: "https://www.bartinduysun.com/haberler/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.html",
+                    date: "1 Şubat 2026"
+                },
+                {
+                    id: 3,
+                    title: "Mugada Sahilinde Tartışma Silahlı Saldırıya Dönüştü: Bir Kişi Ağır Yaralı",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/bartin/bartin-mugada-silahli-saldiri-72-yasindaki-adam-agir-yaralandi.webp",
+                    excerpt: "Bartın'ın Mugada sahilinde iki kişi arasında çıkan tartışma, silahlı saldırıyla sonuçlandı. İddiaya göre Y.T. (49), H.Ö. (72) ile yaşadığı sözlü tartışmanın ardından av tüfeğiyle ateş açtı. Baş ve göğüs bölgesinden ağır yaralanan H.Ö., Bartın Devlet Hastanesi'ne kaldırıldı.",
+                    url: "https://www.bartinduysun.com/haberler/bartin/mugada-sahilinde-tartisma-silahli-saldiri-bir-kisi-agir-yarali.html",
+                    date: "31 Ocak 2026"
+                }
+            ],
+            
+            // Reklam verisi
+            advertisements: [
+                {
+                    id: "ad1",
+                    url: "https://www.instagram.com/irmakmobilya74/",
+                    desktopImage: "https://www.bartinduysun.com/images/irmak-mobilya.webp",
+                    mobileImage: "https://www.bartinduysun.com/images/irmak-mobilya2.webp",
+                    alt: "İrmak Mobilya - Kaliteli Mobilya Çözümleri"
+                },
+                {
+                    id: "ad2",
+                    url: "https://www.instagram.com/sultanakunefebartin/",
+                    desktopImage: "https://www.bartinduysun.com/images/sultana-kunefe.webp",
+                    mobileImage: "https://www.bartinduysun.com/images/sultana-kunefe2.webp",
+                    alt: "Sultana Künefe - Özel Lezzetler"
+                },
+                {
+                    id: "ad3",
+                    url: "https://www.instagram.com/rgold.mucevher/",
+                    desktopImage: "https://www.bartinduysun.com/images/rgold-mucevherat.webp",
+                    mobileImage: "https://www.bartinduysun.com/images/rgold-kuyumcu2.webp",
+                    alt: "RGold Mücevherat - Kaliteli Takı ve Mücevher"
+                }
+            ],
+            
+            mostRead: [
+                {
+                    id: 1,
+                    title: "Bartın'da Acı Kayıp: Sevilen Esnafın Oğlu Alper Demirkesen Hayatını Kaybetti",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/bartin/bartinda-aci-kayip-alper-demirkesen-hayatini-kaybetti.webp",
+                    detail: "Bartın'da Acı Kayıp: Sevilen Esnafın Oğlu Alper Demirkesen Hayatını Kaybetti",
+                    url: "https://www.bartinduysun.com/haberler/bartin/bartinda-aci-kayip-alper-demirkesen-hayatini-kaybetti.html",
+                },
+                {
+                    id: 2,
+                    title: "Kadına Yönelik Şiddetle Mücadele İl Koordinasyon Komisyon Toplantısı Yapıldı",
+                    category: "Valilik Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.webp",
+                    excerpt: "Bartın Valiliği'nde Kadına Yönelik Şiddetle Mücadele İl Koordinasyon, İzleme ve Değerlendirme Komisyon Toplantısı yapıldı.",
+                    url: "https://www.bartinduysun.com/haberler/valilik/kadina-yonelik-siddetle-mucadele-il-koordinasyon-komisyon-toplantisi.html"
+                },
+                {
+                    id: 3,
+                    title: "Bartın'da 6 Şubat Depremleri Anıldı: Sergi ve Söyleşiyle Farkındalık Mesajı",
+                    category: "Valilik Haberleri",
+                    image: "https://www.bartinduysun.com/images/valilik/bartin-6-subat-depremleri-anma-etkinligi1.webp",
+                    excerpt: "Bartın'da 6 Şubat Depremleri Anıldı: Sergi ve Söyleşiyle Farkındalık Mesajı",
+                    url: "https://www.bartinduysun.com/haberler/valilik/bartinda-6-subat-depremleri-anildi-sergi-ve-soylesiyle-farkindalik-mesaji.html"
+                },
+                {
+                    id: 4,
+                    title: "Esentepe'de Gıda Zehirlenmesi: 15 kişi hastanelik oldu",
+                    category: "Bartın Haberleri",
+                    image: "https://www.bartinduysun.com/images/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.webp",
+                    excerpt: "Bartın'ın Esentepe Mahallesi'nde düzenlenen bir asker uğurlama etkinliği, istenmeyen bir sonla noktalandı.",
+                    url: "https://www.bartinduysun.com/haberler/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.html"
+                },
+                {
+                    id: 5,
+                    title: "AK Parti Bartın'da Genişletilmiş İl Danışma Meclisi ve Vefa Buluşması Düzenlendi",
+                    category: "Siyaset Haberleri",
+                    image: "https://www.bartinduysun.com/images/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.webp",
+                    excerpt: "Ak Parti Bartın İl Başkanlığı tarafından düzenlenen Genişletilmiş İl Danışma Meclisi toplantısı ve geleneksel Vefa Buluşması, partililerin ve vatandaşların yoğun katılımıyla gerçekleşti.",
+                    url: "https://www.bartinduysun.com/haberler/siyaset/ak-parti-bartinda-genisletilmis-il-danisma-meclisi-ve-vefa-bulusmasi-duzenlendi.html"
+                }
+            ]
+        };
+
+        // Tüm haberleri tek bir array'de topla
+        const allNews = [
+            ...haberData.gallery,
+            ...haberData.bartinHaberleri
+        ];
+
+        // DOM Elementleri
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const gallerySlider = document.getElementById('gallerySlider');
+        const galleryNavigation = document.getElementById('galleryNavigation');
+        const prevGalleryBtn = document.getElementById('prevGalleryBtn');
+        const nextGalleryBtn = document.getElementById('nextGalleryBtn');
+        const mainLogo = document.getElementById('mainLogo');
+        const footerLogo = document.getElementById('footerLogo');
+        const mostReadSidebar = document.getElementById('mostReadSidebar');
+        const breakingNewsContent = document.getElementById('breakingNewsContent');
+        const allNewsContainer = document.getElementById('allNewsContainer');
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        const cookieBanner = document.getElementById('cookie-banner');
+        const closeCookiesBtn = document.getElementById('closeCookies');
+
+        // Galeri değişkenleri
+        let currentGallerySlide = 0;
+        let galleryInterval;
+        let galleryStartX = 0;
+        let galleryEndX = 0;
+        const swipeThreshold = 50;
+        let isDragging = false;
+
+        // SON DAKİKA ŞERİDİNİ AYARLA - GÜNCELLENDİ
+        function setupBreakingNewsTicker() {
+            if (!breakingNewsContent || haberData.bartinHaberleri.length === 0) return;
+            
+            // YENİ HABERİ (İLK SIRADAKİ) SON DAKİKA ŞERİDİNE KOY
+            const breakingNews = haberData.bartinHaberleri[0]; // 1. sıradaki yeni haber
+            const newsText = `${breakingNews.title}. ${breakingNews.excerpt}`;
+            
+            // Temizle
+            breakingNewsContent.innerHTML = '';
+            
+            // Haber metnini iki kopya oluştur (kesintisiz döngü için)
+            for (let i = 0; i < 2; i++) {
+                const newsLink = document.createElement('a');
+                newsLink.href = breakingNews.url;
+                newsLink.textContent = newsText;
+                
+                // Fare ile üzerine gelindiğinde rengi değişsin
+                newsLink.addEventListener('mouseenter', function() {
+                    this.style.color = '#01889F';
+                });
+                
+                newsLink.addEventListener('mouseleave', function() {
+                    this.style.color = '#000000';
+                });
+                
+                breakingNewsContent.appendChild(newsLink);
+            }
+            
+            // Tüm şeride tıklanınca habere git
+            const breakingNewsTicker = document.getElementById('breakingNewsTicker');
+            if (breakingNewsTicker) {
+                breakingNewsTicker.addEventListener('click', function(e) {
+                    if (!e.target.closest('.son-dakika-etiket')) {
+                        window.location.href = breakingNews.url;
+                    }
+                });
+            }
+            
+            // Şerit animasyonunu düzgün başlat
+            setTimeout(() => {
+                if (breakingNewsContent) {
+                    breakingNewsContent.style.animation = 'kaydir 40s linear infinite';
+                }
+            }, 100);
+        }
+
+        // Haber kartı oluşturma fonksiyonu
+        function createNewsCard(haber) {
+            const article = document.createElement('article');
+            article.className = 'news-card';
+
+            const imageUrl = haber.image || 'https://via.placeholder.com/400x200?text=Bartın+Duysun';
+            const haberUrl = haber.url || `https://www.bartinduysun.com/haberler/${haber.category ? haber.category.toLowerCase().replace(/ /g, '-').replace('haberleri', '') : 'bartin'}/${haber.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '')}.html`;
+
+            let readMoreColor = 'var(--topbar-color)';
+            if (haber.category && haber.category.includes('Siyaset')) readMoreColor = 'var(--siyaset-color)';
+            else if (haber.category && haber.category.includes('Valilik')) readMoreColor = 'var(--valilik-color)';
+            else if (haber.category && haber.category.includes('Belediye')) readMoreColor = 'var(--belediye-color)';
+            else if (haber.category && haber.category.includes('Bartın')) readMoreColor = 'var(--bartin-color)';
+
+            const link = document.createElement('a');
+            link.href = haberUrl;
+
+            link.innerHTML = `
+                <div class="news-image">
+                    <img src="${imageUrl}" alt="${haber.title}" loading="lazy" decoding="async">
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">${haber.title}</h3>
+                    <p class="news-excerpt">${haber.excerpt || haber.detail.substring(0,120)}...</p>
+                    <span class="read-more" style="color:${readMoreColor}">
+                        Detayları Oku <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+            `;
+
+            article.appendChild(link);
+            return article;
+        }
+
+        // Reklam kartı oluşturma fonksiyonu
+        function createAdCard(ad, index) {
+            const adSection = document.createElement('div');
+            adSection.className = 'ad-section';
+            adSection.id = ad.id;
+            adSection.setAttribute('data-url', ad.url);
+            
+            adSection.innerHTML = `
+                <div class="ad-content">
+                    <img src="${ad.desktopImage}" alt="${ad.alt}" class="ad-image ad-desktop" loading="lazy">
+                    <img src="${ad.mobileImage}" alt="${ad.alt}" class="ad-image ad-mobile" loading="lazy">
+                    <button class="ad-info-btn" type="button">
+                        <i class="fas fa-info-circle"></i> İnstagram Sayfasına Git
+                    </button>
+                </div>
+            `;
+            
+            return adSection;
+        }
+
+        // Galeri slaytı oluşturma
+        function createGallerySlide(item, index) {
+            const slide = document.createElement('a');
+            slide.className = `gallery-slide ${index === 0 ? 'active' : ''}`;
+            slide.href = item.url;
+            slide.setAttribute('aria-label', item.title);
+            slide.setAttribute('aria-hidden', index !== 0);
+            
+            slide.innerHTML = `
+               <img src="${item.image}" 
+     alt="${item.title}" 
+     class="slide-image"
+     ${index === 0 ? 'fetchpriority="high"' : 'loading="lazy"'}
+>
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h2 class="slide-title">${item.title}</h2>
+                        <p class="slide-excerpt">${item.excerpt}</p>
+                    </div>
+                </div>
+            `;
+            
+            return slide;
+        }
+
+        // Numaralı navigasyon butonu oluşturma
+        function createNavNumber(index) {
+            const numberBtn = document.createElement('button');
+            numberBtn.className = `nav-number ${index === 0 ? 'active' : ''}`;
+            numberBtn.textContent = index + 1;
+            numberBtn.setAttribute('type', 'button');
+            numberBtn.setAttribute('aria-label', `${index + 1}. habere git`);
+            numberBtn.dataset.index = index;
+            
+            numberBtn.addEventListener('click', () => {
+                goToGallerySlide(index);
+                startGalleryInterval();
+            });
+            
+            return numberBtn;
+        }
+
+        // Sidebar haber öğesi oluşturma (En çok okunanlar için)
+        function createSidebarNewsItem(haber) {
+            const item = document.createElement('a');
+            item.className = 'sidebar-news-item';
+            item.href = haber.url || `https://www.bartinduysun.com/haberler/${haber.category ? haber.category.toLowerCase().replace(/ /g, '-').replace('haberleri', '') : 'bartin'}/${haber.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '')}.html`;
+            
+            item.innerHTML = `
+                <div class="sidebar-news-img">
+                    <img src="${haber.image}" alt="${haber.title}" loading="lazy">
+                </div>
+                <div class="sidebar-news-content">
+                    <h4 class="sidebar-news-title-text">${haber.title}</h4>
+                    <div class="sidebar-news-time">
+                        <span></span>
+                        <span class="sidebar-news-details" style="color: var(--topbar-color);">Haber Detayları →</span>
+                    </div>
+                </div>
+            `;
+            return item;
+        }
+
+        // Galeriyi başlat
+        function initGallery() {
+            // Slider öğelerini oluştur
+            if (haberData.gallery && gallerySlider) {
+                haberData.gallery.forEach((item, index) => {
+                    const slide = createGallerySlide(item, index);
+                    gallerySlider.appendChild(slide);
+                });
+
+                // Numaralı navigasyonu oluştur
+                if (galleryNavigation) {
+                    haberData.gallery.forEach((item, index) => {
+                        const navNumber = createNavNumber(index);
+                        galleryNavigation.appendChild(navNumber);
+                    });
+                }
+            }
+            
+            // Otomatik geçişi başlat
+            startGalleryInterval();
+            
+            // Galeri için swipe olaylarını ekle
+            setupSwipeForGallery();
+        }
+
+        // Tüm haberleri tek kategoride listele (her 5 haberde 1 reklam)
+        function initAllNews() {
+            if (!allNewsContainer) return;
+            
+            let adIndex = 0;
+            
+            // Tüm haberleri listele
+            allNews.forEach((haber, index) => {
+                // Her 5 haberde bir reklam ekle
+                if (index > 0 && index % 5 === 0) {
+                    if (adIndex < haberData.advertisements.length) {
+                        const adCard = createAdCard(haberData.advertisements[adIndex], adIndex);
+                        allNewsContainer.appendChild(adCard);
+                        adIndex++;
+                    }
+                }
+                
+                // Haber kartını ekle
+                const newsCard = createNewsCard(haber);
+                allNewsContainer.appendChild(newsCard);
+            });
+        }
+
+        // Galeri için swipe/dokunma desteği
+        function setupSwipeForGallery() {
+            if (!gallerySlider) return;
+            
+            // Touch events
+            gallerySlider.addEventListener('touchstart', handleTouchStart, { passive: true });
+            gallerySlider.addEventListener('touchmove', handleTouchMove, { passive: false });
+            gallerySlider.addEventListener('touchend', handleTouchEnd, { passive: true });
+            
+            // Mouse events
+            gallerySlider.addEventListener('mousedown', handleMouseDown);
+            gallerySlider.addEventListener('mouseleave', handleMouseLeave);
+            gallerySlider.addEventListener('mouseup', handleMouseUp);
+        }
+        
+        function handleTouchStart(e) {
+            galleryStartX = e.touches[0].clientX;
+            clearInterval(galleryInterval);
+        }
+        
+        function handleTouchMove(e) {
+            if (Math.abs(e.touches[0].clientX - galleryStartX) > 10) {
+                e.preventDefault();
+            }
+        }
+        
+        function handleTouchEnd(e) {
+            if (e.changedTouches.length > 0) {
+                galleryEndX = e.changedTouches[0].clientX;
+                handleSwipe();
+            }
+            startGalleryInterval();
+        }
+        
+        function handleMouseDown(e) {
+            galleryStartX = e.clientX;
+            clearInterval(galleryInterval);
+            isDragging = true;
+            gallerySlider.style.cursor = 'grabbing';
+        }
+        
+        function handleMouseLeave() {
+            if (isDragging) {
+                isDragging = false;
+                startGalleryInterval();
+            }
+            gallerySlider.style.cursor = 'grab';
+        }
+        
+        function handleMouseUp(e) {
+            if (!isDragging) return;
+            
+            galleryEndX = e.clientX;
+            handleSwipe();
+            isDragging = false;
+            startGalleryInterval();
+            gallerySlider.style.cursor = 'grab';
+        }
+        
+        function handleSwipe() {
+            const diffX = galleryStartX - galleryEndX;
+            
+            if (diffX > swipeThreshold) {
+                nextGallerySlide();
+            }
+            else if (diffX < -swipeThreshold) {
+                prevGallerySlide();
+            }
+        }
+
+        // En çok okunan haberleri başlat (sidebar için)
+        function initMostReadSidebar() {
+            if (mostReadSidebar && haberData.mostRead) {
+                haberData.mostRead.slice(0, 5).forEach(haber => {
+                    mostReadSidebar.appendChild(createSidebarNewsItem(haber));
+                });
+            }
+        }
+
+        // Reklam alanı işlemleri
+        function initAdvertisements() {
+            const adSections = document.querySelectorAll('.ad-section');
+            
+            adSections.forEach(adSection => {
+                const adContent = adSection.querySelector('.ad-content');
+                const adImage = adSection.querySelector('.ad-image');
+                const infoBtn = adSection.querySelector('.ad-info-btn');
+                
+                // Görsele tıklama
+                if (adContent && adImage) {
+                    adContent.addEventListener('click', function(e) {
+                        if (!e.target.classList.contains('ad-info-btn')) {
+                            adSection.classList.toggle('active');
+                        }
+                    });
+                }
+                
+                // Butona tıklama
+                if (infoBtn) {
+                    infoBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const url = adSection.getAttribute('data-url');
+                        if (url) {
+                            window.location.href = url;
+                        }
+                    });
+                }
+            });
+            
+            // Dışarı tıklayınca butonu kapat
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.ad-section')) {
+                    document.querySelectorAll('.ad-section').forEach(ad => {
+                        ad.classList.remove('active');
+                    });
+                }
+            });
+        }
+
+        // Belirli bir slayta git
+        function goToGallerySlide(index) {
+            const slides = document.querySelectorAll('.gallery-slide');
+            const numbers = document.querySelectorAll('.nav-number');
+            
+            if (slides.length === 0 || numbers.length === 0) return;
+            
+            // Mevcut slaytı gizle
+            slides[currentGallerySlide].classList.remove('active');
+            slides[currentGallerySlide].setAttribute('aria-hidden', 'true');
+            numbers[currentGallerySlide].classList.remove('active');
+            
+            // Yeni slaytı göster
+            currentGallerySlide = index;
+            slides[currentGallerySlide].classList.add('active');
+            slides[currentGallerySlide].setAttribute('aria-hidden', 'false');
+            numbers[currentGallerySlide].classList.add('active');
+        }
+
+        // Sonraki slayta geç
+        function nextGallerySlide() {
+            const nextIndex = (currentGallerySlide + 1) % haberData.gallery.length;
+            goToGallerySlide(nextIndex);
+        }
+
+        // Önceki slayta geç
+        function prevGallerySlide() {
+            const prevIndex = (currentGallerySlide - 1 + haberData.gallery.length) % haberData.gallery.length;
+            goToGallerySlide(prevIndex);
+        }
+
+        // Galeri otomatik geçişini başlat
+        function startGalleryInterval() {
+            clearInterval(galleryInterval);
+            galleryInterval = setInterval(nextGallerySlide, 5000);
+        }
+
+        // Footer logo tıklama fonksiyonu
+        function handleFooterLogoClick(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Logo tıklama fonksiyonu
+        function handleLogoClick(e) {
+            e.preventDefault();
+            
+            if (window.location.pathname === '/' || window.location.pathname.includes('index')) {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Mobil menüyü aç/kapa
+        function toggleMobileMenu() {
+            if (navMenu && menuOverlay && hamburgerMenu) {
+                navMenu.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                hamburgerMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                    document.documentElement.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                }
+            }
+        }
+
+        // ÇEREZ BİLDİRİMİ
+        function setupCookieBanner() {
+            if (cookieBanner && closeCookiesBtn) {
+                if (!localStorage.getItem("cookieInfoClosed")) {
+                    cookieBanner.style.display = "flex";
+                }
+                closeCookiesBtn.addEventListener("click", function() {
+                    localStorage.setItem("cookieInfoClosed", "true");
+                    cookieBanner.style.display = "none";
+                });
+            }
+        }
+
+        // YUKARI ÇIK BUTONU
+        function initScrollToTop() {
+            if (!scrollToTopBtn) return;
+            
+            function toggleScrollToTopButton() {
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.classList.add('active');
+                } else {
+                    scrollToTopBtn.classList.remove('active');
+                }
+            }
+            
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                this.style.transform = 'scale(0.9)';
+                setTimeout(() => { this.style.transform = ''; }, 150);
+            });
+            
+            window.addEventListener('scroll', toggleScrollToTopButton);
+            toggleScrollToTopButton();
+        }
+
+        // Event listener'ları kur
+        function setupEventListeners() {
+            // Ana logo tıklama
+            if (mainLogo) {
+                mainLogo.addEventListener('click', handleLogoClick);
+            }
+            
+            // Footer logo tıklama
+            if (footerLogo) {
+                footerLogo.addEventListener('click', handleFooterLogoClick);
+            }
+            
+            // Hamburger menü
+            if (hamburgerMenu) {
+                hamburgerMenu.addEventListener('click', toggleMobileMenu);
+            }
+            
+            // Menü overlay
+            if (menuOverlay) {
+                menuOverlay.addEventListener('click', toggleMobileMenu);
+            }
+            
+            // Dropdown menü (mobil için)
+            if (dropdownMenu) {
+                dropdownMenu.querySelector('.nav-link').addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        dropdownMenu.classList.toggle('active');
+                    }
+                });
+            }
+            
+            // Galeri kontrolleri
+            if (prevGalleryBtn) {
+                prevGalleryBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    prevGallerySlide();
+                    startGalleryInterval();
+                });
+            }
+            
+            if (nextGalleryBtn) {
+                nextGalleryBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    nextGallerySlide();
+                    startGalleryInterval();
+                });
+            }
+            
+            // Pencere boyutu değiştiğinde dropdown'ı kapat
+            window.addEventListener('resize', handleResize);
+            
+            // Klavye navigasyonu
+            document.addEventListener('keydown', handleKeyboardNavigation);
+        }
+        
+        function handleResize() {
+            if (window.innerWidth > 768) {
+                if (navMenu) navMenu.classList.remove('active');
+                if (menuOverlay) menuOverlay.classList.remove('active');
+                if (hamburgerMenu) hamburgerMenu.classList.remove('active');
+                if (dropdownMenu) dropdownMenu.classList.remove('active');
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
+                
+                document.querySelectorAll('.nav-link i').forEach(icon => {
+                    icon.style.display = 'none';
+                });
+            } else {
+                document.querySelectorAll('.nav-link i').forEach(icon => {
+                    icon.style.display = 'inline-block';
+                });
+            }
+        }
+        
+        function handleKeyboardNavigation(e) {
+            // Galeri için klavye kontrolleri
+            if (document.querySelector('.gallery-slide.active')) {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    prevGallerySlide();
+                    startGalleryInterval();
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    nextGallerySlide();
+                    startGalleryInterval();
+                } else if (e.key >= '1' && e.key <= '8') {
+                    e.preventDefault();
+                    const index = parseInt(e.key) - 1;
+                    if (index < haberData.gallery.length) {
+                        goToGallerySlide(index);
+                        startGalleryInterval();
+                    }
+                }
+            }
+            
+            // Escape ile menüyü kapat
+            if (e.key === 'Escape') {
+                if (navMenu && navMenu.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+                
+                // Reklamları kapat
+                document.querySelectorAll('.ad-section.active').forEach(ad => {
+                    ad.classList.remove('active');
+                });
+            }
+        }
+
+        // Sayfa yüklendiğinde çalışacak fonksiyonlar
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                initGallery();
+                initAllNews();
+                initMostReadSidebar();
+                initAdvertisements();
+                setupBreakingNewsTicker();
+                setupCookieBanner();
+                initScrollToTop();
+                setupEventListeners();
+                
+                if (window.innerWidth >= 769) {
+                    document.querySelectorAll('.nav-link i').forEach(icon => {
+                        icon.style.display = 'none';
+                    });
+                }
+            } catch (error) {
+                console.error('Sayfa başlatılırken hata oluştu:', error);
+            }
+        });
+    </script>
 </body>
 </html>
