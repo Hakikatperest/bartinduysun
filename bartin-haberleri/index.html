@@ -1516,7 +1516,24 @@
             </h2>
             
             <div class="news-list" id="bartinNewsList">
-                <!-- Haber 1: YENİ EKLENEN HABER -->
+                <!-- YENİ EKLENEN HABER: Zehir Tacirlerine Darbe -->
+                <article class="news-item">
+                    <a href="https://www.bartinduysun.com/haberler/bartin/zehir-tacirlerine-darbe-operasyonda-cok-sayida-madde-ele-gecirildi.html" class="news-img">
+                        <img src="https://www.bartinduysun.com/images/bartin/zehir-tacirlerine-darbe-operasyonda-cok-sayida-madde-ele-gecirildi1.webp" alt="Zehir Tacirlerine Darbe: Operasyonda Çok Sayıda Madde Ele Geçirildi">
+                    </a>
+                    <div class="news-content">
+                        <h3 class="news-item-title">Zehir Tacirlerine Darbe: Operasyonda Çok Sayıda Madde Ele Geçirildi</h3>
+                        <p class="news-item-excerpt">Narkotik Suçlarla Mücadele Şube Müdürlüğü ekipleri, kent genelinde uyuşturucu madde trafiğini engellemek ve sokak satıcılarına göz açtırmamak amacıyla yürüttüğü çalışmalar kapsamında önemli bir operasyona imza attı. Titizlikle sürdürülen teknik ve fiziki takip sonucu gerçekleştirilen baskınlarda çok sayıda uyuşturucu madde ve suç unsuru ele geçirildi.</p>
+                        <div class="news-item-details">
+                            <span>10 Şubat 2026</span>
+                            <a href="https://www.bartinduysun.com/haberler/bartin/zehir-tacirlerine-darbe-operasyonda-cok-sayida-madde-ele-gecirildi.html" class="read-more-link">
+                                Haberin Detayları <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Haber 1 -->
                 <article class="news-item">
                     <a href="https://www.bartinduysun.com/haberler/bartin/bartin-heyeti-osman-askin-bak-ziyaret.html" class="news-img">
                         <img src="https://www.bartinduysun.com/images/bartin/bartin-heyeti-osman-askin-bak-ziyaret.webp" alt="Bartın Heyetinden Ankara'da Spor Yatırımları Zirvesi">
@@ -1795,8 +1812,17 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        // Haber verisi - GÜNCELLENMİŞ VERSİYON
+        // Haber verisi - GÜNCELLENMİŞ VERSİYON (Yeni haber eklendi)
         const bartinHaberleri = [
+            {
+                id: 0,
+                title: "Zehir Tacirlerine Darbe: Operasyonda Çok Sayıda Madde Ele Geçirildi",
+                category: "Bartın Haberleri",
+                image: "https://www.bartinduysun.com/images/bartin/zehir-tacirlerine-darbe-operasyonda-cok-sayida-madde-ele-gecirildi1.webp",
+                excerpt: "Narkotik Suçlarla Mücadele Şube Müdürlüğü ekipleri, kent genelinde uyuşturucu madde trafiğini engellemek ve sokak satıcılarına göz açtırmamak amacıyla yürüttüğü çalışmalar kapsamında önemli bir operasyona imza attı. Titizlikle sürdürülen teknik ve fiziki takip sonucu gerçekleştirilen baskınlarda çok sayıda uyuşturucu madde ve suç unsuru ele geçirildi.",
+                url: "https://www.bartinduysun.com/haberler/bartin/zehir-tacirlerine-darbe-operasyonda-cok-sayida-madde-ele-gecirildi.html",
+                date: "10 Şubat 2026"
+            },
             {
                 id: 1,
                 title: "Bartın Heyetinden Ankara'da Spor Yatırımları Zirvesi",
@@ -1804,7 +1830,7 @@
                 image: "https://www.bartinduysun.com/images/bartin-heyeti-osman-askin-bak-ziyaret.webp",
                 excerpt: "Bartın heyeti, Gençlik ve Spor Bakanlığı'nda önemli bir temas gerçekleştirdi. Adalet Bakanı Yılmaz Tunç, Bartın Belediye Başkanı Muhammet Rıza Yalçınkaya ve AK Parti Bartın Milletvekili Yusuf Ziya Aldatmaz, Gençlik ve Spor Bakanı Osman Aşkın Bak'ı makamında ziyaret etti.",
                 url: "https://www.bartinduysun.com/haberler/bartin/bartin-heyeti-osman-askin-bak-ziyaret.html",
-                date: "2 Şubat 2026"
+                date: "9 Şubat 2026"
             },
             {
                 id: 2,
@@ -1914,12 +1940,12 @@
             });
         }
 
-        // SON DAKİKA ŞERİDİNİ AYARLA - GÜNCELLENDİ
+        // SON DAKİKA ŞERİDİNİ AYARLA - GÜNCELLENDİ (Yeni haber en başta olduğu için otomatik olarak onu alır)
         function setupBreakingNewsTicker() {
             if (!breakingNewsContent || bartinHaberleri.length === 0) return;
             
             // YENİ HABERİ (İLK SIRADAKİ) SON DAKİKA ŞERİDİNE KOY
-            const breakingNews = bartinHaberleri[0]; // 1. sıradaki yeni haber
+            const breakingNews = bartinHaberleri[0]; // 1. sıradaki yeni haber (Zehir Tacirlerine Darbe)
             const newsText = `${breakingNews.title}. ${breakingNews.excerpt}`;
             
             // Temizle
