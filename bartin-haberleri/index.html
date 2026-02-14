@@ -329,6 +329,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(192, 0, 0, 0.15);
             position: relative;
+            cursor: pointer;
         }
         
         .son-dakika-etiket {
@@ -1516,9 +1517,9 @@
             </h2>
             
             <div class="news-list" id="bartinNewsList">
-                <!-- HABER 1: Bartın Berberler ve Kuaförler Odası’nda Yeni Dönem Heyecanı -->
+                <!-- HABER 1: Bartın Berberler ve Kuaförler Odası’nda Yeni Dönem Heyecanı (LİNK GÜNCELLENDİ) -->
                 <article class="news-item">
-                    <a href="#" class="news-img">
+                    <a href="https://www.bartinduysun.com/haberler/bartin/bartin-berberler-ve-kuaforler-odasinda-yeni-donem-heyecani.html" class="news-img">
                         <img src="https://www.bartinduysun.com/images/bartin/ozlem-turkan-sarikaya1.webp" alt="Bartın Berberler ve Kuaförler Odası Seçim">
                     </a>
                     <div class="news-content">
@@ -1526,7 +1527,7 @@
                         <p class="news-item-excerpt">Toplam 477 üyesi bulunan Bartın Berberler ve Kuaförler Odası’nda genel kurul heyecanı yaşanıyor. 137 erkek berber, 80 kuaför, 32 güzellik salonu ve 30 farklı sektörden temsilci yeni dönem için sandık başına gidecek.</p>
                         <div class="news-item-details">
                             <span>14 Şubat 2026</span>
-                            <a href="#" class="read-more-link">
+                            <a href="https://www.bartinduysun.com/haberler/bartin/bartin-berberler-ve-kuaforler-odasinda-yeni-donem-heyecani.html" class="read-more-link">
                                 Haberin Detayları <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
@@ -1823,7 +1824,7 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        // Haber verisi - GÜNCELLENMİŞ VERSİYON (Yeni haber eklendi, 8 haber)
+        // Haber verisi - GÜNCELLENMİŞ VERSİYON (İlk haberin linki düzeltildi)
         const bartinHaberleri = [
             {
                 id: 0,
@@ -1831,7 +1832,7 @@
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/berberler-kuaförler-odasi-secim.webp",
                 excerpt: "Toplam 477 üyesi bulunan Bartın Berberler ve Kuaförler Odası’nda genel kurul heyecanı yaşanıyor. 137 erkek berber, 80 kuaför, 32 güzellik salonu ve 30 farklı sektörden temsilci yeni dönem için sandık başına gidecek.",
-                url: "#",
+                url: "https://www.bartinduysun.com/haberler/bartin/bartin-berberler-ve-kuaforler-odasinda-yeni-donem-heyecani.html",
                 date: "14 Şubat 2026"
             },
             {
@@ -1908,7 +1909,6 @@
         const cookieBanner = document.getElementById('cookie-banner');
         const closeCookiesBtn = document.getElementById('closeCookies');
         const scrollToTopBtn = document.getElementById('scrollToTop');
-        const mainLogo = document.getElementById('mainLogo');
         const footerLogo = document.getElementById('footerLogo');
         const dropdownMenu = document.getElementById('dropdownMenu');
 
@@ -1951,7 +1951,7 @@
             });
         }
 
-        // SON DAKİKA ŞERİDİNİ AYARLA - GÜNCELLENDİ (Yeni haber en başta olduğu için otomatik olarak onu alır)
+        // SON DAKİKA ŞERİDİNİ AYARLA - GÜNCELLENDİ (İlk haberin linki ile)
         function setupBreakingNewsTicker() {
             if (!breakingNewsContent || bartinHaberleri.length === 0) return;
             
@@ -1980,7 +1980,7 @@
                 breakingNewsContent.appendChild(newsLink);
             }
             
-            // Tüm şeride tıklanınca habere git
+            // Tüm şeride tıklanınca habere git (etiket hariç)
             if (breakingNewsTicker) {
                 breakingNewsTicker.addEventListener('click', function(e) {
                     if (!e.target.closest('.son-dakika-etiket')) {
@@ -2066,6 +2066,7 @@
             if (menuOverlay) menuOverlay.addEventListener('click', toggleMobileMenu);
             
             // Logo
+            const mainLogo = document.querySelector('.logo');
             if (mainLogo) mainLogo.addEventListener('click', handleLogoClick);
             if (footerLogo) footerLogo.addEventListener('click', handleLogoClick);
             
