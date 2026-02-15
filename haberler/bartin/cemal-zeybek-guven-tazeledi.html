@@ -1528,6 +1528,19 @@
         .ad-section {
         margin-top: 0 !important;
         }
+        @media (max-width: 768px) {
+    .second-image {
+        min-height: auto !important;
+        max-height: none !important;
+        height: auto !important;
+        margin: 20px 0 !important;
+    }
+
+    .second-image img {
+        height: auto !important;
+        object-fit: contain !important;
+    }
+}
     </style>
 </head>
 <body>
@@ -1645,7 +1658,7 @@
                         <strong>Cemal ZEYBEK | 179</strong><br><br> &nbsp;&nbsp;&nbsp; <strong>Özlem Türkan SARIKAYA | 150</strong>
                     </p>
                     
-                    <div class="news-featured-image" style="margin: 40px 0; min-height: 400px; max-height: 600px;">
+                    <div class="news-featured-image second-image">
                         <img src="https://www.bartinduysun.com/images/bartin/cemal-zeybek-guven-tazeledi1.webp"
                              alt="Seçim Sonrası Cemal Zeybek ve Özlem Türkan Sarıkaya">
                     </div>
