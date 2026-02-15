@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Ana Sayfa ile Aynı CSS (Kart yapısı eklendi) -->
     <style>
-        /* Tüm CSS kodunuz aynen burada kalacak - kısaltmak için ana gövdeyi eklemedim ama orijinal CSS'in tamamı çalışır */
+        /* Tüm CSS kodunuz aynen burada kalacak */
         * {
             margin: 0;
             padding: 0;
@@ -76,7 +76,7 @@
             padding: 0 15px;
         }
         
-        /* HEADER - BARTIN SİYASET SAYFASININ HEADER'I %100 AYNEN ALINDI */
+        /* HEADER */
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -317,7 +317,7 @@
             max-width: 800px;
         }
         
-        /* YENİ MODERN SON DAKİKA ŞERİDİ (KIRMIZI ARKAPLANLI) */
+        /* YENİ MODERN SON DAKİKA ŞERİDİ */
         .son-dakika-bar {
             display: flex;
             align-items: center;
@@ -334,7 +334,7 @@
         }
         
         .son-dakika-etiket {
-            background: #c00; /* KIRMIZI ARKAPLAN */
+            background: #c00;
             color: #ffffff;
             padding: 0 20px;
             height: 100%;
@@ -419,7 +419,7 @@
             transition: all 0.3s ease;
         }
         
-        /* HABER LİSTESİ - KART TASARIMI (Ana sayfadan alındı) */
+        /* HABER LİSTESİ - KART TASARIMI */
         .news-list-section {
             margin-bottom: 50px;
         }
@@ -453,7 +453,7 @@
             50% { opacity: 0.3; }
         }
         
-        /* Haber Grid - Ana sayfadaki kart yapısı */
+        /* Haber Grid */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -542,7 +542,7 @@
             transform: translateX(5px);
         }
         
-        /* REKLAM ALANLARI - TÜM ÖZELLİKLERİYLE AKTARILDI */
+        /* REKLAM ALANLARI */
         .ad-section {
             background-color: white;
             min-height: 180px;
@@ -1448,7 +1448,7 @@
     </style>
 </head>
 <body>
-    <!-- HEADER - BARTIN SİYASET SAYFASININ HEADER'I %100 AYNEN AKTARILDI -->
+    <!-- HEADER -->
     <header>
         <div class="top-bar">
             <div class="container">
@@ -1481,7 +1481,6 @@
                     
                     <ul class="nav-menu" id="navMenu">
                         <div class="nav-links-container">
-                            <!-- SİYASET SAYFASINDAN %100 AYNEN AKTARILAN BUTONLAR -->
                             <li class="nav-item"><a href="https://www.bartinduysun.com" class="nav-link"><i class="fas fa-home"></i> Anasayfa</a></li>
                             <li class="nav-item"><a href="/bartin-haberleri/" class="nav-link active"><i class="fas fa-newspaper"></i> Bartın Haberleri</a></li>
                             <li class="nav-item"><a href="/bartin-valiligi-haberleri/" class="nav-link"><i class="fas fa-landmark"></i> Bartın Valiliği Haberleri</a></li>
@@ -1525,7 +1524,7 @@
     </div>
 
     <main class="container">
-        <!-- HABER LİSTESİ - KART TASARIMI (Ana sayfadan alındı) -->
+        <!-- HABER LİSTESİ -->
         <section class="news-list-section">
             <h2 class="section-title">
                 <span class="blinking-dot"></span>
@@ -1671,23 +1670,33 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- JAVASCRIPT - Dinamik içerik oluşturma (Ana sayfadaki mantıkla) -->
+    <!-- JAVASCRIPT - Dinamik içerik oluşturma (Güncellenmiş 11 Haber + 3-3-3-2 Sıralama) -->
     <script>
-        // Haber verisi - GÜNCELLENMİŞ VERSİYON
+        // Haber verisi - GÜNCELLENMİŞ VERSİYON (11 HABER)
         const bartinHaberleri = [
-            // YENİ HABER - 1. SIRAYA EKLENDİ
+            // 1. HABER (En güncel)
             {
                 id: 0,
-                title: "Merzifon Deplasmanında Çirkin Saldırı! Kaptan Emre Yüksektepe Başından Yaralandı",
+                   title: "Bartın Berberler ve Kuaförler Odası'nda Seçim Heyecanı: Cemal Zeybek Güven Tazeledi",
+                category: "Bartın Haberleri",
+                image: "https://www.bartinduysun.com/images/bartin/cemal-zeybek-guven-tazeledi2.webp",
+                excerpt: "Bartın Berberler ve Kuaförler Esnaf Odası'nda gerçekleşen heyecanlı seçim süreci tamamlandı. Mevcut başkan ve adayların yarıştığı genel kurulda, sandıktan çıkan sonuçlar meslek odasının yeni dönem yönetimini belirledi.",
+                url: "https://www.bartinduysun.com/haberler/bartin/cemal-zeybek-guven-tazeledi.html",
+                date: "15 Şubat 2026"
+            },
+            // 2. HABER (Yeni eklenen)
+            {
+                id: 1,
+               title: "Merzifon Deplasmanında Çirkin Saldırı! Kaptan Emre Yüksektepe Başından Yaralandı",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/merzifonspor-bartinspor-macinda-kavga1.webp",
                 excerpt: "Bartınspor, Bölgesel Amatör Lig 4. Grup'ta deplasmanda karşılaştığı Merzifonspor karşısında sahadan 1-0 galip ayrıldı. Ancak maçın bitiş düdüğüyle birlikte yaşanan olaylar, alınan kritik galibiyetin önüne geçti.",
                 url: "https://www.bartinduysun.com/haberler/bartin/merzifonspor-bartinspor-macinda-kavga1.html",
                 date: "15 Şubat 2026"
             },
-            // Diğer haberler sırasıyla aşağı kaydı
+            // 3. HABER
             {
-                id: 1,
+                id: 2,
                 title: "Bartın'da Çirkin Saldırı: 72 Yaşındaki Yaşlı Adam Darbedildi!",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/bartinda-cirkin-saldiri.webp",
@@ -1695,17 +1704,19 @@
                 url: "https://www.bartinduysun.com/haberler/bartin/bartinda-cirkin-saldiri.html",
                 date: "14 Şubat 2026, 22:18"
             },
+            // 4. HABER
             {
-                id: 2,
-                title: "Bartın Berberler ve Kuaförler Odası’nda Yeni Dönem Heyecanı",
+                id: 3,
+                title: "Bartın Berberler ve Kuaförler Odası'nda Yeni Dönem Heyecanı",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/ozlem-turkan-sarikaya1.webp",
-                excerpt: "Toplam 477 üyesi bulunan Bartın Berberler ve Kuaförler Odası’nda genel kurul heyecanı yaşanıyor. 137 erkek berber, 80 kuaför, 32 güzellik salonu ve 30 farklı sektörden temsilci yeni dönem için sandık başına gidecek.",
+                excerpt: "Toplam 477 üyesi bulunan Bartın Berberler ve Kuaförler Odası'nda genel kurul heyecanı yaşanıyor. 137 erkek berber, 80 kuaför, 32 güzellik salonu ve 30 farklı sektörden temsilci yeni dönem için sandık başına gidecek.",
                 url: "https://www.bartinduysun.com/haberler/bartin/bartin-berberler-ve-kuaforler-odasinda-yeni-donem-heyecani.html",
                 date: "14 Şubat 2026"
             },
+            // 5. HABER
             {
-                id: 3,
+                id: 4,
                 title: "Zehir Tacirlerine Darbe: Operasyonda Çok Sayıda Madde Ele Geçirildi",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/zehir-tacirlerine-darbe-operasyonda-cok-sayida-madde-ele-gecirildi1.webp",
@@ -1713,8 +1724,9 @@
                 url: "https://www.bartinduysun.com/haberler/bartin/zehir-tacirlerine-darbe-operasyonda-cok-sayida-madde-ele-gecirildi.html",
                 date: "13 Şubat 2026"
             },
+            // 6. HABER
             {
-                id: 4,
+                id: 5,
                 title: "Bartın Heyetinden Ankara'da Spor Yatırımları Zirvesi",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/bartin-heyeti-osman-askin-bak-ziyaret.webp",
@@ -1722,8 +1734,9 @@
                 url: "https://www.bartinduysun.com/haberler/bartin/bartin-heyeti-osman-askin-bak-ziyaret.html",
                 date: "9 Şubat 2026"
             },
+            // 7. HABER
             {
-                id: 5,
+                id: 6,
                 title: "Esentepe'de Gıda Zehirlenmesi: 15 kişi hastanelik oldu",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.webp",
@@ -1731,8 +1744,9 @@
                 url: "https://www.bartinduysun.com/haberler/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.html",
                 date: "1 Şubat 2026"
             },
+            // 8. HABER
             {
-                id: 6,
+                id: 7,
                 title: "Mugada Sahilinde Tartışma Silahlı Saldırıya Dönüştü: Bir Kişi Ağır Yaralı",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/bartin-mugada-silahli-saldiri-72-yasindaki-adam-agir-yaralandi.webp",
@@ -1740,8 +1754,9 @@
                 url: "https://www.bartinduysun.com/haberler/bartin/mugada-sahilinde-tartisma-silahli-saldiri-bir-kisi-agir-yarali.html",
                 date: "31 Ocak 2026"
             },
+            // 9. HABER
             {
-                id: 7,
+                id: 8,
                 title: "Bartın Kahveciler ve Şerbetçiler Esnaf Odası'nda Ayhan Tepe Yeniden Başkan Seçildi",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/bartinda-kahveciler-ve-serbetciler-esnaf-odasi-baskanligi-secimi-yapildi.webp",
@@ -1749,8 +1764,9 @@
                 url: "https://www.bartinduysun.com/haberler/bartin/bartin-kahveciler-serbetciler-esnaf-odasi-ayhan-tepe-yeniden-baskan-secildi.html",
                 date: "30 Ocak 2026"
             },
+            // 10. HABER
             {
-                id: 8,
+                id: 9,
                 title: "Gürgenpınarı'nda Uçuruma Yuvarlanan Kamyonun Sürücüsü Hayatını Kaybetti",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/gurgenpinar-tas-ocagi-kazasi-kamyon-soforu-hayatini-kaybetti.webp",
@@ -1758,8 +1774,9 @@
                 url: "https://www.bartinduysun.com/haberler/bartin/gurgenpinari-ucuruma-yuvarlanan-kamyon-surucusu-hayatini-kaybetti.html",
                 date: "29 Ocak 2026"
             },
+            // 11. HABER
             {
-                id: 9,
+                id: 10,
                 title: "Gürgenpınarı Açık Konsept AVM Projesini Başkan Yalçınkaya Duyurdu",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/gurgenpinari-acik-konsept-avm-projesi-baskan-yalcinkaya-duyurdu.webp",
@@ -1769,7 +1786,7 @@
             }
         ];
 
-        // Reklam verisi (aynı)
+        // Reklam verisi
         const advertisements = [
             {
                 id: "ad1",
@@ -1898,7 +1915,7 @@
         function setupBreakingNewsTicker() {
             if (!breakingNewsContent || bartinHaberleri.length === 0) return;
             
-            const breakingNews = bartinHaberleri[0]; // İlk sıradaki haber (yeni eklenen)
+            const breakingNews = bartinHaberleri[0];
             const newsText = `${breakingNews.title} ${breakingNews.excerpt.substring(0, 150)}...`;
             
             breakingNewsContent.innerHTML = '';
@@ -1934,37 +1951,71 @@
             }, 100);
         }
 
-        // Haber grid'ini doldur
+        // Haber grid'ini doldur - 3 haber + reklam + 3 haber + reklam + 3 haber + reklam + 2 haber
         function populateNewsGrid() {
             if (!bartinNewsGrid) return;
             
             bartinNewsGrid.innerHTML = '';
             
             let adIndex = 0;
+            const totalAds = advertisements.length;
             
-            bartinHaberleri.forEach((haber, index) => {
-                // Her 4 haberde bir reklam (0 tabanlı indeks 3,7,11...)
-                if (index > 0 && index % 4 === 0 && adIndex < advertisements.length) {
-                    const adCard = createAdCard(advertisements[adIndex]);
-                    bartinNewsGrid.appendChild(adCard);
-                    adIndex++;
-                    
-                    if (adIndex >= advertisements.length) {
-                        adIndex = 0;
-                    }
+            // İlk 3 haber
+            for (let i = 0; i < 3; i++) {
+                if (i < bartinHaberleri.length) {
+                    const newsCard = createNewsCard(bartinHaberleri[i]);
+                    bartinNewsGrid.appendChild(newsCard);
                 }
-                
-                const newsCard = createNewsCard(haber);
-                bartinNewsGrid.appendChild(newsCard);
-            });
+            }
             
-            // Kalan reklamlar varsa ekle
-            if (adIndex < advertisements.length) {
-                const remainingAds = advertisements.slice(adIndex);
-                remainingAds.forEach(ad => {
-                    const adCard = createAdCard(ad);
-                    bartinNewsGrid.appendChild(adCard);
-                });
+            // 1. Reklam
+            if (adIndex < totalAds) {
+                const adCard = createAdCard(advertisements[adIndex]);
+                bartinNewsGrid.appendChild(adCard);
+                adIndex++;
+            }
+            
+            // Sonraki 3 haber (4,5,6)
+            for (let i = 3; i < 6; i++) {
+                if (i < bartinHaberleri.length) {
+                    const newsCard = createNewsCard(bartinHaberleri[i]);
+                    bartinNewsGrid.appendChild(newsCard);
+                }
+            }
+            
+            // 2. Reklam
+            if (adIndex < totalAds) {
+                const adCard = createAdCard(advertisements[adIndex]);
+                bartinNewsGrid.appendChild(adCard);
+                adIndex++;
+            }
+            
+            // Sonraki 3 haber (7,8,9)
+            for (let i = 6; i < 9; i++) {
+                if (i < bartinHaberleri.length) {
+                    const newsCard = createNewsCard(bartinHaberleri[i]);
+                    bartinNewsGrid.appendChild(newsCard);
+                }
+            }
+            
+            // 3. Reklam
+            if (adIndex < totalAds) {
+                const adCard = createAdCard(advertisements[adIndex]);
+                bartinNewsGrid.appendChild(adCard);
+                adIndex++;
+            }
+            
+            // Son 2 haber (10,11)
+            for (let i = 9; i < bartinHaberleri.length; i++) {
+                const newsCard = createNewsCard(bartinHaberleri[i]);
+                bartinNewsGrid.appendChild(newsCard);
+            }
+            
+            // Eğer reklamlar bittiyse ve hala reklam eklenmesi gerekiyorsa (yedek)
+            while (adIndex < totalAds) {
+                const adCard = createAdCard(advertisements[adIndex]);
+                bartinNewsGrid.appendChild(adCard);
+                adIndex++;
             }
         }
 
