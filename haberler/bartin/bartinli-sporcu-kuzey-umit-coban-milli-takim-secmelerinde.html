@@ -1,3 +1,6 @@
+Tamam, resim galerisinin üzerine "news-intro" bölümünü taşıdım. İşte güncellenmiş HTML kodu:
+
+```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -449,12 +452,12 @@
             font-size: 1.1rem;
         }
         
-        /* Haber açıklaması */
+        /* Haber açıklaması - RESİMLERİN ÜZERİNE TAŞINDI */
         .news-intro {
             font-size: 1.3rem;
             font-weight: 700;
             line-height: 1.6;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             color: var(--dark-color);
             padding: 20px;
             border-radius: 10px;
@@ -465,31 +468,13 @@
         }
         
         /* TAM BOY GÖRSEL - Galeri için güncellendi */
-        .news-featured-image {
-            width: 100vw;
-            max-width: 100%;
-            height: auto;
-            min-height: 400px;
-            max-height: 700px;
-            overflow: hidden;
-            margin-bottom: 40px;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #f0f0f0;
-        }
-        
-        .news-featured-image img {
+        .gallery-wrapper {
             width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
+            margin-bottom: 40px;
         }
         
-        /* Galeri stili */
         .gallery-container {
             width: 100%;
-            margin-bottom: 40px;
             background-color: #f5f5f5;
             border-radius: 12px;
             overflow: hidden;
@@ -1275,10 +1260,6 @@
         
         /* RESPONSIVE DÜZELTMELER */
         @media (max-width: 1200px) {
-            .news-featured-image {
-                min-height: 500px;
-                max-height: 700px;
-            }
             .main-gallery-image {
                 min-height: 400px;
             }
@@ -1294,10 +1275,6 @@
                 padding: 15px;
             }
             
-            .news-featured-image {
-                min-height: 400px;
-                max-height: 600px;
-            }
             .main-gallery-image {
                 min-height: 350px;
             }
@@ -1430,10 +1407,6 @@
                 padding: 12px;
             }
             
-            .news-featured-image {
-                min-height: 300px;
-                max-height: 500px;
-            }
             .main-gallery-image {
                 min-height: 300px;
             }
@@ -1537,10 +1510,6 @@
                 text-align: left;
             }
             
-            .news-featured-image {
-                min-height: 250px;
-                max-height: 400px;
-            }
             .main-gallery-image {
                 min-height: 250px;
             }
@@ -1604,11 +1573,6 @@
         @media (max-width: 400px) {
             .news-title {
                 font-size: 1.4rem;
-            }
-            
-            .news-featured-image {
-                min-height: 200px;
-                max-height: 350px;
             }
             
             .scroll-to-top {
@@ -1754,18 +1718,25 @@
                 
                 <div class="news-date">
                     <i class="far fa-calendar-alt"></i>
-                    <span>27 Mart 2026, 10:30</span>
+                    <span>25 Mart 2026, 14:03</span>
+                </div>
+
+                <!-- AÇIKLAMA - RESİMLERİN ÜZERİNE TAŞINDI -->
+                <div class="news-intro">
+                    Bartınlı sporcu Kuzey Ümit Çoban, Türkiye Vücut Geliştirme Fitness Avrupa Şampiyonası kapsamında düzenlenen 2026 yılı milli takım seçmelerinde sahne almaya hazırlanıyor. Disiplini, azmi ve istikrarlı performansıyla dikkat çeken genç sporcu, önemli organizasyonda Bartın'ı en iyi şekilde temsil etmeyi hedefliyor.
                 </div>
 
                 <!-- Galeri Bölümü - Tıklanabilir ve büyüyen görseller -->
-                <div class="gallery-container">
-                    <div class="main-gallery-image" id="mainGalleryImage">
-                        <img id="galleryMainImg" src="https://www.bartinduysun.com/images/bartin/bartinli-sporcu-kuzey-umit-coban.webp" alt="Bartınlı sporcu Kuzey Ümit Çoban" style="cursor: pointer;">
-                    </div>
-                    <div class="gallery-thumbnails">
-                        <img src="https://www.bartinduysun.com/images/bartin/bartinli-sporcu-kuzey-umit-coban.webp" alt="Kuzey Ümit Çoban 1" class="gallery-thumb active" data-image="https://www.bartinduysun.com/images/bartin/bartinli-sporcu-kuzey-umit-coban.webp">
-                        <img src="https://www.bartinduysun.com/images/bartin/bartinli-sporcu-kuzey.webp" alt="Kuzey Ümit Çoban 2" class="gallery-thumb" data-image="https://www.bartinduysun.com/images/bartin/bartinli-sporcu-kuzey.webp">
-                        <img src="https://www.bartinduysun.com/images/bartin/kuzey-umit-coban.webp" alt="Kuzey Ümit Çoban 3" class="gallery-thumb" data-image="https://www.bartinduysun.com/images/bartin/kuzey-umit-coban.webp">
+                <div class="gallery-wrapper">
+                    <div class="gallery-container">
+                        <div class="main-gallery-image" id="mainGalleryImage">
+                            <img id="galleryMainImg" src="https://www.bartinduysun.com/images/bartin/bartinli-sporcu-kuzey-umit-coban.webp" alt="Bartınlı sporcu Kuzey Ümit Çoban" style="cursor: pointer;">
+                        </div>
+                        <div class="gallery-thumbnails">
+                            <img src="https://www.bartinduysun.com/images/bartin/bartinli-sporcu-kuzey-umit-coban.webp" alt="Kuzey Ümit Çoban 1" class="gallery-thumb active" data-image="https://www.bartinduysun.com/images/bartin/bartinli-sporcu-kuzey-umit-coban.webp">
+                            <img src="https://www.bartinduysun.com/images/bartin/bartinli-sporcu-kuzey.webp" alt="Kuzey Ümit Çoban 2" class="gallery-thumb" data-image="https://www.bartinduysun.com/images/bartin/bartinli-sporcu-kuzey.webp">
+                            <img src="https://www.bartinduysun.com/images/bartin/kuzey-umit-coban.webp" alt="Kuzey Ümit Çoban 3" class="gallery-thumb" data-image="https://www.bartinduysun.com/images/bartin/kuzey-umit-coban.webp">
+                        </div>
                     </div>
                 </div>
 
@@ -1776,11 +1747,6 @@
                         <img id="lightboxImg" src="" alt="Büyük görünüm">
                         <div class="lightbox-caption" id="lightboxCaption"></div>
                     </div>
-                </div>
-
-                <!-- AÇIKLAMA -->
-                <div class="news-intro">
-                    Bartınlı sporcu Kuzey Ümit Çoban, Türkiye Vücut Geliştirme Fitness Avrupa Şampiyonası kapsamında düzenlenen 2026 yılı milli takım seçmelerinde sahne almaya hazırlanıyor. Disiplini, azmi ve istikrarlı performansıyla dikkat çeken genç sporcu, önemli organizasyonda Bartın'ı en iyi şekilde temsil etmeyi hedefliyor.
                 </div>
                 
                 <div class="news-body">
@@ -2250,3 +2216,4 @@
     </script>
 </body>
 </html>
+```
