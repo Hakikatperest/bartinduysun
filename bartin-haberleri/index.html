@@ -1670,114 +1670,124 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- JAVASCRIPT - Dinamik içerik oluşturma (Güncellenmiş 11 Haber + 3-3-3-2 Sıralama) -->
+    <!-- JAVASCRIPT - Dinamik içerik oluşturma (Güncellenmiş 12 Haber + 3-3-3-3 Sıralama) -->
     <script>
-        // Haber verisi - GÜNCELLENMİŞ VERSİYON (11 HABER)
+        // Haber verisi - GÜNCELLENMİŞ VERSİYON (12 HABER - YENİ HABER EKLENDİ)
         const bartinHaberleri = [
-            // 1. HABER (En güncel)
+            // 1. HABER (YENİ - EN GÜNCEL)
             {
                 id: 0,
-                   title: "Bartın'da 3 Kişinin Hayatını Kaybettiği Olayda Karar: İki Sanığa Müebbet Hapis",
+                title: "Bartınlı Sporcu Kuzey Ümit Çoban Milli Takım Seçmelerinde Sahneye Çıkıyor",
+                category: "Bartın Haberleri",
+                image: "https://www.bartinduysun.com/images/bartin/bartinli-sporcu-kuzey-umit-coban.webp",
+                excerpt: "Bartınlı sporcu Kuzey Ümit Çoban, Türkiye Vücut Geliştirme Fitness Avrupa Şampiyonası kapsamında düzenlenen 2026 yılı milli takım seçmelerinde sahne almaya hazırlanıyor.",
+                url: "https://www.bartinduysun.com/haberler/bartin/bartinli-sporcu-kuzey-umit-coban-milli-takim-secmelerinde.html",
+                date: "25 Şubat 2026"
+            },
+            // 2. HABER
+            {
+                id: 1,
+                title: "Bartın'da 3 Kişinin Hayatını Kaybettiği Olayda Karar: İki Sanığa Müebbet Hapis",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/3-kisinin-oldugu-olayda-karar-aciklandi.webp",
                 excerpt: "Bartın'ın Merkez ilçesine bağlı Kozcağız Beldesi Demirciler Mahallesi'nde 17 Mayıs 2025 tarihinde arazi anlaşmazlığı nedeniyle yaşanan ve 3 kişinin tüfekle vurularak hayatını kaybettiği olayla ilgili davada karar açıklandı.",
                 url: "https://www.bartinduysun.com/haberler/bartin/3-kisinin-oldugu-olayda-karar-aciklandi.html",
                 date: "20 Şubat 2026"
             },
-            // 2. HABER (Yeni eklenen)
+            // 3. HABER
             {
-                id: 1,
-                  title: "Bartın Berberler ve Kuaförler Odası'nda Seçim Heyecanı: Cemal Zeybek Güven Tazeledi",
+                id: 2,
+                title: "Bartın Berberler ve Kuaförler Odası'nda Seçim Heyecanı: Cemal Zeybek Güven Tazeledi",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/cemal-zeybek-guven-tazeledi1.webp",
                 excerpt: "Bartın Berberler ve Kuaförler Esnaf Odası'nda gerçekleşen heyecanlı seçim süreci tamamlandı. Mevcut başkan ve adayların yarıştığı genel kurulda, sandıktan çıkan sonuçlar meslek odasının yeni dönem yönetimini belirledi.",
                 url: "https://www.bartinduysun.com/haberler/bartin/cemal-zeybek-guven-tazeledi.html",
                 date: "15 Şubat 2026"
             },
-            // 3. HABER
+            // 4. HABER
             {
-                id: 2,
-              title: "Merzifon Deplasmanında Çirkin Saldırı! Kaptan Emre Yüksektepe Başından Yaralandı",
+                id: 3,
+                title: "Merzifon Deplasmanında Çirkin Saldırı! Kaptan Emre Yüksektepe Başından Yaralandı",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/merzifonspor-bartinspor-macinda-kavga1.webp",
                 excerpt: "Bartınspor, Bölgesel Amatör Lig 4. Grup'ta deplasmanda karşılaştığı Merzifonspor karşısında sahadan 1-0 galip ayrıldı. Ancak maçın bitiş düdüğüyle birlikte yaşanan olaylar, alınan kritik galibiyetin önüne geçti.",
                 url: "https://www.bartinduysun.com/haberler/bartin/merzifonspor-bartinspor-macinda-kavga1.html",
                 date: "15 Şubat 2026"
             },
-            // 4. HABER
+            // 5. HABER
             {
-                id: 3,
-                   title: "Bartın'da Çirkin Saldırı: 72 Yaşındaki Yaşlı Adam Darbedildi!",
+                id: 4,
+                title: "Bartın'da Çirkin Saldırı: 72 Yaşındaki Yaşlı Adam Darbedildi!",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/bartinda-cirkin-saldiri.webp",
                 excerpt: "Bartın merkezde akşam saatlerinde meydana gelen olay, çevre sakinlerinde büyük bir üzüntü ve tepkiye yol açtı. İlknur Erkan Sokak üzerinde geçimini sağlamak amacıyla çöplerden geri dönüşüm için şişe ve kutu toplayan 72 yaşındaki bir vatandaş, henüz belirlenemeyen bir nedenle saldırıya uğradı.",
                 url: "https://www.bartinduysun.com/haberler/bartin/bartinda-cirkin-saldiri.html",
-                date: "14 Şubat 2026, 22:18"
+                date: "14 Şubat 2026"
             },
-            // 5. HABER
+            // 6. HABER
             {
-                id: 4,
-             title: "Bartın Berberler ve Kuaförler Odası'nda Yeni Dönem Heyecanı",
+                id: 5,
+                title: "Bartın Berberler ve Kuaförler Odası'nda Yeni Dönem Heyecanı",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/ozlem-turkan-sarikaya1.webp",
                 excerpt: "Toplam 477 üyesi bulunan Bartın Berberler ve Kuaförler Odası'nda genel kurul heyecanı yaşanıyor. 137 erkek berber, 80 kuaför, 32 güzellik salonu ve 30 farklı sektörden temsilci yeni dönem için sandık başına gidecek.",
                 url: "https://www.bartinduysun.com/haberler/bartin/bartin-berberler-ve-kuaforler-odasinda-yeni-donem-heyecani.html",
                 date: "14 Şubat 2026"
             },
-            // 6. HABER
-            {
-                id: 5,
-             title: "Zehir Tacirlerine Darbe: Operasyonda Çok Sayıda Madde Ele Geçirildi",
-                category: "Bartın Haberleri",
-                image: "https://www.bartinduysun.com/images/bartin/zehir-tacirlerine-darbe-operasyonda-cok-sayida-madde-ele-gecirildi1.webp",
-                excerpt: "Narkotik Suçlarla Mücadele Şube Müdürlüğü ekipleri, kent genelinde uyuşturucu madde trafiğini engellemek ve sokak satıcılarına göz açtırmamak amacıyla yürüttüğü çalışmalar kapsamında önemli bir operasyona imza attı. Titizlikle sürdürülen teknik ve fiziki takip sonucu gerçekleştirilen baskınlarda çok sayıda uyuşturucu madde ve suç unsuru ele geçirildi.",
-                url: "https://www.bartinduysun.com/haberler/bartin/zehir-tacirlerine-darbe-operasyonda-cok-sayida-madde-ele-gecirildi.html",
-                date: "13 Şubat 2026"
-            },
             // 7. HABER
             {
                 id: 6,
-                  title: "Bartın Heyetinden Ankara'da Spor Yatırımları Zirvesi",
+                title: "Zehir Tacirlerine Darbe: Operasyonda Çok Sayıda Madde Ele Geçirildi",
+                category: "Bartın Haberleri",
+                image: "https://www.bartinduysun.com/images/bartin/zehir-tacirlerine-darbe-operasyonda-cok-sayida-madde-ele-gecirildi1.webp",
+                excerpt: "Narkotik Suçlarla Mücadele Şube Müdürlüğü ekipleri, kent genelinde uyuşturucu madde trafiğini engellemek ve sokak satıcılarına göz açtırmamak amacıyla yürüttüğü çalışmalar kapsamında önemli bir operasyona imza attı.",
+                url: "https://www.bartinduysun.com/haberler/bartin/zehir-tacirlerine-darbe-operasyonda-cok-sayida-madde-ele-gecirildi.html",
+                date: "13 Şubat 2026"
+            },
+            // 8. HABER
+            {
+                id: 7,
+                title: "Bartın Heyetinden Ankara'da Spor Yatırımları Zirvesi",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/bartin-heyeti-osman-askin-bak-ziyaret.webp",
                 excerpt: "Bartın heyeti, Gençlik ve Spor Bakanlığı'nda önemli bir temas gerçekleştirdi. Adalet Bakanı Yılmaz Tunç, Bartın Belediye Başkanı Muhammet Rıza Yalçınkaya ve AK Parti Bartın Milletvekili Yusuf Ziya Aldatmaz, Gençlik ve Spor Bakanı Osman Aşkın Bak'ı makamında ziyaret etti.",
                 url: "https://www.bartinduysun.com/haberler/bartin/bartin-heyeti-osman-askin-bak-ziyaret.html",
                 date: "9 Şubat 2026"
             },
-            // 8. HABER
+            // 9. HABER
             {
-                id: 7,
-               title: "Esentepe'de Gıda Zehirlenmesi: 15 kişi hastanelik oldu",
+                id: 8,
+                title: "Esentepe'de Gıda Zehirlenmesi: 15 kişi hastanelik oldu",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.webp",
                 excerpt: "Bartın'ın Esentepe Mahallesi'nde düzenlenen bir asker uğurlama etkinliği, istenmeyen bir sonla noktalandı. Etkinlikte ikram edilen yemeği tüketen 15 kişi, ardından ortaya çıkan mide bulantısı ve kusma şikayetleri üzerine Bartın Devlet Hastanesi acil servisine başvurdu.",
                 url: "https://www.bartinduysun.com/haberler/bartin/bartin-esentepe-toplu-gida-zehirlenmesi-15-kisi-hastanelik-oldu.html",
                 date: "1 Şubat 2026"
             },
-            // 9. HABER
+            // 10. HABER
             {
-                id: 8,
-              title: "Mugada Sahilinde Tartışma Silahlı Saldırıya Dönüştü: Bir Kişi Ağır Yaralı",
+                id: 9,
+                title: "Mugada Sahilinde Tartışma Silahlı Saldırıya Dönüştü: Bir Kişi Ağır Yaralı",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/bartin-mugada-silahli-saldiri-72-yasindaki-adam-agir-yaralandi.webp",
                 excerpt: "Bartın'ın Mugada sahilinde iki kişi arasında çıkan tartışma, silahlı saldırıyla sonuçlandı. İddiaya göre Y.T. (49), H.Ö. (72) ile yaşadığı sözlü tartışmanın ardından av tüfeğiyle ateş açtı. Baş ve göğüs bölgesinden ağır yaralanan H.Ö., Bartın Devlet Hastanesi'ne kaldırıldı.",
                 url: "https://www.bartinduysun.com/haberler/bartin/mugada-sahilinde-tartisma-silahli-saldiri-bir-kisi-agir-yarali.html",
                 date: "31 Ocak 2026"
             },
-            // 10. HABER
+            // 11. HABER
             {
-                id: 9,
-                 title: "Bartın Kahveciler ve Şerbetçiler Esnaf Odası'nda Ayhan Tepe Yeniden Başkan Seçildi",
+                id: 10,
+                title: "Bartın Kahveciler ve Şerbetçiler Esnaf Odası'nda Ayhan Tepe Yeniden Başkan Seçildi",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/bartinda-kahveciler-ve-serbetciler-esnaf-odasi-baskanligi-secimi-yapildi.webp",
                 excerpt: "Bartın Kahveciler ve Şerbetçiler Esnaf Odası Başkanlığı seçimleri iki adayın katılımıyla gerçekleştirildi. Yapılan oylamada Ayhan Tepe 343 oy alarak yeniden başkanlığa seçilirken, diğer aday Taşkın Özmen 59 oyda kaldı.",
                 url: "https://www.bartinduysun.com/haberler/bartin/bartin-kahveciler-serbetciler-esnaf-odasi-ayhan-tepe-yeniden-baskan-secildi.html",
                 date: "30 Ocak 2026"
             },
-            // 11. HABER
+            // 12. HABER
             {
-                id: 10,
-               title: "Gürgenpınarı'nda Uçuruma Yuvarlanan Kamyonun Sürücüsü Hayatını Kaybetti",
+                id: 11,
+                title: "Gürgenpınarı'nda Uçuruma Yuvarlanan Kamyonun Sürücüsü Hayatını Kaybetti",
                 category: "Bartın Haberleri",
                 image: "https://www.bartinduysun.com/images/bartin/gurgenpinar-tas-ocagi-kazasi-kamyon-soforu-hayatini-kaybetti.webp",
                 excerpt: "Bartın'da bir taş ocağında malzeme boşaltımı sırasında kontrolden çıkan kamyon yaklaşık 5 metrelik uçuruma yuvarlandı. Kazada kamyonun sürücüsü hayatını kaybetti. Olayla ilgili soruşturma başlatıldı.",
@@ -1951,7 +1961,7 @@
             }, 100);
         }
 
-        // Haber grid'ini doldur - 3 haber + reklam + 3 haber + reklam + 3 haber + reklam + 2 haber
+        // Haber grid'ini doldur - 3 haber + reklam + 3 haber + reklam + 3 haber + reklam + 3 haber
         function populateNewsGrid() {
             if (!bartinNewsGrid) return;
             
@@ -1959,59 +1969,25 @@
             
             let adIndex = 0;
             const totalAds = advertisements.length;
+            const totalNews = bartinHaberleri.length;
+            const newsPerGroup = 3;
             
-            // İlk 3 haber
-            for (let i = 0; i < 3; i++) {
-                if (i < bartinHaberleri.length) {
+            for (let group = 0; group < Math.ceil(totalNews / newsPerGroup); group++) {
+                // Her grupta 3 haber ekle
+                for (let i = group * newsPerGroup; i < Math.min((group + 1) * newsPerGroup, totalNews); i++) {
                     const newsCard = createNewsCard(bartinHaberleri[i]);
                     bartinNewsGrid.appendChild(newsCard);
                 }
-            }
-            
-            // 1. Reklam
-            if (adIndex < totalAds) {
-                const adCard = createAdCard(advertisements[adIndex]);
-                bartinNewsGrid.appendChild(adCard);
-                adIndex++;
-            }
-            
-            // Sonraki 3 haber (4,5,6)
-            for (let i = 3; i < 6; i++) {
-                if (i < bartinHaberleri.length) {
-                    const newsCard = createNewsCard(bartinHaberleri[i]);
-                    bartinNewsGrid.appendChild(newsCard);
+                
+                // Her gruptan sonra reklam ekle (son gruptan sonra ekleme)
+                if (adIndex < totalAds && (group + 1) * newsPerGroup < totalNews) {
+                    const adCard = createAdCard(advertisements[adIndex]);
+                    bartinNewsGrid.appendChild(adCard);
+                    adIndex++;
                 }
             }
             
-            // 2. Reklam
-            if (adIndex < totalAds) {
-                const adCard = createAdCard(advertisements[adIndex]);
-                bartinNewsGrid.appendChild(adCard);
-                adIndex++;
-            }
-            
-            // Sonraki 3 haber (7,8,9)
-            for (let i = 6; i < 9; i++) {
-                if (i < bartinHaberleri.length) {
-                    const newsCard = createNewsCard(bartinHaberleri[i]);
-                    bartinNewsGrid.appendChild(newsCard);
-                }
-            }
-            
-            // 3. Reklam
-            if (adIndex < totalAds) {
-                const adCard = createAdCard(advertisements[adIndex]);
-                bartinNewsGrid.appendChild(adCard);
-                adIndex++;
-            }
-            
-            // Son 2 haber (10,11)
-            for (let i = 9; i < bartinHaberleri.length; i++) {
-                const newsCard = createNewsCard(bartinHaberleri[i]);
-                bartinNewsGrid.appendChild(newsCard);
-            }
-            
-            // Eğer reklamlar bittiyse ve hala reklam eklenmesi gerekiyorsa (yedek)
+            // Kalan reklamları en sona ekle
             while (adIndex < totalAds) {
                 const adCard = createAdCard(advertisements[adIndex]);
                 bartinNewsGrid.appendChild(adCard);
